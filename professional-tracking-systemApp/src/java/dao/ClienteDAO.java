@@ -5,6 +5,7 @@
  */
 package dao;
 
+import java.util.ArrayList;
 import model.Cliente;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -25,6 +26,26 @@ public class ClienteDAO {
     public void incluir(Cliente c) {
         Transaction t = sessao.beginTransaction();
         sessao.save(c);
+        t.commit();
+    }
+
+    public ArrayList<Cliente> listar() {
+        return (ArrayList<Cliente>) sessao.createCriteria(Cliente.class).list();
+    }
+
+    public Cliente carregar(int id) {
+        return (Cliente) sessao.get(Cliente.class, id);
+    }
+
+    public void remover(int id) {
+        Transaction t = sessao.beginTransaction();
+        sessao.delete(carregar(id));
+        t.commit();
+    }
+
+    public void alterar(Cliente c) {
+        Transaction t = sessao.beginTransaction();
+        sessao.update(c);
         t.commit();
     }
 }

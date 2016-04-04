@@ -9,13 +9,14 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import org.hibernate.validator.constraints.br.CPF;
 
 /**
  *
  * @author Bruno
  */
 @Entity
-public class Profissional implements Serializable{
+public class Profissional implements Serializable {
 
     @Id
     @GeneratedValue
@@ -23,6 +24,8 @@ public class Profissional implements Serializable{
     private String nome;
     private String email;
     private String senha;
+    @CPF
+    private String CPF;
     private String categoria;
     private String endereco;
     private String telefoneResidencial;
@@ -91,7 +94,13 @@ public class Profissional implements Serializable{
     public void setTelefoneCelular(String telefoneCelular) {
         this.telefoneCelular = telefoneCelular;
     }
-    
-    
+
+    public String getCPF() {
+        return CPF;
+    }
+
+    public void setCPF(String CPF) {
+        this.CPF = CPF;
+    }
 
 }
