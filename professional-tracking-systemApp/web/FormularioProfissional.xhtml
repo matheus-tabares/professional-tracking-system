@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <ui:composition template="template/LayoutPadrao.xhtml">
+
+        <ui:define name="content">
+            <h2 style="text-align: center;">Cadastro de Profissional</h2>
+            <h:messages/>
+            <h:form>
+                <p:panelGrid columns="2">                
+                    <p:outputLabel value="Nome:" for="txtNome"/>
+                    <p:inputText id="txtNome" maxlength="100" value="#{profissionalBean.profissional.nome}"/>
+                    <p:outputLabel value="E-mail:" for="txtEmail"/>
+                    <p:inputText id="txtEmail" maxlength="100" value="#{profissionalBean.profissional.email}"/>                
+                    <p:outputLabel value="Senha:" for="txtSenha"/>
+                    <p:inputText id="txtSenha" maxlength="200" value="#{profissionalBean.profissional.senha}"/>                
+                    <p:outputLabel value="Categoria: " for="txtCategoria"/>                            
+                    <p:inputText id="txtCategoria" maxlength="15" value="#{profissionalBean.profissional.categoria}"/>
+                    <p:outputLabel value="Endereço: " for="txtEndereco"/>
+                    <p:inputText id="txtEndereco" maxlength="15" value="#{profissionalBean.profissional.endereco}"/>   
+                    <p:outputLabel value="Telefone Residencial: " for="txtTelefoneResidencial"/>
+                    <p:inputText id="txtTelefoneResidencial" maxlength="15" value="#{profissionalBean.profissional.telefoneResidencial}"/>   
+                    <p:outputLabel value="Telefone Celular: " for="txtTelefoneCelular"/>
+                    <p:inputText id="txtTelefoneCelular" maxlength="15" value="#{profissionalBean.profissional.telefoneCelular}"/>   
+                    <p:outputLabel/>
+                    <p:commandButton ajax="false" value="Cadastrar" action="#{profissionalBean.incluir()}"/>
+
+                </p:panelGrid>
+            </h:form>
+        </ui:define>
+
+    </ui:composition>
+
+</html>
+
+
