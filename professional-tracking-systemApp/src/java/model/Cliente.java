@@ -22,12 +22,12 @@ public class Cliente implements Serializable {
     @GeneratedValue
     private int id;
     @NotEmpty
-    
     private String nome;
     @NotEmpty
     private String email;
     private String endereco;
     private String telefoneResidencial;
+    @NotEmpty
     private String telefoneCelular;
 
     public int getId() {
