@@ -1,0 +1,32 @@
+                                ***ATENÇÃO!***
+TODAS AS RECOMENDAÇÕES ESTÃO IMPLANTADAS VERIFIQUE OU MODIFIQUE EM CASO DE ERRO
+------------------------------------------------------------------------------->
+
+BIBLIOTECA PRIMEFACES ATUALIZADA 5.0 PARA 5.3 EM RAZÃO DO GOOGLE MAPS
+http://search.maven.org/remotecontent?filepath=org/primefaces/primefaces/5.3/primefaces-5.3.jar
+
+ALL THEMES
+http://repository.primefaces.org/org/primefaces/themes/all-themes/1.0.10/all-themes-1.0.10.jar
+NO WEB.XML
+<context-param>  
+    <param-name>primefaces.THEME</param-name>  
+    <param-value>bootstrap</param-value>  
+</context-param> 
+------------------------------------------------------------------------------->
+SCRIPT DO BANCO DE DADOS (hibernate.cfg NÃO ESQUEÇA DE DE VER SE A SENHA ESTA DIFERENTE)
+create database projetodevsis; use projetodevsis;
+
+DOCUMENTAÇÃO PRIMEFACES
+http://www.primefaces.org/docs/guide/primefaces_user_guide_5_3.pdf
+
+
+VERSÃO NATIVA DO GIT DO NETBEANS 8.0 DEPOIS DE FAZER COMMIT É [EXPANDIR]
+NA VERSÃO 8.1 A NOMECLATURA MUDA PARA [ENVIAR]
+
+GIT NO NETBEANS
+coloque em qualidade alta!
+https://www.youtube.com/watch?v=KCyZwrIBs2g&feature=youtu.be
+
+    ***************    
+    DEAD LINE 11/04
+    ***************
