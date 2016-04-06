@@ -9,7 +9,7 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import org.hibernate.validator.constraints.NotEmpty;
+//import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  *
@@ -21,13 +21,13 @@ public class Cliente implements Serializable {
     @Id
     @GeneratedValue
     private int id;
-    @NotEmpty
+    //@NotEmpty
     private String nome;
-    @NotEmpty
+    //@NotEmpty
     private String email;
     private String endereco;
     private String telefoneResidencial;
-    @NotEmpty
+    //@NotEmpty
     private String telefoneCelular;
 
     public int getId() {

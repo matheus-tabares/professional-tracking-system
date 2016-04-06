@@ -9,7 +9,7 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import org.hibernate.validator.constraints.br.CPF;
+//import org.hibernate.validator.constraints.br.CPF;
 
 /**
  *
@@ -24,7 +24,7 @@ public class Profissional implements Serializable {
     private String nome;
     private String email;
     private String senha;
-    @CPF
+    //@CPF
     private String CPF;
     private String categoria;
     private String endereco;
