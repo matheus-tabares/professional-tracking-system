@@ -9,7 +9,8 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-//import org.hibernate.validator.constraints.NotEmpty;
+import javax.persistence.OneToOne;
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  *
@@ -21,13 +22,14 @@ public class Cliente implements Serializable {
     @Id
     @GeneratedValue
     private int id;
-    //@NotEmpty
+    @NotEmpty
     private String nome;
-    //@NotEmpty
+    @NotEmpty
     private String email;
-    private String endereco;
+    @OneToOne
+    private Endereco endereco;
     private String telefoneResidencial;
-    //@NotEmpty
+    @NotEmpty
     private String telefoneCelular;
 
     public int getId() {
@@ -54,11 +56,11 @@ public class Cliente implements Serializable {
         this.email = email;
     }
 
-    public String getEndereco() {
+    public Endereco getEndereco() {
         return endereco;
     }
 
-    public void setEndereco(String endereco) {
+    public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
 

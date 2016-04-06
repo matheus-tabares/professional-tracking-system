@@ -6,12 +6,14 @@
 package backingbeans;
 
 import dao.ClienteDAO;
+import dao.EnderecoDAO;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import model.Cliente;
+import model.Endereco;
 
 /**
  *
@@ -23,13 +25,19 @@ public class ClienteBean {
 
     private Cliente cliente = new Cliente();
     private ClienteDAO clienteDAO = new ClienteDAO();
+    private Endereco endereco = new Endereco();
+    private EnderecoDAO enderecoDAO = new EnderecoDAO();
     private List<Cliente> listaClientes;
+    private boolean renderedEndereco;
 
     public ClienteBean() {
         listaClientes = clienteDAO.listar();
     }
 
     public String incluir() {
+        this.enderecoDAO = new EnderecoDAO();
+        this.enderecoDAO.incluir(endereco);
+        this.cliente.setEndereco(enderecoDAO.carregar(this.endereco.getId()));
         clienteDAO.incluir(cliente);
         FacesContext contexto = FacesContext.getCurrentInstance();
         contexto.addMessage(null, new FacesMessage("Cliente Cadastrado!", ""));
@@ -59,6 +67,22 @@ public class ClienteBean {
 
     public void setListaClientes(List<Cliente> listaClientes) {
         this.listaClientes = listaClientes;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
+
+    public EnderecoDAO getEnderecoDAO() {
+        return enderecoDAO;
+    }
+
+    public void setEnderecoDAO(EnderecoDAO enderecoDAO) {
+        this.enderecoDAO = enderecoDAO;
     }
 
     public String consultaCliente(int idClienteSelecionado) {
@@ -91,6 +115,22 @@ public class ClienteBean {
         cliente = new Cliente();
         context.addMessage(null, msg);
         return "ConsultaCliente";
+    }
+    
+    public void novoCliente() {
+        this.cliente = new Cliente();
+    }
+
+    public boolean isRenderedEndereco() {
+        return renderedEndereco;
+    }
+
+    public void inseriuCPF() {
+        if (this.endereco.getCEP().equals("")) {
+            this.renderedEndereco = false;
+        } else {
+            this.renderedEndereco = true;
+        }
     }
 
 }

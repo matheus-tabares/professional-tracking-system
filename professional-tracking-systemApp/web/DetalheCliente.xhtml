@@ -14,13 +14,21 @@
                     <p:outputLabel value="Nome:" for="txtNome"/>
                     <h:outputText id="txtNome" value="#{clienteBean.cliente.nome}"/>
                     <p:outputLabel value="E-mail:" for="txtEmail"/>
-                    <h:outputText id="txtEmail" value="#{clienteBean.cliente.email}"/>
-                    <p:outputLabel value="Endereço:" for="txtEndereco"/>
-                    <h:outputText id="txtEndereco" value="#{clienteBean.cliente.endereco}"/>
+                    <h:outputText id="txtEmail" value="#{clienteBean.cliente.email}"/>                    
                     <p:outputLabel value="Telefone Residencial:" for="txtTelefoneResidencial"/>
                     <h:outputText id="txtTelefoneResidencial" value="#{clienteBean.cliente.telefoneResidencial}"/>
                     <p:outputLabel value="Telefone Celular:" for="txtTelefoneCelular"/>
-                    <h:outputText id="txtTelefoneCelular" value="#{clienteBean.cliente.telefoneCelular}"/>                                        
+                    <h:outputText id="txtTelefoneCelular" value="#{clienteBean.cliente.telefoneCelular}"/>   
+                    <p:outputLabel value="Rua: " for="txtEndereco"/>
+                    <h:outputText id="txtEndereco" value="#{clienteBean.cliente.endereco.endereco}" />   
+                    <p:outputLabel value="Nº: " for="txtNumero"/>
+                    <h:outputText id="txtNumero" value="#{clienteBean.cliente.endereco.numero}" />   
+                    <p:outputLabel value="Bairro: " for="txtBairro"/>
+                    <h:outputText id="txtBairro" value="#{clienteBean.cliente.endereco.bairro}"/>   
+                    <p:outputLabel value="Cidade: " for="txtCidade"/>
+                    <h:outputText id="txtCidade" value="#{clienteBean.cliente.endereco.cidade}"/> 
+                    <p:outputLabel value="Estado:" for="txtEstado"/>
+                    <h:outputText id="txtEstado" value="#{clienteBean.cliente.endereco.estado}"/>  
                 </p:panelGrid>
                 <p:button value="Voltar" outcome="ConsultaCliente"/>
             </h:form>     

@@ -9,13 +9,17 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-//import org.hibernate.validator.constraints.br.CPF;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import org.hibernate.validator.constraints.br.CPF;
 
 /**
  *
  * @author Bruno
  */
 @Entity
+@Table
 public class Profissional implements Serializable {
 
     @Id
@@ -24,12 +28,17 @@ public class Profissional implements Serializable {
     private String nome;
     private String email;
     private String senha;
-    //@CPF
+    private String descricao;
+    @CPF
     private String CPF;
-    private String categoria;
-    private String endereco;
     private String telefoneResidencial;
     private String telefoneCelular;
+
+    @ManyToOne
+    private Categoria categoria;
+
+    @OneToOne
+    private Endereco endereco;
 
     public int getId() {
         return id;
@@ -63,20 +72,12 @@ public class Profissional implements Serializable {
         this.senha = senha;
     }
 
-    public String getCategoria() {
-        return categoria;
+    public String getCPF() {
+        return CPF;
     }
 
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
-    }
-
-    public String getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
+    public void setCPF(String CPF) {
+        this.CPF = CPF;
     }
 
     public String getTelefoneResidencial() {
@@ -95,12 +96,28 @@ public class Profissional implements Serializable {
         this.telefoneCelular = telefoneCelular;
     }
 
-    public String getCPF() {
-        return CPF;
+    public Categoria getCategoria() {
+        return categoria;
     }
 
-    public void setCPF(String CPF) {
-        this.CPF = CPF;
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
 }

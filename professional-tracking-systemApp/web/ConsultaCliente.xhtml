@@ -11,7 +11,7 @@
         <h:form>
             <p:toolbar style="height: 40px">
                 <f:facet name="left">
-                    <p:commandButton value="Nova" icon="ui-icon-document" action="FormularioCliente"/>
+                    <p:commandButton value="Nova" icon="ui-icon-document" actionListener="#{clienteBean.novoCliente()}" action="FormularioCliente"/>
 
                     <span class="ui-separator">
                         <span class="ui-icon ui-icon-grip-dotted-vertical" />
