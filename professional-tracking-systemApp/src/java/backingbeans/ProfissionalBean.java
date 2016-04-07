@@ -9,6 +9,7 @@ import dao.CategoriaDAO;
 import dao.EnderecoDAO;
 import dao.ProfissionalDAO;
 import java.util.ArrayList;
+import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -27,6 +28,7 @@ public class ProfissionalBean {
 
     private Profissional profissional = new Profissional();
     private ProfissionalDAO profissionalDAO = new ProfissionalDAO();
+    private List<Profissional> listaProfissional;
     private Categoria categoria = new Categoria();
     private CategoriaDAO categoriaDAO = new CategoriaDAO();
     private Endereco endereco = new Endereco();
@@ -34,6 +36,17 @@ public class ProfissionalBean {
     private int idCategoria;
     private int idEndereco;
     private boolean renderedEndereco;
+    
+    
+    public ProfissionalBean() {
+        listaProfissional = profissionalDAO.listar();
+    }
+    
+    public String consultaProfissional(Profissional p) {
+        setProfissional(p);
+        return "consultaProfissional";
+    }
+
 
     public String incluir() {
         this.categoriaDAO = new CategoriaDAO();
@@ -76,6 +89,17 @@ public class ProfissionalBean {
 
     public void setProfissionalDAO(ProfissionalDAO profissionalDAO) {
         this.profissionalDAO = profissionalDAO;
+    }
+    
+    public List<Profissional> getListaProfissional() {
+        return listaProfissional;
+    }
+
+    /**
+     * @param listaProfissional the listaProfissional to set
+     */
+    public void setListaProfissional(List<Profissional> listaProfissional) {
+        this.listaProfissional = listaProfissional;
     }
 
     public Categoria getCategoria() {
