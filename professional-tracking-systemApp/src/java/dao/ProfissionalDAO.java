@@ -5,6 +5,7 @@
  */
 package dao;
 
+import java.util.ArrayList;
 import model.Profissional;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -28,4 +29,11 @@ public class ProfissionalDAO {
         t.commit();
     }
     
+     public Profissional carregar(int id) {
+        return (Profissional) sessao.get(Profissional.class, id);
+    }
+    
+    public ArrayList<Profissional> listar() {
+        return (ArrayList<Profissional>) sessao.createCriteria(Profissional.class).list();
+    }
 }
