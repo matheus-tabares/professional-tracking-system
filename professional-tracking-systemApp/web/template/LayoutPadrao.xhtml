@@ -23,12 +23,13 @@
         <div id="container">
             <div id="left">
                 <ui:insert name="left">
+                    <h:link value="Home" outcome="index"/>                    
                     <h:link value="Cliente" outcome="FormularioCliente"/>
                     <h:link value="Busca Cliente" outcome="ConsultaCliente"/>
                     <h:link value="Profissional" outcome="FormularioProfissional"/>
                     <h:link value="Busca Profissional" outcome="ConsultaProfissional"/>
+                    <h:link value="Busca Categoria" outcome="BuscaProfissionalPorCategoria"/>
                     <h:link value="Categoria" outcome="FormularioCategoria"/>                    
-                    <h:link value="Home" outcome="index"/>                    
                 </ui:insert>
             </div>
             <div style="height: 100%">
