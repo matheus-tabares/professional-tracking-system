@@ -36,9 +36,10 @@ public class ProfissionalBean {
     private int idCategoria;
     private int idEndereco;
     private boolean renderedEndereco;
+    private List<Profissional> profissionaisPorCategoria;
 
     public ProfissionalBean() {
-        listaProfissionais = profissionalDAO.listar();
+        listaProfissionais = profissionalDAO.listar();        
     }
 
     public String consultaProfissional(Profissional p) {
@@ -89,8 +90,8 @@ public class ProfissionalBean {
         this.profissionalDAO = profissionalDAO;
     }
 
-    public String buscaProfissionalPorCategoria(int idCategoria) {
-
+    public String buscaProfissionalPorCategoria() {
+        profissionaisPorCategoria = profissionalDAO.listarPorCategoria(idCategoria);
         return "ConsultaProfissionalPorCategoria";
     }
 
@@ -152,6 +153,14 @@ public class ProfissionalBean {
 
     public boolean isRenderedEndereco() {
         return renderedEndereco;
+    }
+
+    public List<Profissional> getProfissionaisPorCategoria() {
+        return profissionaisPorCategoria;
+    }
+
+    public void setProfissionaisPorCategoria(List<Profissional> profissionaisPorCategoria) {
+        this.profissionaisPorCategoria = profissionaisPorCategoria;
     }
 
     public void inseriuCPF() {

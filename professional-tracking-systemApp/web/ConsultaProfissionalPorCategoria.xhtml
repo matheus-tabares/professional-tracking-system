@@ -10,6 +10,16 @@
         <ui:define name="content">
             <h2 style="text-align: center;">Consulta Profissional Por Categoria</h2>
             <h:messages/>
+            <h:form>
+                <p:dataTable value="#{profissionalBean.profissionaisPorCategoria}" var="p" paginator="true" rows="10">
+                    <p:column headerText="Nome">
+                        <h:outputText value="#{p.nome}"/>
+                    </p:column>
+                    <p:column headerText="Categoria">
+                        <h:outputText value="#{p.categoria.nome}"/>
+                    </p:column>
+                </p:dataTable>
+            </h:form>
 
         </ui:define>
 

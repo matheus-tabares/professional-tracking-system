@@ -15,8 +15,7 @@
                     <p:selectOneListbox id="omCategoria" value="#{profissionalBean.idCategoria}" style="width:170px">
                         <f:selectItems value="#{profissionalBean.listaCategorias}" var="c" itemValue="#{c.id}" itemLabel="#{c.nome}"/>
                     </p:selectOneListbox>
-
-                    <p:commandButton value="Pesquisar" ajax="false" action="#{profissionalBean.buscaProfissionalPorCategoria(c.id)}"/>
+                    <p:commandButton value="Pesquisar" ajax="false" action="#{profissionalBean.buscaProfissionalPorCategoria()}" />
                 </p:panelGrid>                
             </h:form>
         </ui:define>
