@@ -68,6 +68,11 @@ public class ProfissionalBean {
         this.categoria = new Categoria();
         return null;
     }
+    
+    public String consultaProfissional(int idProfissionalSelecionado) {
+        profissional = profissionalDAO.carregar(idProfissionalSelecionado);
+        return "DetalheProfissional";
+    }
 
     public ArrayList<Categoria> getListaCategorias() {
         CategoriaDAO dao = new CategoriaDAO();

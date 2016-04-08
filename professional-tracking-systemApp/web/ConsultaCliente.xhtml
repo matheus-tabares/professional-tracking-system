@@ -34,13 +34,13 @@
                 <p:column headerText="E-mail" sortBy="#{cliente.email}" filterBy="#{cliente.email}">
                     <h:outputText value="#{cliente.email}" />
                 </p:column>
-                <p:column width="60">
+                <p:column headerText="Edit" width="60">
                     <p:commandButton icon="ui-icon-pencil" ajax="false" action="#{clienteBean.iniciaAlteracaoCliente(cliente.id)}"/>
                 </p:column>
-                <p:column width="60">
+                <p:column headerText="View" width="60">
                     <p:commandButton icon="ui-icon-search" ajax="false" action="#{clienteBean.consultaCliente(cliente.id)}"/>
                 </p:column>
-                <p:column width="60" >
+                <p:column headerText="Delete" width="60" >
                     <p:commandButton icon="ui-icon-trash" ajax="false" action="#{clienteBean.removerCliente(cliente.id)}"/>
                 </p:column>
             </p:dataTable>

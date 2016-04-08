@@ -18,6 +18,9 @@
                     <p:column headerText="Categoria">
                         <h:outputText value="#{p.categoria.nome}"/>
                     </p:column>
+                    <p:column headerText="Detalhe" width="60">
+                        <p:commandButton icon="ui-icon-search" ajax="false" action="#{profissionalBean.consultaProfissional(p.id)}"/>
+                    </p:column>
                 </p:dataTable>
             </h:form>
 
