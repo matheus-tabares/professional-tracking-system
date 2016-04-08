@@ -28,7 +28,7 @@ public class ProfissionalBean {
 
     private Profissional profissional = new Profissional();
     private ProfissionalDAO profissionalDAO = new ProfissionalDAO();
-    private List<Profissional> listaProfissional;
+    private List<Profissional> listaProfissionais;
     private Categoria categoria = new Categoria();
     private CategoriaDAO categoriaDAO = new CategoriaDAO();
     private Endereco endereco = new Endereco();
@@ -36,17 +36,15 @@ public class ProfissionalBean {
     private int idCategoria;
     private int idEndereco;
     private boolean renderedEndereco;
-    
-    
+
     public ProfissionalBean() {
-        listaProfissional = profissionalDAO.listar();
+        listaProfissionais = profissionalDAO.listar();
     }
-    
+
     public String consultaProfissional(Profissional p) {
         setProfissional(p);
         return "consultaProfissional";
     }
-
 
     public String incluir() {
         this.categoriaDAO = new CategoriaDAO();
@@ -90,16 +88,18 @@ public class ProfissionalBean {
     public void setProfissionalDAO(ProfissionalDAO profissionalDAO) {
         this.profissionalDAO = profissionalDAO;
     }
-    
-    public List<Profissional> getListaProfissional() {
-        return listaProfissional;
+
+    public String buscaProfissionalPorCategoria(int idCategoria) {
+
+        return "ConsultaProfissionalPorCategoria";
     }
 
-    /**
-     * @param listaProfissional the listaProfissional to set
-     */
-    public void setListaProfissional(List<Profissional> listaProfissional) {
-        this.listaProfissional = listaProfissional;
+    public List<Profissional> getListaProfissionais() {
+        return listaProfissionais;
+    }
+
+    public void setListaProfissional(List<Profissional> listaProfissionais) {
+        this.listaProfissionais = listaProfissionais;
     }
 
     public Categoria getCategoria() {
