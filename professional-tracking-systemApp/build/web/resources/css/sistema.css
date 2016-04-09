@@ -14,14 +14,13 @@ html{
 }
 body {
     font-size: 12px;
-    font-family: Arial, Helvetica, sans-serif;
-    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;    
     padding: 0;    
     height: 100%;
     width: 100%;
 }
 #login{
-/*segunda sprint*/    
+    /*segunda sprint*/    
 }
 .home{
     height: 100%;
@@ -47,25 +46,17 @@ body {
     font-size: 22px; 
     font-family: 'Cuprum', sans-serif;     
 }
-/* AOS 400px muda dispocição da tela rever semi responsivo by Igor 1824 08042016 padronizar com jquery incluir iphone*/
-@media screen and (max-width: 400px) {
-    .content>p{
-        font-size: 14px;        
-    }
-    .div{
-        border-top: 1px solid white;
-    }
 
-}
+
 .layer{
     background:rgba(0,0,0,0.4);
     height: 100%;    
 }
 footer{
-position: absolute;
-bottom: 1px;
-width: 100%;
-text-align: center;    
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;    
 }
 code{
     background: rgb(102, 102, 102);
@@ -75,112 +66,33 @@ a {
     font-weight: bold;
     text-decoration: none!important;
 }
-
-
-
-
-
-
-
-
-
-
-
 .content  {
     /*no size*/
 }
-
-.grid {
-    border: 1px solid #666666;
-    border-spacing: 0;
-    border-collapse: collapse;
-}
-
-.grid td, .grid th {
-    padding: 3px;
-}
-
-.grid .cabecalho {
-    text-align: center;
-    font-weight: bold;
-    color: white;
-    background-color: #666666;
-}
-
-.grid .cor-sim {
-    background-color: #dbdbdb;
-}
-
-.grid .cor-nao {
-    background-color: #e6e6e6;
-}
-
-.form-grid {
-    background-color: #f2f2f2;
-    border-radius: 8px;
-    border: 1px solid #cccccc;
-    margin-top: 8px;
-}
-
-.form-grid .label {
-    font-weight: bold;
-    text-align: right;
-    padding: 0px 5px;
-}
-
-.form-grid .campo {
-    padding-right: 5px;
-}
-
-ul.form-messages {
-    padding-left: 20px;
-}
-
 .form-messages .error {
     color: #e81f1f;
 }
-
 .form-messages .info {
     color: #156b2a;
 }
 
-#header, #content, #footer {
-    padding: 8px;
-}
 
-#header {
-    height: 43px;
-    background-color: #e2e2e2;
-    box-shadow: 0px 2px 2px #ccc;
-}
 
-#header h1 {
-    padding: 0px;
-    margin: 0px;
-}
 
-.logo {
-    float: left;
-}
 
-.menu {
-    margin-top: 15px;
-    float: right;
+/* AOS 400px muda dispocição da tela rever semi responsivo by Igor 1824 08042016 padronizar com jquery incluir iphone*/
+@media screen and (max-width: 400px) {
+    .content>p{
+        font-size: 14px;        
+    }
+    .div{
+        border-top: 1px solid white;
+    }
+    .home{
+        background-image: none;
+        background: gray;
+    }
+    #equipe{
+        visibility:hidden ;
+    }
 }
-
-.menu a {
-    margin-left: 4px;
-    padding: 8px;
-    border-radius: 6px;
-    background-color: #4d4d4d;
-    color: #ffffff;
-    text-decoration: none;
-    text-shadow: 1px 1px 2px #000000; 
-}
-
-.menu a:hover {
-    background-color: #3c3c3c;
-    color: #eeeeee;
-    box-shadow: 0px 0px 5px #a6a6a6;
-}
-

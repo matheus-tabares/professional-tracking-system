@@ -9,10 +9,10 @@
         <h:outputStylesheet library="css" name="sistema.css"/>
     </h:head>
     <h:body>        
-            <div class="home">
-                <div class="layer">
-                    <div class="content">
-                        <h:form >
+        <div class="home">
+            <div class="layer">
+                <div class="content">
+                    <h:form prependId="false" id="login" >
                         <p:menuButton value="Menu">
                             <p:menuitem value="Login" ajax="false" icon="ui-icon-disk" action="AlteraCliente"/>
                             <p:separator />
@@ -20,30 +20,28 @@
                             <p:separator />
                             <p:menuitem value="Cadastro Cliente"  ajax="false" icon="ui-icon-person" action="AlteraCliente"/>                           
                         </p:menuButton>
-                        </h:form>
-                        <br/>
-                        <h1> Profissional Tracking System</h1>
-                        <br/>
-                        <div class="div"></div>
-                        <br/>
-                        <!--Não mude as tags ao incluir o texto-->
-                        <p>Texto falando sobre o projeto Texto falando <spam>sobre o projeto</spam> Texto falando Texto falando sobre o projeto</p>
-                        <p>Texto falando sobre o projeto Texto falando sobre o projeto Texto falando sobre o projeto</p>
-                        <p>Texto falando sobre o projeto Texto falando sobre o projeto</p>
+                    </h:form>
+                    <br/>
+                    <h1> Profissional Tracking System</h1>
+                    <br/>
+                    <div class="div"></div>
+                    <br/>
+                    <!--Não mude as tags ao incluir o texto-->
+                    <p>Texto falando sobre o projeto Texto falando <spam>sobre o projeto</spam> Texto falando Texto falando sobre o projeto</p>
+                    <p>Texto falando sobre o projeto Texto falando sobre o projeto Texto falando sobre o projeto</p>
+                    <p>Texto falando sobre o projeto Texto falando sobre o projeto</p>
 
-                    </div>
                 </div>
             </div>
-            <footer>
-                <h:form>
+        </div>
+        <footer>
+            <h:form prependId="false">
                 <p:commandLink action="Equipe">
-                    <p:graphicImage title="Equipe de Desenvolvimento" library="img" name="trab2.png"  width="80"/>
+                    <p:graphicImage id="equipe" title="Equipe de Desenvolvimento" library="img" name="trab2.png"  width="80"/>
                     <code>Projeto do curso de ADS IFRS Disciplina DEV SIS II - Copyright<sup>©</sup> 2016</code>
                 </p:commandLink>
-                </h:form>
-            </footer>
-        
+            </h:form>
+        </footer>
     </h:body>
 </html>
 
-<!--<a href="https://github.com/matheus-tabares/professional-tracking-system">GIT</a>--> 
