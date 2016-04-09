@@ -168,12 +168,12 @@ public class ProfissionalBean {
         this.profissionaisPorCategoria = profissionaisPorCategoria;
     }
 
-    public void inseriuCPF() {
+    /*public void inseriuCPF() {
         if (this.endereco.getCEP().equals("")) {
             this.renderedEndereco = false;
         } else {
             this.renderedEndereco = true;
         }
-    }
+    }*/
 
 }

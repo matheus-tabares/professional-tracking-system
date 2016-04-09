@@ -2,15 +2,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
         <h:outputScript library="js" name="js.js"/>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputScript library="js" name="cep.js"/>
         <h:outputStylesheet library="css" name="default.css"/>
         <h:outputStylesheet library="css" name="cssLayout.css"/>
-
-        <title>Template</title>
+        <h:outputStylesheet library="css" name="sistema.css"/>
+        <title>Professional TS</title>
     </h:head>
 
     <h:body>
@@ -34,7 +35,7 @@
             </div>
             <div style="height: 100%">
                 <div id="right">
-                    <ui:insert name="right">Right</ui:insert>
+                    <ui:insert name="right"></ui:insert>
                 </div>
                 <div id="content" class="right_content">
                     <ui:insert name="content">
@@ -45,12 +46,18 @@
                 </div>
             </div>
         </div>
-        <div id="bottom">
+        
             <ui:insert name="bottom">
-                <ui:include src="Rodape.xhtml"/>
+                <footer>
+                    <h:form prependId="false">
+                        <p:commandLink action="Equipe">
+                            <p:graphicImage id="equipe" title="Equipe de Desenvolvimento" library="img" name="trab2.png"  width="80"/>
+                            <code>Projeto do curso de ADS IFRS Disciplina DEV SIS II - Copyright<sup>©</sup> 2016</code>
+                        </p:commandLink>
+                    </h:form>
+                </footer>
             </ui:insert>
-        </div>
-
+        
     </h:body>
-
 </html>
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>-->

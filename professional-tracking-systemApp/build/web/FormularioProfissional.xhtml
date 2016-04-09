@@ -6,12 +6,13 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <ui:composition template="template/LayoutPadrao.xhtml">
-
+        
         <ui:define name="content">
             <h2 style="text-align: center;">Cadastro de Profissional</h2>
             <h:messages/>
-            <h:form>
-                <p:panelGrid columns="2">                
+            <h:form prependId="false">
+                <div class="formularios" >
+                    <p:panelGrid  columns="2" styleClass="formularios">                
                     <p:outputLabel value="Nome:" for="txtNome"/>
                     <p:inputText id="txtNome" maxlength="100" value="#{profissionalBean.profissional.nome}"/>
                     <p:outputLabel value="E-mail:" for="txtEmail"/>
@@ -19,29 +20,30 @@
                     <p:outputLabel value="Senha:" for="txtSenha"/>
                     <p:inputText id="txtSenha" maxlength="200" value="#{profissionalBean.profissional.senha}"/>                
                     <p:outputLabel value="Categoria:" for="omCategoria"/>
-                    <p:selectOneListbox id="omCategoria" value="#{profissionalBean.idCategoria}" style="width:170px">
+                    <p:selectOneListbox id="omCategoria" value="#{profissionalBean.idCategoria}" style="width:170px" >                        
                         <f:selectItems value="#{profissionalBean.listaCategorias}" var="c" itemValue="#{c.id}" itemLabel="#{c.nome}"/>
                     </p:selectOneListbox>
                     <p:outputLabel value="CEP:" for="txtCEP"/>
                     <h:panelGroup>                        
                         <p:inputText id="txtCEP" maxlength="8" value="#{profissionalBean.endereco.CEP}"/>   
-                        <p:commandButton ajax="false" value="OK" action="#{profissionalBean.inseriuCPF()}"/>
+                        <p:commandButton ajax="false" value="buscar" id="cep" />
                     </h:panelGroup>
-                </p:panelGrid>
-                <p:panelGrid columns="2" rendered="#{profissionalBean.renderedEndereco}">
+                
                     <p:outputLabel value="Rua: " for="txtEndereco"/>
-                    <p:inputText id="txtEndereco" maxlength="100" value="#{profissionalBean.endereco.endereco}" />   
+                    <p:inputText id="txtEndereco" maxlength="100" value="#{profissionalBean.endereco.endereco}" />  
+                    
                     <p:outputLabel value="Nº: " for="txtNumero"/>
                     <p:inputText id="txtNumero" maxlength="5" value="#{profissionalBean.endereco.numero}" />   
+                    
                     <p:outputLabel value="Bairro: " for="txtBairro"/>
-                    <p:inputText id="txtBairro" maxlength="30" value="#{profissionalBean.endereco.bairro}"/>   
+                    <p:inputText id="txtBairro" maxlength="30" value="#{profissionalBean.endereco.bairro}"/>
+                    
                     <p:outputLabel value="Cidade: " for="txtCidade"/>
-                    <p:inputText id="txtCidade" maxlength="30" value="#{profissionalBean.endereco.cidade}"/> 
+                    <p:inputText id="txtCidade" maxlength="30" value="#{profissionalBean.endereco.cidade}"/>
+                    
                     <p:outputLabel value="Estado:" for="txtEstado"/>
                     <p:inputText id="txtEstado" maxlength="30" value="#{profissionalBean.endereco.estado}"/>  
-                </p:panelGrid>
-
-                <p:panelGrid columns="2">
+             
                     <p:outputLabel value="Telefone Residencial: " for="txtTelefoneResidencial"/>
                     <p:inputText id="txtTelefoneResidencial" maxlength="15" value="#{profissionalBean.profissional.telefoneResidencial}"/>   
                     <p:outputLabel value="Telefone Celular: " for="txtTelefoneCelular"/>
@@ -51,7 +53,7 @@
                     <p:outputLabel/>
                     <p:commandButton ajax="false" value="Cadastrar" action="#{profissionalBean.incluir()}"/>
                 </p:panelGrid>
-
+</div>
             </h:form>
         </ui:define>
 

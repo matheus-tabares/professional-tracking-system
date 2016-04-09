@@ -10,7 +10,7 @@
             <h2 style="text-align: center;">Alteração</h2>
             <h:messages/>
             <h:form>
-                <p:panelGrid columns="2">                
+                <p:panelGrid columns="2" styleClass="formularios">                
                     <p:outputLabel value="Nome:" for="txtNome"/>
                     <p:inputText id="txtNome" maxlength="100" value="#{clienteBean.cliente.nome}"/>
                     <p:outputLabel value="E-mail:" for="txtEmail"/>
@@ -21,9 +21,9 @@
                     <p:inputText id="txtTelefoneResidencial" maxlength="15" value="#{clienteBean.cliente.telefoneResidencial}"/>
                     <p:outputLabel value="Telefone Celular: " for="txtTelefoneCelular"/>
                     <p:inputText id="txtTelefoneCelular" maxlength="15" value="#{clienteBean.cliente.telefoneCelular}"/>   
-                    <p:outputLabel/>
+                    
                     <p:commandButton ajax="false" value="Concluir" action="#{clienteBean.alterarCliente()}"/>
-
+                    <p:outputLabel/>
                 </p:panelGrid>
             </h:form>
         </ui:define>
