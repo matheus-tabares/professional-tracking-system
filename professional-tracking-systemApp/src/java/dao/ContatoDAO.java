@@ -5,9 +5,12 @@
  */
 package dao;
 
+import java.util.ArrayList;
+import java.util.List;
 import model.Contato;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 import util.HibernateUtil;
 
 /**
@@ -26,5 +29,23 @@ public class ContatoDAO {
         Transaction t = sessao.beginTransaction();
         sessao.save(c);
         t.commit();
+    }
+    
+    public ArrayList<Contato> listarMensagensProfissional(int idProfissional) {
+
+        List mensagens = sessao.createCriteria(Contato.class)
+                .add(Restrictions.eq("profissional.id", idProfissional))
+                .list();        
+        
+        return (ArrayList<Contato>) mensagens;
+    }
+    
+    public ArrayList<Contato> listarMensagensCliente(int idCliente) {
+
+        List mensagens = sessao.createCriteria(Contato.class)
+                .add(Restrictions.eq("cliente.id", idCliente))
+                .list();        
+        
+        return (ArrayList<Contato>) mensagens;
     }
 }

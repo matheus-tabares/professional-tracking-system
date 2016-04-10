@@ -8,6 +8,7 @@ package backingbeans;
 import dao.ClienteDAO;
 import dao.ContatoDAO;
 import dao.ProfissionalDAO;
+import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -24,14 +25,16 @@ import model.Profissional;
 @SessionScoped
 public class ContatoBean {
 
-    private int idProfissional;
-    private int idCliente;
+    private int idProfissional = 2;
+    private int idCliente = 2;
     private Contato contato = new Contato();
     private ContatoDAO contatoDAO = new ContatoDAO();
     private Cliente cliente = new Cliente();
     private Profissional profissional = new Profissional();
     private ProfissionalDAO profissionalDAO = new ProfissionalDAO();
     private ClienteDAO clienteDAO = new ClienteDAO();
+    private List<Contato> mensagensProfissional;
+    private List<Contato> mensagensCliente;
 
     public String enviarMensagem() {
 
@@ -47,6 +50,15 @@ public class ContatoBean {
         this.profissional = new Profissional();
         this.cliente = new Cliente();
         return null;
+    }
+    
+    public String buscaMensagensProfissional() {
+        mensagensProfissional = contatoDAO.listarMensagensProfissional(idProfissional);
+        return "MENSAGEM DO PROFISSIONAL";
+    }
+    public String buscaMensagensCliente() {
+        mensagensCliente = contatoDAO.listarMensagensCliente(idCliente);
+        return "MENSAGEM DO CLIENTE";
     }
 
     public int getIdProfissional() {
