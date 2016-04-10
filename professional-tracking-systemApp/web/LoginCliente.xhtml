@@ -12,7 +12,7 @@
             <h:messages/>
             <h:form>
                 <p:panelGrid columns="2">                
-                    <p:selectOneListbox id="omCliente" value="#{clienteBean.idClienteLogado}" style="width:170px" >                        
+                    <p:selectOneListbox id="omCliente" value="#{contatoBean.idCliente}" style="width:170px" >                        
                         <f:selectItems value="#{clienteBean.listaClientes}" var="c" itemValue="#{c.id}" itemLabel="#{c.nome}"/>
                     </p:selectOneListbox>
                     <p:commandButton value="Login" ajax="false" action="#{contatoBean.returnIndex()}"/>

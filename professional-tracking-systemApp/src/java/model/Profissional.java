@@ -6,10 +6,12 @@
 package model;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -49,6 +51,9 @@ public class Profissional implements Serializable {
 
     @OneToOne
     private Endereco endereco;
+
+    @OneToMany
+    private List<Contato> mensagens;
 
     public int getId() {
         return id;
@@ -128,6 +133,14 @@ public class Profissional implements Serializable {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    public List<Contato> getMensagens() {
+        return mensagens;
+    }
+
+    public void setMensagens(List<Contato> mensagens) {
+        this.mensagens = mensagens;
     }
 
 }

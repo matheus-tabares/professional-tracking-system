@@ -6,9 +6,11 @@
 package model;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.br.CPF;
@@ -40,6 +42,9 @@ public class Cliente implements Serializable {
     private String telefoneResidencial;
     @NotEmpty
     private String telefoneCelular;
+
+    @OneToMany
+    private List<Contato> mensagens;
 
     public int getId() {
         return id;
@@ -103,6 +108,14 @@ public class Cliente implements Serializable {
 
     public void setCPF(String CPF) {
         this.CPF = CPF;
+    }
+
+    public List<Contato> getMensagens() {
+        return mensagens;
+    }
+
+    public void setMensagens(List<Contato> mensagens) {
+        this.mensagens = mensagens;
     }
 
 }

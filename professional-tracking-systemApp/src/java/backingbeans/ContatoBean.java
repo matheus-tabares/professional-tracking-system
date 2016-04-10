@@ -12,7 +12,9 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import model.Cliente;
 import model.Contato;
+import model.Profissional;
 
 /**
  *
@@ -26,20 +28,25 @@ public class ContatoBean {
     private int idCliente;
     private Contato contato = new Contato();
     private ContatoDAO contatoDAO = new ContatoDAO();
+    private Cliente cliente = new Cliente();
+    private Profissional profissional = new Profissional();
     private ProfissionalDAO profissionalDAO = new ProfissionalDAO();
     private ClienteDAO clienteDAO = new ClienteDAO();
 
     public String enviarMensagem() {
-        /*this.contatoDAO = new ContatoDAO();
-        this.contato.setCliente(clienteDAO.carregar(idCliente));
-        this.contato.setProfissional(profissionalDAO.carregar(idProfissional));
-        this.contatoDAO.incluir(contato);
 
+        this.contatoDAO = new ContatoDAO();
+        this.cliente = clienteDAO.carregar(idCliente);
+        this.contato.setCliente(cliente);
+        this.profissional = profissionalDAO.carregar(idProfissional);
+        this.contato.setProfissional(profissional);
+        this.contatoDAO.incluir(contato);
         FacesContext contexto = FacesContext.getCurrentInstance();
         contexto.addMessage(null, new FacesMessage("Mensagem Enviada!", ""));
         this.contato = new Contato();
-        return null;*/
-        return "Parabens?faces-redirect=true";
+        this.profissional = new Profissional();
+        this.cliente = new Cliente();
+        return null;
     }
 
     public int getIdProfissional() {
@@ -90,10 +97,26 @@ public class ContatoBean {
         this.clienteDAO = clienteDAO;
     }
 
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public Profissional getProfissional() {
+        return profissional;
+    }
+
+    public void setProfissional(Profissional profissional) {
+        this.profissional = profissional;
+    }
+
     public String iniciarContato() {
         return "FormularioContato?faces-redirect=true";
     }
-    
+
     public String returnIndex() {
         return "index?faces-redirec=true";
     }

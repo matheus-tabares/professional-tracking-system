@@ -9,6 +9,8 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -28,11 +30,15 @@ public class Contato implements Serializable {
     private String assunto;
     @NotEmpty
     private String mensagem;
-
+    
+    @ManyToOne
+    @JoinColumn(name = "cliente_id")
     private Cliente cliente;
 
+    @ManyToOne
+    @JoinColumn(name = "profissional_id")
     private Profissional profissional;
-
+    
     public int getId() {
         return id;
     }
@@ -56,7 +62,7 @@ public class Contato implements Serializable {
     public void setMensagem(String mensagem) {
         this.mensagem = mensagem;
     }
-
+    
     public Cliente getCliente() {
         return cliente;
     }
