@@ -3,13 +3,13 @@
 
 $(document).ready(function () {
 
-    
+    alert('oi');
     function limpa_formulário_cep() {
         // Limpa valores do formulário de cep.
         $("#txtEndereco").val("");
-       // $("#bairro").val("");
-       // $("#cidade").val("");
-        //$("#uf").val("");
+        $("#txtBairro").val("");
+        $("#txtCidade").val("");
+        $("#txtEstado").val("");
     }
 
     //Quando o campo cep perde o foco.
@@ -29,9 +29,9 @@ $(document).ready(function () {
 
                 //Preenche os campos com "..." enquanto consulta webservice.
                 $("#txtEndereco").val("Carregando...");
-                //$("#bairro").val("...");
-               // $("#cidade").val("...");
-                //$("#uf").val("...");
+                $("#txtBairro").val("...");
+                $("#txtCidade").val("...");
+                $("#txtEstado").val("...");
                 //$("#ibge").val("...");
 
                 //Consulta o webservice viacep.com.br/
@@ -40,9 +40,9 @@ $(document).ready(function () {
                     if (!("erro" in dados)) {
                         //Atualiza os campos com os valores da consulta.
                         $("#txtEndereco").val(dados.logradouro);
-                        $("#bairro").val(dados.bairro);
-                        $("#cidade").val(dados.localidade);
-                        $("#uf").val(dados.uf);
+                        $("#txtBairro").val(dados.bairro);
+                        $("#txtCidade").val(dados.localidade);
+                        $("#txtEstado").val(dados.uf);
 
                     } //end if.
                     else {

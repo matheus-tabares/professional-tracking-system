@@ -6,56 +6,63 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <ui:composition template="template/LayoutPadrao.xhtml">
-        
+
         <ui:define name="content">
-            <h2 style="text-align: center;">Cadastro de Profissional</h2>
-            <h:messages/>
+                      
+            <p:growl/>
             <h:form prependId="false">
-                <div class="formularios" >
-                    <p:panelGrid  columns="2" styleClass="formularios">                
-                    <p:outputLabel value="Nome:" for="txtNome"/>
-                    <p:inputText id="txtNome" maxlength="100" value="#{profissionalBean.profissional.nome}"/>
-                    <p:outputLabel value="CPF:" for="txtCPF"/>
-                    <p:inputText id="txtCPF" maxlength="11" value="#{profissionalBean.profissional.CPF}"/>                
-                    <p:outputLabel value="E-mail:" for="txtEmail"/>
-                    <p:inputText id="txtEmail" maxlength="100" value="#{profissionalBean.profissional.email}"/>                
-                    <p:outputLabel value="Senha:" for="txtSenha"/>
-                    <p:inputText id="txtSenha" maxlength="200" value="#{profissionalBean.profissional.senha}"/>                
-                    <p:outputLabel value="Categoria:" for="omCategoria"/>
-                    <p:selectOneListbox id="omCategoria" value="#{profissionalBean.idCategoria}" style="width:170px" >                        
-                        <f:selectItems value="#{profissionalBean.listaCategorias}" var="c" itemValue="#{c.id}" itemLabel="#{c.nome}"/>
-                    </p:selectOneListbox>
-                    <p:outputLabel value="CEP:" for="txtCEP"/>
-                    <h:panelGroup>                        
-                        <p:inputText id="txtCEP" maxlength="8" value="#{profissionalBean.endereco.CEP}"/>                           
-                        <p:button value="OK" id="cep"/>
-                    </h:panelGroup>
-                
-                    <p:outputLabel value="Rua: " for="txtEndereco"/>
-                    <p:inputText id="txtEndereco" maxlength="100" value="#{profissionalBean.endereco.endereco}" />  
-                    
-                    <p:outputLabel value="Nº: " for="txtNumero"/>
-                    <p:inputText id="txtNumero" maxlength="5" value="#{profissionalBean.endereco.numero}" />   
-                    
-                    <p:outputLabel value="Bairro: " for="txtBairro"/>
-                    <p:inputText id="txtBairro" maxlength="30" value="#{profissionalBean.endereco.bairro}"/>
-                    
-                    <p:outputLabel value="Cidade: " for="txtCidade"/>
-                    <p:inputText id="txtCidade" maxlength="30" value="#{profissionalBean.endereco.cidade}"/>
-                    
-                    <p:outputLabel value="Estado:" for="txtEstado"/>
-                    <p:inputText id="txtEstado" maxlength="30" value="#{profissionalBean.endereco.estado}"/>  
-             
-                    <p:outputLabel value="Telefone Residencial: " for="txtTelefoneResidencial"/>
-                    <p:inputText id="txtTelefoneResidencial" maxlength="15" value="#{profissionalBean.profissional.telefoneResidencial}"/>   
-                    <p:outputLabel value="Telefone Celular: " for="txtTelefoneCelular"/>
-                    <p:inputText id="txtTelefoneCelular" maxlength="15" value="#{profissionalBean.profissional.telefoneCelular}"/>   
-                    <p:outputLabel value="Descrição:" for="txtDescricao"/>
-                    <p:inputTextarea id="txtDescricao" rows="5" cols="30" value="#{profissionalBean.profissional.descricao}" maxlength="150"/>                                    
-                    <p:outputLabel/>
-                    <p:commandButton ajax="false" value="Cadastrar" action="#{profissionalBean.incluir()}"/>
-                </p:panelGrid>
-</div>
+                <div>
+                    <p:panelGrid  columns="2" styleClass="formularios">
+                        <f:facet name="header">
+                            Cadastro de Profissional
+                        </f:facet>
+
+                        <p:outputLabel value="Nome:" for="txtNome"/>
+                        <p:inputText id="txtNome" maxlength="100" value="#{profissionalBean.profissional.nome}"/>
+
+                        <p:outputLabel value="CPF:" for="txtCPF"/>
+                        <p:inputText id="txtCPF" maxlength="11" value="#{profissionalBean.profissional.CPF}"/>  
+
+                        <p:outputLabel value="E-mail:" for="txtEmail"/>
+                        <p:inputText id="txtEmail" maxlength="100" value="#{profissionalBean.profissional.email}"/> 
+
+                        <p:outputLabel value="Senha:" for="txtSenha"/>
+                        <p:inputText id="txtSenha" maxlength="200" value="#{profissionalBean.profissional.senha}"/>  
+
+                        <p:outputLabel value="Categoria:" for="omCategoria"/>
+                        <p:selectOneListbox id="omCategoria" value="#{profissionalBean.idCategoria}" style="width:170px" >                        
+                            <f:selectItems value="#{profissionalBean.listaCategorias}" var="c" itemValue="#{c.id}" itemLabel="#{c.nome}"/>
+                        </p:selectOneListbox>                   
+
+                        <p:outputLabel value="CEP:" for="txtCEP"/>                                          
+                        <p:inputText id="txtCEP" maxlength="8" value="#{profissionalBean.endereco.CEP}"/> 
+
+                        <p:outputLabel value="Nº: " for="txtNumero"/>
+                        <p:inputText id="txtNumero" maxlength="5" value="#{profissionalBean.endereco.numero}" />
+
+                        <p:outputLabel value="Rua: " for="txtEndereco"/>
+                        <p:inputText id="txtEndereco" maxlength="100" value="#{profissionalBean.endereco.endereco}" />                        
+
+                        <p:outputLabel value="Bairro: " for="txtBairro"/>
+                        <p:inputText id="txtBairro" maxlength="30" value="#{profissionalBean.endereco.bairro}"/>
+
+                        <p:outputLabel value="Cidade: " for="txtCidade"/>
+                        <p:inputText id="txtCidade" maxlength="30" value="#{profissionalBean.endereco.cidade}"/>
+
+                        <p:outputLabel value="Estado:" for="txtEstado"/>
+                        <p:inputText id="txtEstado" maxlength="30" value="#{profissionalBean.endereco.estado}"/>  
+
+                        <p:outputLabel value="Telefone Residencial: " for="txtTelefoneResidencial"/>
+                        <p:inputText id="txtTelefoneResidencial" maxlength="15" value="#{profissionalBean.profissional.telefoneResidencial}"/>   
+                        <p:outputLabel value="Telefone Celular: " for="txtTelefoneCelular"/>
+                        <p:inputText id="txtTelefoneCelular" maxlength="15" value="#{profissionalBean.profissional.telefoneCelular}"/>   
+                        <p:outputLabel value="Descrição:" for="txtDescricao"/>
+                        <p:inputTextarea id="txtDescricao" rows="5" cols="30" value="#{profissionalBean.profissional.descricao}" maxlength="150"/>                                    
+
+                        <p:commandButton ajax="false" value="Cadastrar" action="#{profissionalBean.incluir()}"/>
+                        <p:outputLabel/>
+                    </p:panelGrid>
+                </div>
             </h:form>
         </ui:define>
 

@@ -8,6 +8,7 @@
 @import url(https://fonts.googleapis.com/css?family=Cuprum);
 *{
     box-sizing: border-box;margin: 0;
+    border-radius: 0!important;
 }
 html{
     height: 100%;    
@@ -77,7 +78,7 @@ a {
 }
 .formularios{
     margin: auto;
-    
+    border: 5px solid gray;    
 }
 
 
