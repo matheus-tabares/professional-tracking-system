@@ -15,7 +15,7 @@
                     <p:selectOneListbox id="omCliente" value="#{clienteBean.idClienteLogado}" style="width:170px" >                        
                         <f:selectItems value="#{clienteBean.listaClientes}" var="c" itemValue="#{c.id}" itemLabel="#{c.nome}"/>
                     </p:selectOneListbox>
-                    <p:commandButton value="Login" ajax="false"/>
+                    <p:commandButton value="Login" ajax="false" action="#{contatoBean.returnIndex()}"/>
                 </p:panelGrid>                
             </h:form>
         </ui:define>

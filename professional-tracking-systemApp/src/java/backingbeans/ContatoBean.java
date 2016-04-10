@@ -93,5 +93,9 @@ public class ContatoBean {
     public String iniciarContato() {
         return "FormularioContato?faces-redirect=true";
     }
+    
+    public String returnIndex() {
+        return "index?faces-redirec=true";
+    }
 
 }

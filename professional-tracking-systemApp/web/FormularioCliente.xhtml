@@ -31,20 +31,20 @@
                     <p:outputLabel value="CEP:" for="txtCEP"/>                                           
                     <p:inputText id="txtCEP" maxlength="8" value="#{clienteBean.endereco.CEP}"/> 
 
+                    <p:outputLabel value="Rua: " for="txtEndereco"/>
+                    <p:inputText id="txtEndereco" maxlength="100" value="#{clienteBean.endereco.endereco}" disabled="true"/>                       
+                    
                     <p:outputLabel value="Nº: " for="txtNumero"/>
                     <p:inputText id="txtNumero" maxlength="5" value="#{clienteBean.endereco.numero}" />
-
-                    <p:outputLabel value="Rua: " for="txtEndereco"/>
-                    <p:inputText id="txtEndereco" maxlength="100" value="#{clienteBean.endereco.endereco}" />                       
-
+                    
                     <p:outputLabel value="Bairro: " for="txtBairro"/>
-                    <p:inputText id="txtBairro" maxlength="30" value="#{clienteBean.endereco.bairro}"/>
+                    <p:inputText id="txtBairro" maxlength="30" value="#{clienteBean.endereco.bairro}" disabled="true"/>
 
-                    <p:outputLabel value="Cidade: " for="txtCidade"/>
-                    <p:inputText id="txtCidade" maxlength="30" value="#{clienteBean.endereco.cidade}"/>
+                    <p:outputLabel value="Cidade: " for="txtCidade" />
+                    <p:inputText id="txtCidade" maxlength="30" value="#{clienteBean.endereco.cidade}" disabled="true"/>
 
                     <p:outputLabel value="Estado:" for="txtEstado"/>
-                    <p:inputText id="txtEstado" maxlength="30" value="#{clienteBean.endereco.estado}"/>               
+                    <p:inputText id="txtEstado" maxlength="30" value="#{clienteBean.endereco.estado}" disabled="true"/>               
 
 
                     <p:outputLabel value="Telefone Residencial: " for="txtTelefoneResidencial"/>                            

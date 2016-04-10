@@ -3,7 +3,7 @@
 
 $(document).ready(function () {
 
-    alert('oi');
+    //alert('oi');
     function limpa_formulário_cep() {
         // Limpa valores do formulário de cep.
         $("#txtEndereco").val("");
