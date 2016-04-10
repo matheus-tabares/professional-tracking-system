@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.br.CPF;
 
 /**
  *
@@ -26,8 +27,16 @@ public class Cliente implements Serializable {
     private String nome;
     @NotEmpty
     private String email;
+    @NotEmpty
+    private String senha;
+
+    @NotEmpty
+    @CPF
+    private String CPF;
+
     @OneToOne
     private Endereco endereco;
+
     private String telefoneResidencial;
     @NotEmpty
     private String telefoneCelular;
@@ -78,6 +87,22 @@ public class Cliente implements Serializable {
 
     public void setTelefoneCelular(String telefoneCelular) {
         this.telefoneCelular = telefoneCelular;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public String getCPF() {
+        return CPF;
+    }
+
+    public void setCPF(String CPF) {
+        this.CPF = CPF;
     }
 
 }

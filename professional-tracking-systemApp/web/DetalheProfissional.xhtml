@@ -22,7 +22,8 @@
                     <p:outputLabel value="Cidade: " for="txtCidade"/>
                     <h:outputText id="txtCidade" value="#{profissionalBean.profissional.endereco.cidade}"/>                     
                 </p:panelGrid>
-                <p:button value="Voltar" outcome="ConsultaProfissionalPorCategoria"/>
+                <p:button value="Voltar" outcome="ConsultaProfissionalPorCategoria?faces-redirect=true"/>
+                <p:commandButton value="Contatar" action="#{contatoBean.iniciarContato()}"/>
             </h:form>     
         </ui:define>
 

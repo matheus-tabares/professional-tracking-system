@@ -29,6 +29,7 @@ public class ClienteBean {
     private EnderecoDAO enderecoDAO = new EnderecoDAO();
     private List<Cliente> listaClientes;
     private boolean renderedEndereco;
+    private int idClienteLogado;
 
     public ClienteBean() {
         listaClientes = clienteDAO.listar();
@@ -42,6 +43,7 @@ public class ClienteBean {
         FacesContext contexto = FacesContext.getCurrentInstance();
         contexto.addMessage(null, new FacesMessage("Cliente Cadastrado!", ""));
         this.cliente = new Cliente();
+        this.endereco = new Endereco();
         return null;
     }
 
@@ -116,7 +118,7 @@ public class ClienteBean {
         context.addMessage(null, msg);
         return "ConsultaCliente";
     }
-    
+
     public void novoCliente() {
         this.cliente = new Cliente();
     }
@@ -125,12 +127,16 @@ public class ClienteBean {
         return renderedEndereco;
     }
 
-    public void inseriuCPF() {
-        if (this.endereco.getCEP().equals("")) {
-            this.renderedEndereco = false;
-        } else {
-            this.renderedEndereco = true;
-        }
+    public int getIdClienteLogado() {
+        return idClienteLogado;
+    }
+
+    public void setIdClienteLogado(int idClienteLogado) {
+        this.idClienteLogado = idClienteLogado;
+    }
+    
+    public String paginaLogin() {
+        return "LoginCliente";
     }
 
 }

@@ -9,6 +9,7 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  *
@@ -20,7 +21,9 @@ public class Categoria implements Serializable {
     @Id
     @GeneratedValue
     private int id;
+    @NotEmpty
     private String nome;
+    @NotEmpty
     private String descricao;
 
     public int getId() {

@@ -37,14 +37,10 @@ public class ProfissionalBean {
     private int idEndereco;
     private boolean renderedEndereco;
     private List<Profissional> profissionaisPorCategoria;
+    private int idProfissionalLogado;
 
     public ProfissionalBean() {
-        listaProfissionais = profissionalDAO.listar();        
-    }
-
-    public String consultaProfissional(Profissional p) {
-        setProfissional(p);
-        return "consultaProfissional";
+        listaProfissionais = profissionalDAO.listar();
     }
 
     public String incluir() {
@@ -57,6 +53,9 @@ public class ProfissionalBean {
         FacesContext contexto = FacesContext.getCurrentInstance();
         contexto.addMessage(null, new FacesMessage("Profissional Cadastrado!", ""));
         this.profissional = new Profissional();
+        this.endereco = new Endereco();
+        this.categoria = new Categoria();
+        this.idCategoria = 0;
         return null;
     }
 
@@ -68,10 +67,10 @@ public class ProfissionalBean {
         this.categoria = new Categoria();
         return null;
     }
-    
+
     public String consultaProfissional(int idProfissionalSelecionado) {
         profissional = profissionalDAO.carregar(idProfissionalSelecionado);
-        return "DetalheProfissional";
+        return "DetalheProfissional?faces-redirect=true";
     }
 
     public ArrayList<Categoria> getListaCategorias() {
@@ -97,7 +96,7 @@ public class ProfissionalBean {
 
     public String buscaProfissionalPorCategoria() {
         profissionaisPorCategoria = profissionalDAO.listarPorCategoria(idCategoria);
-        return "ConsultaProfissionalPorCategoria";
+        return "ConsultaProfissionalPorCategoria?faces-redirect=true";
     }
 
     public List<Profissional> getListaProfissionais() {
@@ -175,5 +174,15 @@ public class ProfissionalBean {
             this.renderedEndereco = true;
         }
     }*/
+    public int getIdProfissionalLogado() {
+        return idProfissionalLogado;
+    }
 
+    public void setIdProfissionalLogado(int idProfissionalLogado) {
+        this.idProfissionalLogado = idProfissionalLogado;
+    }
+
+    public String paginaLogin() {
+        return "LoginProfissional?faces-redirect=true";
+    }
 }

@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.br.CPF;
 
 /**
@@ -25,13 +26,22 @@ public class Profissional implements Serializable {
     @Id
     @GeneratedValue
     private int id;
+    @NotEmpty
     private String nome;
+    @NotEmpty
     private String email;
+    @NotEmpty
     private String senha;
-    private String descricao;
+
     @CPF
+    @NotEmpty
     private String CPF;
+
+    private String descricao;
+
     private String telefoneResidencial;
+
+    @NotEmpty
     private String telefoneCelular;
 
     @ManyToOne

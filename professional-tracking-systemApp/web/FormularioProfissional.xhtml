@@ -15,6 +15,8 @@
                     <p:panelGrid  columns="2" styleClass="formularios">                
                     <p:outputLabel value="Nome:" for="txtNome"/>
                     <p:inputText id="txtNome" maxlength="100" value="#{profissionalBean.profissional.nome}"/>
+                    <p:outputLabel value="CPF:" for="txtCPF"/>
+                    <p:inputText id="txtCPF" maxlength="11" value="#{profissionalBean.profissional.CPF}"/>                
                     <p:outputLabel value="E-mail:" for="txtEmail"/>
                     <p:inputText id="txtEmail" maxlength="100" value="#{profissionalBean.profissional.email}"/>                
                     <p:outputLabel value="Senha:" for="txtSenha"/>
@@ -25,8 +27,8 @@
                     </p:selectOneListbox>
                     <p:outputLabel value="CEP:" for="txtCEP"/>
                     <h:panelGroup>                        
-                        <p:inputText id="txtCEP" maxlength="8" value="#{profissionalBean.endereco.CEP}"/>   
-                        <p:commandButton ajax="false" value="buscar" id="cep" />
+                        <p:inputText id="txtCEP" maxlength="8" value="#{profissionalBean.endereco.CEP}"/>                           
+                        <p:button value="OK" id="cep"/>
                     </h:panelGroup>
                 
                     <p:outputLabel value="Rua: " for="txtEndereco"/>

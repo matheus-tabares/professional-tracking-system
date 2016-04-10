@@ -30,7 +30,7 @@
                     <p:outputLabel value="Estado:" for="txtEstado"/>
                     <h:outputText id="txtEstado" value="#{clienteBean.cliente.endereco.estado}"/>  
                 </p:panelGrid>
-                <p:button value="Voltar" outcome="ConsultaCliente"/>
+                <p:button value="Voltar" outcome="ConsultaCliente?faces-redirect=true"/>
             </h:form>     
         </ui:define>
 

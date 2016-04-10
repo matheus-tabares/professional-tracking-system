@@ -14,32 +14,38 @@
                     <p:outputLabel value="Nome:" for="txtNome"/>
                     <p:inputText id="txtNome" maxlength="100" value="#{clienteBean.cliente.nome}"/>
                     <p:outputLabel value="E-mail:" for="txtEmail"/>
-                    <p:inputText id="txtEmail" maxlength="100" value="#{clienteBean.cliente.email}"/>                    
+                    <p:inputText id="txtEmail" maxlength="100" value="#{clienteBean.cliente.email}"/>     
+
+                    <p:outputLabel value="Senha:" for="txtSenha"/>
+                    <p:inputText id="txtSenha" maxlength="8" value="#{clienteBean.cliente.senha}"/>     
+
+                    <p:outputLabel value="CPF:" for="txtCPF"/>
+                    <p:inputText id="txtCPF" maxlength="11" value="#{clienteBean.cliente.CPF}"/>                
 
                     <p:outputLabel value="CEP:" for="txtCEP"/>
                     <h:panelGroup>                        
                         <p:inputText id="txtCEP" maxlength="8" value="#{clienteBean.endereco.CEP}"/>   
-                        <p:commandButton ajax="false" value="OK"/>
+                        <p:button value="OK" id="cep"/>
                     </h:panelGroup>    
-                   
-                        <p:outputLabel value="Rua: " for="txtEndereco"/>
-                        <p:inputText id="txtEndereco" maxlength="100" value="#{clienteBean.endereco.endereco}" />   
-                        <p:outputLabel value="Nº: " for="txtNumero"/>
-                        <p:inputText id="txtNumero" maxlength="5" value="#{clienteBean.endereco.numero}" />   
-                        <p:outputLabel value="Bairro: " for="txtBairro"/>
-                        <p:inputText id="txtBairro" maxlength="30" value="#{clienteBean.endereco.bairro}"/>   
-                        <p:outputLabel value="Cidade: " for="txtCidade"/>
-                        <p:inputText id="txtCidade" maxlength="30" value="#{clienteBean.endereco.cidade}"/> 
-                        <p:outputLabel value="Estado:" for="txtEstado"/>
-                        <p:inputText id="txtEstado" maxlength="30" value="#{clienteBean.endereco.estado}"/>               
 
-                               
+                    <p:outputLabel value="Rua: " for="txtEndereco"/>
+                    <p:inputText id="txtEndereco" maxlength="100" value="#{clienteBean.endereco.endereco}" />   
+                    <p:outputLabel value="Nº: " for="txtNumero"/>
+                    <p:inputText id="txtNumero" maxlength="5" value="#{clienteBean.endereco.numero}" />   
+                    <p:outputLabel value="Bairro: " for="txtBairro"/>
+                    <p:inputText id="txtBairro" maxlength="30" value="#{clienteBean.endereco.bairro}"/>   
+                    <p:outputLabel value="Cidade: " for="txtCidade"/>
+                    <p:inputText id="txtCidade" maxlength="30" value="#{clienteBean.endereco.cidade}"/> 
+                    <p:outputLabel value="Estado:" for="txtEstado"/>
+                    <p:inputText id="txtEstado" maxlength="30" value="#{clienteBean.endereco.estado}"/>               
+
+
                     <p:outputLabel value="Telefone Residencial: " for="txtTelefoneResidencial"/>                            
                     <p:inputText id="txtTelefoneResidencial" maxlength="15" value="#{clienteBean.cliente.telefoneResidencial}"/>
                     <p:outputLabel value="Telefone Celular: " for="txtTelefoneCelular"/>
                     <p:inputText id="txtTelefoneCelular" maxlength="15" value="#{clienteBean.cliente.telefoneCelular}"/>   
                     <p:outputLabel/>
-                    <p:commandButton ajax="false" value="Cadastrar" actionListener="#{clienteBean.novoCliente()}" action="#{clienteBean.incluir()}"/>
+                    <p:commandButton ajax="false" value="Cadastrar" action="#{clienteBean.incluir()}"/>
                 </p:panelGrid>                
 
 
