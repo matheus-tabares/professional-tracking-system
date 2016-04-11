@@ -25,8 +25,8 @@ import model.Profissional;
 @SessionScoped
 public class ContatoBean {
 
-    private int idProfissional = 2;
-    private int idCliente = 2;
+    private int idProfissional = 1;
+    private int idCliente = 1;
     private Contato contato = new Contato();
     private ContatoDAO contatoDAO = new ContatoDAO();
     private Cliente cliente = new Cliente();
@@ -35,6 +35,11 @@ public class ContatoBean {
     private ClienteDAO clienteDAO = new ClienteDAO();
     private List<Contato> mensagensProfissional;
     private List<Contato> mensagensCliente;
+    
+    public ContatoBean() {
+        this.mensagensProfissional = contatoDAO.listarMensagensProfissional(idProfissional);
+        this.mensagensCliente = contatoDAO.listarMensagensCliente(idCliente);
+    }
 
     public String enviarMensagem() {
 
@@ -51,14 +56,15 @@ public class ContatoBean {
         this.cliente = new Cliente();
         return null;
     }
-    
-    public String buscaMensagensProfissional() {
+
+    public List<Contato> buscaMensagensProfissional() {
         mensagensProfissional = contatoDAO.listarMensagensProfissional(idProfissional);
-        return "MENSAGEM DO PROFISSIONAL";
+        return mensagensProfissional;
     }
-    public String buscaMensagensCliente() {
+
+    public List<Contato> buscaMensagensCliente() {
         mensagensCliente = contatoDAO.listarMensagensCliente(idCliente);
-        return "MENSAGEM DO CLIENTE";
+        return mensagensCliente;
     }
 
     public int getIdProfissional() {
@@ -125,12 +131,35 @@ public class ContatoBean {
         this.profissional = profissional;
     }
 
-    public String iniciarContato() {
-        return "FormularioContato?faces-redirect=true";
+    public List<Contato> getMensagensProfissional() {
+        return mensagensProfissional;
     }
 
+    public void setMensagensProfissional(List<Contato> mensagensProfissional) {
+        this.mensagensProfissional = mensagensProfissional;
+    }
+
+    public List<Contato> getMensagensCliente() {
+        return mensagensCliente;
+    }
+
+    public void setMensagensCliente(List<Contato> mensagensCliente) {
+        this.mensagensCliente = mensagensCliente;
+    }
+
+    public String iniciarContato(int idProfissional) {
+        this.idProfissional = idProfissional;
+
+        return "FormularioContato?faces-redirect=true";
+    }
+    
+    public String responderCliente() {        
+        return "FormularioRespostaProfissional?faces-redirect=true";
+    }
+    
+
     public String returnIndex() {
-        return "index?faces-redirec=true";
+        return "index?faces-redirect=true";
     }
 
 }

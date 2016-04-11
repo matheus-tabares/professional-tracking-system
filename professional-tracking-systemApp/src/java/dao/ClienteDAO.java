@@ -45,6 +45,7 @@ public class ClienteDAO {
 
     public void alterar(Cliente c) {
         Transaction t = sessao.beginTransaction();
+        sessao.clear();
         sessao.update(c);
         t.commit();
     }

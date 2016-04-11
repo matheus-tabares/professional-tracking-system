@@ -31,4 +31,10 @@ public class EnderecoDAO {
     public Endereco carregar(int id) {
         return (Endereco) sessao.get(Endereco.class, id);
     }
+    
+    public void alterar(Endereco e) {
+        Transaction t = sessao.beginTransaction();
+        sessao.update(e);
+        t.commit();
+    }
 }

@@ -8,20 +8,17 @@
     <ui:composition template="template/LayoutPadrao.xhtml">
 
         <ui:define name="content">
-            <h1 style="font-size: 40px; color: red;">AINDA NAO ESTA PRONTO, ESTOU IMPLEMENTANDO!</h1>
+            <!--<h1 style="font-size: 40px; color: red;">AINDA NAO ESTA PRONTO, ESTOU IMPLEMENTANDO!</h1>-->
 
             <h:form>
-                <p:dataTable var="m" value="#{contatoBean.mensagensCliente}" >
+                <p:dataTable var="m" value="#{contatoBean.mensagensProfissional}" >
 
                     <p:column headerText="De">                        
-                        <h:outputText value="#{m.cliente.nome}"/>
+                        <h:outputText value="#{m.profissional.nome}"/>
                     </p:column>
                     <p:column headerText="Mensagem">                        
                         <h:outputText value="#{m.mensagem}"/>
-                    </p:column>
-                    <p:column headerText="Responder" width="90">                        
-                        <p:commandButton icon="ui-icon-comment" action="#{contatoBean.responderCliente()}"/>
-                    </p:column>
+                    </p:column>                    
                 </p:dataTable>
             </h:form>
 

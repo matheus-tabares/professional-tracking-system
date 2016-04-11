@@ -89,7 +89,7 @@ public class ClienteBean {
 
     public String consultaCliente(int idClienteSelecionado) {
         cliente = clienteDAO.carregar(idClienteSelecionado);
-        return "DetalheCliente";
+        return "DetalheCliente?faces-redirect=true";
     }
 
     public String removerCliente(int idCliente) {
@@ -105,18 +105,19 @@ public class ClienteBean {
 
     public String iniciaAlteracaoCliente(int idClienteSelecionado) {
         cliente = clienteDAO.carregar(idClienteSelecionado);
-        return "AlteraCliente";
+        return "AlteraCliente?faces-redirect=true";
     }
 
     public String alterarCliente() {
         FacesContext context = FacesContext.getCurrentInstance();
         FacesMessage msg;
+        enderecoDAO.alterar(endereco);
         clienteDAO.alterar(cliente);
         msg = new FacesMessage(FacesMessage.SEVERITY_INFO,
                 "Cliente alterado com sucesso!", "");
         cliente = new Cliente();
         context.addMessage(null, msg);
-        return "ConsultaCliente";
+        return "ConsultaCliente?faces-redirect=true";
     }
 
     public void novoCliente() {
@@ -134,9 +135,9 @@ public class ClienteBean {
     public void setIdClienteLogado(int idClienteLogado) {
         this.idClienteLogado = idClienteLogado;
     }
-    
+
     public String paginaLogin() {
-        return "LoginCliente";
+        return "LoginCliente?faces-redirect=true";
     }
 
 }

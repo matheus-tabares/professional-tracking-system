@@ -30,22 +30,22 @@ public class ContatoDAO {
         sessao.save(c);
         t.commit();
     }
-    
+
     public ArrayList<Contato> listarMensagensProfissional(int idProfissional) {
 
         List mensagens = sessao.createCriteria(Contato.class)
                 .add(Restrictions.eq("profissional.id", idProfissional))
-                .list();        
-        
+                .list();
+
         return (ArrayList<Contato>) mensagens;
     }
-    
+
     public ArrayList<Contato> listarMensagensCliente(int idCliente) {
 
         List mensagens = sessao.createCriteria(Contato.class)
                 .add(Restrictions.eq("cliente.id", idCliente))
-                .list();        
-        
+                .list();
+
         return (ArrayList<Contato>) mensagens;
     }
 }
