@@ -11,17 +11,29 @@
             <h:messages/>
             <h:form>
                 <p:panelGrid columns="2" styleClass="formularios">                
+
                     <p:outputLabel value="Nome:" for="txtNome"/>
-                    <p:inputText id="txtNome" maxlength="100" value="#{clienteBean.cliente.nome}"/>
+                    <p:inputText id="txtNome" value="#{clienteBean.cliente.nome}"/>
                     <p:outputLabel value="E-mail:" for="txtEmail"/>
-                    <p:inputText id="txtEmail" maxlength="100" value="#{clienteBean.cliente.email}"/>                
-                    <p:outputLabel value="Endereço:" for="txtEndereco"/>
-                    <p:inputText id="txtEndereco" maxlength="200" value="#{clienteBean.cliente.endereco}"/>                
-                    <p:outputLabel value="Telefone Residencial: " for="txtTelefoneResidencial"/>                            
-                    <p:inputText id="txtTelefoneResidencial" maxlength="15" value="#{clienteBean.cliente.telefoneResidencial}"/>
-                    <p:outputLabel value="Telefone Celular: " for="txtTelefoneCelular"/>
-                    <p:inputText id="txtTelefoneCelular" maxlength="15" value="#{clienteBean.cliente.telefoneCelular}"/>   
-                    
+                    <p:inputText id="txtEmail" value="#{clienteBean.cliente.email}"/>                    
+                    <p:outputLabel value="Telefone Residencial:" for="txtTelefoneResidencial"/>
+                    <p:inputText id="txtTelefoneResidencial" value="#{clienteBean.cliente.telefoneResidencial}"/>
+                    <p:outputLabel value="Telefone Celular:" for="txtTelefoneCelular"/>
+                    <p:inputText id="txtTelefoneCelular" value="#{clienteBean.cliente.telefoneCelular}"/>   
+                    <p:outputLabel value="CEP:" for="txtCEP"/>                                          
+                    <p:inputText id="txtCEP" maxlength="8" value="#{profissionalBean.endereco.CEP}"/> 
+                    <p:outputLabel value="Rua: " for="txtEndereco"/>
+                    <p:inputText id="txtEndereco" value="#{clienteBean.cliente.endereco.endereco}" />   
+                    <p:outputLabel value="Nº: " for="txtNumero"/>
+                    <p:inputText id="txtNumero" value="#{clienteBean.cliente.endereco.numero}" />   
+                    <p:outputLabel value="Bairro: " for="txtBairro"/>
+                    <p:inputText id="txtBairro" value="#{clienteBean.cliente.endereco.bairro}"/>   
+                    <p:outputLabel value="Cidade: " for="txtCidade"/>
+                    <p:inputText id="txtCidade" value="#{clienteBean.cliente.endereco.cidade}"/> 
+                    <p:outputLabel value="Estado:" for="txtEstado"/>
+                    <p:inputText id="txtEstado" value="#{clienteBean.cliente.endereco.estado}"/>  
+
+
                     <p:commandButton ajax="false" value="Concluir" action="#{clienteBean.alterarCliente()}"/>
                     <p:outputLabel/>
                 </p:panelGrid>

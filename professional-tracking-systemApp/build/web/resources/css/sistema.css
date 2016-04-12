@@ -81,6 +81,11 @@ a {
     border: 5px solid gray;    
 }
 
+input[type="text"]:disabled {
+    color: blue;
+    font-weight: bold;
+    opacity: 10;
+}
 
 
 

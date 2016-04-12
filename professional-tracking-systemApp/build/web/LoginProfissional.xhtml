@@ -12,10 +12,10 @@
             <h:messages/>
             <h:form>
                 <p:panelGrid columns="2">                
-                    <p:selectOneListbox id="omProfissional" value="#{profissionalBean.idProfissionalLogado}" style="width:170px" >                        
+                    <p:selectOneListbox id="omProfissional" value="#{contatoBean.idProfissional}" style="width:170px" >                        
                         <f:selectItems value="#{profissionalBean.listaProfissionais}" var="p" itemValue="#{p.id}" itemLabel="#{p.nome}"/>
                     </p:selectOneListbox>
-                    <p:commandButton value="Login" ajax="false"/>
+                    <p:commandButton value="Login" ajax="false" action="#{contatoBean.returnIndex()}"/>
                 </p:panelGrid>                
             </h:form>
         </ui:define>

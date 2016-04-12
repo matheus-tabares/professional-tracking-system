@@ -23,7 +23,7 @@
                     <h:outputText id="txtCidade" value="#{profissionalBean.profissional.endereco.cidade}"/>                     
                 </p:panelGrid>
                 <p:button value="Voltar" outcome="ConsultaProfissionalPorCategoria?faces-redirect=true"/>
-                <p:commandButton value="Contatar" action="#{contatoBean.iniciarContato()}"/>
+                <p:commandButton value="Contatar" action="#{contatoBean.iniciarContato(profissionalBean.profissional.id)}"/>
             </h:form>     
         </ui:define>
 

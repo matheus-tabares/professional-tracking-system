@@ -159,7 +159,7 @@ public class ContatoBean {
     
 
     public String returnIndex() {
-        return "index?faces-redirect=true";
+        return "BuscaProfissionalPorCategoria?faces-redirect=true";
     }
 
 }

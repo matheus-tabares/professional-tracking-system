@@ -8,7 +8,7 @@
     <ui:composition template="template/LayoutPadrao.xhtml">
 
         <ui:define name="content">
-                      
+
             <p:growl/>
             <h:form prependId="false">
                 <div>
@@ -37,20 +37,20 @@
                         <p:outputLabel value="CEP:" for="txtCEP"/>                                          
                         <p:inputText id="txtCEP" maxlength="8" value="#{profissionalBean.endereco.CEP}"/> 
 
-                        <p:outputLabel value="Nº: " for="txtNumero"/>
-                        <p:inputText id="txtNumero" maxlength="5" value="#{profissionalBean.endereco.numero}" />
-
                         <p:outputLabel value="Rua: " for="txtEndereco"/>
                         <p:inputText id="txtEndereco" maxlength="100" value="#{profissionalBean.endereco.endereco}" />                        
 
+                        <p:outputLabel value="Nº: " for="txtNumero"/>
+                        <p:inputText id="txtNumero" maxlength="5" value="#{profissionalBean.endereco.numero}" />
+
                         <p:outputLabel value="Bairro: " for="txtBairro"/>
-                        <p:inputText id="txtBairro" maxlength="30" value="#{profissionalBean.endereco.bairro}"/>
+                        <p:inputText id="txtBairro" maxlength="30" value="#{profissionalBean.endereco.bairro}" />
 
                         <p:outputLabel value="Cidade: " for="txtCidade"/>
-                        <p:inputText id="txtCidade" maxlength="30" value="#{profissionalBean.endereco.cidade}"/>
+                        <p:inputText id="txtCidade" maxlength="30" value="#{profissionalBean.endereco.cidade}" />
 
                         <p:outputLabel value="Estado:" for="txtEstado"/>
-                        <p:inputText id="txtEstado" maxlength="30" value="#{profissionalBean.endereco.estado}"/>  
+                        <p:inputText id="txtEstado" maxlength="30" value="#{profissionalBean.endereco.estado}" readonly="true"/>  
 
                         <p:outputLabel value="Telefone Residencial: " for="txtTelefoneResidencial"/>
                         <p:inputText id="txtTelefoneResidencial" maxlength="15" value="#{profissionalBean.profissional.telefoneResidencial}"/>   
