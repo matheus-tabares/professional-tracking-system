@@ -56,6 +56,7 @@ public class ProfissionalBean {
         this.endereco = new Endereco();
         this.categoria = new Categoria();
         this.idCategoria = 0;
+        listaProfissionais = profissionalDAO.listar();
         return null;
     }
 
