@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.*;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.br.CPF;
 
@@ -19,6 +20,7 @@ import org.hibernate.validator.constraints.br.CPF;
  *
  * @author Bruno
  */
+
 @Entity
 public class Cliente implements Serializable {
 
@@ -28,6 +30,8 @@ public class Cliente implements Serializable {
     @NotEmpty
     private String nome;
     @NotEmpty
+    @NotNull
+    @Pattern(regexp = "[a-zA-Z0-9]+[a-zA-Z0-9_.-]+@{1}[a-zA-Z0-9_.-]*\\.+[a-z]{2,4}")
     private String email;
     @NotEmpty
     private String senha;
