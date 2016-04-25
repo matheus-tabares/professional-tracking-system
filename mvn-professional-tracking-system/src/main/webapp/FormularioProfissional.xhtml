@@ -60,7 +60,7 @@
                         <p:inputTextarea id="txtDescricao" rows="5" cols="30" value="#{profissionalBean.profissional.descricao}" maxlength="150"/>                                    
 
                         <p:commandButton ajax="false" value="Cadastrar" action="#{profissionalBean.incluir()}"/>
-                        <p:outputLabel/>
+                        <p:outputLabel><a href="javascript:window.history.go(-1)">Cancelar</a></p:outputLabel>
                     </p:panelGrid>
                 </div>
             </h:form>

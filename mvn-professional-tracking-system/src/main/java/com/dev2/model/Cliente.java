@@ -12,6 +12,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.*;
+import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.br.CPF;
 
@@ -26,8 +28,12 @@ public class Cliente implements Serializable {
     @GeneratedValue
     private int id;
     @NotEmpty
+    @Pattern(regexp="[a-zA-Z]+",message="Somente letras")
+    @Max(value=40, message = "")
     private String nome;
     @NotEmpty
+    @NotNull
+    @Pattern(regexp = "[a-zA-Z0-9]+[a-zA-Z0-9_.-]+@{1}[a-zA-Z0-9_.-]*\\.+[a-z]{2,4}")    
     private String email;
     @NotEmpty
     private String senha;

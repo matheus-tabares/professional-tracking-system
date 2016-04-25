@@ -3,7 +3,6 @@ com\dev2\model\Contato.class
 com\dev2\dao\CategoriaDAO.class
 com\dev2\model\Profissional.class
 com\dev2\controller\ClienteBean.class
-com\dev2\model\Cliente.class
 com\dev2\dao\ProfissionalDAO.class
 com\dev2\controller\ProfissionalBean.class
 com\dev2\dao\ContatoDAO.class

@@ -55,7 +55,7 @@
                     <f:facet name="footer">
                         <h:panelGroup>
                         <p:commandButton ajax="false" value="Cadastrar" action="#{clienteBean.incluir()}" style="width: 49%"  />
-                        <p:commandButton  value="Cancelar" action="index" style="width: 49%" />
+                        <p:outputLabel><a href="javascript:window.history.go(-1)">Cancelar</a></p:outputLabel>
                         </h:panelGroup>
                     </f:facet>
                 </p:panelGrid>                
