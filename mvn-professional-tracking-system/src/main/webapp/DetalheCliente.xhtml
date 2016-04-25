@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <ui:composition template="template/LayoutPadrao.xhtml">
+
+        <ui:define name="content">
+            <h2 style="text-align: center;">Consulta Cliente</h2>
+            <h:messages/>
+            <h:form>
+                <p:panelGrid columns="2">
+                    <p:outputLabel value="Nome:" for="txtNome"/>
+                    <h:outputText id="txtNome" value="#{clienteBean.cliente.nome}"/>
+                    <p:outputLabel value="E-mail:" for="txtEmail"/>
+                    <h:outputText id="txtEmail" value="#{clienteBean.cliente.email}"/>                    
+                    <p:outputLabel value="Telefone Residencial:" for="txtTelefoneResidencial"/>
+                    <h:outputText id="txtTelefoneResidencial" value="#{clienteBean.cliente.telefoneResidencial}"/>
+                    <p:outputLabel value="Telefone Celular:" for="txtTelefoneCelular"/>
+                    <h:outputText id="txtTelefoneCelular" value="#{clienteBean.cliente.telefoneCelular}"/>   
+                    <p:outputLabel value="Rua: " for="txtEndereco"/>
+                    <h:outputText id="txtEndereco" value="#{clienteBean.cliente.endereco.endereco}" />   
+                    <p:outputLabel value="Nº: " for="txtNumero"/>
+                    <h:outputText id="txtNumero" value="#{clienteBean.cliente.endereco.numero}" />   
+                    <p:outputLabel value="Bairro: " for="txtBairro"/>
+                    <h:outputText id="txtBairro" value="#{clienteBean.cliente.endereco.bairro}"/>   
+                    <p:outputLabel value="Cidade: " for="txtCidade"/>
+                    <h:outputText id="txtCidade" value="#{clienteBean.cliente.endereco.cidade}"/> 
+                    <p:outputLabel value="Estado:" for="txtEstado"/>
+                    <h:outputText id="txtEstado" value="#{clienteBean.cliente.endereco.estado}"/>  
+                </p:panelGrid>
+                <p:button value="Voltar" outcome="ConsultaCliente?faces-redirect=true"/>
+            </h:form>     
+        </ui:define>
+
+    </ui:composition>
+
+</html>

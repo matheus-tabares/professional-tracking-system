@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <ui:composition template="template/LayoutPadrao.xhtml">
+
+        <ui:define name="content">
+            <h2 style="text-align: center;">Consulta Profissional</h2>
+            <h:messages/>
+            <h:form>
+                <p:dataTable value="#{profissionalBean.listaProfissionais}" var="p" paginator="true" rows="10" rowHover="true" reflow="true">
+                    <p:column headerText="Nome">
+                        <h:outputText value="#{p.nome}"/>
+                    </p:column>
+                    <p:column headerText="Categoria">
+                        <h:outputText value="#{p.categoria.nome}"/>
+                    </p:column>
+                    <p:column headerText="Bairro" width="120">
+                        <h:outputText value="#{p.endereco.bairro}"/>                        
+                    </p:column>
+                    <p:column headerText="Localização" width="120">
+                        <p:commandLink ajax="false" value="Ver no Mapa" action="localizar.jsp" />
+                    </p:column>
+                    <p:column headerText="Detalhe" width="80" style="text-align: center" >
+                        <p:commandButton icon="ui-icon-search" ajax="false" action="#{profissionalBean.consultaProfissional(p.id)}" style="background: linear-gradient(#006666,white)"/>
+                    </p:column>
+                </p:dataTable>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
+
+

@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <ui:composition template="template/LayoutPadrao.xhtml">
+
+        <ui:define name="content">
+            <h2 style="text-align: center;">Alteração</h2>
+            <h:messages/>
+            <h:form>
+                <p:panelGrid columns="2" styleClass="formularios">                
+
+                    <p:outputLabel value="Nome:" for="txtNome"/>
+                    <p:inputText id="txtNome" value="#{clienteBean.cliente.nome}"/>
+                    <p:outputLabel value="E-mail:" for="txtEmail"/>
+                    <p:inputText id="txtEmail" value="#{clienteBean.cliente.email}"/>                    
+                    <p:outputLabel value="Telefone Residencial:" for="txtTelefoneResidencial"/>
+                    <p:inputText id="txtTelefoneResidencial" value="#{clienteBean.cliente.telefoneResidencial}"/>
+                    <p:outputLabel value="Telefone Celular:" for="txtTelefoneCelular"/>
+                    <p:inputText id="txtTelefoneCelular" value="#{clienteBean.cliente.telefoneCelular}"/>   
+                    <p:outputLabel value="CEP:" for="txtCEP"/>                                          
+                    <p:inputText id="txtCEP" maxlength="8" value="#{profissionalBean.endereco.CEP}"/> 
+                    <p:outputLabel value="Rua: " for="txtEndereco"/>
+                    <p:inputText id="txtEndereco" value="#{clienteBean.cliente.endereco.endereco}" />   
+                    <p:outputLabel value="Nº: " for="txtNumero"/>
+                    <p:inputText id="txtNumero" value="#{clienteBean.cliente.endereco.numero}" />   
+                    <p:outputLabel value="Bairro: " for="txtBairro"/>
+                    <p:inputText id="txtBairro" value="#{clienteBean.cliente.endereco.bairro}"/>   
+                    <p:outputLabel value="Cidade: " for="txtCidade"/>
+                    <p:inputText id="txtCidade" value="#{clienteBean.cliente.endereco.cidade}"/> 
+                    <p:outputLabel value="Estado:" for="txtEstado"/>
+                    <p:inputText id="txtEstado" value="#{clienteBean.cliente.endereco.estado}"/>  
+
+
+                    <p:commandButton ajax="false" value="Concluir" action="#{clienteBean.alterarCliente()}"/>
+                    <p:outputLabel/>
+                </p:panelGrid>
+            </h:form>
+        </ui:define>
+
+    </ui:composition>
+
+</html>
+
+

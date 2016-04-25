@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <ui:composition template="template/LayoutPadrao.xhtml">
+
+        <ui:define name="content">
+            <h2 style="text-align: center;">Detalhe Profissional</h2>
+            <h:messages/>
+            <h:form>
+                <p:panelGrid columns="2">
+                    <p:outputLabel value="Nome:" for="txtNome"/>
+                    <h:outputText id="txtNome" value="#{profissionalBean.profissional.nome}"/>
+                    <p:outputLabel value="E-mail:" for="txtEmail"/>
+                    <h:outputText id="txtEmail" value="#{profissionalBean.profissional.email}"/>                                        
+                    <p:outputLabel value="Categoria:" for="txtCategoria"/>
+                    <h:outputText id="txtCategoria" value="#{profissionalBean.profissional.categoria.nome}"/>                                        
+                    <p:outputLabel value="Telefone Celular:" for="txtTelefoneCelular"/>
+                    <h:outputText id="txtTelefoneCelular" value="#{profissionalBean.profissional.telefoneCelular}"/>                                           
+                    <p:outputLabel value="Cidade: " for="txtCidade"/>
+                    <h:outputText id="txtCidade" value="#{profissionalBean.profissional.endereco.cidade}"/>                     
+                </p:panelGrid>
+                <p:button value="Voltar" outcome="ConsultaProfissionalPorCategoria?faces-redirect=true"/>
+                <p:commandButton value="Contatar" action="#{contatoBean.iniciarContato(profissionalBean.profissional.id)}"/>
+            </h:form>     
+        </ui:define>
+
+    </ui:composition>
+
+</html>

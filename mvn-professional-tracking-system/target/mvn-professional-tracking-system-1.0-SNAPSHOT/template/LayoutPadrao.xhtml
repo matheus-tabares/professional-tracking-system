@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
+        <h:outputScript library="js" name="js.js"/>
+        <h:outputScript library="js" name="cep.js"/>
+        <h:outputStylesheet library="css" name="default.css"/>
+        <h:outputStylesheet library="css" name="cssLayout.css"/>
+        <h:outputStylesheet library="css" name="sistema.css"/>
+        <title>Professional Ts</title>
+    </h:head>
+
+    <h:body>
+
+        <div id="top">            
+            <ui:insert name="top">
+                <div class="menu">Menu ☰</div>                
+            </ui:insert>
+        </div>
+        <div id="container">
+            <div id="left">
+                <ui:insert name="left">
+                    <h:link value="Home" outcome="index"/>                    
+                    <h:link value="Novo Cliente" outcome="FormularioCliente?faces-redirect=true"/>
+                    <h:link value="Lista Clientes" outcome="ConsultaCliente?faces-redirect=true"/>
+                    <h:link value="Novo Profissional" outcome="FormularioProfissional?faces-redirect=true"/>
+                    <h:link value="Lista Profissionais" outcome="ConsultaProfissional?faces-redirect=true"/>
+                    <h:link value="Profissionais por Categoria" outcome="BuscaProfissionalPorCategoria?faces-redirect=true"/>
+                    <h:link value="Nova Categoria" outcome="FormularioCategoria?faces-redirect=true"/>                    
+                    <h:link value="Mensagens Profissional" outcome="VisualizarMensagem?faces-redirect=true"/>                    
+                    <h:link value="Mensagens Cliente" outcome="VisualizarRespostaProfissional?faces-redirect=true"/>                    
+                </ui:insert>
+            </div>
+            <div style="height: 100%">
+                <div id="right">
+                    <ui:insert name="right"></ui:insert>
+                </div>
+                <div id="content" class="right_content">
+                    <ui:insert name="content">
+                        conteudo de testes
+
+
+                    </ui:insert>
+                </div>
+            </div>
+        </div>
+
+        <ui:insert name="bottom">
+            <footer>
+                <h:form prependId="false">
+                    <p:commandLink action="Equipe">
+                        <code>Projeto do curso de ADS IFRS Disciplina DEV SIS II - Copyright<sup>©</sup> 2016</code>
+                    </p:commandLink>
+                </h:form>
+            </footer>
+        </ui:insert>
+
+    </h:body>
+</html>
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>-->

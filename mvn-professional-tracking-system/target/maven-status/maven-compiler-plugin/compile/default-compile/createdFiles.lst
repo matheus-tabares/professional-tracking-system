@@ -1,0 +1,14 @@
+com\dev2\dao\EnderecoDAO.class
+com\dev2\model\Contato.class
+com\dev2\dao\CategoriaDAO.class
+com\dev2\model\Profissional.class
+com\dev2\controller\ClienteBean.class
+com\dev2\model\Cliente.class
+com\dev2\dao\ProfissionalDAO.class
+com\dev2\controller\ProfissionalBean.class
+com\dev2\dao\ContatoDAO.class
+com\dev2\model\Categoria.class
+com\dev2\dao\ClienteDAO.class
+com\dev2\util\HibernateUtil.class
+com\dev2\controller\ContatoBean.class
+com\dev2\model\Endereco.class

@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition template="template/LayoutPadrao.xhtml">
+       
+        <ui:define name="content">
+            
+            <p:growl/>
+            <h:form prependId="false">
+                <p:panelGrid columns="2" styleClass="formularios">
+                    <f:facet name="header">
+                        Cadastro de Cliente
+                    </f:facet>
+
+                    <p:outputLabel value="Nome:" for="txtNome"/>
+                    <p:inputText id="txtNome" maxlength="100" value="#{clienteBean.cliente.nome}"/>
+
+                    <p:outputLabel value="E-mail:" for="txtEmail"/>
+                    <p:inputText id="txtEmail" maxlength="100" value="#{clienteBean.cliente.email}"/>     
+
+                    <p:outputLabel value="Senha:" for="txtSenha"/>
+                    <p:inputText id="txtSenha" maxlength="8" value="#{clienteBean.cliente.senha}"/>     
+
+                    <p:outputLabel value="CPF:" for="txtCPF"/>
+                    <p:inputText id="txtCPF" maxlength="11" value="#{clienteBean.cliente.CPF}"/>                
+
+                    <p:outputLabel value="CEP:" for="txtCEP"/>                                           
+                    <p:inputText id="txtCEP" maxlength="8" value="#{clienteBean.endereco.CEP}"/> 
+
+                    <p:outputLabel value="Rua: " for="txtEndereco"/>
+                    <p:inputText id="txtEndereco" maxlength="100" value="#{clienteBean.endereco.endereco}"/>                       
+                    
+                    <p:outputLabel value="Nº: " for="txtNumero"/>
+                    <p:inputText id="txtNumero" maxlength="5" value="#{clienteBean.endereco.numero}" />
+                    
+                    <p:outputLabel value="Bairro: " for="txtBairro"/>
+                    <p:inputText id="txtBairro" maxlength="30" value="#{clienteBean.endereco.bairro}" />
+
+                    <p:outputLabel value="Cidade: " for="txtCidade" />
+                    <p:inputText id="txtCidade" maxlength="30" value="#{clienteBean.endereco.cidade}" />
+
+                    <p:outputLabel value="Estado:" for="txtEstado"/>
+                    <p:inputText id="txtEstado" maxlength="30" value="#{clienteBean.endereco.estado}" />               
+
+
+                    <p:outputLabel value="Telefone Residencial: " for="txtTelefoneResidencial"/>                            
+                    <p:inputText id="txtTelefoneResidencial" maxlength="15" value="#{clienteBean.cliente.telefoneResidencial}"/>
+                    
+                    <p:outputLabel value="Telefone Celular: " for="txtTelefoneCelular"/>
+                    <p:inputText id="txtTelefoneCelular" maxlength="15" value="#{clienteBean.cliente.telefoneCelular}"/>   
+                    <f:facet name="footer">
+                        <h:panelGroup>
+                        <p:commandButton ajax="false" value="Cadastrar" action="#{clienteBean.incluir()}" style="width: 49%"  />
+                        <p:commandButton  value="Cancelar" action="index" style="width: 49%" />
+                        </h:panelGroup>
+                    </f:facet>
+                </p:panelGrid>                
+
+
+            </h:form>
+        </ui:define>
+
+    </ui:composition>
+
+</html>
+
+
