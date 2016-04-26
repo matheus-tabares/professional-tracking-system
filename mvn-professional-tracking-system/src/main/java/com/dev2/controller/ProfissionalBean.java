@@ -29,6 +29,7 @@ public class ProfissionalBean {
     private Profissional profissional = new Profissional();
     private ProfissionalDAO profissionalDAO = new ProfissionalDAO();
     private List<Profissional> listaProfissionais;
+    private List<Profissional> filtroCategoria;
     private Categoria categoria = new Categoria();
     private CategoriaDAO categoriaDAO = new CategoriaDAO();
     private Endereco endereco = new Endereco();
@@ -187,4 +188,14 @@ public class ProfissionalBean {
     public String paginaLogin() {
         return "LoginProfissional?faces-redirect=true";
     }
+
+    public List<Profissional> getFiltroCategoria() {
+        return filtroCategoria;
+    }
+
+    public void setFiltroCategoria(List<Profissional> filtroCategoria) {
+        this.filtroCategoria = filtroCategoria;
+    }
+    
+    
 }
