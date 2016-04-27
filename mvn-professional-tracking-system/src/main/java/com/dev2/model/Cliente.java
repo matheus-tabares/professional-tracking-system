@@ -36,6 +36,7 @@ public class Cliente implements Serializable {
     @Pattern(regexp = "[a-zA-Z0-9]+[a-zA-Z0-9_.-]+@{1}[a-zA-Z0-9_.-]*\\.+[a-z]{2,4}")    
     private String email;
     @NotEmpty
+    @Size(min=6, max=10)
     private String senha;
 
     @NotEmpty   
