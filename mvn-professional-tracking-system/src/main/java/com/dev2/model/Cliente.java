@@ -14,6 +14,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.*;
 import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.br.CPF;
 
@@ -27,26 +28,31 @@ public class Cliente implements Serializable {
     @Id
     @GeneratedValue
     private int id;
+
+    @Pattern(regexp = "[a-zA-Z]+", message = "Somente letras")
     @NotEmpty
-    @Pattern(regexp="[a-zA-Z]+",message="Somente letras")
-    @Max(value=40, message = "")
+    @Length(max = 40)
     private String nome;
+    
     @NotEmpty
-    @NotNull
-    @Pattern(regexp = "[a-zA-Z0-9]+[a-zA-Z0-9_.-]+@{1}[a-zA-Z0-9_.-]*\\.+[a-z]{2,4}")    
+    @Email
     private String email;
+    
     @NotEmpty
-    @Size(min=6, max=10)
+    @Length(min = 4, max = 8, message = "Senha entre 4 e 8 caracteres")
     private String senha;
 
-    @NotEmpty   
+    @NotEmpty
+    @CPF
     private String CPF;
 
     @OneToOne
     private Endereco endereco;
-
+    
+    @Pattern(regexp = "[0-9]+", message = "Somente números e não vazio")
     private String telefoneResidencial;
-    @NotEmpty
+    
+    @Pattern(regexp = "[0-9]+", message = "Somente números e não vazio")
     private String telefoneCelular;
 
     @OneToMany
