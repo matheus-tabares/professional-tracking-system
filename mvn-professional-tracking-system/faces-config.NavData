@@ -1,6 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scene Scope="Project" version="2">
     <Scope Scope="Faces Configuration Only"/>
-    <Scope Scope="Project"/>
+    <Scope Scope="Project">
+        <Node id="localizar.jsp" x="650" y="450" zoom="true"/>
+        <Node id="template/LayoutPadrao.xhtml" x="1150" y="150" zoom="true"/>
+        <Node id="FormularioContato.xhtml" x="900" y="300" zoom="true"/>
+        <Node id="newjsf.jsp" x="1150" y="300" zoom="true"/>
+        <Node id="template/Layout.xhtml" x="1150" y="450" zoom="true"/>
+        <Node id="VisualizarMensagem.xhtml" x="400" y="450" zoom="true"/>
+        <Node id="ConsultaProfissionalPorCategoria.xhtml" x="400" y="150" zoom="true"/>
+        <Node id="VisualizarRespostaProfissional.xhtml" x="150" y="300" zoom="true"/>
+        <Node id="Equipe.xhtml" x="650" y="600" zoom="true"/>
+        <Node id="FormularioCategoria.xhtml" x="1400" y="150" zoom="true"/>
+        <Node id="AlteraCliente.xhtml" x="1650" y="150" zoom="true"/>
+        <Node id="LoginCliente.xhtml" x="650" y="150" zoom="true"/>
+        <Node id="index.xhtml" x="400" y="300" zoom="true"/>
+        <Node id="Login.xhtml" x="1400" y="300" zoom="true"/>
+        <Node id="LoginProfissional.xhtml" x="400" y="600" zoom="true"/>
+        <Node id="FormularioProfissional.xhtml" x="150" y="750" zoom="true"/>
+        <Node id="ConsultaProfissional.xhtml" x="900" y="450" zoom="true"/>
+        <Node id="FormularioRespostaProfissional.xhtml" x="400" y="750" zoom="true"/>
+        <Node id="BuscaProfissionalPorCategoria.xhtml" x="900" y="150" zoom="true"/>
+        <Node id="ConsultaCliente.xhtml" x="150" y="600" zoom="true"/>
+        <Node id="index2.xhtml" x="150" y="450" zoom="true"/>
+        <Node id="FormularioCliente.xhtml" x="650" y="300" zoom="true"/>
+        <Node id="DetalheProfissional.xhtml" x="150" y="150" zoom="true"/>
+        <Node id="DetalheCliente.xhtml" x="150" y="900" zoom="true"/>
+    </Scope>
     <Scope Scope="All Faces Configurations"/>
 </Scene>

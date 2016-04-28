@@ -10,20 +10,14 @@
             <h2 style="text-align: center;">Resposta Profissional</h2>             
             <h:messages/>
             <h:form>
-
-               
-
                 <p:panelGrid columns="2">                
                     <p:outputLabel value="Assunto" for="txtAssunto"/>
                     <p:inputText id="txtAssunto" value="#{contatoBean.contato.assunto}"/>
                     <p:outputLabel value="Mensagem:" for="txtMensagem"/>
                     <p:inputTextarea id="txtMensagem" rows="10" cols="30" maxlength="600" value="#{contatoBean.contato.mensagem}"/>                   
                     <p:outputLabel/>
-                    <p:commandButton ajax="false" value="Enviar" action="#{contatoBean.enviarMensagem()}"/>
+                    <p:commandButton ajax="false" value="Enviar" action="#{contatoBean.enviarMensagemParaCliente()}"/>
                 </p:panelGrid>                
-                #{contatoBean.idProfissional}
-                #{contatoBean.idCliente}
-
             </h:form>
         </ui:define>
 

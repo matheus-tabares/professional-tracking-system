@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.dev2.dao;
 
 import java.util.ArrayList;
@@ -13,10 +8,6 @@ import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 import com.dev2.util.HibernateUtil;
 
-/**
- *
- * @author Bruno
- */
 public class ContatoDAO {
 
     private final Session sessao;
@@ -31,19 +22,19 @@ public class ContatoDAO {
         t.commit();
     }
 
-    public ArrayList<Contato> listarMensagensProfissional(int idProfissional) {
+    public ArrayList<Contato> listarMensagensProfissional() {
 
         List mensagens = sessao.createCriteria(Contato.class)
-                .add(Restrictions.eq("profissional.id", idProfissional))
+                .add(Restrictions.eq("quemRecebe", "cliente"))
                 .list();
 
         return (ArrayList<Contato>) mensagens;
     }
 
-    public ArrayList<Contato> listarMensagensCliente(int idCliente) {
-
+    public ArrayList<Contato> listarMensagensCliente() {
+        
         List mensagens = sessao.createCriteria(Contato.class)
-                .add(Restrictions.eq("cliente.id", idCliente))
+                .add(Restrictions.eq("quemRecebe", "cliente"))
                 .list();
 
         return (ArrayList<Contato>) mensagens;

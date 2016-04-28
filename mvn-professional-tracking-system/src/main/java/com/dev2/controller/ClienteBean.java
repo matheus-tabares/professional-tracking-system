@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.dev2.controller;
 
 import com.dev2.dao.ClienteDAO;
@@ -15,14 +10,9 @@ import javax.faces.context.FacesContext;
 import com.dev2.model.Cliente;
 import com.dev2.model.Endereco;
 
-/**
- *
- * @author Bruno
- */
 @ManagedBean
 @SessionScoped
 public class ClienteBean {
-
     private Cliente cliente = new Cliente();
     private ClienteDAO clienteDAO = new ClienteDAO();
     private Endereco endereco = new Endereco();
@@ -47,47 +37,7 @@ public class ClienteBean {
         listaClientes = clienteDAO.listar();
         return null;
     }
-
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
-
-    public ClienteDAO getClienteDAO() {
-        return clienteDAO;
-    }
-
-    public void setClienteDAO(ClienteDAO clienteDAO) {
-        this.clienteDAO = clienteDAO;
-    }
-
-    public List<Cliente> getListaClientes() {
-        return listaClientes;
-    }
-
-    public void setListaClientes(List<Cliente> listaClientes) {
-        this.listaClientes = listaClientes;
-    }
-
-    public Endereco getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
-    }
-
-    public EnderecoDAO getEnderecoDAO() {
-        return enderecoDAO;
-    }
-
-    public void setEnderecoDAO(EnderecoDAO enderecoDAO) {
-        this.enderecoDAO = enderecoDAO;
-    }
-
+    
     public String consultaCliente(int idClienteSelecionado) {
         cliente = clienteDAO.carregar(idClienteSelecionado);
         return "DetalheCliente?faces-redirect=true";
@@ -127,20 +77,22 @@ public class ClienteBean {
         this.cliente = new Cliente();
     }
 
-    public boolean isRenderedEndereco() {
-        return renderedEndereco;
-    }
-
-    public int getIdClienteLogado() {
-        return idClienteLogado;
-    }
-
-    public void setIdClienteLogado(int idClienteLogado) {
-        this.idClienteLogado = idClienteLogado;
-    }
-
+    
     public String paginaLogin() {
         return "LoginCliente?faces-redirect=true";
     }
-
+    
+    public Cliente getCliente() {return cliente;}
+    public void setCliente(Cliente cliente) {this.cliente = cliente;}
+    public ClienteDAO getClienteDAO() {return clienteDAO;}
+    public void setClienteDAO(ClienteDAO clienteDAO) {this.clienteDAO = clienteDAO;}
+    public List<Cliente> getListaClientes() {return listaClientes;}
+    public void setListaClientes(List<Cliente> listaClientes) {this.listaClientes = listaClientes;}
+    public Endereco getEndereco() {return endereco;}
+    public void setEndereco(Endereco endereco) {this.endereco = endereco;}
+    public EnderecoDAO getEnderecoDAO() {return enderecoDAO;}
+    public void setEnderecoDAO(EnderecoDAO enderecoDAO) {this.enderecoDAO = enderecoDAO;}
+    public boolean isRenderedEndereco() {return renderedEndereco;}
+    public int getIdClienteLogado() {return idClienteLogado;}
+    public void setIdClienteLogado(int idClienteLogado) {this.idClienteLogado = idClienteLogado;}
 }

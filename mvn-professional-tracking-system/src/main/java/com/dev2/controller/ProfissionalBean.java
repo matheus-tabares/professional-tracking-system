@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.dev2.controller;
 
 import com.dev2.dao.CategoriaDAO;
@@ -18,14 +13,9 @@ import com.dev2.model.Categoria;
 import com.dev2.model.Endereco;
 import com.dev2.model.Profissional;
 
-/**
- *
- * @author Bruno
- */
 @ManagedBean
 @SessionScoped
 public class ProfissionalBean {
-
     private Profissional profissional = new Profissional();
     private ProfissionalDAO profissionalDAO = new ProfissionalDAO();
     private List<Profissional> listaProfissionais;
@@ -81,121 +71,39 @@ public class ProfissionalBean {
         return dao.listar();
     }
 
-    public Profissional getProfissional() {
-        return profissional;
-    }
-
-    public void setProfissional(Profissional profissional) {
-        this.profissional = profissional;
-    }
-
-    public ProfissionalDAO getProfissionalDAO() {
-        return profissionalDAO;
-    }
-
-    public void setProfissionalDAO(ProfissionalDAO profissionalDAO) {
-        this.profissionalDAO = profissionalDAO;
-    }
-
+    
     public String buscaProfissionalPorCategoria() {
         profissionaisPorCategoria = profissionalDAO.listarPorCategoria(idCategoria);
         return "ConsultaProfissionalPorCategoria?faces-redirect=true";
     }
-
-    public List<Profissional> getListaProfissionais() {
-        return listaProfissionais;
-    }
-
-    public void setListaProfissional(List<Profissional> listaProfissionais) {
-        this.listaProfissionais = listaProfissionais;
-    }
-
-    public Categoria getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(Categoria categoria) {
-        this.categoria = categoria;
-    }
-
-    public CategoriaDAO getCategoriaDAO() {
-        return categoriaDAO;
-    }
-
-    public void setCategoriaDAO(CategoriaDAO categoriaDAO) {
-        this.categoriaDAO = categoriaDAO;
-    }
-
-    public int getIdCategoria() {
-        return idCategoria;
-    }
-
-    public void setIdCategoria(int idCategoria) {
-        this.idCategoria = idCategoria;
-    }
-
-    public EnderecoDAO getEnderecoDAO() {
-        return enderecoDAO;
-    }
-
-    public void setEnderecoDAO(EnderecoDAO enderecoDAO) {
-        this.enderecoDAO = enderecoDAO;
-    }
-
-    public Endereco getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
-    }
-
-    public int getIdEndereco() {
-        return idEndereco;
-    }
-
-    public void setIdEndereco(int idEndereco) {
-        this.idEndereco = idEndereco;
-    }
-
-    public boolean isRenderedEndereco() {
-        return renderedEndereco;
-    }
-
-    public List<Profissional> getProfissionaisPorCategoria() {
-        return profissionaisPorCategoria;
-    }
-
-    public void setProfissionaisPorCategoria(List<Profissional> profissionaisPorCategoria) {
-        this.profissionaisPorCategoria = profissionaisPorCategoria;
-    }
-
-    /*public void inseriuCPF() {
-        if (this.endereco.getCEP().equals("")) {
-            this.renderedEndereco = false;
-        } else {
-            this.renderedEndereco = true;
-        }
-    }*/
-    public int getIdProfissionalLogado() {
-        return idProfissionalLogado;
-    }
-
-    public void setIdProfissionalLogado(int idProfissionalLogado) {
-        this.idProfissionalLogado = idProfissionalLogado;
-    }
-
+   
     public String paginaLogin() {
         return "LoginProfissional?faces-redirect=true";
     }
 
-    public List<Profissional> getFiltroCategoria() {
-        return filtroCategoria;
-    }
-
-    public void setFiltroCategoria(List<Profissional> filtroCategoria) {
-        this.filtroCategoria = filtroCategoria;
-    }
-    
-    
+    public List<Profissional> getFiltroCategoria() {return filtroCategoria;}
+    public void setFiltroCategoria(List<Profissional> filtroCategoria) {this.filtroCategoria = filtroCategoria;}     
+    public Profissional getProfissional() {return profissional;}
+    public void setProfissional(Profissional profissional) {this.profissional = profissional;}
+    public ProfissionalDAO getProfissionalDAO() {return profissionalDAO;}
+    public void setProfissionalDAO(ProfissionalDAO profissionalDAO) {this.profissionalDAO = profissionalDAO;}
+    public List<Profissional> getListaProfissionais() {return listaProfissionais;}
+    public void setListaProfissional(List<Profissional> listaProfissionais) {this.listaProfissionais = listaProfissionais;}
+    public Categoria getCategoria() {return categoria;}
+    public void setCategoria(Categoria categoria) {this.categoria = categoria;}
+    public CategoriaDAO getCategoriaDAO() {return categoriaDAO;}
+    public void setCategoriaDAO(CategoriaDAO categoriaDAO) {this.categoriaDAO = categoriaDAO;}
+    public int getIdCategoria() {return idCategoria;}
+    public void setIdCategoria(int idCategoria) {this.idCategoria = idCategoria;}
+    public EnderecoDAO getEnderecoDAO() {return enderecoDAO;}
+    public void setEnderecoDAO(EnderecoDAO enderecoDAO) {this.enderecoDAO = enderecoDAO;}
+    public Endereco getEndereco() {return endereco;}
+    public void setEndereco(Endereco endereco) {this.endereco = endereco;}
+    public int getIdEndereco() {return idEndereco;}
+    public void setIdEndereco(int idEndereco) {this.idEndereco = idEndereco;}
+    public boolean isRenderedEndereco() {return renderedEndereco;}
+    public List<Profissional> getProfissionaisPorCategoria() {return profissionaisPorCategoria;}
+    public void setProfissionaisPorCategoria(List<Profissional> profissionaisPorCategoria) {this.profissionaisPorCategoria = profissionaisPorCategoria;}
+    public int getIdProfissionalLogado() {return idProfissionalLogado;}
+    public void setIdProfissionalLogado(int idProfissionalLogado) {this.idProfissionalLogado = idProfissionalLogado;}
 }
