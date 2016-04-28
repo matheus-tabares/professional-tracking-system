@@ -132,4 +132,12 @@ a {
         display: none;
         width: 100%;
     }
-}
+
+ }
+   .erro{
+       display: none;
+   }
+   
+   .certo{
+    background: green;
+   } 
