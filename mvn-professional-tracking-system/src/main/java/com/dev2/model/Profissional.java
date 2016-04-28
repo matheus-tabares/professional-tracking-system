@@ -18,8 +18,13 @@ public class Profissional implements Serializable {
     @GeneratedValue
     private int id;
     
+<<<<<<< HEAD
     @Pattern(regexp = "[a-zA-Z]+", message = "Somente letras")
     @Length(max = 40, message = "Maximo 40 letras")
+=======
+    @Length(max = 40, message = "Maximo 40 letras")
+    @Pattern(regexp = "[a-zA-Z+ +']+", message = "Somente letras")
+>>>>>>> 6d9b9512184344c95ca24651c652b1b141099903
     @NotEmpty    
     private String nome;
 

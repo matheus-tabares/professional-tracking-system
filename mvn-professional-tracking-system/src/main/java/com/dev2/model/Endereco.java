@@ -3,6 +3,8 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.Pattern;
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 public class Endereco implements Serializable {
@@ -11,6 +13,7 @@ public class Endereco implements Serializable {
     @GeneratedValue
     private int id;
     private String endereco;
+    
     private int numero;
     private String bairro;
     private String CEP;
