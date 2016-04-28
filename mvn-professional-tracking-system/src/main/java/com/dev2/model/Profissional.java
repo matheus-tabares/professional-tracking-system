@@ -33,7 +33,7 @@ public class Profissional implements Serializable {
     private int id;
     
     @Length(max = 40, message = "Maximo 40 letras")
-    @Pattern(regexp = "[a-zA-Z]+", message = "Somente letras")
+    @Pattern(regexp = "[a-zA-Z+ +']+", message = "Somente letras")
     @NotEmpty    
     private String nome;
 

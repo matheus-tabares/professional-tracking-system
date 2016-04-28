@@ -29,7 +29,7 @@ public class Cliente implements Serializable {
     @GeneratedValue
     private int id;
 
-    @Pattern(regexp = "[a-zA-Z]+", message = "Somente letras")
+    @Pattern(regexp = "[a-zA-Z+ +']+", message = "Somente letras")
     @NotEmpty
     @Length(max = 40)
     private String nome;

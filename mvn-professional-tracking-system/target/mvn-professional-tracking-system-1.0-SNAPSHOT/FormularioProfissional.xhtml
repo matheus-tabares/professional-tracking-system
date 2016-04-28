@@ -11,8 +11,8 @@
 
             
             <h:form prependId="false">
-                <div>
-                    <p:panelGrid layout="grid"  columns="3" styleClass="formularios">
+                
+                    <p:panelGrid  columns="3" styleClass="formularios">
                         <f:facet name="header">
                             Cadastro de Profissional
                         </f:facet>
@@ -77,10 +77,10 @@
 
                         <p:commandButton ajax="false" value="Cadastrar" action="#{profissionalBean.incluir()}"/>
                         <p:outputLabel><a href="javascript:window.history.go(-1)">Cancelar</a></p:outputLabel>
-                        
+                        <p:outputLabel/>
                     </p:panelGrid>
                     <h:messages infoClass="certo" errorClass="erro"/>
-                </div>
+               
             </h:form>
         </ui:define>
 
