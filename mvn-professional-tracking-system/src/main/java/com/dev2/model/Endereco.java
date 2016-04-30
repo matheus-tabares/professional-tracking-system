@@ -3,8 +3,6 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.validation.constraints.Pattern;
-import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 public class Endereco implements Serializable {
