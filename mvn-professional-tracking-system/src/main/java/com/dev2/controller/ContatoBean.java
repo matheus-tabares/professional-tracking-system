@@ -41,6 +41,7 @@ public class ContatoBean {
         this.contatoDAO.incluir(contato);
         FacesContext contexto = FacesContext.getCurrentInstance();
         contexto.addMessage(null, new FacesMessage("Mensagem Enviada!", ""));
+        buscaMensagensProfissional();
         this.contato = new Contato();
         this.profissional = new Profissional();
         this.cliente = new Cliente();
@@ -57,6 +58,7 @@ public class ContatoBean {
         this.contatoDAO.incluir(contato);
         FacesContext contexto = FacesContext.getCurrentInstance();
         contexto.addMessage(null, new FacesMessage("Mensagem Enviada!", ""));
+        buscaMensagensCliente();
         this.contato = new Contato();
         this.profissional = new Profissional();
         this.cliente = new Cliente();

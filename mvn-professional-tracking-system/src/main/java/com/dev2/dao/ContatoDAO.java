@@ -25,7 +25,7 @@ public class ContatoDAO {
     public ArrayList<Contato> listarMensagensProfissional() {
 
         List mensagens = sessao.createCriteria(Contato.class)
-                .add(Restrictions.eq("quemRecebe", "cliente"))
+                .add(Restrictions.eq("quemRecebe", "profissional"))
                 .list();
 
         return (ArrayList<Contato>) mensagens;
