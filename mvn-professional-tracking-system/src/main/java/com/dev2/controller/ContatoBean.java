@@ -11,6 +11,7 @@ import javax.faces.context.FacesContext;
 import com.dev2.model.Cliente;
 import com.dev2.model.Contato;
 import com.dev2.model.Profissional;
+import javax.faces.bean.ManagedProperty;
 
 @ManagedBean
 @SessionScoped
@@ -26,12 +27,17 @@ public class ContatoBean {
     private List<Contato> mensagensProfissional;
     private List<Contato> mensagensCliente;
     
+    @ManagedProperty(value = "#{loginBean}")
+    private LoginBean loginBean;
+    
+    
     public ContatoBean() {
         this.mensagensProfissional = contatoDAO.listarMensagensProfissional();
         this.mensagensCliente = contatoDAO.listarMensagensCliente();
     }
     
     public String enviarMensagemParaProfissional() {
+        System.out.println("USUARIOLOGADO: " + loginBean.idUsuarioLogado);
         this.contatoDAO = new ContatoDAO();
         this.cliente = clienteDAO.carregar(idCliente);
         this.contato.setCliente(cliente);
@@ -110,4 +116,13 @@ public class ContatoBean {
     public void setMensagensProfissional(List<Contato> mensagensProfissional) {this.mensagensProfissional = mensagensProfissional;}
     public List<Contato> getMensagensCliente() {return mensagensCliente;}
     public void setMensagensCliente(List<Contato> mensagensCliente) {this.mensagensCliente = mensagensCliente;}
+
+    public LoginBean getLoginBean() {
+        return loginBean;
+    }
+
+    public void setLoginBean(LoginBean loginBean) {
+        this.loginBean = loginBean;
+    }
+    
 }

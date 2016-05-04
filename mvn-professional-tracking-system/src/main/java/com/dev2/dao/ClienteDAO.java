@@ -49,4 +49,11 @@ public class ClienteDAO {
         sessao.update(c);
         t.commit();
     }
+
+    public Cliente autentica(String email, String senha) {
+        System.out.println("EMAIL: " + email);
+        System.out.println("SENHA: " + senha);
+        return (Cliente) sessao.createQuery("FROM Cliente WHERE email=:email AND senha=:senha").setString("email", email).setString("senha", senha).uniqueResult();
+                         
+    }
 }

@@ -30,6 +30,7 @@ public class ProfissionalDAO {
         Transaction t = sessao.beginTransaction();
         sessao.save(p);
         t.commit();
+
     }
 
     public Profissional carregar(int id) {
@@ -44,15 +45,20 @@ public class ProfissionalDAO {
 
         List profissionais = sessao.createCriteria(Profissional.class)
                 .add(Restrictions.eq("categoria.id", idCategoria))
-                .list();        
-        
+                .list();
+
         return (ArrayList<Profissional>) profissionais;
-        
+
         /*String hql = "FROM Profissional p WHERE p.categoria.id =:categoria_id";
         Query query = sessao.createQuery(hql);
         query.setParameter("categoria_id", idCategoria);
         return (ArrayList<Profissional>) query.list();*/
+    }
 
+    public Profissional autentica(String email, String senha) {
+        System.out.println("EMAIL: " + email);
+        System.out.println("SENHA: " + senha);
+        return (Profissional) sessao.createQuery("FROM Profissional WHERE email=:email AND senha=:senha").setString("email", email).setString("senha", senha).uniqueResult();
     }
 
 }
