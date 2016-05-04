@@ -15,23 +15,22 @@ public class Endereco implements Serializable {
     @GeneratedValue
     private int id;
     
-    @NotEmpty
+    
     private String endereco;
 
-    @NotEmpty
+    
     private String CEP;
     
-    @Min(1)
-    @NotEmpty
+    
     private int numero;
 
-    @NotEmpty
+    
     private String bairro;
 
-    @NotEmpty
+   
     private String cidade;
 
-    @NotEmpty
+    
     private String estado;
 
     public int getId() {

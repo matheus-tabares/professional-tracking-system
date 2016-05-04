@@ -33,7 +33,7 @@ public class Cliente implements Serializable {
     @Length(min = 4, max = 8, message = "Senha entre 4 e 8 caracteres")
     private String senha;
 
-    @CPF
+    
     private String CPF;
 
     @OneToOne

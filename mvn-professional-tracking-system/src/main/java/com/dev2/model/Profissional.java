@@ -34,6 +34,7 @@ public class Profissional implements Serializable {
     @NotEmpty
     private String CPF;
     
+    @NotEmpty
     @Length(max = 200, message = "Maximo 40 letras")
     private String descricao;
     
