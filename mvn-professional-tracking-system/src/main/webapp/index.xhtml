@@ -16,15 +16,15 @@
             <div class="layer">
                 <div class="content">
                     <h:form prependId="false" id="login" >
-                      <!--  <p:menuButton value="Menu">
-                            <p:menuitem value="Home" ajax="false" icon="ui-icon-disk" action="index"/>
-                            <p:separator />
-                            <p:menuitem value="Login" ajax="false" icon="ui-icon-disk" action="Login"/>
-                            <p:separator />
-                            <p:menuitem value="Cadastro Profissional" ajax="false"  icon="ui-icon-person" action="FormularioProfissional"/>
-                            <p:separator />
-                            <p:menuitem value="Cadastro Cliente"  ajax="false" icon="ui-icon-person" action="FormularioCliente"/>                           
-                        </p:menuButton>-->
+                        <!--  <p:menuButton value="Menu">
+                              <p:menuitem value="Home" ajax="false" icon="ui-icon-disk" action="index"/>
+                              <p:separator />
+                              <p:menuitem value="Login" ajax="false" icon="ui-icon-disk" action="Login"/>
+                              <p:separator />
+                              <p:menuitem value="Cadastro Profissional" ajax="false"  icon="ui-icon-person" action="FormularioProfissional"/>
+                              <p:separator />
+                              <p:menuitem value="Cadastro Cliente"  ajax="false" icon="ui-icon-person" action="FormularioCliente"/>                           
+                          </p:menuButton>-->
                     </h:form>
                     <br/>
                     <h1> Professional Tracking System</h1>
@@ -52,7 +52,9 @@
                         </h:panelGrid>
                         <p:inputText value="#{loginBean.email}"/><br/><br/>
                         <p:inputText value="#{loginBean.senha}"/><br/><br/>
-                        <p:commandButton value="Logar" ajax="false" action="#{loginBean.logar()}"/>
+                        <p:commandButton value="Logar" ajax="false" action="#{loginBean.logar()}"/><br/><br/>
+                        <p:commandLink action="FormularioProfissional?faces-redirect=true" value="Criar Conta [Profissional]"/><br/>
+                        <p:commandLink action="FormularioCliente?faces-redirect=true" value="Criar Conta [Cliente]"/>
                     </h:form>
                 </center>
             </div>

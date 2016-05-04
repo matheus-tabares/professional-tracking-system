@@ -1,4 +1,4 @@
-<ui:composition template="template/LayoutPadrao.xhtml"
+<ui:composition template="template/LayoutCliente.xhtml"
                 xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui"
@@ -8,18 +8,14 @@
     <ui:define name="content">
         <h2 style="text-align: center;">PAINEL CLIENTE</h2>
         <h:messages/>
-        #{loginBean.idUsuarioLogado}
+        <!--#{loginBean.idUsuarioLogado}-->
         <br/>
-        #{loginBean.idClienteLogado}
+        <!--#{loginBean.idClienteLogado}-->
         <br/>
-        #{loginBean.cliente.nome}
+        <h2>Olá! #{loginBean.cliente.nome}</h2>
         <br/>
-        #{loginBean.cliente.endereco.CEP}
-        <br/>
-
-        <h:form>
-            <p:commandButton value="logout" action="#{loginBean.logout()}"/>
-        </h:form>
+        <!--#{loginBean.cliente.endereco.CEP}-->
+        <br/>       
 
     </ui:define>
 

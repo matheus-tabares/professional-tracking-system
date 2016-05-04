@@ -35,7 +35,7 @@ public class ClienteBean {
         this.cliente = new Cliente();
         this.endereco = new Endereco();
         listaClientes = clienteDAO.listar();
-        return null;
+        return "index?faces-redirect=true";
     }
     
     public String consultaCliente(int idClienteSelecionado) {

@@ -48,7 +48,7 @@ public class ProfissionalBean {
         this.categoria = new Categoria();
         this.idCategoria = 0;
         listaProfissionais = profissionalDAO.listar();
-        return null;
+        return "index?faces-redirect=true";
     }
 
     public String incluirCategoria() {
