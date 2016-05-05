@@ -13,5 +13,6 @@
     <mapping class="com.dev2.model.Categoria"/>
     <mapping class="com.dev2.model.Endereco"/>
     <mapping class="com.dev2.model.Contato"/>
+    <mapping class="com.dev2.model.MensagemMural"/>
   </session-factory>
 </hibernate-configuration>
