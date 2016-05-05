@@ -10,13 +10,18 @@
         <ui:define name="content">
             <h2 style="text-align: center;">Busca Profissional Por Categoria</h2>
             <h:form>
-                <p:panelGrid columns="3">                
-                    <p:outputLabel value="Categoria:" for="omCategoria"/>
-                    <p:selectOneListbox id="omCategoria" value="#{profissionalBean.idCategoria}" style="width:170px">
+                <p:dataTable value="" var="p" widgetVar="carsTable"
+                             rowHover="true" reflow="true" filteredValue="">
+                    <p:column headerText="Categoria" style="width: 300px">
+                        <p:selectOneListbox id="omCategoria" value="#{profissionalBean.idCategoria}" style="width:500px">
                         <f:selectItems value="#{profissionalBean.listaCategorias}" var="c" itemValue="#{c.id}" itemLabel="#{c.nome}"/>
                     </p:selectOneListbox>
-                    <p:commandButton value="Pesquisar" ajax="false" action="#{profissionalBean.buscaProfissionalPorCategoria()}" />
-                </p:panelGrid>                
+                    </p:column>
+                    <p:column headerText="Ação" style="width: 300px; alignment-baseline: central; alignment-adjust: central">
+                        <p:commandButton value="Pesquisar" ajax="false" action="#{profissionalBean.buscaProfissionalPorCategoria()}" />
+                    </p:column>
+                    
+                </p:dataTable>
             </h:form>
             <a href="javascript:window.history.go(-1)">voltar</a>
         </ui:define>
