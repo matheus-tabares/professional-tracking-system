@@ -61,9 +61,8 @@ public class ProfissionalBean {
         return null;
     }
 
-    public String consultaProfissional(int idProfissionalSelecionado) {
-        profissional = profissionalDAO.carregar(idProfissionalSelecionado);
-        return "DetalheProfissional?faces-redirect=true";
+    public void consultaProfissional(int idProfissionalSelecionado) {
+        profissional = profissionalDAO.carregar(idProfissionalSelecionado);        
     }
 
     public ArrayList<Categoria> getListaCategorias() {

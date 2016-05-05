@@ -16,20 +16,24 @@
     <html>
         <head>
             <meta name="viewport" content="initial-scale=1.0, user-scalable=no">            
-            <title>Travel modes in directions</title>
+            <title>Mapa</title>
             <style>
                 html, body {
                     height: 100%;
                     margin: 0;
                     padding: 0;
+                    background-image: url('resources/img/carregando.gif');
+                    background-size: 100px;
+                    background-position: center;
+                    background-repeat: no-repeat;
                 }
                 #map {
-                    height: 100%;
+                    height: 100%;                    
                 }
                 #floating-panel {
                     position: absolute;
-                    top: 10px;
-                    left: 25%;
+                    top: 1px;
+                    left: 45%;
                     z-index: 5;
                     background-color: #fff;
                     padding: 5px;
@@ -42,41 +46,55 @@
 
             </style>
         </head>
-        <body>
+        <body >
             <div id="floating-panel">
-                <b>Mode of Travel: </b>
+                <b>Modo :</b>
                 <select id="mode">
-                    <option value="DRIVING">Driving</option>
-                    <option value="WALKING">Walking</option>
-                    <option value="BICYCLING">Bicycling</option>
-                    <option value="TRANSIT">Transit</option>
-                </select>
+                    <option value="DRIVING">Carro</option>
+                    <option value="WALKING">Andando</option>                                        
+                </select>                
             </div>
+
+            <h:inputText  id="pontofinal" value="#{profissionalBean.profissional.endereco.endereco} , #{profissionalBean.profissional.endereco.numero} , #{profissionalBean.profissional.endereco.bairro} , #{profissionalBean.profissional.endereco.cidade}" size="100"/><br/>
+            <h:inputText id="partida" value="#{loginBean.cliente.endereco.endereco} , #{loginBean.cliente.endereco.numero} , #{loginBean.cliente.endereco.bairro} , #{loginBean.cliente.endereco.cidade}" size="100" />
             <div id="map"></div>
             <script>
+
+                var pontodepartida = document.getElementById('partida').value; 
+                
                 function initMap() {
+                    /* if ("geolocation" in navigator) {
+                        navigator.geolocation.getCurrentPosition(function (position) {
+                            //alert(posicao.coords.latitude + ', ' + posicao.coords.longitude);
+                             pontodepartida = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+                             
+                        });
+                    } else {
+                        alert('seu navegador não suporta geolocation');
+                    }*/
                     var directionsDisplay = new google.maps.DirectionsRenderer;
                     var directionsService = new google.maps.DirectionsService;
                     var map = new google.maps.Map(document.getElementById('map'), {
                         zoom: 14,
                         center: {lat: 37.77, lng: -122.447}
                     });
+                    
                     directionsDisplay.setMap(map);
-
-                    calculateAndDisplayRoute(directionsService, directionsDisplay);
+                    /*executa a func calcula rota*/
+                    calculaRota(directionsService, directionsDisplay);
                     document.getElementById('mode').addEventListener('change', function () {
-                        calculateAndDisplayRoute(directionsService, directionsDisplay);
+                        calculaRota(directionsService, directionsDisplay);
                     });
                 }
 
-                function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+                function calculaRota(directionsService, directionsDisplay) {
+                    
+                   //alert('com geolocalização!');
                     var selectedMode = document.getElementById('mode').value;
                     directionsService.route({
-                        origin: {lat: 37.77, lng: -122.447}, // Haight.
-                        destination: {lat: 37.768, lng: -122.511}, // Ocean Beach.
-                        // Note that Javascript allows us to access the constant
-                        // using square brackets and a string value as its
-                        // "property."
+                        origin: pontodepartida, // cliente.
+                        destination: document.getElementById('pontofinal').value, //profissional
+
                         travelMode: google.maps.TravelMode[selectedMode]
                     }, function (response, status) {
                         if (status == google.maps.DirectionsStatus.OK) {
@@ -85,13 +103,18 @@
                             window.alert('Directions request failed due to ' + status);
                         }
                     });
+
                 }
 
+
+                /*Exemplo results[0].formatted_address: "275-291 Bedford Ave, Brooklyn, NY 11211, USA"*/
             </script>
+
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
             <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZiFconlkX4lv9MKcXQo-BkQX9-QY-L0w&signed_in=true&callback=initMap"
             async defer></script>
 
         </body>
     </html>
 </f:view>
-<!--EXEMPLO QUE ESTOU SEGUINDO DA DOCUMENTAÇÃO DO GOOGLE MAPS-->

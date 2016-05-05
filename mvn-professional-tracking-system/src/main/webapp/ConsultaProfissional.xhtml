@@ -8,11 +8,14 @@
     <ui:composition template="template/LayoutCliente.xhtml">
 
         <ui:define name="content">
-            <h2 style="text-align: center;">Consulta Profissional</h2>
+           
             <h:messages/>
             <h:form>
                 <p:dataTable value="#{profissionalBean.listaProfissionais}" var="p" paginator="true" rows="10" widgetVar="carsTable"
                              rowHover="true" reflow="true" filteredValue="#{profissionalBean.filtroCategoria}">
+                    <f:facet name="header">
+                        Consulta Profissional
+                    </f:facet>
                     <p:column headerText="Nome">
                         <h:outputText value="#{p.nome}"/>
                     </p:column>
@@ -22,11 +25,9 @@
                     <p:column headerText="Bairro" width="120">
                         <h:outputText value="#{p.endereco.bairro}"/>                        
                     </p:column>
-                    <p:column headerText="Localização" width="120">
-                        <p:commandLink ajax="false" value="Ver no Mapa" action="localizar.jsp" />
-                    </p:column>
+                    
                     <p:column headerText="Detalhe" width="80" style="text-align: center" >
-                        <p:commandButton icon="ui-icon-search" ajax="false" action="#{profissionalBean.consultaProfissional(p.id)}" style="background: linear-gradient(#006666,white)"/>
+                        <p:commandButton icon="ui-icon-search" ajax="false" actionListener="#{profissionalBean.consultaProfissional(p.id)}" action="DetalheProfissional"/>
                     </p:column>
                 </p:dataTable>
             </h:form>
