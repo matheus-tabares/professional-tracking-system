@@ -6,7 +6,7 @@
       xmlns:p="http://primefaces.org/ui">
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
-        
+        <meta name="viewport" content="width=device-width, user-scalable=no"></meta>
         <h:outputScript library="js" name="cep.js"/>
         <h:outputStylesheet library="css" name="default.css"/>
         <h:outputStylesheet library="css" name="cssLayout.css"/>
@@ -18,15 +18,21 @@
 
         <div id="top">            
             <ui:insert name="top">
-                <div class="menu" onclick="$('#left').toggle('slow')">Menu ☰</div>                
+                <div class="container" >                    
+                    <div class="bar1"></div>
+                    <div class="bar2"></div>
+                    <div class="bar3"></div>
+                </div>
+
             </ui:insert>
         </div>
         <div id="container" >
             <div id="left" style="background: yellow" >
                 <ui:insert name="left">
-                    bOTÕES
-                  
-                    
+
+                    <p:commandButton id="btn" value="TESTE"/>
+                    <p:commandButton  value="TESTE"/>
+
                 </ui:insert>
             </div>
             <div style="height: 100%">
@@ -34,8 +40,8 @@
                     <ui:insert name="right"></ui:insert>
                 </div>
                 <div id="content" class="right_content">
-                    <ui:insert name="content">
-                        conteudo de testes
+                    <ui:insert name="content"  >
+
 
 
                     </ui:insert>
@@ -45,14 +51,18 @@
 
         <ui:insert name="bottom">
             <footer>
-                <h:form prependId="false">
-                    <p:commandLink action="Equipe">
-                        <code>Projeto do curso de ADS IFRS Disciplina DEV SIS II - Copyright<sup>©</sup> 2016</code>
-                    </p:commandLink>
-                </h:form>
+                <p:clock/>
+
             </footer>
         </ui:insert>
-<h:outputScript library="js" name="js.js"/>
+        <h:outputScript library="js" name="js.js"/>   
+        <!--Efeito menu -->
+        <script type="text/javascript">
+            $('.container').click(function () {
+                $('.container').toggleClass('change');
+                $('#left , #btn').animate({width: 'toggle'});            
+            });
+        </script>
     </h:body>
+
 </html>
-<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>-->
