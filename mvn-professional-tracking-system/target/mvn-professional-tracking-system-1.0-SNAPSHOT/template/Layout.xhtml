@@ -8,14 +8,11 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
         <meta name="viewport" content="width=device-width, user-scalable=no"></meta>
         <h:outputScript library="js" name="cep.js"/>
-        <h:outputStylesheet library="css" name="default.css"/>
-        <h:outputStylesheet library="css" name="cssLayout.css"/>
-        <h:outputStylesheet library="css" name="sistema.css"/>
-        <title><ui:insert name="title">Login</ui:insert></title>
+        <h:outputStylesheet library="css" name="default.css"/>        
+        <title><ui:insert name="title">Nome da página</ui:insert></title>
     </h:head>
-
-    <h:body >
-
+    <h:body>
+        <!--BARRA DO TOPO DA TELA-->
         <div id="top">            
             <ui:insert name="top">
                 <div class="container" >                    
@@ -23,44 +20,37 @@
                     <div class="bar2"></div>
                     <div class="bar3"></div>
                 </div>
-
             </ui:insert>
         </div>
-        <div id="container" >
-            <div id="left" style="background: yellow" >
-                <ui:insert name="left">
+        <!--FIM BARRA DO TOPO DA TELA-->
 
-                    <p:commandButton id="btn" value="TESTE"/>
-                    <p:commandButton  value="TESTE"/>
+        <!--CONTAINER PRINCIPAL SITE-->
+        <div style="width: 100%;border: 4px solid greenyellow;height: 100%">
+            <div id="container" >
 
-                </ui:insert>
-            </div>
-            <div style="height: 100%">
-                <div id="right">
-                    <ui:insert name="right"></ui:insert>
+                <div id="left" style="background: tomato;height: 100%;position: absolute;display:block; height: 800px;width: 300px;clear: both">
+                    <ui:insert name="left">
+                        MENU FIXO
+                    </ui:insert>
                 </div>
-                <div id="content" class="right_content">
+
+                <div id="content" style="display: block;background: #045491;position:relative;width:calc(100% - 300px);float: left;height: 100%">
                     <ui:insert name="content"  >
-
-
-
+                        CONTEUDO PRINCIPAL
                     </ui:insert>
                 </div>
             </div>
+
+            <!--FIM CONTAINER PRINCIPAL SITE-->
+            <ui:insert name="bottom">            
+                <p:clock/>            
+            </ui:insert>
         </div>
-
-        <ui:insert name="bottom">
-            <footer>
-                <p:clock/>
-
-            </footer>
-        </ui:insert>
-        <h:outputScript library="js" name="js.js"/>   
         <!--Efeito menu -->
         <script type="text/javascript">
             $('.container').click(function () {
                 $('.container').toggleClass('change');
-                $('#left , #btn').animate({width: 'toggle'});            
+                $('#left , #btn').animate({width: 'toggle'});
             });
         </script>
     </h:body>
