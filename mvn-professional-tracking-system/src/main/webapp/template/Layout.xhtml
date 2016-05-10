@@ -5,40 +5,39 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
     <h:head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
         <meta name="viewport" content="width=device-width, user-scalable=no"></meta>
-        <h:outputScript library="js" name="cep.js"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
         <h:outputStylesheet library="css" name="default.css"/>        
         <title><ui:insert name="title">Nome da página</ui:insert></title>
     </h:head>
     <h:body>
-        <div style="width: 100%;border: 4px solid greenyellow;height: 100%;background: #2D5E82">
+        <div style="width: 100%;height: 100%;background: #2D5E82">
             <!--BARRA DO TOPO DA TELA-->
-            <div id="top">            
-                <ui:insert name="top">
-                    <section class="top-direita" >
-                        <div class="container change" >                    
-                            <div class="bar1"></div>
-                            <div class="bar2"></div>
-                            <div class="bar3"></div>                         
-                        </div> 
-                        <div class="container" >
-                            <h1>MENU</h1>
-                        </div>
-                    </section>
-                    <section class="top-centro">
-                        <h1> Top centro</h1>
-                    </section>
-                    <section class="top-esquerda" >
-                        <h1> top esquerda</h1>
-                    </section>  
-                </ui:insert>
+            <div id="top">                  
+                <section class="top-direita" >
+                    <div class="container change" >                    
+                        <div class="bar1"></div>
+                        <div class="bar2"></div>
+                        <div class="bar3"></div>                         
+                    </div> 
+                    <div class="container" >
+                        <h1>MENU</h1>
+                    </div>
+                </section>
+                <section class="top-centro">
+                    <h1>Top centro</h1>
+                </section>
+                <section class="top-esquerda" >
+                    <p>Top esquerda 11</p>
+                    <p>Top esquerda 2</p>                        
+                </section>                 
             </div>
             <!--FIM BARRA DO TOPO DA TELA-->
 
             <!--CONTAINER PRINCIPAL SITE-->
             <div id="conteudo" >
-                <div id="left">
+                <!--          MENU          -->    
+                <div id="left-menu">
                     <ui:insert name="menu-todos">
                         <p style="min-width: 300px;">MENU FIXO TODOS</p>
                     </ui:insert>
@@ -64,20 +63,15 @@
         </div>
         <!--Efeito menu -->
         <script type="text/javascript">
-            $('.container').click(function (e) {
-                $('.container').toggleClass('change');
-                $('#left , #btn').animate({width: 'toggle'}); 
-                e.preventDefault();
+            $(window).load(function () {
+                $('.container').click(function (e) {
+                    $('.container').toggleClass('change');
+                    $('#left-menu , #btn').animate({width: 'toggle'});
+                    e.preventDefault();
+                });
             });
         </script>
+        <h:outputScript library="js" name="js.js"/>
     </h:body>
 
 </html>
-<!--
-<div class="container" >                    
-                        <div class="bar1"></div>
-                        <div class="bar2"></div>
-                        <div class="bar3"></div>                         
-                    </div>
-
--->
