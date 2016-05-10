@@ -1,29 +1,48 @@
-/*-----------------------COMEÇO DO CSS AS GANHA ICORREA-----------------------*/
-/*----------------------RESET-------------------------------------------------*/
+/*--------------COMEÇO DO CSS AS GANHA ICORREA VULGO BALADINHA----------------*/
+
+/*    border: 5px solid deeppink; e backgroud red USADOs PARA MARCAR ESPAÇOS  */
+/*----------------------RESETs------------------------------------------------*/
 *{
     box-sizing: border-box;
     margin:0;
     padding:0;
     list-style:none;
-    vertical-align:baseline;
+
 }
-/*------------------FIM RESET-------------------------------------------------*/
 html,body{
     width: 100%;
-    height: 100%;
-    overflow: hidden;
+    height: 100%;    
+}
+/*------------------FIM RESET-------------------------------------------------*/
+#top{    
+    background: white;
+    width: 100%;height: 70px;
+    top:0; left: 0;   
+    position: absolute;    
+    display: flex;
 }
 
+.top-direita,.top-centro,.top-esquerda{    
+    width: 33%;    
+    margin: auto;    
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;border: 5px solid deeppink;
+}
+.top-direita{
+    justify-content: flex-start;
+}
 /*---------------------MENU-CSS-----------------------------------------------*/
 .container {
     display: inline-block;
-    cursor: pointer;
-    position: fixed;
-    left: 10px;
-    top: 5px;
-    z-index: 9999;
+    cursor: pointer;   
+    background: red; 
+    padding: 5px;
 }
+.container h1{
 
+}
 .bar1, .bar2, .bar3 {
     width: 35px;
     height: 5px;
@@ -31,16 +50,29 @@ html,body{
     margin: 6px 0;
     transition: 0.5s;
 }
-
 .change .bar1 {
     -webkit-transform: rotate(-45deg) translate(-9px, 6px) ;
     transform: rotate(-45deg) translate(-9px, 6px) ;
 }
-
-.change .bar2 {opacity: 0;}
-
+.change .bar2 {
+    opacity: 0;
+}
 .change .bar3 {
     -webkit-transform: rotate(45deg) translate(-8px, -8px) ;
     transform: rotate(45deg) translate(-8px, -8px) ;
 }
+#left{
+    background: deeppink;
+    width: 300px;
+    height: 100%;       
+}
 /*-----------------FIM MENU-CSS-----------------------------------------------*/
+#conteudo{ 
+  padding-top:66px; /*arrumar quando tirar as bordas*/
+  height: 100%;
+  display: flex;
+}
+#conteudo-principal{
+    background: deepskyblue;width: 100% 
+   
+}
