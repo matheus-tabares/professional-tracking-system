@@ -8,28 +8,29 @@
     margin:0;
     padding:0;
     list-style:none;
-
 }
 html,body{
     width: 100%;
-    height: 100%;    
+    height: 100%; background: #2D5E82   
 }
 /*------------------FIM RESET-------------------------------------------------*/
-#top{    
-    background: white;
+#top{       
     width: 100%;height: 60px;
     top:0; left: 0;   
     position: absolute;    
     display: flex;
+    -webkit-box-shadow: 0 8px 6px -6px black;
+    -moz-box-shadow: 0 8px 6px -6px black;
+    box-shadow: -2px 8px 6px -6px black;
 }
 
 .top-direita,.top-centro,.top-esquerda{    
-    width: 40%;    
+    width: 40%;height: 60px;    
     margin: auto;    
-    height: 60px;
     display: flex;
     align-items: center;
-    justify-content: center;border: 5px solid deeppink;
+    justify-content: center;
+    color: #fff;
 }
 
 .top-direita{
@@ -38,23 +39,22 @@ html,body{
 }
 
 .top-esquerda{
-/*    flex-direction: column; */
+    flex-direction: column; 
 }
 
 /*---------------------MENU-CSS-----------------------------------------------*/
 .container {
     display: inline-block;
-    cursor: pointer;   
-    background: red; 
+    cursor: pointer;       
     padding: 5px;
 }
 .container h1{
-
+    color: #fff;
 }
 .bar1, .bar2, .bar3 {
     width: 35px;
     height: 5px;
-    background-color: #000;
+    background-color: #fff;
     margin: 6px 0;
     transition: 0.5s;
 }
@@ -69,10 +69,10 @@ html,body{
     -webkit-transform: rotate(45deg) translate(-8px, -8px) ;
     transform: rotate(45deg) translate(-8px, -8px) ;
 }
-#left-menu{
-    background: deeppink;
+#left-menu{   
     width: 300px;
-    height: 100%;       
+    height: 100%;   
+    padding-top: 10px; border: 1px inset #999;     
 }
 /*-----------------------------------MOBILE-----------------------------------*/
 
@@ -101,6 +101,42 @@ and (max-device-width : 480px)
     display: flex;
 }
 #conteudo-principal{
-    background: deepskyblue;width: 100% 
+
 
 }
+
+.container-btn{
+    display: block;
+    width: 250px;
+    min-width: 250px;
+    height: 60px;
+    background: tomato;    
+    margin: auto;
+    margin-bottom: 10px;
+    -webkit-box-shadow: 0 8px 6px -6px black;
+    -moz-box-shadow: 0 8px 6px -6px black;
+    box-shadow: -2px 8px 6px -6px black;
+    z-index: 1;
+}
+#left-menu footer{
+    position: relative;
+    clear: both;
+    height: 200px;    
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+#left-menu footer code{
+    position: absolute;
+    bottom: 0;left: 0;
+    width: 100%;
+    text-align: center;
+}
+
+
+/*
+ <a  href="javascript:window.history.go(-1)"><p style="width: 50px;height: 50px;border-radius: 50%; position: absolute;bottom: 5px; right: 5px;background: deeppink"></p></a>
+
+*/
