@@ -5,54 +5,102 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
     <h:head>
+        <meta name="viewport" content="width=device-width, user-scalable=no"></meta>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
-        
-        <h:outputScript library="js" name="cep.js"/>
-        <h:outputStylesheet library="css" name="default.css"/>
-        <h:outputStylesheet library="css" name="cssLayout.css"/>
-        <h:outputStylesheet library="css" name="sistema.css"/>
-        <title><ui:insert name="title">Login</ui:insert></title>
+        <h:outputStylesheet library="css" name="default.css"/>        
+        <title><ui:insert name="title">Nome da página</ui:insert></title>
     </h:head>
+    <h:body>
 
-    <h:body >
+        <div style="width: 100%;height: 100%;"> 
 
-        <div id="top">            
-            <ui:insert name="top">
-                <div class="menu" onclick="$('#left').toggle('slow')">Menu ☰</div>                
-            </ui:insert>
-        </div>
-        <div id="container" >
-            <div id="left" style="background: yellow" >
-                <ui:insert name="left">
-                    bOTÕES
-                  
-                    
-                </ui:insert>
+            <!--BARRA DO TOPO DA TELA-->
+            <div id="top">                  
+                <section class="top-direita" >
+                    <div class="container change" >                    
+                        <div class="bar1"></div>
+                        <div class="bar2"></div>
+                        <div class="bar3"></div>                         
+                    </div> 
+                    <div class="container" >
+                        <h1>MENU</h1>
+                    </div>
+                </section>
+                <section class="top-centro">
+                    <h1>Top centro</h1>
+                </section>
+                <section class="top-esquerda" >
+                    <p>Top esquerda 1</p>
+                    <p>Top esquerda 2</p>                        
+                </section>                 
             </div>
-            <div style="height: 100%">
-                <div id="right">
-                    <ui:insert name="right"></ui:insert>
+            <!--FIM BARRA DO TOPO DA TELA-->
+
+            <!--CONTAINER PRINCIPAL SITE-->
+            <div id="conteudo" >
+                <!--          MENU          -->    
+                <div id="left-menu">
+
+                    <ui:insert name="menu-todos">
+                        <div class="container-btn">
+                            BOTÂO 1
+                        </div>
+                        <div class="container-btn">
+                            BOTÂO 2 
+                        </div>
+                        <div class="container-btn">
+                            BOTÂO 3
+                        </div>
+                        <div class="container-btn">
+                            BOTÂO 4
+                        </div>
+                        <div class="container-btn">
+                            BOTÂO 5
+                        </div>
+
+                    </ui:insert>
+
+                    <ui:insert name="menu-cliente">
+
+                    </ui:insert>
+
+                    <ui:insert name="menu-profissional">
+
+                    </ui:insert>
+                    <footer>
+                        <h:graphicImage library="img" name="silhuetaHomem.jpg" height="60" title="seu nome"/> 
+                        <h3>NOME DO LOGADO</h3>
+                        <h5>SAIR DO SISTEMA</h5>
+                        <code>DESENVOLVIDO PELO ENSINO MEDIO</code>
+                    </footer>
+
                 </div>
-                <div id="content" class="right_content">
-                    <ui:insert name="content">
-                        conteudo de testes
-
-
+                <!--      FIM MENU          -->   
+                <div id="conteudo-principal">
+                    <ui:insert name="content"  >
+                        CONTEUDO PRINCIPAL
                     </ui:insert>
                 </div>
             </div>
+
+            <!--FIM CONTAINER PRINCIPAL SITE-->
+            <ui:insert name="bottom">            
+                <div style="display: none"> <p:clock /> </div>           
+            </ui:insert>  
         </div>
 
-        <ui:insert name="bottom">
-            <footer>
-                <h:form prependId="false">
-                    <p:commandLink action="Equipe">
-                        <code>Projeto do curso de ADS IFRS Disciplina DEV SIS II - Copyright<sup>©</sup> 2016</code>
-                    </p:commandLink>
-                </h:form>
-            </footer>
-        </ui:insert>
-<h:outputScript library="js" name="js.js"/>
+        <!--Efeito menu -->
+        <script type="text/javascript">
+            $(window).load(function () {
+                $('.container').click(function (e) {
+                    $('.container').toggleClass('change');
+                    $('#left-menu').animate({width: 'toggle'});
+                    e.preventDefault();
+                });
+            });
+        </script>
+        <h:outputScript library="js" name="js.js"/>
+
     </h:body>
+
 </html>
-<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>-->
