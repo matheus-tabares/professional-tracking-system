@@ -9,20 +9,21 @@
         <ui:define name="content">
             <h2 style="text-align: center;">Contate o Profissional</h2>
             <h:messages/>
-            <h:form>
-                <p:panelGrid columns="2">                
+            <h:form style="text-align: center" >
+                <div align="center">
+                <p:panelGrid columns="2" style="alignment-adjust: central">                
                     <p:outputLabel value="Assunto:" for="txtAssunto"/>
-                    <p:inputText id="txtAssunto" value="#{contatoBean.contato.assunto}" size="30"/>                   
+                    <p:inputText id="txtAssunto" value="#{contatoBean.contato.assunto}" size="33"/>                   
                     <p:outputLabel value="Mensagem:" for="txtMensagem"/>
                     <p:inputTextarea id="txtMensagem" rows="10" cols="30" maxlength="600" value="#{contatoBean.contato.mensagem}"/>                   
                     <p:outputLabel/>
                     <p:commandButton ajax="false" value="Enviar" action="#{contatoBean.enviarMensagemParaProfissional()}"/>
-                </p:panelGrid>                
+                </p:panelGrid>  
+                </div>      
             </h:form>
         </ui:define>
 
     </ui:composition>
 
 </html>
-
 

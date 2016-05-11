@@ -63,7 +63,7 @@
                 var pontodepartida = document.getElementById('partida').value; 
                 
                 function initMap() {
-                    /* if ("geolocation" in navigator) {
+                    if ("geolocation" in navigator) {
                         navigator.geolocation.getCurrentPosition(function (position) {
                             //alert(posicao.coords.latitude + ', ' + posicao.coords.longitude);
                              pontodepartida = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
@@ -71,7 +71,7 @@
                         });
                     } else {
                         alert('seu navegador não suporta geolocation');
-                    }*/
+                    }
                     var directionsDisplay = new google.maps.DirectionsRenderer;
                     var directionsService = new google.maps.DirectionsService;
                     var map = new google.maps.Map(document.getElementById('map'), {
@@ -89,7 +89,7 @@
 
                 function calculaRota(directionsService, directionsDisplay) {
                     
-                   //alert('com geolocalização!');
+                   alert('com geolocalização!');
                     var selectedMode = document.getElementById('mode').value;
                     directionsService.route({
                         origin: pontodepartida, // cliente.

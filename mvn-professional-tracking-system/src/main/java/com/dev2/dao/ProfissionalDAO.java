@@ -32,10 +32,10 @@ public class ProfissionalDAO {
     }
 
     public ArrayList<Profissional> listarPorCategoria(int idCategoria) {
-
         List profissionais = sessao.createCriteria(Profissional.class)
                 .add(Restrictions.eq("categoria.id", idCategoria))
                 .list();
+        
 
         return (ArrayList<Profissional>) profissionais;
 

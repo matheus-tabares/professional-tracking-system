@@ -16,8 +16,11 @@ import javax.faces.bean.ManagedProperty;
 @ManagedBean
 @SessionScoped
 public class ContatoBean {
-    private int idProfissional = 1;
-    private int idCliente = 1;
+    /*@ManagedProperty(value = "#{loginBean}")
+    private LoginBean loginBean;*/
+    
+    private int idProfissional;
+    private int idCliente;
     private Contato contato = new Contato();
     private ContatoDAO contatoDAO = new ContatoDAO();
     private Cliente cliente = new Cliente();
@@ -26,18 +29,21 @@ public class ContatoBean {
     private ClienteDAO clienteDAO = new ClienteDAO();
     private List<Contato> mensagensProfissional;
     private List<Contato> mensagensCliente;
-    
-    @ManagedProperty(value = "#{loginBean}")
-    private LoginBean loginBean;
-    
+
+    /*public LoginBean getLoginBean() {
+        return loginBean;
+    }
+
+    public void setLoginBean(LoginBean loginBean) {
+        this.loginBean = loginBean;
+    }*/
     
     public ContatoBean() {
-        this.mensagensProfissional = contatoDAO.listarMensagensProfissional();
-        this.mensagensCliente = contatoDAO.listarMensagensCliente();
+        //this.mensagensProfissional = contatoDAO.listarMensagensProfissional(idProfissional);
+        //this.mensagensCliente = contatoDAO.listarMensagensCliente(idCliente);
     }
-    
+
     public String enviarMensagemParaProfissional() {
-        System.out.println("USUARIOLOGADO: " + loginBean.idUsuarioLogado);
         this.contatoDAO = new ContatoDAO();
         this.cliente = clienteDAO.carregar(idCliente);
         this.contato.setCliente(cliente);
@@ -47,13 +53,13 @@ public class ContatoBean {
         this.contatoDAO.incluir(contato);
         FacesContext contexto = FacesContext.getCurrentInstance();
         contexto.addMessage(null, new FacesMessage("Mensagem Enviada!", ""));
-        buscaMensagensProfissional();
+        buscaMensagensProfissional(idProfissional);
         this.contato = new Contato();
         this.profissional = new Profissional();
         this.cliente = new Cliente();
         return null;
     }
-    
+
     public String enviarMensagemParaCliente() {
         this.contatoDAO = new ContatoDAO();
         this.cliente = clienteDAO.carregar(idCliente);
@@ -64,20 +70,22 @@ public class ContatoBean {
         this.contatoDAO.incluir(contato);
         FacesContext contexto = FacesContext.getCurrentInstance();
         contexto.addMessage(null, new FacesMessage("Mensagem Enviada!", ""));
-        buscaMensagensCliente();
+        buscaMensagensCliente(idCliente);
         this.contato = new Contato();
         this.profissional = new Profissional();
         this.cliente = new Cliente();
         return null;
     }
 
-    public List<Contato> buscaMensagensProfissional() {
-        mensagensProfissional = contatoDAO.listarMensagensProfissional();
+    public List<Contato> buscaMensagensProfissional(int idProfissionalLogado) {
+        System.out.println("idProfissionalLogado ContatoBean: " + idProfissionalLogado);
+        mensagensProfissional = contatoDAO.listarMensagensProfissional(idProfissionalLogado);
         return mensagensProfissional;
     }
 
-    public List<Contato> buscaMensagensCliente() {
-        mensagensCliente = contatoDAO.listarMensagensCliente();
+    public List<Contato> buscaMensagensCliente(int idClienteLogado) {
+        System.out.println("idClienteLogado ContatoBean: " + idClienteLogado);
+        mensagensCliente = contatoDAO.listarMensagensCliente(idClienteLogado);
         return mensagensCliente;
     }
 
@@ -86,43 +94,94 @@ public class ContatoBean {
 
         return "FormularioContato?faces-redirect=true";
     }
-    
-    public String responderCliente() {        
+
+    public String responderCliente(int idCliente) {
+        this.idCliente = idCliente;
+        
         return "FormularioRespostaProfissional?faces-redirect=true";
     }
-    
 
     public String returnIndex() {
         return "index?faces-redirect=true";
     }
-    
-    public int getIdProfissional() {return idProfissional;}
-    public void setIdProfissional(int idProfissional) {this.idProfissional = idProfissional;}
-    public int getIdCliente() {return idCliente;}
-    public void setIdCliente(int idCliente) {this.idCliente = idCliente;}
-    public Contato getContato() {return contato;}
-    public void setContato(Contato contato) {this.contato = contato;}
-    public ContatoDAO getContatoDAO() {return contatoDAO;}
-    public void setContatoDAO(ContatoDAO contatoDAO) {this.contatoDAO = contatoDAO;}
-    public ProfissionalDAO getProfissionalDAO() {return profissionalDAO;}
-    public void setProfissionalDAO(ProfissionalDAO profissionalDAO) {this.profissionalDAO = profissionalDAO;}
-    public ClienteDAO getClienteDAO() {return clienteDAO;}
-    public void setClienteDAO(ClienteDAO clienteDAO) {this.clienteDAO = clienteDAO;}
-    public Cliente getCliente() {return cliente;}
-    public void setCliente(Cliente cliente) {this.cliente = cliente;}
-    public Profissional getProfissional() {return profissional;}
-    public void setProfissional(Profissional profissional) {this.profissional = profissional;}
-    public List<Contato> getMensagensProfissional() {return mensagensProfissional;}
-    public void setMensagensProfissional(List<Contato> mensagensProfissional) {this.mensagensProfissional = mensagensProfissional;}
-    public List<Contato> getMensagensCliente() {return mensagensCliente;}
-    public void setMensagensCliente(List<Contato> mensagensCliente) {this.mensagensCliente = mensagensCliente;}
 
-    public LoginBean getLoginBean() {
-        return loginBean;
+    public int getIdProfissional() {
+        return idProfissional;
     }
 
-    public void setLoginBean(LoginBean loginBean) {
-        this.loginBean = loginBean;
+    public void setIdProfissional(int idProfissional) {
+        this.idProfissional = idProfissional;
     }
-    
+
+    public int getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
+    }
+
+    public Contato getContato() {
+        return contato;
+    }
+
+    public void setContato(Contato contato) {
+        this.contato = contato;
+    }
+
+    public ContatoDAO getContatoDAO() {
+        return contatoDAO;
+    }
+
+    public void setContatoDAO(ContatoDAO contatoDAO) {
+        this.contatoDAO = contatoDAO;
+    }
+
+    public ProfissionalDAO getProfissionalDAO() {
+        return profissionalDAO;
+    }
+
+    public void setProfissionalDAO(ProfissionalDAO profissionalDAO) {
+        this.profissionalDAO = profissionalDAO;
+    }
+
+    public ClienteDAO getClienteDAO() {
+        return clienteDAO;
+    }
+
+    public void setClienteDAO(ClienteDAO clienteDAO) {
+        this.clienteDAO = clienteDAO;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public Profissional getProfissional() {
+        return profissional;
+    }
+
+    public void setProfissional(Profissional profissional) {
+        this.profissional = profissional;
+    }
+
+    public List<Contato> getMensagensProfissional() {
+        return mensagensProfissional;
+    }
+
+    public void setMensagensProfissional(List<Contato> mensagensProfissional) {
+        this.mensagensProfissional = mensagensProfissional;
+    }
+
+    public List<Contato> getMensagensCliente() {
+        return mensagensCliente;
+    }
+
+    public void setMensagensCliente(List<Contato> mensagensCliente) {
+        this.mensagensCliente = mensagensCliente;
+    }
 }

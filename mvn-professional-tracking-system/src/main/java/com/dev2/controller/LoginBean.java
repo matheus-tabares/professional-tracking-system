@@ -7,20 +7,31 @@ import com.dev2.model.Profissional;
 import javax.annotation.PreDestroy;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 @ManagedBean
 @SessionScoped
 public class LoginBean {
+    @ManagedProperty(value = "#{contatoBean}")
+    private ContatoBean contatoBean;
 
+    public ContatoBean getContatoBean() {
+        return contatoBean;
+    }
+
+    public void setContatoBean(ContatoBean contatoBean) {
+        this.contatoBean = contatoBean;
+    }
+    
     String email;
     String senha;
     int idProfissionalLogado;
     int idClienteLogado;
     int idUsuarioLogado;
-    String tipoLogin;
-
+    String tipoLogin = "C";
+    
     Profissional profissional;
     Cliente cliente;
 
@@ -64,12 +75,16 @@ public class LoginBean {
 
             System.out.println("RODOU LOGIN");
             idClienteLogado = cliente.getId();
+            System.out.println("idClienteLogado loginbean: " + idClienteLogado);
+            System.out.println("cliente.getId() loginbean : " + cliente.getId());
+            //contatoBean.setIdCliente(idClienteLogado);
+            contatoBean.buscaMensagensCliente(idClienteLogado);
             idUsuarioLogado = idClienteLogado;
             System.out.println(idClienteLogado);
             return true;
         }
     }
-
+    
     public boolean autenticarProfissional() {
 
         ProfissionalDAO profissionalDAO = new ProfissionalDAO();
@@ -86,6 +101,10 @@ public class LoginBean {
 
             System.out.println("RODOU LOGIN");
             idProfissionalLogado = profissional.getId();
+            System.out.println("idProfissionalLogado loginbean: " + idProfissionalLogado);
+            System.out.println("profissional.getId() loginbean : " + profissional.getId());
+            //contatoBean.setIdProfissional(idProfissionalLogado);
+            contatoBean.buscaMensagensProfissional(idProfissionalLogado);
             idUsuarioLogado = idProfissionalLogado;
             System.out.println(idProfissionalLogado);
             return true;

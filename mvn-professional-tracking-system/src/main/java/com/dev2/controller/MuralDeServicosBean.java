@@ -18,7 +18,7 @@ import javax.faces.context.FacesContext;
 public class MuralDeServicosBean {
     private MensagemMural mensagemMural = new MensagemMural();
     private MensagemMuralDAO mensagemMuralDAO = new MensagemMuralDAO();
-    private int idCategoria;
+    private int idCategoria = 1;
     private CategoriaDAO categoriaDAO = new CategoriaDAO();
     private int idCliente = 1;
     private Cliente cliente = new Cliente();   
