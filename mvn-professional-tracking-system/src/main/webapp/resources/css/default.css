@@ -1,6 +1,6 @@
 /*--------------COMEÇO DO CSS AS GANHA ICORREA VULGO BALADINHA----------------*/
 
-/*    border: 5px solid deeppink; e backgroud red USADOs PARA MARCAR ESPAÇOS  */
+
 /*----------------------RESETs------------------------------------------------*/
 
 *{
@@ -10,8 +10,7 @@
     list-style:none;
 }
 html,body{
-    width: 100%;
-    height: 100%;    
+    width: 100%;height: 100%;        
 }
 /*------------------FIM RESET-------------------------------------------------*/
 #top{       
@@ -21,7 +20,7 @@ html,body{
     display: flex;
     -webkit-box-shadow: 0 8px 6px -6px black;
     -moz-box-shadow: 0 8px 6px -6px black;
-    box-shadow: -2px 8px 6px -6px black;background: #2D5E82
+    box-shadow: -2px 8px 6px -6px black;background: #2D5E82;
 }
 
 .top-direita,.top-centro,.top-esquerda{    
@@ -38,8 +37,8 @@ html,body{
     width: 20%;
 }
 
-.top-esquerda{
-    flex-direction: column; 
+.top-esquerda{    
+    justify-content: flex-end;
 }
 
 /*---------------------MENU-CSS-----------------------------------------------*/
@@ -74,6 +73,49 @@ html,body{
     height: 100%;   
     padding-top: 10px; border: 1px inset #999;  overflow: auto;position: relative;   
 }
+.container-btn{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    position: relative;
+    width: 250px;
+    min-width: 250px;
+    height: 60px;
+    background: #2D5E82;    
+    margin: auto;
+    margin-bottom: 10px;
+    -webkit-box-shadow: 0 8px 6px -6px black;
+    -moz-box-shadow: 0 8px 6px -6px black;
+    box-shadow: -4px 8px 6px -6px #000;
+    z-index: 1;
+    border: 2px outset #999;
+}
+.alert-btn{  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;width: 40px;min-width: 40px;
+    border: 1px solid #999;
+    border-radius: 50%;margin: 2px;    
+    
+    transition: all 0.5s ease-in-out;
+}
+.container-btn a{
+    text-decoration: none;
+    color: white;
+    height: 100%;width:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;left: 0;top:0
+}
+.container-btn:hover{
+    box-shadow: inset 0px 0px 10px 3px rgba(50, 50, 50, 0.6);
+
+}
+.container-btn:hover .alert-btn{
+    transform: rotate(360deg);
+}
 /*-----------------------------------MOBILE-----------------------------------*/
 
 @media only screen 
@@ -90,6 +132,7 @@ and (max-device-width : 480px)
         width: 60%;
     }
     #left-menu{
+        display: none;
         position: fixed;
         width: 100%;
     }
@@ -101,39 +144,10 @@ and (max-device-width : 480px)
     display: flex;
 }
 #conteudo-principal{
-
-
 }
 
-.container-btn{
-    display: block;
-    width: 250px;
-    min-width: 250px;
-    height: 60px;
-    background: tomato;    
-    margin: auto;
-    margin-bottom: 10px;
-    -webkit-box-shadow: 0 8px 6px -6px black;
-    -moz-box-shadow: 0 8px 6px -6px black;
-    box-shadow: -2px 8px 6px -6px black;
-    z-index: 1;
-}
-#left-menu footer{
-    position: relative;
-    clear: both;
-    height: 200px;    
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    flex-direction: column;
-}
-#left-menu footer code{
-    position: absolute;
-    bottom: 0;left: 0;
-    width: 100%;
-    text-align: center;
-}
+
+
 
 
 /*

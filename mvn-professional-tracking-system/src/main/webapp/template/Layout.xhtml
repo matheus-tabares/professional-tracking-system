@@ -30,8 +30,13 @@
                     <h1>Top centro</h1>
                 </section>
                 <section class="top-esquerda" >
-                    <p>Top esquerda 1</p>
-                    <p>Top esquerda 2</p>                        
+                    <section>
+                        <p>Top esquerda 1</p>
+                        <p>Top esquerda 2</p> 
+                    </section> 
+                    
+                        <h:graphicImage library="img" name="silhuetaHomem.jpg" height="50" style="margin: 5px;"/>
+                   
                 </section>                 
             </div>
             <!--FIM BARRA DO TOPO DA TELA-->
@@ -43,10 +48,16 @@
 
                     <ui:insert name="menu-todos">
                         <div class="container-btn">
-                            BOTÂO 1
+                            <a href="#">MENSAGENS</a>
+                            <div class="alert-btn">
+                                <h:graphicImage library="img" name="msgicon.ico" height="38"/>
+                            </div>
                         </div>
                         <div class="container-btn">
-                            BOTÂO 2 
+                            <a href="#">Cuidar palavras grandes</a>
+                            <div class="alert-btn">
+                                6
+                            </div>
                         </div>
                         <div class="container-btn">
                             BOTÂO 3
@@ -68,10 +79,7 @@
 
                     </ui:insert>
                     <footer>
-                        <h:graphicImage library="img" name="silhuetaHomem.jpg" height="60" title="seu nome"/> 
-                        <h3>NOME DO LOGADO</h3>
-                        <h5>SAIR DO SISTEMA</h5>
-                        <code>DESENVOLVIDO PELO ENSINO MEDIO</code>
+                        <!--DEFINIR CONTEUDO DO FOOTER-->
                     </footer>
 
                 </div>
@@ -79,6 +87,20 @@
                 <div id="conteudo-principal">
                     <ui:insert name="content"  >
                         CONTEUDO PRINCIPAL
+                        <div class="id_100">
+                            <select style="width: 100px;height: 50px;" onchange="var x = $(this).val();$('#conteudo').css('background', x);">
+                                <option value="val3">ValBranco</option>
+                                <option style="background: #2D5E82;height: 50px;" value="#2D5E82"></option>#b93a32
+                                <option style="background: tomato;height: 50px;" value="tomato"></option>
+                                <option style="background: #b93a32;height: 50px;" value="#b93a32"></option>
+                                <option style="background: #bfbfbf;height: 50px;" value="#bfbfbf"></option>
+                                <option style="background: linear-gradient(#2D5E82 , #142939);height: 50px;" value="linear-gradient(to left,#2D5E82 , #142939)"></option>
+                                <option style="background: radial-gradient(#a6a6a6,#333333);height: 50px;" value="radial-gradient(#a6a6a6,#333333)"></option>
+                                <option style="background: linear-gradient(#ffffff,#333333);height: 50px;" value="radial-gradient(#ffffff,#333333)"></option>
+                                <option style="background: radial-gradient(#ffffff,#cccccc);height: 50px;" value="radial-gradient(#ffffff,#cccccc)"></option>
+
+                            </select>
+                        </div>
                     </ui:insert>
                 </div>
             </div>

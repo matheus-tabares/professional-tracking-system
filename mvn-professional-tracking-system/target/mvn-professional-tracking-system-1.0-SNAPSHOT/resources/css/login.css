@@ -11,7 +11,7 @@
 
 html , body{
     height: 100%;
-    background: #2D5E82;
+    background: radial-gradient( #7aadd1,#2D5E82);
 }
 body{
     display: flex;
@@ -36,7 +36,7 @@ body{
 .ui-button{
     border: 2px outset gray;
     color:#2D5E82; 
-    font-size: 13pt;
+    font-size: 12pt;
 }
 .ui-button:hover{
     color: #fff;
@@ -48,5 +48,6 @@ input[type='text']{
 }
 a{
     font-size: 11pt;
+    margin-top: 2px;
 }
 
