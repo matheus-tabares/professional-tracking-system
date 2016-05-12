@@ -81,7 +81,7 @@ html,body{
     width: 250px;
     min-width: 250px;
     height: 60px;
-    background: #2D5E82;    
+    background:linear-gradient(#275372,#2D5E82);    
     margin: auto;
     margin-bottom: 10px;
     -webkit-box-shadow: 0 8px 6px -6px black;
@@ -89,6 +89,7 @@ html,body{
     box-shadow: -4px 8px 6px -6px #000;
     z-index: 1;
     border: 2px outset #999;
+    border-radius: 10px;
 }
 .alert-btn{  
     display: flex;
@@ -107,7 +108,8 @@ html,body{
     display: flex;
     justify-content: center;
     align-items: center;
-    position: absolute;left: 0;top:0
+    position: absolute;left: 0;top:0;
+    background-image: url('img/efeito.png');background-size: 0 0;background-repeat: no-repeat;background-position: center;transition: all 0.3s ease-in-out;border-radius: 10px;
 }
 .container-btn:hover{
     box-shadow: inset 0px 0px 10px 3px rgba(50, 50, 50, 0.6);
@@ -115,6 +117,12 @@ html,body{
 }
 .container-btn:hover .alert-btn{
     transform: rotate(360deg);
+}
+.container-btn:hover a{
+   background-size: 100% 100%;
+}
+.container-btn:hover  {
+   transform: translatey(5px);
 }
 /*-----------------------------------MOBILE-----------------------------------*/
 
