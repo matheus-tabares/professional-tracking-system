@@ -8,7 +8,7 @@
         <link rel="icon" type="image/png" href="../resources/img/psticon.png" />
         <meta name="viewport" content="width=device-width, user-scalable=no"></meta>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
-        <h:outputStylesheet library="css" name="default.css"/>        
+        <h:outputStylesheet  library="css" name="default.css" />        
         <title><ui:insert name="title">Nome da página</ui:insert></title>
     </h:head>
     <h:body>
@@ -17,7 +17,7 @@
 
             <!--BARRA DO TOPO DA TELA-->
             <div id="top">                  
-                <section class="top-direita" >
+                <section class="top-direita flexs" >
                     <div class="container change" >                    
                         <div class="bar1"></div>
                         <div class="bar2"></div>
@@ -27,10 +27,10 @@
                         <h1>MENU</h1>
                     </div>
                 </section>
-                <section class="top-centro">
-                    <h1>Top centro</h1>
+                <section class="top-centro flexs">
+                    <h1>TITULO &times;</h1>
                 </section>
-                <section class="top-esquerda" >
+                <section class="top-esquerda flexs" >
                     <section>
                         <p>Top esquerda 1</p>
                         <p>Top esquerda 2</p> 
@@ -48,25 +48,27 @@
                 <div id="left-menu">
 
                     <ui:insert name="menu-todos">
-                        <div class="container-btn">
-                            <a href="#">MENSAGENS</a>
-                            <div class="alert-btn">
+                        <div class="flexs container-btn">
+                            <a class="flexs" href="#">MENSAGENS</a>
+                            <div class="alert-btn flexs">
                                 <h:graphicImage library="img" name="msgicon.ico" height="38"/>
                             </div>
                         </div>
-                        <div class="container-btn">
-                            <a class="b" href="#">Cuidar palavras grandes</a>
-                            <div class="alert-btn">
-                                6
+                        <div class="flexs container-btn">
+                            <a class="b flexs" href="#">Cuidar palavras grandes</a>
+                            <div class="alert-btn flexs">
+                                <span class="flexs">
+                                    5
+                                </span>
                             </div>
                         </div>
-                        <div class="container-btn">
+                        <div class="flexs container-btn">
                             BOTÂO 3
                         </div>
-                        <div class="container-btn">
+                        <div class="flexs container-btn">
                             BOTÂO 4
                         </div>
-                        <div class="container-btn" style="clear: both;">
+                        <div class="flexs container-btn" style="clear: both;">
                             BOTÂO 5
                         </div>
 
@@ -87,21 +89,8 @@
                 <!--      FIM MENU          -->   
                 <div id="conteudo-principal">
                     <ui:insert name="content"  >
-                        CONTEUDO PRINCIPAL
-                        <div class="id_100">
-                            <select style="width: 100px;height: 50px;" onchange="var x = $(this).val();$('#conteudo').css('background', x);">
-                                <option value="val3">ValBranco</option>
-                                <option style="background: #2D5E82;height: 50px;" value="#2D5E82"></option>#b93a32
-                                <option style="background: tomato;height: 50px;" value="tomato"></option>
-                                <option style="background: #b93a32;height: 50px;" value="#b93a32"></option>
-                                <option style="background: #bfbfbf;height: 50px;" value="#bfbfbf"></option>
-                                <option style="background: linear-gradient(#2D5E82 , #142939);height: 50px;" value="linear-gradient(to left,#2D5E82 , #142939)"></option>
-                                <option style="background: radial-gradient(#a6a6a6,#333333);height: 50px;" value="radial-gradient(#a6a6a6,#333333)"></option>
-                                <option style="background: linear-gradient(#ffffff,#333333);height: 50px;" value="radial-gradient(#ffffff,#333333)"></option>
-                                <option style="background: radial-gradient(#ffffff,#cccccc);height: 50px;" value="radial-gradient(#ffffff,#cccccc)"></option>
-
-                            </select>
-                        </div>
+                        <div id="teste"><h1>conteudo teste</h1></div>
+                        
                     </ui:insert>
                 </div>
             </div>
