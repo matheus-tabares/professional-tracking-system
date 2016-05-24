@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition template="template/LayoutPadrao.xhtml">
+
+        <ui:define name="content">
+
+            <h:form prependId="false">
+                <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+                <p:panelGrid columns="2" styleClass="formularios">
+                    <f:facet name="header">
+                        NOVO ENDEREÇO
+                    </f:facet>
+
+                    <p:outputLabel value="CEP:" for="txtCEP"/>                                           
+                    <p:inputText id="txtCEP" maxlength="8" value="#{enderecoBean.endereco.CEP}"/>
+
+                    <p:outputLabel value="Nº: " for="txtNumero"/>
+                    <p:inputText id="txtNumero" maxlength="5" value="#{enderecoBean.endereco.numero}" />
+
+                    <p:outputLabel value="Logradouro: " for="txtLogradouro"/>
+                    <p:inputText id="txtLogradouro" maxlength="100" value="#{enderecoBean.endereco.logradouro}"/> 
+
+
+                    <p:outputLabel value="Complemento: " for="txtComplemento"/>
+                    <p:inputText id="txtComplemento" maxlength="20" value="#{enderecoBean.endereco.complemento}" />
+
+
+                    <p:outputLabel value="Bairro: " for="txtBairro"/>
+                    <p:inputText id="txtBairro" maxlength="30" value="#{enderecoBean.endereco.bairro}" />
+
+
+                    <p:outputLabel value="Cidade: " for="txtCidade" />
+                    <p:inputText id="txtCidade" maxlength="30" value="#{enderecoBean.endereco.cidade}" />
+
+
+                    <p:outputLabel value="UF:" for="txtUF"/>
+                    <p:inputText id="txtUF" maxlength="30" value="#{enderecoBean.endereco.UF}" /> 
+
+
+                    <f:facet name="footer">
+                        <h:panelGroup>
+                            <p:commandButton ajax="false" value="Cadastrar"  action="#{enderecoBean.cadastrar()}"  />
+                        </h:panelGroup>                        
+                    </f:facet>
+                </p:panelGrid>  
+
+            </h:form>
+            <h:form>
+
+                <p:dataTable value="#{enderecoBean.listaEnderecos}" var="end" emptyMessage="NÃO HÁ ENDEREÇOS CADASTRADOS" rows="8" 
+                             paginator="true" paginatorPosition="bottom"
+                             style="margin-top: 10px">
+
+                    <p:column headerText="LOGRADOURO" sortBy="#{end.logradouro}">
+                        <h:outputText value="#{end.logradouro}" />
+                    </p:column>
+
+                    <p:column headerText="NUMERO">
+                        <h:outputText value="#{end.numero}" />
+                    </p:column>
+
+                    <p:column headerText="Delete" width="60" >
+                        <p:commandButton icon="ui-icon-trash" ajax="false" action="#{enderecoBean.deletar(end.id)}"/>
+                    </p:column>
+                </p:dataTable>
+
+            </h:form>
+        </ui:define>
+
+    </ui:composition>
+
+</html>
+
+

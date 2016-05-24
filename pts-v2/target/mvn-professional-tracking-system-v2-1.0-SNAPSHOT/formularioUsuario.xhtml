@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition template="template/LayoutPadrao.xhtml">
+
+        <ui:define name="content">
+
+
+            <h:form prependId="false">
+                <p:panelGrid columns="3" styleClass="formularios">
+                    <f:facet name="header">
+                        CADASTRO USUÁRIO
+                    </f:facet>
+
+                    <p:outputLabel value="Nome:" for="txtNome"/>
+                    <p:inputText id="txtNome" maxlength="100" value="#{usuarioBean.usuario.nome}"/>
+                    <p:message for="txtNome"/>
+
+                    <p:outputLabel value="E-mail:" for="txtEmail"/>
+                    <p:inputText id="txtEmail" maxlength="100" value="#{usuarioBean.usuario.email}"/> 
+                    <p:message for="txtEmail"/>
+
+                    <p:outputLabel value="Senha:" for="txtSenha"/>
+                    <p:inputText id="txtSenha" maxlength="8" value="#{usuarioBean.usuario.senha}"/> 
+                    <p:message for="txtSenha"/>
+
+                    <p:outputLabel value="CPF:" for="txtCPF"/>
+                    <p:inputText id="txtCPF" maxlength="12" value="#{usuarioBean.usuario.CPF}"/>  
+                    <p:message for="txtCPF"/>
+
+                    <p:outputLabel value="CEP:" for="txtCEP"/>                                           
+                    <p:inputText id="txtCEP" maxlength="8" value="#{usuarioBean.endereco.CEP}"/>
+                    <p:message for="txtCEP"/>
+
+                    <p:outputLabel value="Logradouro: " for="txtLogradouro"/>
+                    <p:inputText id="txtLogradouro" maxlength="100" value="#{usuarioBean.endereco.logradouro}"/> 
+                    <p:message for="txtLogradouro"/>
+
+                    <p:outputLabel value="Nº: " for="txtNumero"/>
+                    <p:inputText id="txtNumero" maxlength="5" value="#{usuarioBean.endereco.numero}" />
+                    <p:message for="txtNumero"/>
+                    
+                    <p:outputLabel value="Complemento: " for="txtComplemento"/>
+                    <p:inputText id="txtComplemento" maxlength="20" value="#{usuarioBean.endereco.complemento}" />
+                    <p:message for="txtComplemento"/>
+
+                    <p:outputLabel value="Bairro: " for="txtBairro"/>
+                    <p:inputText id="txtBairro" maxlength="30" value="#{usuarioBean.endereco.bairro}" />
+                    <p:message for="txtBairro"/>
+
+                    <p:outputLabel value="Cidade: " for="txtCidade" />
+                    <p:inputText id="txtCidade" maxlength="30" value="#{usuarioBean.endereco.cidade}" />
+                    <p:message for="txtCidade"/>
+
+                    <p:outputLabel value="UF:" for="txtUF"/>
+                    <p:inputText id="txtUF" maxlength="30" value="#{usuarioBean.endereco.UF}" /> 
+                    <p:message for="txtUF"/>                    
+
+                    <p:outputLabel value="Telefone: " for="txtTelefone"/>
+                    <p:inputText id="txtTelefone" maxlength="15" value="#{usuarioBean.usuario.telefone}"/> 
+                    <p:message for="txtTelefone"/>
+                    
+                    
+
+                    <f:facet name="footer">
+                        <h:panelGroup>
+                            <p:commandButton ajax="false" value="Cadastrar"  action="#{usuarioBean.cadastrar()}" style="width: 49%"  />
+                        </h:panelGroup>
+                        <h:messages infoClass="certo" errorClass="erro"/>
+                    </f:facet>
+                </p:panelGrid>                
+
+
+            </h:form>
+        </ui:define>
+
+    </ui:composition>
+
+</html>
+
+

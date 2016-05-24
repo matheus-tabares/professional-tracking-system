@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition template="template/LayoutPadrao.xhtml">
+
+        <ui:define name="content">
+
+
+            <h:form prependId="false">
+                <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+                <p:panelGrid columns="2" styleClass="formularios">
+                    <f:facet name="header">
+                        NOVO PROFISSIONAL
+                    </f:facet>
+
+                    <p:outputLabel value="CATEGORIA" for="omCategoria"/>
+                    <p:selectOneListbox id="omCategoria" value="#{profissionalBean.idCategoria}" style="width:170px" >                        
+                        <f:selectItems value="#{categoriaBean.listaCategorias}" var="cat" itemValue="#{cat.id}" itemLabel="#{cat.nome}"/>
+                    </p:selectOneListbox>
+
+                    <p:outputLabel value="DESCRIÇÃO" for="txtDescricao"/>
+                    <p:inputTextarea id="txtDescricao" maxlength="200" cols="20" rows="5" value="#{profissionalBean.profissional.descricaoProfissional}"/> 
+
+
+                    <f:facet name="footer">
+                        <h:panelGroup>
+                            <p:commandButton ajax="false" value="Cadastrar"  action="#{profissionalBean.cadastrar()}"  />
+                        </h:panelGroup>                        
+                    </f:facet>
+                </p:panelGrid>  
+
+            </h:form>
+            <h:form>
+
+                <p:dataTable value="#{profissionalBean.listaProfissionais}" var="pro" emptyMessage="NÃO HÁ PROFISSIONAIS CADASTRADOS" rows="8" 
+                             paginator="true" paginatorPosition="bottom"
+                             style="margin-top: 10px">                    
+
+                    <p:column headerText="DESCRICAO">
+                        <h:outputText value="#{pro.descricaoProfissional}" />
+                    </p:column>
+
+                    <p:column headerText="Delete" width="60" >
+                        <p:commandButton icon="ui-icon-trash" ajax="false" action="#{profissionalBean.deletar(pro.id)}"/>
+                    </p:column>
+                </p:dataTable>
+
+
+
+            </h:form>
+        </ui:define>
+
+    </ui:composition>
+
+</html>
+
+
