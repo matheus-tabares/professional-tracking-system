@@ -30,7 +30,7 @@ import javax.faces.context.FacesContext;
 @ManagedBean
 @SessionScoped
 public class UsuarioBean implements Serializable {
-    
+
     private Usuario usuario = new Usuario();
     private UsuarioDAO usuarioDAO = new UsuarioDAO();
     private Endereco endereco = new Endereco();
@@ -43,7 +43,7 @@ public class UsuarioBean implements Serializable {
     private SegurancaDAO segurancaDAO = new SegurancaDAO();
     private boolean checkProfissional = false;
     private int idCategoria;
-    
+
     public String cadastrarCERTO() {
         this.enderecoDAO = new EnderecoDAO();
         this.enderecoDAO.incluir(endereco);
@@ -58,11 +58,12 @@ public class UsuarioBean implements Serializable {
         this.endereco = new Endereco();
         return null;
     }
-    
+
     public String cadastrar() {
         this.usuarioDAO = new UsuarioDAO();
         this.usuario.setSenha(HashUtil.generateHash(this.usuario.getSenha(), this.seguranca.getSALT()));
         System.out.println("CADASTRAR HASH GERADO: " + this.usuario.getSenha());
+        this.usuario.setEhProfissional(checkProfissional);
         this.usuarioDAO.cadastrar(usuario);
         this.seguranca.setUsuario(usuarioDAO.carregar(this.usuario.getId()));
         this.segurancaDAO.incluir(seguranca);
@@ -81,120 +82,120 @@ public class UsuarioBean implements Serializable {
         inicializarVariaveis();
         return null;
     }
-    
+
     public String deletar(int id) {
         this.usuarioDAO.deletar(id);
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "USUARIO EXCLUIDO", ""));
         getListaUsuarios();
         return null;
     }
-    
+
     public ArrayList<Usuario> getListaUsuarios() {
         this.usuarioDAO = new UsuarioDAO();
         return usuarioDAO.listarUsuarios();
     }
-    
+
     public Usuario getUsuario() {
         return usuario;
     }
-    
+
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
-    
+
     public UsuarioDAO getUsuarioDAO() {
         return usuarioDAO;
     }
-    
+
     public void setUsuarioDAO(UsuarioDAO usuarioDAO) {
         this.usuarioDAO = usuarioDAO;
     }
-    
+
     public Endereco getEndereco() {
         return endereco;
     }
-    
+
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
-    
+
     public EnderecoDAO getEnderecoDAO() {
         return enderecoDAO;
     }
-    
+
     public void setEnderecoDAO(EnderecoDAO enderecoDAO) {
         this.enderecoDAO = enderecoDAO;
     }
-    
+
     public Profissional getProfissional() {
         return profissional;
     }
-    
+
     public void setProfissional(Profissional profissional) {
         this.profissional = profissional;
     }
-    
+
     public ProfissionalDAO getProfissionalDAO() {
         return profissionalDAO;
     }
-    
+
     public void setProfissionalDAO(ProfissionalDAO profissionalDAO) {
         this.profissionalDAO = profissionalDAO;
     }
-    
+
     public Categoria getCategoria() {
         return categoria;
     }
-    
+
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
-    
+
     public CategoriaDAO getCategoriaDAO() {
         return categoriaDAO;
     }
-    
+
     public void setCategoriaDAO(CategoriaDAO categoriaDAO) {
         this.categoriaDAO = categoriaDAO;
     }
-    
+
     public Seguranca getSeguranca() {
         return seguranca;
     }
-    
+
     public void setSeguranca(Seguranca seguranca) {
         this.seguranca = seguranca;
     }
-    
+
     public SegurancaDAO getSegurancaDAO() {
         return segurancaDAO;
     }
-    
+
     public void setSegurancaDAO(SegurancaDAO segurancaDAO) {
         this.segurancaDAO = segurancaDAO;
     }
-    
+
     public int getIdCategoria() {
         return idCategoria;
     }
-    
+
     public void setIdCategoria(int idCategoria) {
         this.idCategoria = idCategoria;
     }
-    
+
     public ArrayList<Categoria> getListaCategorias() {
         this.categoriaDAO = new CategoriaDAO();
         return categoriaDAO.listarCategorias();
     }
-    
+
     public boolean isCheckProfissional() {
         return checkProfissional;
     }
-    
+
     public void setCheckProfissional(boolean checkProfissional) {
         this.checkProfissional = checkProfissional;
     }
-    
+
     public void inicializarVariaveis() {
         this.usuario = new Usuario();
         this.usuarioDAO = new UsuarioDAO();
@@ -209,5 +210,5 @@ public class UsuarioBean implements Serializable {
         this.idCategoria = 0;
         this.checkProfissional = false;
     }
-    
+
 }

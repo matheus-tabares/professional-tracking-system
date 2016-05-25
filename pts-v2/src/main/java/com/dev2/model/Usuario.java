@@ -5,16 +5,13 @@
  */
 package com.dev2.model;
 
-import com.dev2.util.HashUtil;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
-import javax.validation.constraints.Pattern;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.br.CPF;
 
 /**
  *
@@ -37,6 +34,8 @@ public class Usuario implements Serializable {
     private String senha;
 
     private boolean administrador = false;
+    
+    private boolean ehProfissional;
 
     @OneToOne(mappedBy = "usuario")
     private Endereco endereco;
@@ -133,5 +132,13 @@ public class Usuario implements Serializable {
     public void setProfissional(Profissional profissional) {
         this.profissional = profissional;
     }
+    public boolean ehProfissional() {
+        return this.ehProfissional;
+    }
 
+    public void setEhProfissional(boolean ehProfissional) {
+        this.ehProfissional = ehProfissional;
+    }
+
+    
 }
