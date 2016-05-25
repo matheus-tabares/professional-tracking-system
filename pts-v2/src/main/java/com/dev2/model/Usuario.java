@@ -45,7 +45,7 @@ public class Usuario implements Serializable {
     @Length(min = 8, max = 15)
     private String telefone;
 
-    @CPF
+    //@CPF
     private String CPF;
 
     @OneToOne(mappedBy = "usuario")
