@@ -6,8 +6,6 @@
 package com.dev2.util;
 
 import com.dev2.controller.LoginBean;
-import com.dev2.dao.UsuarioDAO;
-import com.dev2.model.Usuario;
 import java.util.Map;
 import javax.faces.application.Application;
 import javax.faces.application.NavigationHandler;
@@ -29,23 +27,20 @@ public class AutenticacaoPhaseListener implements PhaseListener {
         FacesContext facesContext = event.getFacesContext();
         UIViewRoot uiViewRoot = facesContext.getViewRoot();
         String paginaAtual = uiViewRoot.getViewId();
-        System.out.println("PAGINA ATUAL: " + paginaAtual);
+        //System.out.println("PAGINA ATUAL: " + paginaAtual);
 
         boolean ehPaginaAutenticacao = paginaAtual.contains("login.xhtml");
-        System.out.println(ehPaginaAutenticacao);
+        boolean ehPaginaCadastro = paginaAtual.contains("index.xhtml");
+//System.out.println(ehPaginaAutenticacao);
 
-       /* if (!ehPaginaAutenticacao) {
+        if (!ehPaginaAutenticacao && !ehPaginaCadastro) {
             ExternalContext externalContext = facesContext.getExternalContext();
             Map<String, Object> mapa = externalContext.getSessionMap();
             LoginBean loginBean = (LoginBean) mapa.get("loginBean");
-            UsuarioDAO usuarioDAO = new UsuarioDAO();
-            Usuario usuario;
-            usuario = usuarioDAO.carregar(1);
-            Usuario usuarioNaoLogado = null;
 
-            System.out.println("USUARIO: " + usuario.getEmail());
+            System.out.println("USUARIO: " + loginBean.getNomeUsuario());
 
-            if (usuario == null) {
+            if (loginBean.getUsuario() == null) {
                 System.out.println("USUARIO NAO AUTENTICADO");
                 Application application = facesContext.getApplication();
                 NavigationHandler navigationHandler = application.getNavigationHandler();
@@ -53,7 +48,7 @@ public class AutenticacaoPhaseListener implements PhaseListener {
 
             }
 
-        }*/
+        }
     }
 
     @Override

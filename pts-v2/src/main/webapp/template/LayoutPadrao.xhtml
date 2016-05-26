@@ -24,16 +24,13 @@
         <div id="container">
             <div id="left">
                 <ui:insert name="left">
-                    <h:link value="CRUD USUARIO" outcome="index"/>                                        
+                    <h:link value="CADASTRE-SE" outcome="index"/>                                        
                     <h:link value="CRUD CATEGORIA"  outcome="novaCategoria?faces-redirect=true"/>
-                    <!--                    <h:link value="CRUD ENDERECO" outcome="novoEndereco?faces-redirect=true"/>-->
-                    <!--                    <h:link value="CRUD PROFISSIONAL" outcome="novoProfissional?faces-redirect=true"/>-->
-                    <h:form><p:menu>
-                            <p:submenu>
-                                <p:menuitem value="Sair" action="#{loginBean.logout}" />
-                            </p:submenu>
-                        </p:menu>
+                    <h:form>
+                        <p:commandButton value="SAIR" action="#{loginBean.logout()}"/>
                     </h:form>
+                    <!--                    <h:link value="CRUD ENDERECO" outcome="novoEndereco?faces-redirect=true"/>-->
+                    <!--                    <h:link value="CRUD PROFISSIONAL" outcome="novoProfissional?faces-redirect=true"/>-->                    
 
                 </ui:insert>
 

@@ -6,10 +6,8 @@
 package com.dev2.dao;
 
 import com.dev2.model.Usuario;
-import com.dev2.util.HashUtil;
 import com.dev2.util.HibernateUtil;
 import java.util.ArrayList;
-import java.util.Calendar;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -51,6 +49,18 @@ public class UsuarioDAO {
         Transaction t = sessao.beginTransaction();
         sessao.delete(carregar(id));
         t.commit();
+    }
+
+    public Usuario autentica(String email, String senha) {
+        System.out.println("EMAIL: " + email);
+        System.out.println("SENHA: " + senha);
+        return (Usuario) sessao.createQuery("FROM Usuario WHERE email=:email AND senha=:senha").setString("email", email).setString("senha", senha).uniqueResult();
+
+    }
+    
+    public Usuario buscarPorEmail(String email) {
+        System.out.println("EMAIL: " + email);
+        return (Usuario) sessao.createQuery("FROM Usuario WHERE email=:email").setString("email", email).uniqueResult();
     }
 
 }

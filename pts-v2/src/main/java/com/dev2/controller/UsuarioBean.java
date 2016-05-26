@@ -44,21 +44,6 @@ public class UsuarioBean implements Serializable {
     private boolean checkProfissional = false;
     private int idCategoria;
 
-    public String cadastrarCERTO() {
-        this.enderecoDAO = new EnderecoDAO();
-        this.enderecoDAO.incluir(endereco);
-        this.usuario.setEndereco(enderecoDAO.carregar(this.endereco.getId()));
-        this.usuarioDAO.cadastrar(usuario);
-        if (checkProfissional) {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "PROFISSIONAL CADASTRADO", ""));
-        } else {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "USUARIO CADASTRADO", ""));
-        }
-        this.usuario = new Usuario();
-        this.endereco = new Endereco();
-        return null;
-    }
-
     public String cadastrar() {
         this.usuarioDAO = new UsuarioDAO();
         this.usuario.setSenha(HashUtil.generateHash(this.usuario.getSenha(), this.seguranca.getSALT()));
@@ -80,7 +65,7 @@ public class UsuarioBean implements Serializable {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "USUARIO CADASTRADO", ""));
         }
         inicializarVariaveis();
-        return null;
+        return "login?faces-redirect=true";
     }
 
     public String deletar(int id) {

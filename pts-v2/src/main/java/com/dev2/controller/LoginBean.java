@@ -5,7 +5,9 @@
  */
 package com.dev2.controller;
 
+import com.dev2.dao.UsuarioDAO;
 import com.dev2.model.Usuario;
+import com.dev2.util.HashUtil;
 import java.io.Serializable;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -21,20 +23,28 @@ import javax.faces.context.FacesContext;
 public class LoginBean implements Serializable {
 
     private Usuario usuario;
-    private String nomeUsuario = "Jubileu";
+    private String nomeUsuario;
     private String senha;
+    private FacesContext context;
 
-    public String login() {
-        FacesContext context = FacesContext.getCurrentInstance();
-        if ("admin".equals(this.nomeUsuario) && "123".equals(this.senha)) {
-            //this.usuario.setNome(this.nomeUsuario);
+    public String login2() {
+        context = FacesContext.getCurrentInstance();
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
+
+        this.usuario = usuarioDAO.buscarPorEmail(this.nomeUsuario);
+        String hash = usuario.getSeguranca().getSALT();
+        String senhaCompleta = HashUtil.generateHash(this.senha, hash);
+        this.usuario = usuarioDAO.autentica(nomeUsuario, senhaCompleta);
+        if (usuario != null) {
+            System.out.println("USUARIO LOGADO: " + usuario.getEmail() + " ---- " + usuario.getNome());
             return "/novoEndereco?faces-redirect=true";
+
         } else {
-            FacesMessage mensagem = new FacesMessage("Usuário/senha inválidos!");
-            mensagem.setSeverity(FacesMessage.SEVERITY_ERROR);
-            context.addMessage(null, mensagem);
+            System.out.println("LOGIN OU SENHA INVALIDOS");
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "USUARIO OU SENHA INVALIDOS", ""));
+            return null;
         }
-        return null;
+
     }
 
     public String logout() {
