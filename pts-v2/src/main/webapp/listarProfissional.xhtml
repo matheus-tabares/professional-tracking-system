@@ -16,7 +16,15 @@
 
             <ui:define name="content">
                 <h:form>
-                    <ui:repeat var="p" value="#{usuarioBean.listaProfissionais}"  >
+                    <p:outputLabel value="CATEGORIA" for="omCategoria"/>
+                    <p:selectOneMenu id="omCategoria" value="#{usuarioBean.idCategoria}" style="width:170px" >                        
+                        <f:selectItems value="#{usuarioBean.listaCategorias}" var="cat" itemValue="#{cat.id}" itemLabel="#{cat.nome}"/>
+                    </p:selectOneMenu>
+                    <p:commandButton value="IR" action="#{usuarioBean.buscaProfissionalPorCategoria()}" ajax="false"/>
+
+
+
+                    <ui:repeat var="p" value="#{usuarioBean.profissionaisPorCategoria}"  >
                         <p:panelGrid columns="2" style="display:inline-block">
                             <f:facet name="header">
                                 <p:graphicImage alt="Teste" library="img" name="teste.jpg" title="Nome" width="200px;"/>

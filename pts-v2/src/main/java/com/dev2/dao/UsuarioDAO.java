@@ -57,16 +57,34 @@ public class UsuarioDAO {
         return (Usuario) sessao.createQuery("FROM Usuario WHERE email=:email AND senha=:senha").setString("email", email).setString("senha", senha).uniqueResult();
 
     }
-    
+
     public Usuario buscarPorEmail(String email) {
         System.out.println("EMAIL: " + email);
         return (Usuario) sessao.createQuery("FROM Usuario WHERE email=:email").setString("email", email).uniqueResult();
     }
-    
+
     public ArrayList<Usuario> listarProfissionais() {
         return (ArrayList<Usuario>) sessao.createQuery("FROM Usuario WHERE ehProfissional=1").list();
     }
 
-    
+    public ArrayList<Usuario> listarProfissionaisPorCategoria(int categoria) {
+
+        ArrayList<Usuario> listaCompleta = listarProfissionais();
+        ArrayList<Usuario> listaFiltrada = new ArrayList<>();
+
+        if (categoria == 0) {
+            return listaCompleta;
+        }
+
+        for (int i = 0; i < listaCompleta.size(); i++) {
+            Usuario u = listaCompleta.get(i);
+
+            if ((u.getProfissional().getCategoria().getId()) == categoria) {
+                listaFiltrada.add(u);
+            }
+        }
+
+        return listaFiltrada;
+    }
 
 }

@@ -18,6 +18,7 @@ import com.dev2.model.Usuario;
 import com.dev2.util.HashUtil;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -43,6 +44,7 @@ public class UsuarioBean implements Serializable {
     private SegurancaDAO segurancaDAO = new SegurancaDAO();
     private boolean checkProfissional = false;
     private int idCategoria;
+    private List<Usuario> profissionaisPorCategoria = usuarioDAO.listarProfissionais();
 
     public String cadastrar() {
         this.usuarioDAO = new UsuarioDAO();
@@ -82,6 +84,16 @@ public class UsuarioBean implements Serializable {
     public ArrayList<Usuario> getListaProfissionais() {
         this.usuarioDAO = new UsuarioDAO();
         return usuarioDAO.listarProfissionais();
+    }
+
+    /*public ArrayList<Usuario> getListaProfissionaisPorCategoria() {
+        this.usuarioDAO = new UsuarioDAO();
+        return usuarioDAO.listarProfissionaisPorCategoria(idCategoria);
+    }*/
+    public void buscaProfissionalPorCategoria() {
+        profissionaisPorCategoria = null;
+        profissionaisPorCategoria = usuarioDAO.listarProfissionaisPorCategoria(idCategoria);
+        System.out.println("ID CATEGORIA: " + idCategoria);
     }
 
     public ArrayList<Usuario> getListaUsuarios() {
@@ -188,6 +200,14 @@ public class UsuarioBean implements Serializable {
 
     public void setCheckProfissional(boolean checkProfissional) {
         this.checkProfissional = checkProfissional;
+    }
+
+    public List<Usuario> getProfissionaisPorCategoria() {
+        return profissionaisPorCategoria;
+    }
+
+    public void setProfissionaisPorCategoria(List<Usuario> profissionaisPorCategoria) {
+        this.profissionaisPorCategoria = profissionaisPorCategoria;
     }
 
     public void inicializarVariaveis() {
