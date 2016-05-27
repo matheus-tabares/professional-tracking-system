@@ -37,7 +37,7 @@ public class LoginBean implements Serializable {
         this.usuario = usuarioDAO.autentica(nomeUsuario, senhaCompleta);
         if (usuario != null) {
             System.out.println("USUARIO LOGADO: " + usuario.getEmail() + " ---- " + usuario.getNome());
-            return "/novoEndereco?faces-redirect=true";
+            return "/painelProfissional?faces-redirect=true";
 
         } else {
             System.out.println("LOGIN OU SENHA INVALIDOS");
@@ -49,7 +49,7 @@ public class LoginBean implements Serializable {
 
     public String logout() {
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-        return "/login?faces-redirect=true";
+        return "/home?faces-redirect=true";
     }
 
     public Usuario getUsuario() {

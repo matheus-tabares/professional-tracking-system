@@ -1,0 +1,69 @@
+
+/* 
+    Created on : 11/05/2016, 13:20:04
+    Author     : Igor
+*/
+*{
+    box-sizing: border-box;
+    margin:0;padding: 0;
+    font-family:"Courier New", Courier, monospace!important;
+}
+
+html , body{
+    height: 100%;
+
+}
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient( #7aadd1,#2D5E82);   
+}
+
+#tela-login{
+    margin-top: -50px;
+    height: 200px;width: 300px;
+    background: #DDDDDD;    
+    -webkit-box-shadow: -8px 9px 13px 0px rgba(0,0,0,0.6);
+    -moz-box-shadow: -8px 9px 13px 0px rgba(0,0,0,0.6);
+    box-shadow: -8px 9px 13px 0px rgba(0,0,0,0.6);
+    -webkit-animation-name: example; 
+    -webkit-animation-duration: 4s; 
+    animation-name: animate;
+    animation-duration: 0.3s;
+}
+@-webkit-keyframes animate {
+    from   {transform:scale(2.1,2.1);}    
+    to {transform:scale(1,1);}
+}
+@keyframes animate {
+    from   {transform:scale(2.1,2.1);}    
+    to {transform:scale(1,1);}
+}
+#form-login *{
+    box-shadow: none!important;
+}
+#form-login {
+    margin: auto;height: 175px;width: 180px;color: #2D5E82;      
+}
+.head{    
+    background:#4d4d4d;height: 30px;text-align: center;position: relative; color: #fff;
+    display: flex; align-items: center; justify-content: center;
+}
+.ui-button{
+    border: 2px outset gray;
+    color:#2D5E82; 
+    font-size: 12pt;
+}
+.ui-button:hover{ 
+    color: #000;
+    border-style: inset;
+}
+input[type='text']{
+    width:170px;font-size: 11pt;
+}
+a{
+    font-size: 11pt;
+    margin-top: 2px;
+}
+

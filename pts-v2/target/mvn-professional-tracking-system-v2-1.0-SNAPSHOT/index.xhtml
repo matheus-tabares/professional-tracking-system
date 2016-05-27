@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition template="template/LayoutPadrao.xhtml">
+
+        <ui:define name="content">
+
+
+            <h:form prependId="false">
+                <p:panelGrid columns="2" styleClass="formularios">
+                    <f:facet name="header">
+                        CADASTRO USUÁRIO
+                    </f:facet>
+
+                    <p:outputLabel value="Nome:" for="txtNome"/>
+                    <p:inputText id="txtNome" maxlength="100" value="#{usuarioBean.usuario.nome}"/>
+
+
+                    <p:outputLabel value="E-mail:" for="txtEmail"/>
+                    <p:inputText id="txtEmail" maxlength="100" value="#{usuarioBean.usuario.email}"/> 
+
+
+                    <p:outputLabel value="Senha:" for="txtSenha"/>
+                    <p:inputText id="txtSenha"  value="#{usuarioBean.usuario.senha}"/> 
+
+
+                    <p:outputLabel value="CPF:" for="txtCPF"/>
+                    <p:inputText id="txtCPF" maxlength="12" value="#{usuarioBean.usuario.CPF}"/>  
+
+
+                    <p:outputLabel value="CEP:" for="txtCEP"/>                                           
+                    <p:inputText id="txtCEP" maxlength="8" value="#{usuarioBean.endereco.CEP}"/>
+
+                    <p:outputLabel value="Nº: " for="txtNumero"/>
+                    <p:inputText id="txtNumero" maxlength="5" value="#{usuarioBean.endereco.numero}" />
+
+                    <p:outputLabel value="Logradouro: " for="txtLogradouro"/>
+                    <p:inputText id="txtLogradouro" maxlength="100" value="#{usuarioBean.endereco.logradouro}"/> 
+
+                    <p:outputLabel value="Complemento: " for="txtComplemento"/>
+                    <p:inputText id="txtComplemento" maxlength="20" value="#{usuarioBean.endereco.complemento}"/> 
+
+
+                    <p:outputLabel value="Bairro: " for="txtBairro"/>
+                    <p:inputText id="txtBairro" maxlength="30" value="#{usuarioBean.endereco.bairro}" />
+
+
+                    <p:outputLabel value="Cidade: " for="txtCidade" />
+                    <p:inputText id="txtCidade" maxlength="30" value="#{usuarioBean.endereco.cidade}" />
+
+
+                    <p:outputLabel value="UF:" for="txtUF"/>
+                    <p:inputText id="txtUF" maxlength="30" value="#{usuarioBean.endereco.UF}" /> 
+
+
+                    <p:outputLabel value="Telefone: " for="txtTelefone"/>
+                    <p:inputText id="txtTelefone" maxlength="15" value="#{usuarioBean.usuario.telefone}"/> 
+
+
+                    <p:outputLabel value="QUERO SER UM PROFISSIONAL" for="sbcProfissional"/>
+                    <p:selectBooleanCheckbox id="sbcProfissional" value="#{usuarioBean.checkProfissional}"/>                    
+
+                    <p:outputLabel value="CATEGORIA" for="omCategoria"/>
+                    <p:selectOneListbox id="omCategoria" value="#{usuarioBean.idCategoria}" style="width:170px" >                        
+                        <f:selectItems value="#{usuarioBean.listaCategorias}" var="cat" itemValue="#{cat.id}" itemLabel="#{cat.nome}"/>
+                    </p:selectOneListbox>
+
+                    <p:outputLabel value="DESCRIÇÃO: " for="txtDescricao"/>
+                    <p:inputTextarea id="txtDescricao" rows="10" cols="20" maxlength="400" value="#{usuarioBean.profissional.descricaoProfissional}"/> 
+
+
+                    <f:facet name="footer">
+                        <h:panelGroup>
+                            <p:commandButton ajax="false" value="Cadastrar"  action="#{usuarioBean.cadastrar()}" style="width: 49%"  />
+                        </h:panelGroup>
+                        <h:messages infoClass="certo" errorClass="erro"/>
+                    </f:facet>
+                </p:panelGrid>                
+
+
+            </h:form>
+
+            <h:form>
+
+                <p:dataTable value="#{usuarioBean.listaUsuarios}" var="usu" emptyMessage="NÃO HÁ USUARIOS CADASTRADOS" rows="8" 
+                             paginator="true" paginatorPosition="bottom"
+                             style="margin-top: 10px">                    
+
+                    <p:column headerText="NOME">
+                        <h:outputText value="#{usu.nome}" />
+                    </p:column>
+                    <p:column headerText="LOGRADOURO">
+                        <h:outputText value="#{usu.endereco.logradouro}" />
+                    </p:column>
+                    <p:column headerText="BAIRRO">
+                        <h:outputText value="#{usu.endereco.bairro}" />
+                    </p:column>
+                    <p:column headerText="CATEGORIA">
+                        <h:outputText value="#{usu.profissional.categoria.nome}" />
+                    </p:column>
+
+                    <p:column headerText="Delete" width="60" >
+                        <p:commandButton icon="ui-icon-trash" ajax="false" action="#{usuarioBean.deletar(usu.id)}"/>
+                    </p:column>
+                </p:dataTable>
+
+
+
+            </h:form>
+        </ui:define>
+
+    </ui:composition>
+
+</html>
+
+

@@ -68,11 +68,20 @@ public class UsuarioBean implements Serializable {
         return "login?faces-redirect=true";
     }
 
+    public void consultaProfissional(int idProfissionalSelecionado) {
+        usuario = usuarioDAO.carregar(idProfissionalSelecionado);
+    }
+
     public String deletar(int id) {
         this.usuarioDAO.deletar(id);
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "USUARIO EXCLUIDO", ""));
         getListaUsuarios();
         return null;
+    }
+
+    public ArrayList<Usuario> getListaProfissionais() {
+        this.usuarioDAO = new UsuarioDAO();
+        return usuarioDAO.listarProfissionais();
     }
 
     public ArrayList<Usuario> getListaUsuarios() {

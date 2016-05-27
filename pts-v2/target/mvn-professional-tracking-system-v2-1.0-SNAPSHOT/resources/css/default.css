@@ -1,0 +1,215 @@
+
+*{
+    box-sizing: border-box;
+    margin:0;padding:0;
+    list-style:none;
+}
+html,body{
+    width: 100%;height: 100%; min-height: 600px;min-width: 600px;       
+}
+/*------------------------FIM RESET-------------------------------------------*/
+
+.flexs{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/*------------------------FIM CLASSEs GENERICA--------------------------------*/
+#top{       
+    width: 100%;height: 60px;
+    top:0; left: 0;   
+    position: absolute;    
+    display: flex;
+    -webkit-box-shadow: 0 8px 6px -6px black;
+    -moz-box-shadow: 0 8px 6px -6px black;
+    box-shadow: -2px 8px 6px -6px black;
+    background: #2D5E82;   
+    border-bottom: 2px solid #000;
+}
+
+.top-direita,.top-centro,.top-esquerda{    
+    width: 50%;height: 60px;    
+    margin: auto;    
+    color: #fff;    
+}
+
+.top-direita{
+    justify-content: flex-start;
+    width: 25%;    
+}
+
+.top-esquerda{    
+    justify-content: flex-end;
+    width: 25%;min-width: 200px;
+}
+.top-centro{
+    
+    text-shadow: -1px -1px #1429390, 1px 1px #142939;
+}
+
+/*---------------------------MENU-CSS-----------------------------------------*/
+.container {
+    display: inline-block;
+    cursor: pointer;       
+    padding: 5px;
+}
+.container h1{
+    color: #fff;
+    
+}
+.bar1, .bar2, .bar3 {
+    width: 35px;
+    height: 5px;
+    background-color: #fff;
+    margin: 6px 0;
+    transition: 0.5s;
+}
+.change .bar1 {
+    -webkit-transform: rotate(-45deg) translate(-9px, 6px) ;
+    transform: rotate(-45deg) translate(-9px, 6px) ;
+}
+.change .bar2 {
+    opacity: 0;
+}
+.change .bar3 {
+    -webkit-transform: rotate(45deg) translate(-8px, -8px) ;
+    transform: rotate(45deg) translate(-8px, -8px) ;
+}
+#left-menu{   
+    width: 300px;     
+    height: 100%;   
+    min-height: 420px;
+    padding-top: 10px; border: 1px inset #999;  overflow: auto;position: relative;    
+}
+.container-btn{    
+    justify-content: flex-start;
+    position: relative;
+    width: 250px;
+    min-width: 250px;
+    height: 60px;
+    background:linear-gradient(#275372,#2D5E82);    
+    margin: auto;
+    margin-bottom: 10px;
+    -webkit-box-shadow: 0 8px 6px -6px black;
+    -moz-box-shadow: 0 8px 6px -6px black;
+    box-shadow: -4px 8px 6px -6px #000;
+    z-index: 1;
+    border: 2px outset #999;
+    border-radius: 10px;    
+}
+.alert-btn{     
+    height: 40px;width: 40px;min-width: 40px;
+    border: 1px solid #999;
+    border-radius: 50%;margin: 2px;    
+    transition: all 0.5s ease-in-out;
+}
+.container-btn a{
+    text-decoration: none;
+    color: white;
+    height: 100%;width:100%;    
+    position: absolute;left: 0;top:0;
+}
+
+/* EFEITO NO ICONE DE ALERTA */
+.container-btn:hover .alert-btn{
+    transform: rotate(360deg);
+}
+
+.container-btn:active  {
+    border-style: inset;
+    transform: translatey(3px);
+    box-shadow: inset 0px 0px 10px 3px rgba(50, 50, 50, 0.6);
+}
+
+/*-----------------FIM MENU-CSS-----------------------------------------------*/
+
+/*---------------------------CONTEUDO-----------------------------------------*/
+#conteudo-principal{
+    width: calc(100% - 300px);margin: auto;
+    height: 100%;
+}
+
+#conteudo{ 
+    padding-top:60px; /*arrumar quando tirar as bordas*/
+    height: 100%;
+    display: flex;
+    background-color: #fff;
+    background-image: url('img/bg-footer.png');background-size: cover;
+}
+.logo{
+    position: absolute;
+    bottom: 10px;
+    left: calc(50% - 40px);
+    clear: both;
+}
+
+#teste{
+    height: 500px;width: 400px;background: tomato;    
+    margin: auto;
+}
+/*-----------------------FIM CONTEUDO-----------------------------------------*/
+
+
+/*
+ <a  href="javascript:window.history.go(-1)"><p style="width: 50px;height: 50px;border-radius: 50%; position: absolute;bottom: 5px; right: 5px;background: deeppink"></p></a>
+ background-image: url('img/efeito.png');background-size: 100% 0;background-repeat: no-repeat;background-position: bottom;transition: all 0.3s ease-in-out;border-radius: 10px;
+
+*/
+
+/*Pc responsivo
+@media screen and (max-width: 500px) {
+    .container h1{
+        display: none;
+    }
+    #left-menu{
+        background-color: rgba(255, 0, 255,0.9);
+    }
+}
+*/
+/*-----------------------------------MOBILE-----------------------------------*/
+
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 480px)
+{
+    html , body{
+        min-height: 600px;min-width: 200px;
+    }
+    .top-centro{
+        display: none;
+    }
+    .top-direita{
+        width: 40%;
+    }
+    .top-esquerda{
+        width: 60%;
+    }
+    #left-menu{
+        display: none;
+        position: fixed;
+        width: 100%;
+        min-height: 600px;
+        background: rgba(0,0,0,0.8);
+    }
+    #conteudo-principal{
+        width: 100%;
+    }
+   
+}
+.logout{
+    text-align: center;
+}
+.logout *{
+    background: transparent;
+    color: #fff;
+    border: none;
+}
+#confirma-sair{    
+    background: #2D5E82;
+}
+#confirma-sair .ui-button{
+    width: 110px;    
+}
+#confirma-sair .ui-button+.ui-button{
+    float: right;    
+}

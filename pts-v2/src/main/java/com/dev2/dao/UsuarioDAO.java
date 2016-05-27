@@ -62,5 +62,11 @@ public class UsuarioDAO {
         System.out.println("EMAIL: " + email);
         return (Usuario) sessao.createQuery("FROM Usuario WHERE email=:email").setString("email", email).uniqueResult();
     }
+    
+    public ArrayList<Usuario> listarProfissionais() {
+        return (ArrayList<Usuario>) sessao.createQuery("FROM Usuario WHERE ehProfissional=1").list();
+    }
+
+    
 
 }

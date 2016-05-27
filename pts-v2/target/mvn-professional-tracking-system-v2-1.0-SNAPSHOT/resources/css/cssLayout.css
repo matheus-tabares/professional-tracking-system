@@ -1,0 +1,102 @@
+
+#top {
+    position: relative;
+    background-color: #036fab;
+    color: white;
+    padding: 5px;
+    height: 30px;
+    /*    margin: 0px 0px 10px 0px;*/
+}
+#container{
+    height: calc(100% - 60px); 
+
+}
+
+#left {
+    float: left;   
+    padding: 5px;
+    width: 150px;
+    height:100%;
+}
+
+#right {
+    float: right;    
+    padding: 5px;
+    width: 150px;   
+    height:100%;
+}
+#content{
+    height: 100%;    
+}
+
+.center_content {
+    height: 100%;
+    position: relative;
+    background-color: gray;   
+    padding: 5px;
+
+}
+
+.left_content {
+    background-color: #dddddd;
+    padding: 5px;
+    margin-left: 170px;
+}
+
+.right_content {    
+    background-color: #dddddd;
+    padding: 5px;
+    margin: 0px 150px 0px 150px;
+}
+
+#top a:link, #top a:visited {
+    color: white;
+    font-weight : bold;
+    text-decoration: none;
+}
+
+#top a:link:hover, #top a:visited:hover  {
+    color: black;
+    font-weight : bold;
+    text-decoration : underline;
+}
+.menu{
+    cursor: pointer;
+    border: 1px solid gray;
+    width: 60px;
+    text-align: center;
+    margin-left: 3px;
+}
+.menu:hover{
+    border-style: inset;
+    background: #045491;
+}
+#left a{
+    color: #045491;
+    display: block;
+    border: 2px solid #045491;
+    width: 140px;
+    margin: auto;
+    text-align: center;
+    padding: 5px;
+    margin-bottom: 5px;
+}
+#left a:hover{
+    border-color: black; 
+}
+
+
+#login-dialog { 
+    width: 260px; 
+    margin: auto;
+    margin-top: 150px;
+} 
+
+.grid-login {
+    background-color: #f2f2f2;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin-top: 8px; 
+    padding: 10px;
+    width: 100%
+} 
