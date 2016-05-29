@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
@@ -45,6 +46,8 @@ public class UsuarioBean implements Serializable {
     private boolean checkProfissional = false;
     private int idCategoria;
     private List<Usuario> profissionaisPorCategoria = usuarioDAO.listarProfissionais();
+    @ManagedProperty(value = "#{loginBean}")
+    private LoginBean loginBean;
 
     public String cadastrar() {
         this.usuarioDAO = new UsuarioDAO();
@@ -74,6 +77,11 @@ public class UsuarioBean implements Serializable {
         usuario = usuarioDAO.carregar(idProfissionalSelecionado);
     }
 
+    public String iniciaAlteracaoProfissional(int idProfissionalSelecionado) {
+        usuario = usuarioDAO.carregar(idProfissionalSelecionado);
+        return "editarPerfil?faces-redirect=true";
+    }
+
     public String deletar(int id) {
         this.usuarioDAO.deletar(id);
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "USUARIO EXCLUIDO", ""));
@@ -99,6 +107,12 @@ public class UsuarioBean implements Serializable {
     public ArrayList<Usuario> getListaUsuarios() {
         this.usuarioDAO = new UsuarioDAO();
         return usuarioDAO.listarUsuarios();
+    }
+
+    public String alterarPerfil() {
+        this.usuarioDAO.alterar(loginBean.getUsuario());
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Dados do perfil atualizados com sucesso!", ""));
+        return "painelProfissional?faces-redirect=true";
     }
 
     public Usuario getUsuario() {
@@ -208,6 +222,14 @@ public class UsuarioBean implements Serializable {
 
     public void setProfissionaisPorCategoria(List<Usuario> profissionaisPorCategoria) {
         this.profissionaisPorCategoria = profissionaisPorCategoria;
+    }
+
+    public LoginBean getLoginBean() {
+        return loginBean;
+    }
+
+    public void setLoginBean(LoginBean loginBean) {
+        this.loginBean = loginBean;
     }
 
     public void inicializarVariaveis() {

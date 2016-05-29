@@ -41,6 +41,7 @@ public class UsuarioDAO {
 
     public void alterar(Usuario u) {
         Transaction t = sessao.beginTransaction();
+        sessao.clear(); 
         sessao.update(u);
         t.commit();
     }
