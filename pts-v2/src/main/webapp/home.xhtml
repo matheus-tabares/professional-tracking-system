@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <link rel="icon" type="image/png" href="../resources/img/psticon.png" />
         <meta name="viewport" content="width=device-width, user-scalable=no"></meta>
@@ -13,13 +14,19 @@
     </h:head>
     <h:body>
         <div class="site">
-            <div class="site-texto">
-                <div class="menu">
-                    <h:form prependId="false" id="menu">
-                        <h:commandLink value="ENTRAR" action="login"/><br/>
-                        <h:commandLink value="CADASTRE-SE" action="index"/>
-                    </h:form>
-                </div>
+
+            <div class="menu">
+                <span>
+                    <h:graphicImage library="img" name="capacete.png"/>
+                </span>
+                <h1>Professional Tracking system </h1>
+                <span>
+                    <h:form prependId="false" id="login">
+                        <h:commandLink id="btn-login" value="ENTRAR" action="login"/><br/>
+                    </h:form> 
+                </span>
+            </div>
+            <div class="bloco-principal">
                 <h1>Encontre um profissional rapidamente para 
                     <span
                         class="txt-rotate"
@@ -28,9 +35,56 @@
                     sua casa.
                 </h1>
             </div>
-
+            <div class="segundo-bloco">
+                <div class="space"></div>
+                <h:form prependId="false" id="btn-cadastro">
+                    <h:commandLink value="CADASTRE-SE" action="index"/>
+                </h:form>
+                <div class="p-termos">
+                    Ao clicar em " CADASTRE-SE "  você concorda,<br/> com os nossos <h:form style="display: inline-table">&nbsp;<h:commandLink value=" termos de serviço " action="termos"/>&nbsp;</h:form> e política de privacidade.  
+                </div>
+            </div>            
         </div>
-        <h1>Top 10</h1>
+        <div class="site top10">
+            <div class="bloco-secundario">
+                <h1>Conheça alguns de nossos profissionais</h1>
+                <div class="space"></div>
+                <div >
+                    <h:form>                        
+
+                        <ui:repeat var="p" value="#{usuarioBean.listaProfissionaistop10}"  >
+                            <span class="card">
+                                <p class="c">#{p.nome}</p>
+                                <h:panelGrid columns="2" style="margin: auto" footerClass="c" onclick="alert('Na Proxima sprint ok?');">
+
+                                    <f:facet name="header">
+                                        <p:graphicImage alt="Teste" library="img" name="teste.jpg" title="Nome" />
+                                    </f:facet>                             
+                                    <p:outputLabel value="Categoria"/>
+                                    <p:outputLabel value="#{p.profissional.categoria.nome}"/>
+
+                                    <p:outputLabel value="Bairro"/>
+                                    <p:outputLabel value="#{p.endereco.bairro}"/>
+                                    <f:facet name="footer" >
+                                        <p:outputLabel value="+ Mais Detalhes" />
+                                    </f:facet>
+                                </h:panelGrid>
+                            </span>
+                        </ui:repeat> 
+                    </h:form>
+                </div>
+
+            </div>
+            <div class="segundo-segundo-bloco">
+                <p>Termo de uso</p>
+                <p>Politica de privacidade</p>
+                <p>Contato</p>
+                <p>Parceiros</p>
+            </div>
+            <footer>
+                <code>Projeto do curso de ADS IFRS Disciplina DEV SIS II - Copyright<sup>©</sup> 2016</code>
+            </footer>
+        </div>
         <h:outputScript library="js" name="texto.js"/>
 
     </h:body>

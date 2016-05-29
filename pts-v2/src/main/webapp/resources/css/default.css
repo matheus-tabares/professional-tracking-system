@@ -1,11 +1,12 @@
-
+@import url(https://fonts.googleapis.com/css?family=Roboto+Condensed);
+@import url(https://fonts.googleapis.com/css?family=Passion+One);
 *{
     box-sizing: border-box;
     margin:0;padding:0;
     list-style:none;
 }
 html,body{
-    width: 100%;height: 100%; min-height: 600px;min-width: 600px;       
+    width: 100%;height: 100%; min-height: 600px;min-width: 600px;  background: #DDDEE0;     
 }
 /*------------------------FIM RESET-------------------------------------------*/
 
@@ -42,9 +43,14 @@ html,body{
     justify-content: flex-end;
     width: 25%;min-width: 200px;
 }
-.top-centro{
-    
-    text-shadow: -1px -1px #1429390, 1px 1px #142939;
+.top-centro{    
+    /*text-shadow: -1px -1px #1429390, 1px 1px #142939;*/
+}
+.top-centro h1{
+    font-family: 'Passion One', cursive;
+    text-shadow: -1px 0 black, 0px 1px black,1px 0 black, 0 -1px black;
+    font-size: 3vw;
+    text-transform: uppercase;
 }
 
 /*---------------------------MENU-CSS-----------------------------------------*/
@@ -55,7 +61,7 @@ html,body{
 }
 .container h1{
     color: #fff;
-    
+
 }
 .bar1, .bar2, .bar3 {
     width: 35px;
@@ -194,7 +200,7 @@ and (max-device-width : 480px)
     #conteudo-principal{
         width: 100%;
     }
-   
+
 }
 .logout{
     text-align: center;
@@ -212,4 +218,106 @@ and (max-device-width : 480px)
 }
 #confirma-sair .ui-button+.ui-button{
     float: right;    
+}
+/*--------------------- card ------------------------*/
+.card *{
+    font-family: 'Roboto Condensed', sans-serif;
+}
+.card{
+    display: inline-block;   
+    width: 19%;
+    border: 5px solid #21455f;
+    border-radius: 10px;
+}
+.card:hover{
+    border-color: #fff;
+}
+.c{
+    text-align: center;
+    padding: 5px;
+    color: #fff;
+    background: linear-gradient(#2D5E82,#21455f);
+}
+.busca-cat{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;    
+}
+.busca-cat *{
+    font-family: 'Roboto Condensed', sans-serif;
+}
+.busca-cat  .ui-selectonemenu-trigger{
+    width: 40px!important;
+}
+#perfil{
+    position: relative;
+    background: #fff;
+    height: 500px;
+    min-width: 500px;
+    border: 1px solid gray;
+    border-radius: 10px;
+    width: 90%;
+    margin: auto;
+    display: flex;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.4), 0 10px 10px rgba(0,0,0,0.4);
+}
+.texto-perfil,.foto-perfil{
+
+}
+.foto-perfil{
+    height: 250px;
+    width: 250px;
+}
+.texto-perfil{
+    width: calc(100% - 200px);
+}
+.texto-perfil h1,.descri-perfil{
+    font-family: 'Roboto Condensed', sans-serif;
+    text-align: center;
+    color:#2D5E82; 
+}
+.texto-perfil p{
+    font-size: 16pt;
+    color:#2D5E82;
+    padding: 5px;
+}
+.descri-perfil {
+    width: 80%;
+    padding: 20px;
+    margin: auto;
+    -webkit-box-shadow: inset 0px 0px 16px -1px rgba(0,0,0,0.75);
+    -moz-box-shadow: inset 0px 0px 16px -1px rgba(0,0,0,0.75);
+    box-shadow: inset 0px 0px 16px -1px rgba(0,0,0,0.75);
+}
+.descri-perfil h1{
+    font-family: "Courier New", Courier, monospace;color: #2D5E82;
+}
+#btn-barra{
+    position: absolute;
+    bottom: 10px;
+    text-align: center;
+    width: calc(100% - 250px);
+    padding: 10px;
+}
+#btn-barra *{
+    font-family: 'Roboto Condensed', sans-serif;
+}
+.btn-perfil{
+    width: 150px;
+    height: 80px;
+    font-size: 1.2em;
+    cursor: pointer;
+    color: #2D5E82;
+    margin-right: 10px;
+    -webkit-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.75);
+}
+.formularios{
+    margin: auto;background: red;
+    width: 70%;
+}
+.formularios *{
+    font-family: 'Roboto Condensed', sans-serif;
 }

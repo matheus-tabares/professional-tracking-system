@@ -5,13 +5,14 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <ui:composition template="template/LayoutPadrao.xhtml">
-
+    <ui:composition template="template/Layout.xhtml">
+        <ui:define name="menu-todos"></ui:define>
         <ui:define name="content">
 
 
-            <h:form prependId="false">
-                <p:panelGrid columns="2" styleClass="formularios">
+            <h:form prependId="false" >
+                <br/>
+                <p:panelGrid columns="2" styleClass="formularios" layout="grid">
                     <f:facet name="header">
                         CADASTRO USUÁRIO
                     </f:facet>
@@ -77,6 +78,9 @@
                         <h:panelGroup>
                             <p:commandButton ajax="false" value="Cadastrar"  action="#{usuarioBean.cadastrar()}" style="width: 49%"  />
                         </h:panelGroup>
+                        <h:panelGroup>
+                            <p:commandButton ajax="false" value="Cancelar"  action="home" style="width: 49%; float: right"  />
+                        </h:panelGroup>
                         <h:messages infoClass="certo" errorClass="erro"/>
                     </f:facet>
                 </p:panelGrid>                
@@ -84,33 +88,7 @@
 
             </h:form>
 
-            <h:form>
-
-                <p:dataTable value="#{usuarioBean.listaUsuarios}" var="usu" emptyMessage="NÃO HÁ USUARIOS CADASTRADOS" rows="8" 
-                             paginator="true" paginatorPosition="bottom"
-                             style="margin-top: 10px">                    
-
-                    <p:column headerText="NOME">
-                        <h:outputText value="#{usu.nome}" />
-                    </p:column>
-                    <p:column headerText="LOGRADOURO">
-                        <h:outputText value="#{usu.endereco.logradouro}" />
-                    </p:column>
-                    <p:column headerText="BAIRRO">
-                        <h:outputText value="#{usu.endereco.bairro}" />
-                    </p:column>
-                    <p:column headerText="CATEGORIA">
-                        <h:outputText value="#{usu.profissional.categoria.nome}" />
-                    </p:column>
-
-                    <p:column headerText="Delete" width="60" >
-                        <p:commandButton icon="ui-icon-trash" ajax="false" action="#{usuarioBean.deletar(usu.id)}"/>
-                    </p:column>
-                </p:dataTable>
-
-
-
-            </h:form>
+            
         </ui:define>
 
     </ui:composition>

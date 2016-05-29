@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition template="template/LayoutPadrao.xhtml">
+
+        <ui:define name="content">
+
+            <h:form>
+
+                <p:outputLabel value="CATEGORIA" for="omCategoria"/>
+                <p:selectOneMenu id="omCategoria" value="#{usuarioBean.idCategoria}" style="width:170px" >                        
+                    <f:selectItems value="#{usuarioBean.listaCategorias}" var="cat" itemValue="#{cat.id}" itemLabel="#{cat.nome}"/>
+                </p:selectOneMenu>
+
+                <p:commandButton value="IR" action="#{usuarioBean.buscaProfissionalPorCategoria()}" ajax="false"/>
+
+                <p:dataTable value="#{usuarioBean.profissionaisPorCategoria}" var="p" emptyMessage="AINDA NÃO TEMOS PROFISSIONAIS PARA ESSA CATEGORIA" rows="8" 
+                             paginator="true" paginatorPosition="bottom"
+                             style="margin-top: 10px">
+
+                    <p:column headerText="NOME" sortBy="#{p.nome}">
+                        <h:outputText value="#{p.nome}" />
+                    </p:column>
+
+                    <p:column headerText="EMAIL">
+                        <h:outputText value="#{p.email}" />
+                    </p:column>
+
+                    <p:column headerText="CATEGORIA">
+                        <h:outputText value="#{p.profissional.categoria.nome}" />
+                    </p:column>
+
+                </p:dataTable>
+
+            </h:form>
+
+        </ui:define>        
+    </ui:composition>
+
+</html>
+
+
