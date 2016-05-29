@@ -26,6 +26,8 @@ public class LoginBean implements Serializable {
     private String nomeUsuario;
     private String senha;
     private FacesContext context;
+    private String senhaAntiga;
+    private String senhaNova;
 
     public String login2() {
         context = FacesContext.getCurrentInstance();
@@ -37,12 +39,28 @@ public class LoginBean implements Serializable {
         this.usuario = usuarioDAO.autentica(nomeUsuario, senhaCompleta);
         if (usuario != null) {
             System.out.println("USUARIO LOGADO: " + usuario.getEmail() + " ---- " + usuario.getNome());
+            System.out.println("CEP E TEL: " + usuario.getEndereco().getCEP() + " ---- " + usuario.getEndereco().getUF() + " ---- " + usuario.getTelefone());
             return "/painelProfissional?faces-redirect=true";
 
         } else {
             System.out.println("LOGIN OU SENHA INVALIDOS");
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "USUARIO OU SENHA INVALIDOS", ""));
             return null;
+        }
+
+    }
+
+    public void alteraSenha() {
+
+        String toCompare = HashUtil.generateHash(this.senhaAntiga, this.usuario.getSeguranca().getSALT());
+        String newpass;
+        
+        System.out.println("HASH ANTIGO : " + this.usuario.getSenha());
+        System.out.println("HASH NOVO   : " + toCompare);
+        if (toCompare.equals(this.usuario.getSenha())) {
+            newpass = HashUtil.generateHash(this.senhaNova, this.usuario.getSeguranca().getSALT());
+            this.usuario.setSenha(newpass);
+            System.out.println("SENHA ALTERADA");
         }
 
     }
@@ -74,6 +92,30 @@ public class LoginBean implements Serializable {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public FacesContext getContext() {
+        return context;
+    }
+
+    public void setContext(FacesContext context) {
+        this.context = context;
+    }
+
+    public String getSenhaAntiga() {
+        return senhaAntiga;
+    }
+
+    public void setSenhaAntiga(String senhaAntiga) {
+        this.senhaAntiga = senhaAntiga;
+    }
+
+    public String getSenhaNova() {
+        return senhaNova;
+    }
+
+    public void setSenhaNova(String senhaNova) {
+        this.senhaNova = senhaNova;
     }
 
 }

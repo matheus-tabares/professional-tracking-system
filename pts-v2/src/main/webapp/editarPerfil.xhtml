@@ -19,73 +19,55 @@
                     </f:facet>
 
                     <p:outputLabel value="Nome:" for="txtNome"/>
-                    <p:inputText id="txtNome" maxlength="100" value="#{usuarioBean.usuario.nome}"/>
-
+                    <p:inputText id="txtNome" maxlength="100" value="#{loginBean.usuario.nome}" readonly="true"/>
 
                     <p:outputLabel value="E-mail:" for="txtEmail"/>
-                    <p:inputText id="txtEmail" maxlength="100" value="#{usuarioBean.usuario.email}"/> 
-
-
-                    <p:outputLabel value="Senha:" for="txtSenha"/>
-                    <p:inputText id="txtSenha"  value="#{usuarioBean.usuario.senha}"/> 
-
+                    <p:inputText id="txtEmail" maxlength="100" value="#{loginBean.usuario.email}"/> 
 
                     <p:outputLabel value="CPF:" for="txtCPF"/>
-                    <p:inputText id="txtCPF" maxlength="12" value="#{usuarioBean.usuario.CPF}"/>  
-
-
-                    <p:outputLabel value="CEP:" for="txtCEP"/>                                           
-                    <p:inputText id="txtCEP" maxlength="8" value="#{usuarioBean.endereco.CEP}"/>
-
-                    <p:outputLabel value="Nº: " for="txtNumero"/>
-                    <p:inputText id="txtNumero" maxlength="5" value="#{usuarioBean.endereco.numero}" />
-
-                    <p:outputLabel value="Logradouro: " for="txtLogradouro"/>
-                    <p:inputText id="txtLogradouro" maxlength="100" value="#{usuarioBean.endereco.logradouro}"/> 
-
-                    <p:outputLabel value="Complemento: " for="txtComplemento"/>
-                    <p:inputText id="txtComplemento" maxlength="20" value="#{usuarioBean.endereco.complemento}"/> 
-
-
-                    <p:outputLabel value="Bairro: " for="txtBairro"/>
-                    <p:inputText id="txtBairro" maxlength="30" value="#{usuarioBean.endereco.bairro}" />
-
-
-                    <p:outputLabel value="Cidade: " for="txtCidade" />
-                    <p:inputText id="txtCidade" maxlength="30" value="#{usuarioBean.endereco.cidade}" />
-
-
-                    <p:outputLabel value="UF:" for="txtUF"/>
-                    <p:inputText id="txtUF" maxlength="30" value="#{usuarioBean.endereco.UF}" /> 
-
+                    <p:inputText id="txtCPF" maxlength="12" value="#{loginBean.usuario.CPF}" readonly="true"/>  
 
                     <p:outputLabel value="Telefone: " for="txtTelefone"/>
-                    <p:inputText id="txtTelefone" maxlength="15" value="#{usuarioBean.usuario.telefone}"/> 
+                    <p:inputText id="txtTelefone" maxlength="15" value="#{loginBean.usuario.telefone}"/>                     
 
+                    <p:outputLabel value="CEP:" for="txtCEP"/>                                           
+                    <p:inputText id="txtCEP" maxlength="8" value="#{loginBean.usuario.endereco.CEP}"/>
 
-                    <p:outputLabel value="QUERO SER UM PROFISSIONAL" for="sbcProfissional"/>
-                    <p:selectBooleanCheckbox id="sbcProfissional" value="#{usuarioBean.checkProfissional}"/>                    
+                    <p:outputLabel value="Nº: " for="txtNumero"/>
+                    <p:inputText id="txtNumero" maxlength="5" value="#{loginBean.usuario.endereco.numero}" />
 
-                    <p:outputLabel value="CATEGORIA" for="omCategoria"/>
-                    <p:selectOneListbox id="omCategoria" value="#{usuarioBean.idCategoria}" style="width:170px" >                        
-                        <f:selectItems value="#{usuarioBean.listaCategorias}" var="cat" itemValue="#{cat.id}" itemLabel="#{cat.nome}"/>
-                    </p:selectOneListbox>
+                    <p:outputLabel value="Logradouro: " for="txtLogradouro"/>
+                    <p:inputText id="txtLogradouro" maxlength="100" value="#{loginBean.usuario.endereco.logradouro}"/> 
 
-                    <p:outputLabel value="DESCRIÇÃO: " for="txtDescricao"/>
-                    <p:inputTextarea id="txtDescricao" rows="10" cols="20" maxlength="400" value="#{usuarioBean.profissional.descricaoProfissional}"/> 
+                    <p:outputLabel value="Complemento: " for="txtComplemento"/>
+                    <p:inputText id="txtComplemento" maxlength="20" value="#{loginBean.usuario.endereco.complemento}"/> 
 
+                    <p:outputLabel value="Bairro: " for="txtBairro"/>
+                    <p:inputText id="txtBairro" maxlength="30" value="#{loginBean.usuario.endereco.bairro}" />
+
+                    <p:outputLabel value="Cidade: " for="txtCidade" />
+                    <p:inputText id="txtCidade" maxlength="30" value="#{loginBean.usuario.endereco.cidade}" />
+
+                    <p:outputLabel value="UF:" for="txtUF"/>
+                    <p:inputText id="txtUF" maxlength="30" value="#{loginBean.usuario.endereco.UF}" /> 
+
+                    <p:outputLabel value="ALTERAR SENHA"/><p:outputLabel/>
+
+                    <p:outputLabel value="SENHA ANTIGA:" for="txtSenhaAntiga"/>
+                    <p:inputText id="txtSenhaAntiga" maxlength="30" value="#{loginBean.senhaAntiga}" />
+                    <p:outputLabel value="SENHA NOVA:" for="txtSenhaNova"/>
+                    <p:inputText id="txtSenhaNova" maxlength="30" value="#{loginBean.senhaNova}" />
 
                     <f:facet name="footer">
                         <h:panelGroup>
-                            <p:commandButton ajax="false" value="Cadastrar"  action="#{usuarioBean.cadastrar()}" style="width: 49%"  />
+                            <p:commandButton ajax="false" value="Cadastrar"  action="#{usuarioBean.alterarPerfil()}" style="width: 49%"  />
                         </h:panelGroup>
                         <h:panelGroup>
                             <p:commandButton ajax="false" value="Cancelar"  action="home" style="width: 49%; float: right"  />
                         </h:panelGroup>
                         <h:messages infoClass="certo" errorClass="erro"/>
                     </f:facet>
-                </p:panelGrid>                
-
+                </p:panelGrid>
 
             </h:form>
         </ui:define>

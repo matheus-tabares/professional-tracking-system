@@ -76,7 +76,6 @@ public class UsuarioBean implements Serializable {
     public void consultaProfissional(int idProfissionalSelecionado) {
         usuario = usuarioDAO.carregar(idProfissionalSelecionado);
     }
-    
 
     public String iniciaAlteracaoProfissional(int idProfissionalSelecionado) {
         usuario = usuarioDAO.carregar(idProfissionalSelecionado);
@@ -111,11 +110,16 @@ public class UsuarioBean implements Serializable {
     }
 
     public String alterarPerfil() {
+
+        if (!loginBean.getSenhaAntiga().equals("") && !loginBean.getSenhaNova().equals("")) {
+            loginBean.alteraSenha();
+        }
+
         this.usuarioDAO.alterar(loginBean.getUsuario());
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Dados do perfil atualizados com sucesso!", ""));
         return "painelProfissional?faces-redirect=true";
     }
-    
+
     public ArrayList<Usuario> getListaProfissionaistop10() {
         this.usuarioDAO = new UsuarioDAO();
         return usuarioDAO.listarProfissionaisTOP10();
