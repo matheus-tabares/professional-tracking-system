@@ -38,7 +38,8 @@
                                 <p:outputLabel value="Bairro"/>
                                 <p:outputLabel value="#{p.endereco.bairro}"/>
                                 <f:facet name="footer" >
-                                    <p:commandButton value="+ Mais Detalhes" actionListener="#{usuarioBean.consultaProfissional(p.id)}" action="detalhesusuario" />                                    
+                                    <p:commandButton value="+ Mais Detalhes" actionListener="#{usuarioBean.consultaProfissional(p.id)}" action="detalhesusuario" />
+                                    <p:commandButton icon="ui-icon-comment" actionListener="#{contatoBean.setIdDestinatario(p.id)}" action="novoContato?faces-redirect=true" />
                                 </f:facet>
                                 
                             </h:panelGrid>
