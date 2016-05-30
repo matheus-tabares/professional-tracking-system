@@ -70,7 +70,7 @@ public class UsuarioBean implements Serializable {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "USUARIO CADASTRADO", ""));
         }
         inicializarVariaveis();
-        return "login?faces-redirect=true";
+        return "home?faces-redirect=true";
     }
 
     public void consultaProfissional(int idProfissionalSelecionado) {
@@ -255,6 +255,11 @@ public class UsuarioBean implements Serializable {
         this.segurancaDAO = new SegurancaDAO();
         this.idCategoria = 0;
         this.checkProfissional = false;
+    }
+    
+    public String returnIndex() {
+        inicializarVariaveis();
+        return "home?faces-redirect=true";
     }
 
 }

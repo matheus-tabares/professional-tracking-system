@@ -29,7 +29,7 @@ public class LoginBean implements Serializable {
     private String senhaAntiga;
     private String senhaNova;
 
-    public String login2() {
+    public String login() {
         context = FacesContext.getCurrentInstance();
         UsuarioDAO usuarioDAO = new UsuarioDAO();
 
@@ -44,7 +44,7 @@ public class LoginBean implements Serializable {
 
         } else {
             System.out.println("LOGIN OU SENHA INVALIDOS");
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "USUARIO OU SENHA INVALIDOS", ""));
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "LOGIN OU SENHA INVÁLIDOS", ""));
             return null;
         }
 
@@ -116,6 +116,13 @@ public class LoginBean implements Serializable {
 
     public void setSenhaNova(String senhaNova) {
         this.senhaNova = senhaNova;
+    }
+    
+    public String tipoUsuario() {
+        if (this.usuario != null) {        
+        return this.usuario.ehProfissional() ? "Profissional" : "Usuario";
+        }
+        return "";
     }
 
 }

@@ -34,7 +34,7 @@
                 </section>
                 <section class="top-esquerda flexs" >
                     <section class="logout">
-                        <p>#{loginBean.nomeUsuario}</p>
+                        <p>#{loginBean.nomeUsuario} - #{loginBean.tipoUsuario()}</p>
                         <h:form prependId="false"><h:commandButton title="SAIR DO SISTEMA?" value="SAIR"  action="#{loginBean.logout()}"/> </h:form>
 
 
