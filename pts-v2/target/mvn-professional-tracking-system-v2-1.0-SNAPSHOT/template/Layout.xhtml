@@ -8,6 +8,8 @@
         <link rel="icon" type="image/png" href="../resources/img/psticon.png" />
         <meta name="viewport" content="width=device-width, user-scalable=no"></meta>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
+        <h:outputScript library="js" name="js.js"/>
+        <h:outputScript library="js" name="cep.js"/>
         <h:outputStylesheet  library="css" name="default.css" />        
         <title><ui:insert name="title">Nome da página</ui:insert></title>
     </h:head>
@@ -32,14 +34,14 @@
                 </section>
                 <section class="top-esquerda flexs" >
                     <section class="logout">
-                        <p>#{loginBean.nomeUsuario}</p>
+                        <p>#{loginBean.nomeUsuario} - #{loginBean.tipoUsuario()}</p>
                         <h:form prependId="false"><h:commandButton title="SAIR DO SISTEMA?" value="SAIR"  action="#{loginBean.logout()}"/> </h:form>
-                            
-                       
+
+
                     </section> 
-                    
-                        <h:graphicImage library="img" name="silhuetaHomem.jpg" height="50" style="margin: 5px;"/>
-                   
+
+                    <h:graphicImage library="img" name="silhuetaHomem.jpg" height="50" style="margin: 5px;"/>
+
                 </section>                 
             </div>
             <!--FIM BARRA DO TOPO DA TELA-->
@@ -50,29 +52,13 @@
                 <div id="left-menu">
 
                     <ui:insert name="menu-todos">
-                        <div class="flexs container-btn">
-                            <a class="flexs" href="#">MENSAGENS</a>
-                            <div class="alert-btn flexs">
-                                <h:graphicImage library="img" name="msgicon.ico" height="38"/>
-                            </div>
-                        </div>
-                        <div class="flexs container-btn">
-                            <a class="b flexs" href="#">Cuidar palavras grandes</a>
-                            <div class="alert-btn flexs">
-                                <span class="flexs">
-                                    5
-                                </span>
-                            </div>
-                        </div>
-                        <div class="flexs container-btn">
-                            BOTÂO 3
-                        </div>
-                        <div class="flexs container-btn">
-                            BOTÂO 4
-                        </div>
-                        <div class="flexs container-btn" style="clear: both;">
-                            BOTÂO 5
-                        </div>
+                        <h:form> 
+                            <p:commandButton icon="ui-icon-pencil" value="Painel inicial" ajax="false" action="painelProfissional" styleClass="btn-btn"/>
+                            <p:commandButton icon="ui-icon-wrench " ajax="false" value="MEU PERFIL" action="#{usuarioBean.iniciaAlteracaoProfissional(usuarioBean.usuario.id)}" styleClass="btn-btn"/>
+                            <p:commandButton icon="ui-icon-search" value="Encontrar Profissional" ajax="false" action="listarProfissional" styleClass="btn-btn"/>
+                            <p:commandButton icon="ui-icon-pencil" value="Publicar um serviço" ajax="false" action="publicarMural" styleClass="btn-btn"/>
+                            <p:commandButton icon="ui-icon-mail-closed" value="Menssagens" ajax="false" action="publicarMural" styleClass="btn-btn"/>
+                        </h:form>
 
                     </ui:insert>
 
@@ -92,7 +78,7 @@
                 <div id="conteudo-principal">
                     <ui:insert name="content"  >
                         <div id="teste"><h1>conteudo teste</h1></div>
-                        
+
                     </ui:insert>
                 </div>
             </div>
@@ -113,8 +99,9 @@
                 });
             });
         </script>
-        
+
 
     </h:body>
 
 </html>
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>-->

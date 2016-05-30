@@ -95,6 +95,7 @@ html,body{
 }
 .bloco-secundario{
     height: 85%;
+    overflow-y: auto;
 }
 .bloco-secundario h1{
     text-align: center;
@@ -166,4 +167,8 @@ footer code{
     padding: 5px;
     color: #fff;
     background: linear-gradient(#2D5E82,#21455f);
+}
+.btn-btn{
+    
+    height: 70px;
 }

@@ -12,8 +12,11 @@
         <h:outputStylesheet library="css" name="login.css"/>
     </h:head>
     <h:body>
+        
         <div id="tela-login">
+            <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
             <div  class="head">
+                
                 <h3>Entrar no sistema</h3>
             </div>
             <h:form prependId="false">                
@@ -29,7 +32,7 @@
                         <p:watermark for="senha" value="Sua senha" />
                     </p:password>
                     <f:facet name="footer">
-                        <p:commandButton ajax="false" action="#{loginBean.login2()}" value="Entrar" style="width: 49%;"/>
+                        <p:commandButton ajax="false" action="#{loginBean.login()}" value="Entrar" style="width: 49%;"/>
                         <p:commandButton ajax="false" action="home" value="Voltar" style="width:49%;float: right;"/>
                     </f:facet>
                     <f:facet name="footer">

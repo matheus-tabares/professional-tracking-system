@@ -1,5 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto+Condensed);
 @import url(https://fonts.googleapis.com/css?family=Passion+One);
+@import url(https://fonts.googleapis.com/css?family=Bubblegum+Sans);
 *{
     box-sizing: border-box;
     margin:0;padding:0;
@@ -235,8 +236,8 @@ and (max-device-width : 480px)
 .c{
     text-align: center;
     padding: 5px;
-    color: #fff;
-    background: linear-gradient(#2D5E82,#21455f);
+    color: #2D5E82;
+    
 }
 .busca-cat{
     display: flex;
@@ -320,4 +321,17 @@ and (max-device-width : 480px)
 }
 .formularios *{
     font-family: 'Roboto Condensed', sans-serif;
+}
+.btn-btn{
+    height: 80px;width: 99%;margin-bottom: 10px;
+    border: 2px solid #2D5E82;
+    border-radius: 10px;text-transform: uppercase;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+.txt-panel h1{
+    text-align: center;
+    margin-top: 20px;
+    color: #00264d;
+    font-family: 'Bubblegum Sans', cursive;
 }
