@@ -48,13 +48,19 @@
 
                     <p:outputLabel value="UF:" for="txtUF"/>
                     <p:inputText id="txtUF" maxlength="30" value="#{loginBean.usuario.endereco.UF}" /> 
-
+                    
+                    <p:outputLabel value="Foto:"/>
+                    <p:fileUpload fileUploadListener="#{fileUploadController.upload}" mode="advanced"  auto="true"
+                     allowTypes="/(\.|\/)(gif|jpe?g|png)$/" sizeLimit="500000000" label="Selecione Imagem"/>
+                    
+                    
                     <p:outputLabel value="ALTERAR SENHA"/><p:outputLabel/>
 
                     <p:outputLabel value="SENHA ANTIGA:" for="txtSenhaAntiga"/>
                     <p:inputText id="txtSenhaAntiga" maxlength="30" value="#{loginBean.senhaAntiga}" />
                     <p:outputLabel value="SENHA NOVA:" for="txtSenhaNova"/>
                     <p:inputText id="txtSenhaNova" maxlength="30" value="#{loginBean.senhaNova}" />
+                    
 
                     <f:facet name="footer">
                         <h:panelGroup>
