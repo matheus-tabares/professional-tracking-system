@@ -1,14 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.dev2.controller;
 
 import com.dev2.dao.CategoriaDAO;
 import com.dev2.dao.MuralDAO;
+import com.dev2.dao.ProfissionalDAO;
+import com.dev2.dao.UsuarioDAO;
 import com.dev2.model.Categoria;
 import com.dev2.model.Mural;
+import com.dev2.model.Profissional;
+import com.dev2.model.Usuario;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,56 +17,73 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
-/**
- *
- * @author Bruno
- */
 @ManagedBean
 @SessionScoped
 public class MuralBean implements Serializable {
-
+    @ManagedProperty(value="#{loginBean}")
+    private LoginBean loginBean;
     private Mural mural = new Mural();
     private MuralDAO muralDAO = new MuralDAO();
-    @ManagedProperty(value = "#{loginBean}")
-    private LoginBean loginBean;
+    private Usuario usuario = new Usuario();
+    private UsuarioDAO usuarioDAO = new UsuarioDAO();
     private int idProfissionalSelecionado;
-    private List<Mural> listaDePublicacoes = muralDAO.listarPublicacoes();
-    private CategoriaDAO categoriaDAO = new CategoriaDAO();
+    private List<Mural> listaDePublicacoes;
     private int idCategoria;
-
+    private Profissional profissional = new Profissional();
+    private ProfissionalDAO profissionalDAO = new ProfissionalDAO();
+    private Categoria categoria = new Categoria();
+    private CategoriaDAO categoriaDAO = new CategoriaDAO();
+    
     public String cadastrar() {
         muralDAO = new MuralDAO();
+        usuario = new Usuario();
+        usuarioDAO = new UsuarioDAO();
+              
         this.mural.setCategoria(categoriaDAO.carregar(idCategoria));
+        System.out.println("usuario logado: " + loginBean.getUsuario().getId());
         this.mural.setUsuarioQuePublicou(loginBean.getUsuario());
         this.muralDAO.incluir(mural);
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "TRABALHO CADASTRADO", this.mural.getTitulo()));
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "PUBLICADO NO MURAL DE SERVIÇOS", this.mural.getTitulo()));
+        
         this.mural = new Mural();
         return "painelProfissional?faces-redirect=true";
     }
+    
+    public String listaPublicacoes() {
+        muralDAO = new MuralDAO();
+        usuario = new Usuario();
+        usuarioDAO = new UsuarioDAO();
+        usuario = usuarioDAO.carregar(loginBean.getUsuario().getId());
+        System.out.println("passou");
 
+        if(usuario.ehProfissional()) {
+            profissional = profissionalDAO.carregar(usuario.getProfissional().getId());
+            categoria = categoriaDAO.carregar(profissional.getCategoria().getId());
+            listaDePublicacoes = muralDAO.listarPublicacoes(categoria.getId());
+        }
+        
+        usuario = new Usuario();
+        usuarioDAO = new UsuarioDAO();
+        profissional = new Profissional();
+        profissionalDAO = new ProfissionalDAO();
+        categoria = new Categoria();
+        categoriaDAO = new CategoriaDAO();
+        muralDAO = new MuralDAO();
+
+        return "muralDeServicos?faces-redirect=true";
+    }
+    
     public ArrayList<Categoria> getListaCategorias() {
         this.categoriaDAO = new CategoriaDAO();
         return categoriaDAO.listarCategorias();
     }
-
-    public List<Mural> geListaDePublicacoes() {
-        return listaDePublicacoes;
-    }
-
+    
     public Mural getMural() {
         return mural;
     }
 
     public void setMural(Mural mural) {
         this.mural = mural;
-    }
-
-    public LoginBean getLoginBean() {
-        return loginBean;
-    }
-
-    public void setLoginBean(LoginBean loginBean) {
-        this.loginBean = loginBean;
     }
 
     public int getIdProfissionalSelecionado() {
@@ -108,6 +124,54 @@ public class MuralBean implements Serializable {
 
     public void setIdCategoria(int idCategoria) {
         this.idCategoria = idCategoria;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public UsuarioDAO getUsuarioDAO() {
+        return usuarioDAO;
+    }
+
+    public void setUsuarioDAO(UsuarioDAO usuarioDAO) {
+        this.usuarioDAO = usuarioDAO;
+    }
+
+    public LoginBean getLoginBean() {
+        return loginBean;
+    }
+
+    public void setLoginBean(LoginBean loginBean) {
+        this.loginBean = loginBean;
+    }
+
+    public Profissional getProfissional() {
+        return profissional;
+    }
+
+    public void setProfissional(Profissional profissional) {
+        this.profissional = profissional;
+    }
+
+    public ProfissionalDAO getProfissionalDAO() {
+        return profissionalDAO;
+    }
+
+    public void setProfissionalDAO(ProfissionalDAO profissionalDAO) {
+        this.profissionalDAO = profissionalDAO;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
 
 }

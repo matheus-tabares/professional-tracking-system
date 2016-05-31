@@ -323,7 +323,7 @@ and (max-device-width : 480px)
     font-family: 'Roboto Condensed', sans-serif;
 }
 .btn-btn{
-    height: 80px;width: 99%;margin-bottom: 10px;
+    height: 40px;width: 99%;margin-bottom: 10px;
     border: 2px solid #2D5E82;
     border-radius: 10px;text-transform: uppercase;
     font-family: 'Roboto Condensed', sans-serif;
