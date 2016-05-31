@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 D:\Matheus T\documentos\IFRS\5°Semestre\devII\sistema-servicos\pts\repositorio\professional-tracking-system\pts-v2\src\main\java\com\dev2\controller\CategoriaBean.java
 D:\Matheus T\documentos\IFRS\5°Semestre\devII\sistema-servicos\pts\repositorio\professional-tracking-system\pts-v2\src\main\java\com\dev2\controller\LoginBean.java
 D:\Matheus T\documentos\IFRS\5°Semestre\devII\sistema-servicos\pts\repositorio\professional-tracking-system\pts-v2\src\main\java\com\dev2\dao\EnderecoDAO.java
@@ -21,3 +22,28 @@ D:\Matheus T\documentos\IFRS\5°Semestre\devII\sistema-servicos\pts\repositorio\p
 D:\Matheus T\documentos\IFRS\5°Semestre\devII\sistema-servicos\pts\repositorio\professional-tracking-system\pts-v2\src\main\java\com\dev2\dao\ContatoDAO.java
 D:\Matheus T\documentos\IFRS\5°Semestre\devII\sistema-servicos\pts\repositorio\professional-tracking-system\pts-v2\src\main\java\com\dev2\dao\MuralDAO.java
 D:\Matheus T\documentos\IFRS\5°Semestre\devII\sistema-servicos\pts\repositorio\professional-tracking-system\pts-v2\src\main\java\com\dev2\util\MensagensUtil.java
+=======
+C:\Users\10070099\Documents\GitHub\professional-tracking-system\pts-v2\src\main\java\com\dev2\dao\EnderecoDAO.java
+C:\Users\10070099\Documents\GitHub\professional-tracking-system\pts-v2\src\main\java\com\dev2\model\Mural.java
+C:\Users\10070099\Documents\GitHub\professional-tracking-system\pts-v2\src\main\java\com\dev2\model\Usuario.java
+C:\Users\10070099\Documents\GitHub\professional-tracking-system\pts-v2\src\main\java\com\dev2\util\MensagensUtil.java
+C:\Users\10070099\Documents\GitHub\professional-tracking-system\pts-v2\src\main\java\com\dev2\model\Categoria.java
+C:\Users\10070099\Documents\GitHub\professional-tracking-system\pts-v2\src\main\java\com\dev2\model\Seguranca.java
+C:\Users\10070099\Documents\GitHub\professional-tracking-system\pts-v2\src\main\java\com\dev2\controller\CategoriaBean.java
+C:\Users\10070099\Documents\GitHub\professional-tracking-system\pts-v2\src\main\java\com\dev2\dao\ContatoDAO.java
+C:\Users\10070099\Documents\GitHub\professional-tracking-system\pts-v2\src\main\java\com\dev2\dao\SegurancaDAO.java
+C:\Users\10070099\Documents\GitHub\professional-tracking-system\pts-v2\src\main\java\com\dev2\dao\UsuarioDAO.java
+C:\Users\10070099\Documents\GitHub\professional-tracking-system\pts-v2\src\main\java\com\dev2\model\Contato.java
+C:\Users\10070099\Documents\GitHub\professional-tracking-system\pts-v2\src\main\java\com\dev2\model\Endereco.java
+C:\Users\10070099\Documents\GitHub\professional-tracking-system\pts-v2\src\main\java\com\dev2\controller\MuralBean.java
+C:\Users\10070099\Documents\GitHub\professional-tracking-system\pts-v2\src\main\java\com\dev2\model\Profissional.java
+C:\Users\10070099\Documents\GitHub\professional-tracking-system\pts-v2\src\main\java\com\dev2\controller\ContatoBean.java
+C:\Users\10070099\Documents\GitHub\professional-tracking-system\pts-v2\src\main\java\com\dev2\util\HashUtil.java
+C:\Users\10070099\Documents\GitHub\professional-tracking-system\pts-v2\src\main\java\com\dev2\util\AutenticacaoPhaseListener.java
+C:\Users\10070099\Documents\GitHub\professional-tracking-system\pts-v2\src\main\java\com\dev2\controller\UsuarioBean.java
+C:\Users\10070099\Documents\GitHub\professional-tracking-system\pts-v2\src\main\java\com\dev2\dao\ProfissionalDAO.java
+C:\Users\10070099\Documents\GitHub\professional-tracking-system\pts-v2\src\main\java\com\dev2\dao\CategoriaDAO.java
+C:\Users\10070099\Documents\GitHub\professional-tracking-system\pts-v2\src\main\java\com\dev2\util\HibernateUtil.java
+C:\Users\10070099\Documents\GitHub\professional-tracking-system\pts-v2\src\main\java\com\dev2\controller\LoginBean.java
+C:\Users\10070099\Documents\GitHub\professional-tracking-system\pts-v2\src\main\java\com\dev2\dao\MuralDAO.java
+>>>>>>> 546a5603998e6e8b895aa1d74d575809831d513c
