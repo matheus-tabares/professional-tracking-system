@@ -15,18 +15,21 @@
                 <p:panelGrid columns="2" styleClass="formularios">
                     <f:facet name="header">
                         NOVA MENSAGEM
-                    </f:facet>
-
+                        </f:facet>  
+                    <p:outputLabel value="PARA" for="txtDestinatario"/>
+                    <p:outputLabel value="#{usuarioBean.usuario.nome}" id="txtDestinatario" />
+                    
                     <p:outputLabel value="ASSUNTO" for="txtAssunto"/>
-                    <p:inputText id="txtAssunto" maxlength="60" value="#{contatoBean.contato.assunto}"/>
+                    <p:inputText id="txtAssunto" maxlength="60" value="#{contatoBean.contato.assunto}" required="true"/>
 
                     <p:outputLabel value="MENSAGEM" for="txtMensagem"/>
-                    <p:inputTextarea id="txtMensagem" maxlength="200" cols="20" rows="5" value="#{contatoBean.contato.mensagem}"/> 
+                    <p:inputTextarea id="txtMensagem" maxlength="200" cols="20" rows="5" 
+                                     value="#{contatoBean.contato.mensagem}" required="true"/> 
 
 
                     <f:facet name="footer">
                         <h:panelGroup>
-                            <p:commandButton ajax="false" value="Cadastrar"  action="#{contatoBean.cadastrar()}"  />
+                            <p:commandButton ajax="false" value="ENVIAR"  action="#{contatoBean.cadastrar()}"  />
                         </h:panelGroup>                        
                     </f:facet>
                 </p:panelGrid>  
