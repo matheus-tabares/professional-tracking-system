@@ -134,6 +134,7 @@ html,body{
 #conteudo-principal{
     width: calc(100% - 300px);margin: auto;
     height: 100%;
+    overflow-y: auto;
 }
 
 #conteudo{ 
@@ -334,4 +335,24 @@ and (max-device-width : 480px)
     margin-top: 20px;
     color: #00264d;
     font-family: 'Bubblegum Sans', cursive;
+}
+#painel{
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    padding-top: 10%;
+}
+.btn-painel{
+   width: 180px;
+   height: 100px;
+   margin: 10px;
+   cursor: pointer;
+   background: #fff;
+   border: 2px solid #21455f;  
+   color: #21455f;
+   text-transform: uppercase;
+   font-family: 'Roboto Condensed', sans-serif;
+   font-weight: bold;
 }

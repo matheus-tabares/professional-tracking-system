@@ -12,19 +12,23 @@
             <ui:define name="title">
                 Painel Profissional
             </ui:define>
+            <ui:define name="menu"></ui:define>
+            <ui:define name="menu-todos"></ui:define>
             <ui:define name="content">
-                <div class="txt-panel">
-                    <h1>Oi #{usuarioBean.loginBean.nomeUsuario} meu nome é Juca</h1>
-                    <h1> Que bom que você escolheu nosso sistema,o próposito é ajudar a você encontar um profissional rápido e fácil,
-                        <span
-                            class="txt-rotate"
-                            data-period="1000"
-                            data-rotate='[ "quem sabe você ve a lista de profissionais e categorias cadastradas,aperte o botão (encontar profissional) ", "..." ]'></span>
-                        .
-                    </h1>
-                    <h:graphicImage library="img" name="construtor.png" height="200"/>
-                </div>
-                <h:outputScript library="js" name="texto.js"/>
+                <div id="painel">
+                    <h:form> 
+                        <div style="width: 100%;text-align: center">
+                        <h:commandButton  value="Home"  action="home" styleClass="btn-painel"/>
+                        <h:commandButton  value="MEU PERFIL" action="#{usuarioBean.iniciaAlteracaoProfissional(usuarioBean.usuario.id)}" styleClass="btn-painel"/>
+                        <h:commandButton  value="Encontrar Profissional"  action="listarProfissional" styleClass="btn-painel"/>
+                        </div>
+                        <div style="width: 100%;text-align: center">
+                        <h:commandButton  value="Publicar um serviço"  action="publicarMural" styleClass="btn-painel"/>                        
+                        <h:commandButton  value="Menssagens"  action="caixaDeEntrada" styleClass="btn-painel"/>
+                        <h:commandButton  value="Mural De Serviços"  action="#{muralBean.listaPublicacoes()}" styleClass="btn-painel"/>
+                        </div>
+                    </h:form>
+                </div>               
             </ui:define>
 
         </ui:composition>

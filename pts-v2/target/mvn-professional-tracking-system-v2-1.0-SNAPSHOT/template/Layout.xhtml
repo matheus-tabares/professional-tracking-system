@@ -20,14 +20,16 @@
             <!--BARRA DO TOPO DA TELA-->
             <div id="top">                  
                 <section class="top-direita flexs" >
-                    <div class="container change" >                    
-                        <div class="bar1"></div>
-                        <div class="bar2"></div>
-                        <div class="bar3"></div>                         
-                    </div> 
-                    <div class="container" >
-                        <h1>MENU</h1>
-                    </div>
+                    <ui:insert name="menu">
+                        <div class="container change" >                    
+                            <div class="bar1"></div>
+                            <div class="bar2"></div>
+                            <div class="bar3"></div>                         
+                        </div>                    
+                        <div class="container" >
+                            <h1>MENU</h1>
+                        </div>
+                    </ui:insert>
                 </section>
                 <section class="top-centro flexs">
                     <h1>Professional Tracking system</h1>
@@ -48,10 +50,10 @@
 
             <!--CONTAINER PRINCIPAL SITE-->
             <div id="conteudo" >
-                <!--          MENU          -->    
-                <div id="left-menu">
+                <!--          MENU          -->
+                <ui:insert name="menu-todos">
+                    <div id="left-menu">
 
-                    <ui:insert name="menu-todos">
                         <h:form> 
                             <p:commandButton icon="ui-icon-pencil" value="Painel inicial" ajax="false" action="painelProfissional" styleClass="btn-btn"/>
                             <p:commandButton icon="ui-icon-wrench " ajax="false" value="MEU PERFIL" action="#{usuarioBean.iniciaAlteracaoProfissional(usuarioBean.usuario.id)}" styleClass="btn-btn"/>
@@ -60,26 +62,17 @@
                             <p:commandButton icon="ui-icon-mail-closed" value="Menssagens" ajax="false" action="caixaDeEntrada" styleClass="btn-btn"/>
                             <p:commandButton icon="ui-icon-mail-closed" value="Mural De Serviços" ajax="false" action="#{muralBean.listaPublicacoes()}" styleClass="btn-btn"/>
                         </h:form>
+                        <footer class="logo">
+                            <h:graphicImage library="img" name="capacete.png" title="Professional Traking system"/>
+                        </footer>
 
-                    </ui:insert>
+                    </div>
+                </ui:insert>
 
-                    <ui:insert name="menu-cliente">
-
-                    </ui:insert>
-
-                    <ui:insert name="menu-profissional">
-
-                    </ui:insert>
-                    <footer class="logo">
-                        <h:graphicImage library="img" name="capacete.png" title="Professional Traking system"/>
-                    </footer>
-
-                </div>
                 <!--      FIM MENU          -->   
                 <div id="conteudo-principal">
                     <ui:insert name="content"  >
                         <div id="teste"><h1>conteudo teste</h1></div>
-
                     </ui:insert>
                 </div>
             </div>
