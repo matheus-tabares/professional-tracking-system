@@ -32,7 +32,6 @@ public class LoginBean implements Serializable {
     public String login() {
         context = FacesContext.getCurrentInstance();
         UsuarioDAO usuarioDAO = new UsuarioDAO();
-        
         if (this.nomeUsuario.equals("") || this.senha.equals("")) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "PREENCHA TODOS OS CAMPOS", ""));
             return null;

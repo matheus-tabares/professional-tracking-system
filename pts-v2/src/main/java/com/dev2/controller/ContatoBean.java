@@ -39,6 +39,10 @@ public class ContatoBean implements Serializable {
     }
 
     public String responderMensagem() {
+        if((contato.getAssunto().trim().length() == 0) || (contato.getMensagem().trim().length() == 0)) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "CAMPOS INVÁLIDOS", ""));
+            return null;
+        }
         System.out.println("REMETENTE" + this.contato.getRemetente().getNome());
         System.out.println("DESTINATARIO" + this.contato.getDestinatario().getNome());
         contatoDAO = new ContatoDAO();

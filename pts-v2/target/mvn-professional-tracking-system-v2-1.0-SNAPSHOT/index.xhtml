@@ -79,18 +79,14 @@
                             <p:commandButton ajax="false" value="Cadastrar"  action="#{usuarioBean.cadastrar()}" style="width: 49%"  />
                         </h:panelGroup>
                         <h:panelGroup>
-                            <p:commandButton ajax="false" value="Cancelar" action="home?faces-redirect=true" style="width: 49%; float: right"  />
+                            <p:commandButton ajax="false" value="Cancelar" action="home" style="width: 49%; float: right"  />     
                         </h:panelGroup>
-                        <h:messages infoClass="certo" errorClass="erro"/>
+                        <p:growl id="messages" showDetail="true" autoUpdate="true" life="5000" />
+        
                     </f:facet>
                 </p:panelGrid>                
-
-
             </h:form>
-
-
         </ui:define>
-
     </ui:composition>
 
 </html>
