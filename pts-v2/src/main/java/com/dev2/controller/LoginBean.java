@@ -28,6 +28,7 @@ public class LoginBean implements Serializable {
     private FacesContext context;
     private String senhaAntiga;
     private String senhaNova;
+    private String CPF;
 
     public String login() {
         context = FacesContext.getCurrentInstance();
@@ -37,11 +38,11 @@ public class LoginBean implements Serializable {
             return null;
         }
         try {
-        this.usuario = usuarioDAO.buscarPorEmail(this.nomeUsuario);
-        String hash = usuario.getSeguranca().getSALT();
-        String senhaCompleta = HashUtil.generateHash(this.senha, hash);
-        this.usuario = usuarioDAO.autentica(nomeUsuario, senhaCompleta);
-        } catch(Exception ex) {
+            this.usuario = usuarioDAO.buscarPorEmail(this.nomeUsuario);
+            String hash = usuario.getSeguranca().getSALT();
+            String senhaCompleta = HashUtil.generateHash(this.senha, hash);
+            this.usuario = usuarioDAO.autentica(nomeUsuario, senhaCompleta);
+        } catch (Exception ex) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "DADOS INCORRETOS", ""));
             return null;
         }
@@ -62,7 +63,7 @@ public class LoginBean implements Serializable {
 
         String toCompare = HashUtil.generateHash(this.senhaAntiga, this.usuario.getSeguranca().getSALT());
         String newpass;
-        
+
         System.out.println("HASH ANTIGO : " + this.usuario.getSenha());
         System.out.println("HASH NOVO   : " + toCompare);
         if (toCompare.equals(this.usuario.getSenha())) {
@@ -125,12 +126,31 @@ public class LoginBean implements Serializable {
     public void setSenhaNova(String senhaNova) {
         this.senhaNova = senhaNova;
     }
-    
+
     public String tipoUsuario() {
-        if (this.usuario != null) {        
-        return this.usuario.ehProfissional() ? "Profissional" : "Usuario";
+        if (this.usuario != null) {
+            return this.usuario.ehProfissional() ? "Profissional" : "Usuario";
         }
         return "";
+    }
+
+    public String getCPF() {
+        return CPF;
+    }
+
+    public void setCPF(String CPF) {
+        this.CPF = CPF;
+    }
+
+    public String forgotPassword() {
+        try {
+
+        } catch (Exception ex) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "DADOS NÃO CONFEREM", ""));
+            return null;
+        }
+
+        return null;
     }
 
 }

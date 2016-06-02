@@ -12,17 +12,16 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
-
 @ManagedBean
 @SessionScoped
 public class ContatoBean implements Serializable {
-    
+
     private Usuario usuarioQuePublicou;
     private Contato contato = new Contato();
     private ContatoDAO contatoDAO = new ContatoDAO();
     @ManagedProperty(value = "#{loginBean}")
     private LoginBean loginBean;
-    
+
     private int idDestinatario;
     private UsuarioDAO usuarioDAO = new UsuarioDAO();
     private List<Contato> mensagensRecebidas; // = contatoDAO.listaMensagensRecebidas(loginBean.getUsuario().getId());
@@ -39,8 +38,9 @@ public class ContatoBean implements Serializable {
     }
 
     public String responderMensagem() {
-        if((contato.getAssunto().trim().length() == 0) || (contato.getMensagem().trim().length() == 0)) {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "CAMPOS INVÁLIDOS", ""));
+
+        if (this.contato.getAssunto().trim().equals("") || this.contato.getMensagem().trim().equals("")) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "PREENCHA TODOS OS CAMPOS", ""));
             return null;
         }
         System.out.println("REMETENTE" + this.contato.getRemetente().getNome());
@@ -57,44 +57,32 @@ public class ContatoBean implements Serializable {
         this.contato = new Contato();
         return "painelProfissional?faces-redirect=true";
     }
-    
-    
+
     public String respostaContato() {
         contato.setAssunto("");
         contato.setMensagem("");
         return "respostaContato?faces-redirect=true";
     }
-    
-    
+
     public String respostaPublicacao(Usuario usuarioQuePublicou) {
         this.usuarioQuePublicou = usuarioQuePublicou;
         System.out.println("usuario que publicou: " + usuarioQuePublicou.getNome());
         return "respostaPublicacao?faces-redirect=true";
     }
-    
+
     public String responderPublicacao() {
         contatoDAO = new ContatoDAO();
-        
+
         this.contato.setRemetente(loginBean.getUsuario());
         this.contato.setDestinatario(usuarioQuePublicou);
-        
+
         this.contatoDAO.cadastrar(contato);
-        
+
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "MENSAGEM RESPONDIDA", ""));
         this.contato = new Contato();
         return "painelProfissional?faces-redirect=true";
     }
-    
-    /*
-    public void getMensagensEnviadas() {
-        this.contatoDAO = new ContatoDAO();
-        this.mensagensEnviadas = contatoDAO.listaMensagensEnviadas(loginBean.getUsuario().getId());
-    }
 
-    public void getMensagensRecebidas() {
-        this.contatoDAO = new ContatoDAO();
-        this.mensagensRecebidas = contatoDAO.listaMensagensRecebidas(loginBean.getUsuario().getId());
-    }*/
     public List<Contato> getMensagensRecebidas() {
         return contatoDAO.listaMensagensRecebidas(loginBean.getUsuario().getId());
     }
@@ -163,6 +151,4 @@ public class ContatoBean implements Serializable {
     public void setUsuarioQuePublicou(Usuario usuarioQuePublicou) {
         this.usuarioQuePublicou = usuarioQuePublicou;
     }
-
-        
 }
