@@ -32,11 +32,20 @@ public class LoginBean implements Serializable {
     public String login() {
         context = FacesContext.getCurrentInstance();
         UsuarioDAO usuarioDAO = new UsuarioDAO();
-
+        
+        if (this.nomeUsuario.equals("") || this.senha.equals("")) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "PREENCHA TODOS OS CAMPOS", ""));
+            return null;
+        }
+        try {
         this.usuario = usuarioDAO.buscarPorEmail(this.nomeUsuario);
         String hash = usuario.getSeguranca().getSALT();
         String senhaCompleta = HashUtil.generateHash(this.senha, hash);
         this.usuario = usuarioDAO.autentica(nomeUsuario, senhaCompleta);
+        } catch(Exception ex) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "DADOS INCORRETOS", ""));
+            return null;
+        }
         if (usuario != null) {
             System.out.println("USUARIO LOGADO: " + usuario.getEmail() + " ---- " + usuario.getNome());
             System.out.println("CEP E TEL: " + usuario.getEndereco().getCEP() + " ---- " + usuario.getEndereco().getUF() + " ---- " + usuario.getTelefone());
@@ -44,7 +53,7 @@ public class LoginBean implements Serializable {
 
         } else {
             System.out.println("LOGIN OU SENHA INVALIDOS");
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "LOGIN OU SENHA INVÁLIDOS", ""));
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "LOGIN OU SENHA INCORRETOS", ""));
             return null;
         }
 

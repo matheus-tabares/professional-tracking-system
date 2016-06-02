@@ -22,12 +22,12 @@
             <h:form prependId="false">                
                 <h:panelGrid  columns="2" id="form-login" footerClass="fot-btn" headerClass="head">                   
                     <p:outputLabel value="E-mail:"/>
-                    <p:inputText id="username" required="true" 
+                    <p:inputText id="username"  
                                  label="username" value="#{loginBean.nomeUsuario}"  >
                         <p:watermark for="username" value="exemplo@email.com"/>
                     </p:inputText>
                     <p:outputLabel value="Senha:"/>
-                    <p:password id="senha" required="true" style="width: 170px"
+                    <p:password id="senha"  style="width: 170px"
                                 label="senha" value="#{loginBean.senha}"> 
                         <p:watermark for="senha" value="Sua senha" />
                     </p:password>
