@@ -8,38 +8,32 @@
     <ui:composition template="template/Layout.xhtml">
 
         <ui:define name="content">
-
-
-            <h:form prependId="false">
+           <h:form prependId="false">
                 <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
                 <p:panelGrid columns="2" styleClass="formularios">
                     <f:facet name="header">
-                        RESPONDER MENSAGEM
+                        DETALHE PUBLICAÇÃO
                     </f:facet>
 
-                    <p:outputLabel value="PARA" for="txtPara"/>
-                    <p:outputLabel id="txtPara" value="#{contatoBean.contato.remetente.nome}"/>
-
                     <p:outputLabel value="ASSUNTO" for="txtAssunto"/>
-                    <p:inputText id="txtAssunto" maxlength="60" value="#{contatoBean.contato.assunto}" required="true"/>
+                    <p:outputLabel id="txtAssunto" value="#{muralBean.mural.titulo}"/>
 
                     <p:outputLabel value="MENSAGEM" for="txtMensagem"/>
-                    <p:inputTextarea id="txtMensagem" maxlength="200" cols="20" rows="5" value="#{contatoBean.contato.mensagem}" required="true"/> 
+                    <p:outputLabel id="txtMensagem" value="#{muralBean.mural.descricao}"/> 
 
 
                     <f:facet name="footer">
                         <h:panelGroup>
-                            <p:commandButton ajax="false" value="Responder"  action="#{contatoBean.responderMensagem()}"  />
+                            <p:commandButton ajax="false" value="Responder"  action="#{contatoBean.respostaPublicacao(muralBean.mural.usuarioQuePublicou)}"  />
                         </h:panelGroup>                        
                     </f:facet>
                 </p:panelGrid>  
 
             </h:form>
-
         </ui:define>
 
     </ui:composition>
 
 </html>
 
-
+        

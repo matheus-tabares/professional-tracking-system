@@ -17,11 +17,14 @@
                         RESPONDER MENSAGEM
                     </f:facet>
 
+                    <p:outputLabel value="PARA" for="txtPara"/>
+                    <p:outputLabel id="txtPara" value="#{contatoBean.contato.remetente.nome}"/>
+
                     <p:outputLabel value="ASSUNTO" for="txtAssunto"/>
-                    <p:inputText id="txtAssunto" maxlength="60" value="#{contatoBean.contato.assunto}"/>
+                    <p:inputText id="txtAssunto" maxlength="60" value="#{contatoBean.contato.assunto}" required="true"/>
 
                     <p:outputLabel value="MENSAGEM" for="txtMensagem"/>
-                    <p:inputTextarea id="txtMensagem" maxlength="200" cols="20" rows="5" value="#{contatoBean.contato.mensagem}"/> 
+                    <p:inputTextarea id="txtMensagem" maxlength="200" cols="20" rows="5" value="#{contatoBean.contato.mensagem}" required="true"/> 
 
 
                     <f:facet name="footer">

@@ -1,13 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.dev2.controller;
 
 import com.dev2.dao.ContatoDAO;
 import com.dev2.dao.UsuarioDAO;
 import com.dev2.model.Contato;
+import com.dev2.model.Usuario;
 import java.io.Serializable;
 import java.util.List;
 import javax.faces.application.FacesMessage;
@@ -16,18 +12,17 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
-/**
- *
- * @author Bruno
- */
+
 @ManagedBean
 @SessionScoped
 public class ContatoBean implements Serializable {
-
+    
+    private Usuario usuarioQuePublicou;
     private Contato contato = new Contato();
     private ContatoDAO contatoDAO = new ContatoDAO();
     @ManagedProperty(value = "#{loginBean}")
     private LoginBean loginBean;
+    
     private int idDestinatario;
     private UsuarioDAO usuarioDAO = new UsuarioDAO();
     private List<Contato> mensagensRecebidas; // = contatoDAO.listaMensagensRecebidas(loginBean.getUsuario().getId());
@@ -58,7 +53,34 @@ public class ContatoBean implements Serializable {
         this.contato = new Contato();
         return "painelProfissional?faces-redirect=true";
     }
-
+    
+    
+    public String respostaContato() {
+        contato.setAssunto("");
+        contato.setMensagem("");
+        return "respostaContato?faces-redirect=true";
+    }
+    
+    
+    public String respostaPublicacao(Usuario usuarioQuePublicou) {
+        this.usuarioQuePublicou = usuarioQuePublicou;
+        System.out.println("usuario que publicou: " + usuarioQuePublicou.getNome());
+        return "respostaPublicacao?faces-redirect=true";
+    }
+    
+    public String responderPublicacao() {
+        contatoDAO = new ContatoDAO();
+        
+        this.contato.setRemetente(loginBean.getUsuario());
+        this.contato.setDestinatario(usuarioQuePublicou);
+        
+        this.contatoDAO.cadastrar(contato);
+        
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "MENSAGEM RESPONDIDA", ""));
+        this.contato = new Contato();
+        return "painelProfissional?faces-redirect=true";
+    }
+    
     /*
     public void getMensagensEnviadas() {
         this.contatoDAO = new ContatoDAO();
@@ -130,4 +152,13 @@ public class ContatoBean implements Serializable {
         this.mensagensEnviadas = mensagensEnviadas;
     }
 
+    public Usuario getUsuarioQuePublicou() {
+        return usuarioQuePublicou;
+    }
+
+    public void setUsuarioQuePublicou(Usuario usuarioQuePublicou) {
+        this.usuarioQuePublicou = usuarioQuePublicou;
+    }
+
+        
 }

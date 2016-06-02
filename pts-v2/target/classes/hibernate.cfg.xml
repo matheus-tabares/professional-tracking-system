@@ -7,6 +7,7 @@
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/projetodevsisv2</property>
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.hbm2ddl.auto">update</property>
+    <property name="hibernate.connection.password">root</property>
     <mapping class="com.dev2.model.Categoria"/>
     <mapping class="com.dev2.model.Endereco"/>
     <mapping class="com.dev2.model.Profissional"/>

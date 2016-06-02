@@ -26,5 +26,9 @@ public class MuralDAO {
                 .add(Restrictions.like("categoria.id", idCategoria))
                 .list();
     }
+    
+    public Mural carregarPublicacao(int idPublicacao) {
+        return (Mural) sessao.get(Mural.class, idPublicacao);
+    }
 
 }

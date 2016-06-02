@@ -22,6 +22,7 @@ import javax.faces.context.FacesContext;
 public class MuralBean implements Serializable {
     @ManagedProperty(value="#{loginBean}")
     private LoginBean loginBean;
+    
     private Mural mural = new Mural();
     private MuralDAO muralDAO = new MuralDAO();
     private Usuario usuario = new Usuario();
@@ -33,6 +34,7 @@ public class MuralBean implements Serializable {
     private ProfissionalDAO profissionalDAO = new ProfissionalDAO();
     private Categoria categoria = new Categoria();
     private CategoriaDAO categoriaDAO = new CategoriaDAO();
+    private int idPublicacao;
     
     public String cadastrar() {
         muralDAO = new MuralDAO();
@@ -73,6 +75,12 @@ public class MuralBean implements Serializable {
         return "muralDeServicos?faces-redirect=true";
     }
     
+    public String detalhesPublicacao(int idPublicacao) {
+        mural = new Mural();
+        mural = muralDAO.carregarPublicacao(idPublicacao);
+        return "detalhesPublicacao?faces-redirect=true";
+    }
+  
     public ArrayList<Categoria> getListaCategorias() {
         this.categoriaDAO = new CategoriaDAO();
         return categoriaDAO.listarCategorias();
@@ -174,4 +182,13 @@ public class MuralBean implements Serializable {
         this.categoria = categoria;
     }
 
+    public int getIdPublicacao() {
+        return idPublicacao;
+    }
+
+    public void setIdPublicacao(int idPublicacao) {
+        this.idPublicacao = idPublicacao;
+    }
+
+  
 }

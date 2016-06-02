@@ -14,11 +14,11 @@
                 <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
                 <p:panelGrid columns="2" styleClass="formularios">
                     <f:facet name="header">
-                        RESPONDER MENSAGEM
+                        RESPONDER PUBLICAÇÃO
                     </f:facet>
 
                     <p:outputLabel value="PARA" for="txtPara"/>
-                    <p:outputLabel id="txtPara" value="#{contatoBean.contato.remetente.nome}"/>
+                    <p:outputLabel id="txtPara" value="#{muralBean.mural.usuarioQuePublicou.nome}"/>
 
                     <p:outputLabel value="ASSUNTO" for="txtAssunto"/>
                     <p:inputText id="txtAssunto" maxlength="60" value="#{contatoBean.contato.assunto}" required="true"/>
@@ -29,7 +29,7 @@
 
                     <f:facet name="footer">
                         <h:panelGroup>
-                            <p:commandButton ajax="false" value="Responder"  action="#{contatoBean.responderMensagem()}"  />
+                            <p:commandButton ajax="false" value="Responder"  action="#{contatoBean.responderPublicacao()}"  />
                         </h:panelGroup>                        
                     </f:facet>
                 </p:panelGrid>  
