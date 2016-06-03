@@ -31,17 +31,17 @@
                                  label="cpf" value="#{loginBean.CPF}"  >
                         <p:watermark for="username" value="exemplo@email.com"/>
                     </p:inputText>
-                    <p:outputLabel value="Senha:"/>
+                    <p:outputLabel value="Senha Nova:"/>
                     <p:password id="senha"  style="width: 170px"
-                                label="senha" value="#{loginBean.senha}"> 
+                                label="senha" value="#{loginBean.senhaNova}"> 
                         <p:watermark for="senha" value="Sua senha" />
                     </p:password>
                     <f:facet name="footer">
-                        <p:commandButton ajax="false" action="#{loginBean.login()}" value="Entrar" style="width: 49%;"/>
+                        <p:commandButton ajax="false" action="#{loginBean.forgotPassword()}" value="Confirmar" style="width: 49%;"/>
                         <p:commandButton ajax="false" action="home?faces-redirect=true" value="Voltar" style="width:49%;float: right;"/>
                     </f:facet>
                     <f:facet name="footer">
-                        <h:commandLink action="index" value="Esqueci minha senha?" style="float: right;"/>
+                        <p:outputLabel value="ESTA GOSTANDO?"/>
                     </f:facet>
                 </h:panelGrid> 
             </h:form>

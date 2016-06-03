@@ -144,13 +144,29 @@ public class LoginBean implements Serializable {
 
     public String forgotPassword() {
         try {
-
+            UsuarioDAO usuarioDAO = new UsuarioDAO();
+            Usuario user = usuarioDAO.buscarPorEmail(nomeUsuario);
+            if (this.nomeUsuario.equals(user.getEmail()) && this.CPF.equals(user.getCPF())) {
+                String newPass = HashUtil.generateHash(this.senhaNova, user.getSeguranca().getSALT());
+                user.setSenha(newPass);
+                usuarioDAO.alterar(user);
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "SENHA ALTERADA", ""));
+                inicializarVariaveis();
+                return null;
+            }
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "DADOS INVÁLIDOS", ""));
+            inicializarVariaveis();
+            return null;
         } catch (Exception ex) {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "DADOS NÃO CONFEREM", ""));
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "DADOS INVÁLIDOS", ""));
             return null;
         }
 
-        return null;
     }
 
+    public void inicializarVariaveis() {
+        this.senhaNova = "";
+        this.nomeUsuario = "";
+        this.CPF = "";
+    }
 }

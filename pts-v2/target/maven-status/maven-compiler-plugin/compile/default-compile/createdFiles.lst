@@ -8,6 +8,7 @@ com\dev2\dao\ProfissionalDAO.class
 com\dev2\util\HashUtil.class
 com\dev2\dao\ContatoDAO.class
 com\dev2\model\Seguranca.class
+com\dev2\controller\FileUploadBean.class
 com\dev2\model\Endereco.class
 com\dev2\controller\LoginBean.class
 com\dev2\model\Mural.class

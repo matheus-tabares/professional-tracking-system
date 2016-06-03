@@ -14,9 +14,9 @@
     <h:body>
         <p:growl id="messages" showDetail="true" autoUpdate="true" life="8000" />
         <div id="tela-login">
-           
+
             <div  class="head">
-                
+
                 <h3>Entrar no sistema</h3>
             </div>
             <h:form prependId="false">                
@@ -36,7 +36,7 @@
                         <p:commandButton ajax="false" action="home" value="Voltar" style="width:49%;float: right;"/>
                     </f:facet>
                     <f:facet name="footer">
-                        <h:commandLink action="index" value="Esqueci minha senha?" style="float: right;"/>
+                        <h:commandLink value="Esqueci minha senha" action="esqueciSenha?faces-redirect=true" style="float: right;"/>
                     </f:facet>
                 </h:panelGrid> 
             </h:form>
