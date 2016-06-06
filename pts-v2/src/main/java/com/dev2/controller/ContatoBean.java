@@ -28,12 +28,23 @@ public class ContatoBean implements Serializable {
     private List<Contato> mensagensEnviadas; //= contatoDAO.listaMensagensEnviadas(loginBean.getUsuario().getId());
 
     public String cadastrar() {
-        contatoDAO = new ContatoDAO();
-        this.contato.setRemetente(loginBean.getUsuario());
-        this.contato.setDestinatario(usuarioDAO.carregar(idDestinatario));
-        this.contatoDAO.cadastrar(contato);
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "MENSAGEM ENVIADA", ""));
-        this.contato = new Contato();
+        try {
+            System.out.println("entrou no cadastrar");
+            contatoDAO = new ContatoDAO();
+            this.contato.setRemetente(loginBean.getUsuario());
+            System.out.println("depois de setar o remetente : " + loginBean.getUsuario().getId());
+            this.contato.setDestinatario(usuarioDAO.carregar(idDestinatario));
+            System.out.println("depois de setar o destinatario : " + idDestinatario);
+            this.contatoDAO.cadastrar(contato);
+            System.out.println("depois de cadastrar");
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "MENSAGEM ENVIADA", ""));
+            this.contato = new Contato();
+            System.out.println("FIM DO TRY");
+        } catch(Exception ex) {
+            System.out.println("deu estoro no cadastrar");
+            return null;
+        }
+        System.out.println("vai retornar ao painel");
         return "painelProfissional?faces-redirect=true";
     }
 
@@ -82,7 +93,7 @@ public class ContatoBean implements Serializable {
         this.contato = new Contato();
         return "painelProfissional?faces-redirect=true";
     }
-
+    
     public List<Contato> getMensagensRecebidas() {
         return contatoDAO.listaMensagensRecebidas(loginBean.getUsuario().getId());
     }

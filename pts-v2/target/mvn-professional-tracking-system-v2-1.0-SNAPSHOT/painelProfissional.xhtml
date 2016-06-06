@@ -18,14 +18,17 @@
                 <div id="painel">
                     <h:form> 
                         <div style="width: 100%;text-align: center">
-                        <h:commandButton  value="Home"  action="home" styleClass="btn-painel"/>
-                        <h:commandButton  value="MEU PERFIL" action="#{usuarioBean.iniciaAlteracaoProfissional(usuarioBean.usuario.id)}" styleClass="btn-painel"/>
-                        <h:commandButton  value="Encontrar Profissional"  action="listarProfissional" styleClass="btn-painel"/>
+                            <h:commandButton  value="Home"  action="home" styleClass="btn-painel"/>
+                            <h:commandButton  value="MEU PERFIL" action="#{usuarioBean.iniciaAlteracaoProfissional(usuarioBean.usuario.id)}" styleClass="btn-painel"/>
+                            <h:commandButton  value="Encontrar Profissional"  action="listarProfissional" styleClass="btn-painel"/>
                         </div>
                         <div style="width: 100%;text-align: center">
-                        <h:commandButton  value="Publicar um serviço"  action="publicarMural" styleClass="btn-painel"/>                        
-                        <h:commandButton  value="Menssagens"  action="caixaDeEntrada" styleClass="btn-painel"/>
-                        <h:commandButton  value="Mural De Serviços"  action="#{muralBean.listaPublicacoes()}" styleClass="btn-painel"/>
+                            <h:commandButton  value="Publicar um serviço"  action="publicarMural" styleClass="btn-painel"/>                        
+                            <h:commandButton  value="Menssagens"  action="caixaDeEntrada" styleClass="btn-painel"/>
+                            <h:commandButton  value="Mural De Serviços"  action="#{muralBean.listaPublicacoes()}" styleClass="btn-painel"/>
+                        </div>
+                        <div style="width: 100%;text-align: center">
+                            <h:commandButton  value="Minhas Publicações"  action="minhasPublicacoes" styleClass="btn-painel"/>
                         </div>
                     </h:form>
                 </div>               
