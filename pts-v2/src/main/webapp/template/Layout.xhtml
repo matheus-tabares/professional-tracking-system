@@ -61,7 +61,7 @@
                             <p:commandButton icon="ui-icon-pencil" value="Publicar um serviço" ajax="false" action="publicarMural" styleClass="btn-btn"/>
                             <p:commandButton icon="ui-icon-mail-closed" value="Menssagens" ajax="false" action="caixaDeEntrada" styleClass="btn-btn"/>
                             <p:commandButton icon="ui-icon-mail-closed" value="Mural De Serviços" ajax="false" action="#{muralBean.listaPublicacoes()}" styleClass="btn-btn"/>
-                            <p:commandButton icon="ui-icon-mail-closed" value="Minhas Publicações" ajax="false" action="minhasPublicacoes" styleClass="btn-btn"/>
+                            <p:commandButton icon="ui-icon-mail-closed" value="Minhas Publicações" ajax="false" action="#{muralBean.minhasPublicacoes()}" styleClass="btn-btn"/>
                         </h:form>
                         <footer class="logo">
                             <h:graphicImage library="img" name="capacete.png" title="Professional Traking system"/>

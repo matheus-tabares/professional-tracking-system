@@ -2,7 +2,7 @@ package com.dev2.dao;
 
 import com.dev2.model.Mural;
 import com.dev2.util.HibernateUtil;
-import java.util.ArrayList;
+import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
@@ -21,8 +21,8 @@ public class MuralDAO {
         t.commit();
     }
 
-    public ArrayList<Mural> listarPublicacoes(int idCategoria) {
-        return (ArrayList<Mural>) sessao.createCriteria(Mural.class)
+    public List<Mural> listarPublicacoes(int idCategoria) {
+        return (List<Mural>) sessao.createCriteria(Mural.class)
                 .add(Restrictions.like("categoria.id", idCategoria))
                 .list();
     }
@@ -30,5 +30,14 @@ public class MuralDAO {
     public Mural carregarPublicacao(int idPublicacao) {
         return (Mural) sessao.get(Mural.class, idPublicacao);
     }
-
+    
+    public List<Mural> minhasPublicacoes(int idUsuarioLogado) {
+        System.out.println("ENTROU NO DAO COM ID:" + idUsuarioLogado);
+        //return (List<Mural>) sessao.createCriteria(Mural.class)
+        //        .add(Restrictions.like("usuarioQuePublicou.id", idUsuarioLogado));
+        List<Mural> result = (List<Mural>) sessao.createQuery("from Mural where usuarioQuePublicou_id = :id")
+                                    .setParameter("id", idUsuarioLogado)
+                                    .list();
+        return result;
+    }
 }

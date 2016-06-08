@@ -13,20 +13,20 @@
             <h:form prependId="false">
                 <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />            
                 
-                <p:dataTable value="#{contatoBean.mensagensRecebidas}" var="msg" emptyMessage="VOCE AINDA NAO PUBLICOU NO MURAL" rows="8" 
+                <p:dataTable value="#{muralBean.minhasPublicacoes}" var="p" emptyMessage="VOCE AINDA NAO PUBLICOU NO MURAL" rows="8" 
                              paginator="true" paginatorPosition="bottom"
                              style="margin-top: 10px">
                     
-                    <p:column headerText="DE" sortBy="#{msg.remetente.nome}">
-                        <h:outputText value="#{msg.remetente.nome}" />
+                    <p:column headerText="CATEGORIA">
+                        <h:outputText value="#{p.categoria.nome}" />
                     </p:column>
                     
                     <p:column headerText="ASSUNTO">
-                        <h:outputText value="#{msg.assunto}" />
+                        <h:outputText value="#{p.titulo}" />
                     </p:column>
 
                     <p:column headerText="ABRIR" width="80">
-                        <p:commandButton icon="ui-icon-mail-closed" ajax="false" action="#{contatoBean.detalheContato(msg.id)}"/>
+                        <p:commandButton icon="ui-icon-mail-closed" ajax="false" action="#{muralBean.detalhesPublicacao(p.id)}"/>
                     </p:column>                    
                 </p:dataTable>
 

@@ -35,6 +35,7 @@ public class MuralBean implements Serializable {
     private Categoria categoria = new Categoria();
     private CategoriaDAO categoriaDAO = new CategoriaDAO();
     private int idPublicacao;
+    private List<Mural> minhasPublicacoes;
     
     public String cadastrar() {
         muralDAO = new MuralDAO();
@@ -42,12 +43,12 @@ public class MuralBean implements Serializable {
         usuarioDAO = new UsuarioDAO();
               
         this.mural.setCategoria(categoriaDAO.carregar(idCategoria));
-        System.out.println("usuario logado: " + loginBean.getUsuario().getId());
         this.mural.setUsuarioQuePublicou(loginBean.getUsuario());
         this.muralDAO.incluir(mural);
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "PUBLICADO NO MURAL DE SERVIÇOS", this.mural.getTitulo()));
         
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "PUBLICADO NO MURAL DE SERVIÇOS", this.mural.getTitulo()));
         this.mural = new Mural();
+        
         return "painelProfissional?faces-redirect=true";
     }
     
@@ -56,8 +57,7 @@ public class MuralBean implements Serializable {
         usuario = new Usuario();
         usuarioDAO = new UsuarioDAO();
         usuario = usuarioDAO.carregar(loginBean.getUsuario().getId());
-        System.out.println("passou");
-
+        
         if(usuario.ehProfissional()) {
             profissional = profissionalDAO.carregar(usuario.getProfissional().getId());
             categoria = categoriaDAO.carregar(profissional.getCategoria().getId());
@@ -75,8 +75,15 @@ public class MuralBean implements Serializable {
         return "muralDeServicos?faces-redirect=true";
     }
     
+    public String minhasPublicacoes() {
+        muralDAO = new MuralDAO();
+        minhasPublicacoes = muralDAO.minhasPublicacoes(loginBean.getUsuario().getId());
+        return "minhasPublicacoes?faces-redirect=true";
+    }
+    
     public String detalhesPublicacao(int idPublicacao) {
         mural = new Mural();
+        muralDAO = new MuralDAO();
         mural = muralDAO.carregarPublicacao(idPublicacao);
         return "detalhesPublicacao?faces-redirect=true";
     }
@@ -190,5 +197,13 @@ public class MuralBean implements Serializable {
         this.idPublicacao = idPublicacao;
     }
 
-  
+    public List<Mural> getMinhasPublicacoes() {
+        return minhasPublicacoes;
+    }
+
+    public void setMinhasPublicacoes(List<Mural> minhasPublicacoes) {
+        this.minhasPublicacoes = minhasPublicacoes;
+    }
+    
+    
 }

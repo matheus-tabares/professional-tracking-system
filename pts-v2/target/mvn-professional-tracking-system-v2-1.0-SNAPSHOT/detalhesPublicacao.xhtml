@@ -15,6 +15,9 @@
                         DETALHE PUBLICAÇÃO
                     </f:facet>
 
+                    <p:outputLabel value="CATEGORIA" for="txtCategoria"/>
+                    <p:outputLabel id="txtCategoria" value="#{muralBean.mural.categoria.nome}"/>
+
                     <p:outputLabel value="ASSUNTO" for="txtAssunto"/>
                     <p:outputLabel id="txtAssunto" value="#{muralBean.mural.titulo}"/>
 
@@ -23,9 +26,7 @@
 
 
                     <f:facet name="footer">
-                        <h:panelGroup>
-                            <p:commandButton ajax="false" value="Responder"  action="#{contatoBean.respostaPublicacao(muralBean.mural.usuarioQuePublicou)}"  />
-                        </h:panelGroup>                        
+                        
                     </f:facet>
                 </p:panelGrid>  
 
