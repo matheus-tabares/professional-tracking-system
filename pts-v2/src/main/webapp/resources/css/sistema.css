@@ -23,7 +23,7 @@ html,body{
 .site{
     height: 100%;
     background: url('img/home.jpg')no-repeat ;
-    background-attachment: fixed;background-size: cover ;
+    background-attachment: fixed;background-size: cover ;    ;
 }
 .menu{
     position: relative; 
@@ -65,13 +65,12 @@ html,body{
     font-size: 3vw;background:rgba(255,255,255,0.5);
     padding: 10px;
 }
-#btn-cadastro{
+#btn-cadastro,#btn-teste {/*trocar*/
     height: 100px;
-    width: 300px;    
-    margin: auto;    
+    width: 300px;        
     border: 6px solid #2D5E82 ;    
 }
-#btn-cadastro a{
+#btn-cadastro a ,#btn-teste a{
     height: 100%;
     width: 100%;    
     display: flex;
@@ -84,24 +83,35 @@ html,body{
     background-position: center;
     transition: all .3s ease-in;
 }
-#btn-cadastro a:hover{
+#btn-cadastro a:hover,#btn-teste a:hover{
     background-size: 150%;    
     color: #fff;
 }
 
 .segundo-bloco{
     background: #fff;
-    height: 40%;
+    height: 40%; 
+    background-image: url('img/bg-footer.png');background-size: cover;
 }
 .bloco-secundario{
     height: 85%;
     overflow-y: auto;
 }
-.bloco-secundario h1{
+.bloco-secundario .busca{/*alterar*/
     text-align: center;
     background: #2D5E82;
     color: #fff;
     padding: 10px;
+}
+.busca  *{
+    font-family: 'Roboto Condensed', sans-serif!important;
+    background: transparent;
+    border-color:transparent;
+    padding: 0;
+    margin: 0;
+}
+.busca input[type='text']{
+    width: 600px;
 }
 .segundo-segundo-bloco{
     height: 10%;    
@@ -147,7 +157,7 @@ footer code{
     text-align: center;
     font-family: 'Roboto Condensed', sans-serif;
     color: #999;
-    font-size: 10pt;
+    font-size: 11pt;
     padding: 10px;
 }
 .card *{
@@ -168,7 +178,17 @@ footer code{
     color: #fff;
     background: linear-gradient(#2D5E82,#21455f);
 }
-.btn-btn{
-    
+.btn-btn{    
     height: 70px;
+}
+/*CANVAS GOOGLE MAPS NÃO ALTERAR*/
+#map{
+    height: 90%;
+}
+/* GOOGLE MAPS  */
+
+.flexs{    
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

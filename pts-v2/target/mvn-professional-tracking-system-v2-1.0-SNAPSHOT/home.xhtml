@@ -11,6 +11,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title>Professional Tracking System</title>
         <h:outputStylesheet library="css" name="sistema.css"/>
+
     </h:head>
     <h:body>
         <div class="site">
@@ -37,9 +38,16 @@
             </div>
             <div class="segundo-bloco">
                 <div class="space"></div>
-                <h:form prependId="false" id="btn-cadastro">
-                    <h:commandLink value="CADASTRE-SE" action="index?faces-redirect=true"/>
-                </h:form>
+                <div class="flexs">
+                    <div id="btn-teste" >
+                        <a href="#map" class="scroll">FAÇA UM TESTE</a>
+                    </div>
+                    <div style="width: 5%"></div>
+                    <h:form prependId="false" id="btn-cadastro">
+                        <h:commandLink value="CADASTRE-SE" action="index?faces-redirect=true"/>                        
+                    </h:form>
+
+                </div>
                 <div class="p-termos">
                     Ao clicar em " CADASTRE-SE "  você concorda,<br/> com os nossos <h:form style="display: inline-table">&nbsp;<h:commandLink value=" termos de serviço " action="termos"/>&nbsp;</h:form> e política de privacidade.  
                 </div>
@@ -47,32 +55,20 @@
         </div>
         <div class="site top10">
             <div class="bloco-secundario">
-                <h1>Conheça alguns de nossos profissionais</h1>
-                <div class="space"></div>
-                <div >
-                    <h:form>                        
-
-                        <ui:repeat var="p" value="#{usuarioBean.listaProfissionaistop10}"  >
-                            <span class="card">
-                                <p class="c">#{p.nome}</p>
-                                <h:panelGrid columns="2" style="margin: auto" footerClass="c" onclick="alert('Na Proxima sprint ok?');">
-
-                                    <f:facet name="header">
-                                        <p:graphicImage alt="Teste" library="img" name="teste.jpg" title="Nome" />
-                                    </f:facet>                             
-                                    <p:outputLabel value="Categoria"/>
-                                    <p:outputLabel value="#{p.profissional.categoria.nome}"/>
-
-                                    <p:outputLabel value="Bairro"/>
-                                    <p:outputLabel value="#{p.endereco.bairro}"/>
-                                    <f:facet name="footer" >
-                                        <p:outputLabel value="+ Mais Detalhes" />
-                                    </f:facet>
-                                </h:panelGrid>
-                            </span>
-                        </ui:repeat> 
+                <div class="busca">
+                    <h:form prependId="false">
+                        <p:panelGrid columns="3"  style="margin: auto">
+                            <p:inputText id="keyword" value="#{watermarkView.keyword}" required="true" label="Keyword"/>
+                            <p:watermark for="keyword" value="DIGITE SEU ENDEREÇO" id="watermark" />
+                            <h:commandButton value="BUSCAR"/>
+                        </p:panelGrid>
                     </h:form>
                 </div>
+
+
+                <!--CANVAS COM O MAPA -->
+                <div id="map"></div>
+
 
             </div>
             <div class="segundo-segundo-bloco">
@@ -85,8 +81,23 @@
                 <code>Projeto do curso de ADS IFRS Disciplina DEV SIS II - Copyright<sup>©</sup> 2016</code>
             </footer>
         </div>
+
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZiFconlkX4lv9MKcXQo-BkQX9-QY-L0w"></script>
+        <h:outputScript library="js" name="gmaps.js"/>
+        <h:outputScript library="js" name="mapas.js"/>
         <h:outputScript library="js" name="texto.js"/>
+        <script type="text/javascript">
+            $(document).ready(function ($) {
+                $(".scroll").click(function (event) {
+                    event.preventDefault();
+                    $('html,body').animate({scrollTop: $(this.hash).offset().top}, 800);
+                });
+            });
+        </script>
 
     </h:body>
 </html>
 
+<!--
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+-->

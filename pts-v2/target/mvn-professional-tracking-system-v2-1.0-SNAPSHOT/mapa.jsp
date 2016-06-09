@@ -60,7 +60,7 @@
             <div id="map"></div>
             <script type="text/javascript">
 
-                var pontodepartida = document.getElementById('partida').value; 
+               // var pontodepartida = document.getElementById('pontodepartida').value; 
                 
                 function initMap() {
                     if ("geolocation" in navigator) {
