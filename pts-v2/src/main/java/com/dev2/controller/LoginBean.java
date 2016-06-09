@@ -28,6 +28,7 @@ public class LoginBean implements Serializable {
     private FacesContext context;
     private String senhaAntiga;
     private String senhaNova;
+    private String confirmaSenhaNova;
     private String CPF;
 
     public String login() {
@@ -144,24 +145,64 @@ public class LoginBean implements Serializable {
 
     public String forgotPassword() {
         try {
-            UsuarioDAO usuarioDAO = new UsuarioDAO();
-            Usuario user = usuarioDAO.buscarPorEmail(nomeUsuario);
-            if (this.nomeUsuario.equals(user.getEmail()) && this.CPF.equals(user.getCPF())) {
-                String newPass = HashUtil.generateHash(this.senhaNova, user.getSeguranca().getSALT());
-                user.setSenha(newPass);
-                usuarioDAO.alterar(user);
-                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "SENHA ALTERADA", ""));
+            UsuarioDAO userDAO = new UsuarioDAO();
+            Usuario user = userDAO.buscarPorEmail(this.nomeUsuario);
+
+            if (!senhaNova.equals(confirmaSenhaNova)) {
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "SENHAS NÃO CONFEREM", ""));
                 inicializarVariaveis();
                 return null;
             }
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "DADOS INVÁLIDOS", ""));
+
+            if (this.nomeUsuario.equals(user.getEmail()) && this.CPF.equals(user.getCPF())) {
+                if (HashUtil.generateHash(senhaNova, user.getSeguranca().getSALT()).equals(user.getSenha())) {
+                    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "SUAS SENHAS SÃO IGUAIS", ""));
+                    inicializarVariaveis();
+                    return null;
+                }
+
+                String newPass = HashUtil.generateHash(this.senhaNova, user.getSeguranca().getSALT());
+                user.setSenha(newPass);
+                userDAO.alterar(user);
+            }
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "SENHA ALTERADA", ""));
             inicializarVariaveis();
             return null;
+
         } catch (Exception ex) {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "DADOS INVÁLIDOS", ""));
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "DADOS INVALIDOS", ""));
+            inicializarVariaveis();
             return null;
         }
+    }
 
+    /*public String forgotPassword() {
+     try {
+     UsuarioDAO usuarioDAO = new UsuarioDAO();
+     Usuario user = usuarioDAO.buscarPorEmail(nomeUsuario);
+     if (this.nomeUsuario.equals(user.getEmail()) && this.CPF.equals(user.getCPF())) {
+     String newPass = HashUtil.generateHash(this.senhaNova, user.getSeguranca().getSALT());
+     user.setSenha(newPass);
+     usuarioDAO.alterar(user);
+     FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "SENHA ALTERADA", ""));
+     inicializarVariaveis();
+     return null;
+     }
+     FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "DADOS INVÁLIDOS", ""));
+     inicializarVariaveis();
+     return null;
+     } catch (Exception ex) {
+     FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "DADOS INVÁLIDOS", ""));
+     return null;
+     }
+
+     }*/
+    public String getConfirmaSenhaNova() {
+        return confirmaSenhaNova;
+    }
+
+    public void setConfirmaSenhaNova(String confirmaSenhaNova) {
+        this.confirmaSenhaNova = confirmaSenhaNova;
     }
 
     public void inicializarVariaveis() {

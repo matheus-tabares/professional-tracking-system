@@ -31,10 +31,15 @@
                                  label="cpf" value="#{loginBean.CPF}"  >
                         <p:watermark for="username" value="exemplo@email.com"/>
                     </p:inputText>
-                    <p:outputLabel value="Senha Nova:"/>
+                    <p:outputLabel value="Nova Senha:"/>
                     <p:password id="senha"  style="width: 170px"
                                 label="senha" value="#{loginBean.senhaNova}"> 
                         <p:watermark for="senha" value="Sua senha" />
+                    </p:password>
+                    <p:outputLabel value="Confirme a Senha:"/>
+                    <p:password id="confirmaSenha"  style="width: 170px"
+                                label="confirmaSenha" value="#{loginBean.confirmaSenhaNova}"> 
+                        <p:watermark for="confirmaSenha" value="Confirme a sua senha" />
                     </p:password>
                     <f:facet name="footer">
                         <p:commandButton ajax="false" action="#{loginBean.forgotPassword()}" value="Confirmar" style="width: 49%;"/>
