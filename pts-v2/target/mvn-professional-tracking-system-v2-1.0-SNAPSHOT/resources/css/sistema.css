@@ -42,6 +42,9 @@ html,body{
     color: #fff;  
     background: tomato;
     padding: 10px;
+    position: fixed;
+    right: 10px;
+    top:10px;
 }
 .menu h1{
     color: #fff;
@@ -103,8 +106,7 @@ html,body{
     color: #fff;
     padding: 10px;
 }
-.busca  *{
-    font-family: 'Roboto Condensed', sans-serif!important;
+.busca  *{    
     background: transparent;
     border-color:transparent;
     padding: 0;
@@ -112,6 +114,7 @@ html,body{
 }
 .busca input[type='text']{
     width: 600px;
+    font-family: 'Roboto Condensed', sans-serif;
 }
 .segundo-segundo-bloco{
     height: 10%;    
@@ -121,6 +124,7 @@ html,body{
     flex-wrap: wrap;    
 }
 footer{
+    position: relative;
     height: 5%;
     background: #21455f;
     text-align: center;
@@ -191,4 +195,9 @@ footer code{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+#btn-busca{
+    font-weight: bold;
+    color: #fff;
+    cursor: pointer;
 }

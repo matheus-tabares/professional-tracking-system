@@ -14,6 +14,7 @@
 
     </h:head>
     <h:body>
+        <div id="topo"></div>
         <div class="site">
 
             <div class="menu">
@@ -56,11 +57,11 @@
         <div class="site top10">
             <div class="bloco-secundario">
                 <div class="busca">
-                    <h:form prependId="false">
+                    <h:form prependId="false" id="geocoding_form">
                         <p:panelGrid columns="3"  style="margin: auto">
-                            <p:inputText id="keyword" value="#{watermarkView.keyword}" required="true" label="Keyword"/>
-                            <p:watermark for="keyword" value="DIGITE SEU ENDEREÇO" id="watermark" />
-                            <h:commandButton value="BUSCAR"/>
+                            <p:inputText id="address" value="" required="true" label="address"/>
+                            <p:watermark for="address" value="DIGITE SEU ENDEREÇO" id="watermark" />
+                            <h:commandButton id="btn-busca" value="BUSCAR"/>
                         </p:panelGrid>
                     </h:form>
                 </div>
@@ -79,6 +80,9 @@
             </div>
             <footer>
                 <code>Projeto do curso de ADS IFRS Disciplina DEV SIS II - Copyright<sup>©</sup> 2016</code>
+                <a href="#topo" class="scroll">
+                    <h:graphicImage library="img" name="subir.png" style="height: 60px;position: absolute;right: 10px;bottom: 40px"/>
+                </a>
             </footer>
         </div>
 
