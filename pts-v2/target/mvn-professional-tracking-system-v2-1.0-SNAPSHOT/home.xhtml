@@ -19,7 +19,7 @@
 
             <div class="menu">
                 <span>
-                    <h:graphicImage library="img" name="capacete.png"/>
+                    <h:graphicImage id="capacete" library="img" name="capacete.png"/>
                 </span>
                 <h1>Professional Tracking system </h1>
                 <span>
@@ -28,6 +28,7 @@
                     </h:form> 
                 </span>
             </div>
+
             <div class="bloco-principal">
                 <h1>Encontre um profissional rapidamente para 
                     <span
@@ -38,8 +39,8 @@
                 </h1>
             </div>
             <div class="segundo-bloco">
-                <div class="space"></div>
-                <div class="flexs">
+                
+                <div class="bloco-btn-cadastro flexs">
                     <div id="btn-teste" >
                         <a href="#map" class="scroll">FAÇA UM TESTE</a>
                     </div>
@@ -49,41 +50,50 @@
                     </h:form>
 
                 </div>
+                
                 <div class="p-termos">
                     Ao clicar em " CADASTRE-SE "  você concorda,<br/> com os nossos <h:form style="display: inline-table">&nbsp;<h:commandLink value=" termos de serviço " action="termos"/>&nbsp;</h:form> e política de privacidade.  
                 </div>
-            </div>            
+            </div> 
+
         </div>
-        <div class="site top10">
+
+        <div class="site">
             <div class="bloco-secundario">
-                <div class="busca">
+                <div class="menu">
+                    <span>
+                        <h:graphicImage library="img" name="capacete.png"/>
+                    </span>
                     <h:form prependId="false" id="geocoding_form">
-                        <p:panelGrid columns="3"  style="margin: auto">
-                            <p:inputText id="address" value="" required="true" label="address"/>
-                            <p:watermark for="address" value="DIGITE SEU ENDEREÇO" id="watermark" />
-                            <h:commandButton id="btn-busca" value="BUSCAR"/>
-                        </p:panelGrid>
+                        <div class="busca">
+                            <h:inputText id="address" value="" required="true" label="address"/>
+                            <p:watermark for="address" value="DIGITE SEU ENDEREÇO E ENCONTRE UM PROFISSIONAL PERTO DE VOCÊ" id="watermark" />
+                            <h:commandButton id="btn-busca" value=""/>
+                        </div>
                     </h:form>
+                    <span>
+                        <a href="#topo" class="scroll topo">
+                            <h:graphicImage library="img" name="subir.png" title="Subir"/>                            
+                        </a>
+                    </span>
                 </div>
 
-
-                <!--CANVAS COM O MAPA -->
+                <!-- MAPA CANVAS  -->
                 <div id="map"></div>
 
-
             </div>
-            <div class="segundo-segundo-bloco">
+            <footer>
+                <code>Projeto do curso de ADS IFRS Disciplina DEV SIS II - Copyright<sup>©</sup> 2016</code>
+
+            </footer>
+
+            <div class="termos-uso">
                 <p>Termo de uso</p>
                 <p>Politica de privacidade</p>
                 <p>Contato</p>
                 <p>Parceiros</p>
             </div>
-            <footer>
-                <code>Projeto do curso de ADS IFRS Disciplina DEV SIS II - Copyright<sup>©</sup> 2016</code>
-                <a href="#topo" class="scroll">
-                    <h:graphicImage library="img" name="subir.png" style="height: 60px;position: absolute;right: 10px;bottom: 40px"/>
-                </a>
-            </footer>
+            
         </div>
 
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZiFconlkX4lv9MKcXQo-BkQX9-QY-L0w"></script>
