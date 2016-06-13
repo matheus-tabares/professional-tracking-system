@@ -2,7 +2,7 @@
 
 
 $(document).ready(function () {
-
+    $("#txtNumero").val("");
     //alert('oi');
     function limpa_formulário_cep() {
         // Limpa valores do formulário de cep.
