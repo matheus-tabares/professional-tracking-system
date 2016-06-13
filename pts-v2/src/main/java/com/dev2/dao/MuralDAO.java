@@ -26,18 +26,35 @@ public class MuralDAO {
                 .add(Restrictions.like("categoria.id", idCategoria))
                 .list();
     }
-    
+
     public Mural carregarPublicacao(int idPublicacao) {
         return (Mural) sessao.get(Mural.class, idPublicacao);
     }
-    
+
     public List<Mural> minhasPublicacoes(int idUsuarioLogado) {
         System.out.println("ENTROU NO DAO COM ID:" + idUsuarioLogado);
         //return (List<Mural>) sessao.createCriteria(Mural.class)
         //        .add(Restrictions.like("usuarioQuePublicou.id", idUsuarioLogado));
         List<Mural> result = (List<Mural>) sessao.createQuery("from Mural where usuarioQuePublicou_id = :id")
-                                    .setParameter("id", idUsuarioLogado)
-                                    .list();
+                .setParameter("id", idUsuarioLogado)
+                .list();
         return result;
+    }
+
+    public void excluir(Mural mural) {
+        Transaction transacao = null;
+        try {
+            transacao = sessao.beginTransaction();
+            sessao.delete(mural);
+            transacao.commit();
+
+        } catch (RuntimeException erro) {
+            if (transacao != null) {
+                transacao.rollback();
+            }
+            throw erro;
+        } finally {
+            sessao.close();
+        }
     }
 }

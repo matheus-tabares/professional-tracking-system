@@ -29,7 +29,7 @@
 
                     <f:facet name="footer">
                         <h:panelGroup>
-                            <p:commandButton ajax="false" value="Responder"  action="#{contatoBean.responderPublicacao()}"  />
+                            <p:commandButton ajax="false" value="Responder"  action="#{contatoBean.responderPublicacao(muralBean.mural.usuarioQuePublicou)}"  />
                         </h:panelGroup>                        
                     </f:facet>
                 </p:panelGrid>  

@@ -12,22 +12,25 @@
             <h1>Minhas Publicações</h1>
             <h:form prependId="false">
                 <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />            
-                
+
                 <p:dataTable value="#{muralBean.minhasPublicacoes}" var="p" emptyMessage="VOCE AINDA NAO PUBLICOU NO MURAL" rows="8" 
                              paginator="true" paginatorPosition="bottom"
                              style="margin-top: 10px">
-                    
+
                     <p:column headerText="CATEGORIA">
                         <h:outputText value="#{p.categoria.nome}" />
                     </p:column>
-                    
+
                     <p:column headerText="ASSUNTO">
                         <h:outputText value="#{p.titulo}" />
                     </p:column>
 
-                    <p:column headerText="ABRIR" width="80">
+                    <p:column headerText="+Detalhes" width="80">
                         <p:commandButton icon="ui-icon-mail-closed" ajax="false" action="#{muralBean.detalhesPublicacao(p.id)}"/>
-                    </p:column>                    
+                    </p:column>
+                    <p:column headerText="Excluir" width="80">
+                        <p:commandButton icon="ui-icon-trash" ajax="false" action="#{muralBean.excluir(p.id)}"/>
+                    </p:column>                                        
                 </p:dataTable>
 
 

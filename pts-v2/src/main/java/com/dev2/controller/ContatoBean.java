@@ -81,7 +81,7 @@ public class ContatoBean implements Serializable {
         return "respostaPublicacao?faces-redirect=true";
     }
 
-    public String responderPublicacao() {
+    public String responderPublicacao(Usuario usuarioQuePublicou) {
         contatoDAO = new ContatoDAO();
 
         this.contato.setRemetente(loginBean.getUsuario());

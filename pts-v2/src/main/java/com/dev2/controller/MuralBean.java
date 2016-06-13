@@ -20,9 +20,10 @@ import javax.faces.context.FacesContext;
 @ManagedBean
 @SessionScoped
 public class MuralBean implements Serializable {
-    @ManagedProperty(value="#{loginBean}")
+
+    @ManagedProperty(value = "#{loginBean}")
     private LoginBean loginBean;
-    
+
     private Mural mural = new Mural();
     private MuralDAO muralDAO = new MuralDAO();
     private Usuario usuario = new Usuario();
@@ -36,34 +37,34 @@ public class MuralBean implements Serializable {
     private CategoriaDAO categoriaDAO = new CategoriaDAO();
     private int idPublicacao;
     private List<Mural> minhasPublicacoes;
-    
+
     public String cadastrar() {
         muralDAO = new MuralDAO();
         usuario = new Usuario();
         usuarioDAO = new UsuarioDAO();
-              
+
         this.mural.setCategoria(categoriaDAO.carregar(idCategoria));
         this.mural.setUsuarioQuePublicou(loginBean.getUsuario());
         this.muralDAO.incluir(mural);
-        
+
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "PUBLICADO NO MURAL DE SERVIÇOS", this.mural.getTitulo()));
         this.mural = new Mural();
-        
+
         return "painelProfissional?faces-redirect=true";
     }
-    
+
     public String listaPublicacoes() {
         muralDAO = new MuralDAO();
         usuario = new Usuario();
         usuarioDAO = new UsuarioDAO();
         usuario = usuarioDAO.carregar(loginBean.getUsuario().getId());
-        
-        if(usuario.ehProfissional()) {
+
+        if (usuario.ehProfissional()) {
             profissional = profissionalDAO.carregar(usuario.getProfissional().getId());
             categoria = categoriaDAO.carregar(profissional.getCategoria().getId());
             listaDePublicacoes = muralDAO.listarPublicacoes(categoria.getId());
         }
-        
+
         usuario = new Usuario();
         usuarioDAO = new UsuarioDAO();
         profissional = new Profissional();
@@ -74,25 +75,40 @@ public class MuralBean implements Serializable {
 
         return "muralDeServicos?faces-redirect=true";
     }
-    
+
     public String minhasPublicacoes() {
         muralDAO = new MuralDAO();
         minhasPublicacoes = muralDAO.minhasPublicacoes(loginBean.getUsuario().getId());
         return "minhasPublicacoes?faces-redirect=true";
     }
-    
+
     public String detalhesPublicacao(int idPublicacao) {
         mural = new Mural();
         muralDAO = new MuralDAO();
         mural = muralDAO.carregarPublicacao(idPublicacao);
         return "detalhesPublicacao?faces-redirect=true";
     }
-  
+
+    public void excluir(int id) {
+        mural = new Mural();
+        muralDAO = new MuralDAO();
+        try {
+            mural = muralDAO.carregarPublicacao(id);
+            muralDAO.excluir(mural);
+            minhasPublicacoes();
+        } catch (RuntimeException erro) {
+            FacesContext.getCurrentInstance().addMessage(
+                    null, new FacesMessage(
+                            FacesMessage.SEVERITY_ERROR, "ERRO AO EXCLUIR A PUBLICACÃO", ""));
+
+        }
+    }
+
     public ArrayList<Categoria> getListaCategorias() {
         this.categoriaDAO = new CategoriaDAO();
         return categoriaDAO.listarCategorias();
     }
-    
+
     public Mural getMural() {
         return mural;
     }
@@ -204,6 +220,5 @@ public class MuralBean implements Serializable {
     public void setMinhasPublicacoes(List<Mural> minhasPublicacoes) {
         this.minhasPublicacoes = minhasPublicacoes;
     }
-    
-    
+
 }
