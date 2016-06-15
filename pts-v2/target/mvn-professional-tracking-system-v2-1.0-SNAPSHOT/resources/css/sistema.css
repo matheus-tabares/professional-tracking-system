@@ -216,3 +216,32 @@ footer code{
     background-color: transparent;
     background-image: url('img/Search.png');background-size:38px;
 }
+#modal{
+    background: #ffffff;
+    background-image: url('img/psticon.png');background-size:38px;background-repeat: no-repeat;background-position: top right;
+    padding-top: 10px;    
+    height: 80px;
+    width: 200px;
+    position: fixed;
+    top:20%;
+    left: calc(50% - 100px);
+    z-index: 999;
+    text-align: center;
+    cursor: pointer;
+    border: 2px solid #2D5E82;
+    -webkit-animation-name: animate; 
+    -webkit-animation-duration: 0.5s; 
+    animation-name: animate;
+    animation-duration: 0.5s;
+}
+#modal spam{
+    font-weight: bold;
+}
+@-webkit-keyframes animate {
+    from   {transform:scale(2.1,2.1);}    
+    to {transform:scale(1,1);}
+}
+@keyframes animate {
+    from   {transform:scale(2.1,2.1);}    
+    to {transform:scale(1,1);}
+}
