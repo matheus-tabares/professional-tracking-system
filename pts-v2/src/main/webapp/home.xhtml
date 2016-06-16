@@ -39,7 +39,7 @@
                 </h1>
             </div>
             <div class="segundo-bloco">
-                
+
                 <div class="bloco-btn-cadastro flexs">
                     <div id="btn-teste" >
                         <a href="#map" class="scroll">FAÇA UM TESTE</a>
@@ -50,7 +50,7 @@
                     </h:form>
 
                 </div>
-                
+
                 <div class="p-termos">
                     Ao clicar em " CADASTRE-SE "  você concorda,<br/> com os nossos <h:form style="display: inline-table">&nbsp;<h:commandLink value=" termos de serviço " action="termos"/>&nbsp;</h:form> e política de privacidade.  
                 </div>
@@ -70,14 +70,18 @@
                             <p:watermark for="address" value="DIGITE SEU ENDEREÇO E ENCONTRE UM PROFISSIONAL PERTO DE VOCÊ" id="watermark" />
                             <h:commandButton id="btn-busca" value=""/>
                         </div>
-                    </h:form>
+                    </h:form>                    
                     <span>
                         <a href="#topo" class="scroll topo">
                             <h:graphicImage library="img" name="subir.png" title="Subir"/>                            
                         </a>
                     </span>
                 </div>
-
+                <h:form prependId="false">
+                    <ui:repeat var="p" value="#{usuarioBean.profissionaisPorCategoria}"  >
+                        <input type="hidden" class="pz" value="#{p.endereco.logradouro} , #{p.endereco.numero} , #{p.endereco.bairro} , #{p.endereco.cidade}"/>
+                    </ui:repeat>
+                </h:form>
                 <!-- MAPA CANVAS  -->
                 <div id="map"></div>
 
@@ -93,7 +97,7 @@
                 <p>Contato</p>
                 <p>Parceiros</p>
             </div>
-            
+
         </div>
 
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZiFconlkX4lv9MKcXQo-BkQX9-QY-L0w"></script>
@@ -106,6 +110,7 @@
                     event.preventDefault();
                     $('html,body').animate({scrollTop: $(this.hash).offset().top}, 800);
                 });
+                
             });
         </script>
 

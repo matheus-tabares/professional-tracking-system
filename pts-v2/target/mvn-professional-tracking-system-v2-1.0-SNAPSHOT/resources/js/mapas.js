@@ -6,9 +6,10 @@
 var map;
 $(document).ready(function () {
     map = new GMaps({
+        zoom: 10,
         el: '#map',
-        lat: -12.043333,
-        lng: -77.028333
+        lat: -30.0346,
+        lng: -51.2177
     });
     $('#geocoding_form').submit(function (e) {
         e.preventDefault();
@@ -20,11 +21,29 @@ $(document).ready(function () {
                     map.setCenter(latlng.lat(), latlng.lng());
                     map.addMarker({
                         lat: latlng.lat(),
-                        lng: latlng.lng()
+                        lng: latlng.lng(),
+                        
                     });
                 }
             }
         });
-        alert('Gostou?');
+
+    });
+    $(".pz").each(function () {
+       var valor = $(this).attr('value');
+        GMaps.geocode({
+            address: valor,
+            callback: function (results, status) {
+                if (status === 'OK') {
+                    var latlng = results[0].geometry.location;                    
+                    map.addMarker({
+                        lat: latlng.lat(),
+                        lng: latlng.lng(),
+                        icon: "resources/img/psticon.png"
+                    });
+                }
+            }
+        });
+
     });
 });
