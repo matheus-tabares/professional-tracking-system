@@ -3,6 +3,10 @@
  * 
  * 
  */
+var iconProf = {
+    url: "resources/img/Mapicon.png", // url
+    scaledSize: new google.maps.Size(50, 50)
+};
 var map;
 $(document).ready(function () {
     map = new GMaps({
@@ -22,6 +26,9 @@ $(document).ready(function () {
                     map.addMarker({
                         lat: latlng.lat(),
                         lng: latlng.lng(),
+                                                        infoWindow: {
+          content: '<p>HTML Content</p>'
+        }
                         
                     });
                 }
@@ -39,7 +46,7 @@ $(document).ready(function () {
                     map.addMarker({
                         lat: latlng.lat(),
                         lng: latlng.lng(),
-                        icon: "resources/img/psticon.png"
+                        icon: iconProf
                     });
                 }
             }
