@@ -237,11 +237,11 @@ public class LoginBean implements Serializable {
             UploadedFile arq = event.getFile();
 
             /*
- //Transformar a imagem em bytes para salvar em banco de dados
- byte[] bimagem = event.getFile().getContents();
- im.setImagem(bimagem);
- im.setNomeArquivo(arq.getFileName());
- imagemRN.salvar(im);
+           //Transformar a imagem em bytes para salvar em banco de dados
+           byte[] bimagem = event.getFile().getContents();
+           im.setImagem(bimagem);
+           im.setNomeArquivo(arq.getFileName());
+           imagemRN.salvar(im);
              */
             //Essa parte comentada deve ser usada caso queira salvar
             //o arquivo em um local fisuco do servidor.

@@ -142,16 +142,12 @@ public class Usuario implements Serializable {
         this.ehProfissional = ehProfissional;
     }
 
-    /**
-     * @return the foto
-     */
+    
     public String getFoto() {
         return foto.replace("\\","/");
     }
 
-    /**
-     * @param foto the foto to set
-     */
+   
     public void setFoto(String foto) {
         this.foto = foto;
     }
