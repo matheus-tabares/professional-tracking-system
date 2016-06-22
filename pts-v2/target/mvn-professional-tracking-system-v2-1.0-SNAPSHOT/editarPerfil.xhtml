@@ -52,16 +52,14 @@
                     <p:outputLabel value="Foto:">
 
                         <p:fileUpload fileUploadListener="#{loginBean.fileUpload}"
-                                      mode="advanced"
-                                                          
-                                      
-                                      multiple="false"
+                                      mode="advanced"                                         
+                                      auto="true"
+                                      multiple="true"
                                       sizeLimit="500000000"
                                       allowTypes="/(\.|\/)(gif|jpe?g|png)$/"
                                       value="#{loginBean.usuario.foto}"
                                       />
-                        <h:graphicImage value="#{loginBean.usuario.foto}"   width="130"
-                                        height="130" />
+                        
                     </p:outputLabel>
                     <p:growl id="messages" showDetail="true"/>
                     
