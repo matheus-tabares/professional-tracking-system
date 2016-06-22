@@ -60,21 +60,46 @@ public class LoginBean implements Serializable {
 
     }
 
-    public void alteraSenha() {
+    public boolean alteraSenha() {
 
-        String toCompare = HashUtil.generateHash(this.senhaAntiga, this.usuario.getSeguranca().getSALT());
-        String newpass;
+        try {
+            String oldPassword = HashUtil.generateHash(this.senhaAntiga, this.usuario.getSeguranca().getSALT());
+            String newPassword = HashUtil.generateHash(this.senhaNova, this.usuario.getSeguranca().getSALT());
 
-        System.out.println("HASH ANTIGO : " + this.usuario.getSenha());
-        System.out.println("HASH NOVO   : " + toCompare);
-        if (toCompare.equals(this.usuario.getSenha())) {
-            newpass = HashUtil.generateHash(this.senhaNova, this.usuario.getSeguranca().getSALT());
-            this.usuario.setSenha(newpass);
-            System.out.println("SENHA ALTERADA");
+            if (newPassword.equals(oldPassword)) {
+                return false;
+            }
+
+            if (oldPassword.equals(this.usuario.getSenha())) {
+                String newpass = HashUtil.generateHash(this.senhaNova, this.usuario.getSeguranca().getSALT());
+                this.usuario.setSenha(newpass);
+                System.out.println("SENHA ALTERADA 2222");
+                return true;
+            }
+
+            return false;
+
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            return false;
+
         }
-
     }
 
+    /*public void alteraSenha() {
+
+     String toCompare = HashUtil.generateHash(this.senhaAntiga, this.usuario.getSeguranca().getSALT());
+     String newpass;
+
+     System.out.println("HASH ANTIGO : " + this.usuario.getSenha());
+     System.out.println("HASH NOVO   : " + toCompare);
+     if (toCompare.equals(this.usuario.getSenha())) {
+     newpass = HashUtil.generateHash(this.senhaNova, this.usuario.getSeguranca().getSALT());
+     this.usuario.setSenha(newpass);
+     System.out.println("SENHA ALTERADA");
+     }
+
+     }*/
     public String logout() {
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
         return "/home?faces-redirect=true";
@@ -148,6 +173,11 @@ public class LoginBean implements Serializable {
             UsuarioDAO userDAO = new UsuarioDAO();
             Usuario user = userDAO.buscarPorEmail(this.nomeUsuario);
 
+            if (senhaNova.trim().equals("") || confirmaSenhaNova.trim().equals("") || nomeUsuario.trim().equals("") || CPF.trim().equals("")) {
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "SEM CAMPOS EM BRANCO, OK?", ""));
+                return null;
+            }
+
             if (!senhaNova.equals(confirmaSenhaNova)) {
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "SENHAS NÃO CONFEREM", ""));
                 inicializarVariaveis();
@@ -176,27 +206,6 @@ public class LoginBean implements Serializable {
         }
     }
 
-    /*public String forgotPassword() {
-     try {
-     UsuarioDAO usuarioDAO = new UsuarioDAO();
-     Usuario user = usuarioDAO.buscarPorEmail(nomeUsuario);
-     if (this.nomeUsuario.equals(user.getEmail()) && this.CPF.equals(user.getCPF())) {
-     String newPass = HashUtil.generateHash(this.senhaNova, user.getSeguranca().getSALT());
-     user.setSenha(newPass);
-     usuarioDAO.alterar(user);
-     FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "SENHA ALTERADA", ""));
-     inicializarVariaveis();
-     return null;
-     }
-     FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "DADOS INVÁLIDOS", ""));
-     inicializarVariaveis();
-     return null;
-     } catch (Exception ex) {
-     FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "DADOS INVÁLIDOS", ""));
-     return null;
-     }
-
-     }*/
     public String getConfirmaSenhaNova() {
         return confirmaSenhaNova;
     }

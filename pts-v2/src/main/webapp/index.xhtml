@@ -33,7 +33,7 @@
             </div>
 
             <h:form prependId="false" >
-                
+
                 <p:panelGrid columns="2" id="formulario" layout="grid" columnClasses="label , inputs">
                     <f:facet name="header">
                         CADASTRO USUÁRIO
@@ -60,13 +60,13 @@
 
                     <p:outputLabel value="Nº: " for="txtNumero"/>
                     <p:inputText id="txtNumero" maxlength="5" value="#{usuarioBean.endereco.numero}" />
-                    
+
                     <p:outputLabel value="Complemento: " for="txtComplemento"/>
                     <p:inputText id="txtComplemento" maxlength="20" value="#{usuarioBean.endereco.complemento}"/> 
 
                     <p:outputLabel value="Logradouro: " for="txtLogradouro"/>
                     <p:inputText id="txtLogradouro" maxlength="100" value="#{usuarioBean.endereco.logradouro}"/> 
-                    
+
                     <p:outputLabel value="Bairro: " for="txtBairro"/>
                     <p:inputText id="txtBairro" maxlength="30" value="#{usuarioBean.endereco.bairro}" />
 
@@ -109,7 +109,7 @@
             </h:form>
             <h:outputScript library="js" name="cep.js"/>
             <script type="text/javascript">
-                
+
             </script>;
         </div>
     </h:body>

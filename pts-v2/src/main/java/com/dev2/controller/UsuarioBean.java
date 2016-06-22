@@ -78,7 +78,8 @@ public class UsuarioBean implements Serializable {
     }
 
     public String iniciaAlteracaoProfissional(int idProfissionalSelecionado) {
-        usuario = usuarioDAO.carregar(idProfissionalSelecionado);
+        usuario = usuarioDAO.carregar(loginBean.getUsuario().getId());
+                System.out.println("numero do boi" + usuario.getEndereco().getNumero());
         return "editarPerfil?faces-redirect=true";
     }
 
@@ -95,9 +96,9 @@ public class UsuarioBean implements Serializable {
     }
 
     /*public ArrayList<Usuario> getListaProfissionaisPorCategoria() {
-        this.usuarioDAO = new UsuarioDAO();
-        return usuarioDAO.listarProfissionaisPorCategoria(idCategoria);
-    }*/
+     this.usuarioDAO = new UsuarioDAO();
+     return usuarioDAO.listarProfissionaisPorCategoria(idCategoria);
+     }*/
     public void buscaProfissionalPorCategoria() {
         profissionaisPorCategoria = null;
         profissionaisPorCategoria = usuarioDAO.listarProfissionaisPorCategoria(idCategoria);
@@ -112,12 +113,22 @@ public class UsuarioBean implements Serializable {
     public String alterarPerfil() {
 
         if (!loginBean.getSenhaAntiga().equals("") && !loginBean.getSenhaNova().equals("")) {
-            loginBean.alteraSenha();
-        }
+            try {
+                if (loginBean.alteraSenha()) {
+                    this.usuarioDAO.alterar(loginBean.getUsuario());
+                    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Dados do perfil atualizados com sucesso!", ""));
+                    return "painelProfissional?faces-redirect=true";
+                } else {
+                    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "VERIFIQUE OS DADOS PREENCHIDOS, SENHAS NÃO PODEM SER IGUAIS", ""));
+                    return null;
+                }
+            } catch (Exception ex) {
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "VERIFIQUE OS DADOS PREENCHIDOS, SENHAS NÃO PODEM SER IGUAIS", ""));
+                return null;
+            }
 
-        this.usuarioDAO.alterar(loginBean.getUsuario());
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Dados do perfil atualizados com sucesso!", ""));
-        return "painelProfissional?faces-redirect=true";
+        }
+        return null;
     }
 
     public ArrayList<Usuario> getListaProfissionaistop10() {
@@ -256,7 +267,7 @@ public class UsuarioBean implements Serializable {
         this.idCategoria = 0;
         this.checkProfissional = false;
     }
-    
+
     public String returnIndex() {
         inicializarVariaveis();
         return "home?faces-redirect=true";

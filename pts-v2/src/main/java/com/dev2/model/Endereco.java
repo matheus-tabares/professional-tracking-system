@@ -71,7 +71,7 @@ public class Endereco implements Serializable {
     }
 
     public int getNumero() {
-        return numero;
+        return this.numero;
     }
 
     public void setNumero(int numero) {
@@ -117,5 +117,7 @@ public class Endereco implements Serializable {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
+    
+    
 
 }
