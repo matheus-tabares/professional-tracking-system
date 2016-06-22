@@ -36,13 +36,13 @@
                 </section>
                 <section class="top-esquerda flexs" >
                     <section class="logout">
-                        <p>#{loginBean.nomeUsuario} - #{loginBean.tipoUsuario()}</p>
+                        <p>#{loginBean.usuario.nome} <br/> #{loginBean.tipoUsuario()}</p>
                         <h:form prependId="false"><h:commandButton title="SAIR DO SISTEMA?" value="SAIR"  action="#{loginBean.logout()}"/> </h:form>
 
 
                     </section> 
 
-                    <h:graphicImage library="img" name="silhuetaHomem.jpg" height="50" style="margin: 5px;"/>
+                    <h:graphicImage library="imagem" value="#{loginBean.usuario.foto}" height="50" style="margin: 5px;"/>
 
                 </section>                 
             </div>

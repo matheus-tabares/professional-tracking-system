@@ -49,9 +49,21 @@
                     <p:outputLabel value="UF:" for="txtUF"/>
                     <p:inputText id="txtUF" maxlength="30" value="#{loginBean.usuario.endereco.UF}" /> 
                     
-                    <p:outputLabel value="Foto:"/>
-                    <p:fileUpload fileUploadListener="#{fileUploadController.upload}" mode="advanced"  auto="true"
-                     allowTypes="/(\.|\/)(gif|jpe?g|png)$/" sizeLimit="500000000" label="Selecione Imagem"/>
+                    <p:outputLabel value="Foto:">
+
+                        <p:fileUpload fileUploadListener="#{loginBean.fileUpload}"
+                                      mode="advanced"
+                                                          
+                                      
+                                      multiple="false"
+                                      sizeLimit="500000000"
+                                      allowTypes="/(\.|\/)(gif|jpe?g|png)$/"
+                                      value="#{loginBean.usuario.foto}"
+                                      />
+                        <h:graphicImage value="#{loginBean.usuario.foto}"   width="130"
+                                        height="130" />
+                    </p:outputLabel>
+                    <p:growl id="messages" showDetail="true"/>
                     
                     
                     <p:outputLabel value="ALTERAR SENHA"/><p:outputLabel/>
@@ -67,7 +79,7 @@
                             <p:commandButton ajax="false" value="Cadastrar"  action="#{usuarioBean.alterarPerfil()}" style="width: 49%"  />
                         </h:panelGroup>
                         <h:panelGroup>
-                            <p:commandButton ajax="false" value="Cancelar"  action="painelProfissional?faces-redirect=true" style="width: 49%; float: right"  />
+                            <p:commandButton ajax="false" value="Cancelar" immediate="true" action="painelProfissional?faces-redirect=true" style="width: 49%; float: right"  />
                         </h:panelGroup>
                         <h:messages infoClass="certo" errorClass="erro"/>
                     </f:facet>

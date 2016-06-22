@@ -36,6 +36,8 @@ public class Usuario implements Serializable {
     private boolean administrador = false;
     
     private boolean ehProfissional;
+    
+    private String foto;
 
     @OneToOne(mappedBy = "usuario")
     private Endereco endereco;
@@ -138,6 +140,20 @@ public class Usuario implements Serializable {
 
     public void setEhProfissional(boolean ehProfissional) {
         this.ehProfissional = ehProfissional;
+    }
+
+    /**
+     * @return the foto
+     */
+    public String getFoto() {
+        return foto.replace("\\","/");
+    }
+
+    /**
+     * @param foto the foto to set
+     */
+    public void setFoto(String foto) {
+        this.foto = foto;
     }
 
     
