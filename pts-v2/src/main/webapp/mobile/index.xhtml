@@ -10,31 +10,28 @@
         <title>Cadastro de usuário</title>
         <meta name="viewport" content="width=device-width, user-scalable=no"></meta>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <h:outputStylesheet library="css" name="fomularios.css"/>
-        <h:outputStylesheet library="css" name="sistema.css"/>
+        <h:outputStylesheet library="css" name="mobile/sistema.css"/>
 
     </h:head>
     <!--
     PAGINA COM NOME DE INDEX MAS NA VERDADE É O CADASTRO DE USUARIO,
     -->
-    <h:body>
-        <div class="site bg-form">
+    <h:body style="width: 100vw">
+        <div class="site bg-form" style="width: 100vw">
 
             <div class="menu">
                 <span>
                     <h:graphicImage id="capacete" library="img" name="capacete.png"/>
                 </span>
-                <h1>Professional Tracking system </h1>
+                <h1>Professional Tracking MOBILE </h1>
                 <span>
-                    <h:form prependId="false" id="login">
-                        <h:commandLink id="btn-login" value="SAIR" action="home"/><br/>
-                    </h:form> 
+                    
                 </span>
             </div>
 
-            <h:form prependId="false" >
+            <h:form prependId="false" style="width: 100vw">
 
-                <p:panelGrid columns="2" id="formulario" layout="grid" columnClasses="label , inputs">
+                <p:panelGrid columns="2" id="formulario" layout="grid" columnClasses="label , inputs" style="width: 100vw" >
                     <f:facet name="header">
                         CADASTRO USUÁRIO
                     </f:facet>
@@ -110,7 +107,7 @@
             <h:outputScript library="js" name="cep.js"/>
             <script type="text/javascript">
 
-            </script>;
+            </script>
         </div>
     </h:body>
 </html>

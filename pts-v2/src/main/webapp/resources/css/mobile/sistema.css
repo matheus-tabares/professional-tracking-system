@@ -1,0 +1,85 @@
+/*MOBILE*/
+@import url(https://fonts.googleapis.com/css?family=Roboto+Condensed);
+@import url(https://fonts.googleapis.com/css?family=Passion+One);
+html , body , .site{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    height: 100%;
+}
+.site{
+    background: #000;
+    border: 5px solid #2D5E82;
+}
+
+.menu{
+    position: relative; 
+    height: 60px;background: #2D5E82;
+    display: flex;
+    align-items: center;
+}
+.menu span{
+    width: 60px;
+    text-align: center;
+}
+.menu span img,#capacete{
+    height: 58px;
+    float: left;
+}
+.menu h1  {
+    color: #fff;
+    width: calc(100% - 120px);
+    text-align: center;
+    font-family: 'Passion One', cursive;
+    
+    font-size: 5.8vw;
+    text-transform: uppercase;
+}
+.p-termos{
+    position: absolute;
+    height: 80px;
+    width: 100%;
+    text-align: center;
+    left: 0;
+    bottom: 0;
+    font-family: monospace;
+    color: #fff;
+}
+#login , #btn-cadastro{
+    height: 100%;
+    border: 2px solid #fff;
+    border-radius: 10px;
+}
+#btns{
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    height: 10%;
+}
+.btn-cadastro{
+    width: 50%;
+    height: 100%;   
+    border: 5px solid transparent;
+}
+.btn-cadastro a{
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Roboto Condensed', sans-serif;        
+    width: 100%;    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%; 
+    font-size: 16pt;
+    font-weight: bold;
+}
+#conteudo{
+    height: calc(90% - 60px);
+    background-image:  url('../../resources/img/imgmobile/home.jpeg');
+    background-size: 100%;background-repeat: no-repeat;
+}
+input[type='text']{
+    width: 98%;
+    margin: auto!important;
+}
