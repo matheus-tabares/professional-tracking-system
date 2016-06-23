@@ -46,12 +46,11 @@
                     var start = document.getElementById("start").value;
                     var end = document.getElementById("end").value;
                     var marker = {
-                        url: '../resources/img/Mapicon.png',
-                        scaledSize: new google.maps.Size(60, 60)
+                        url: '../resources/img/pinB.png',
+                        scaledSize: new google.maps.Size(50, 50)
                     };
                     var iconeUser = {
-                        /*url: '../resources/img/iconUser.png',*/
-                        url:'https://cdn1.iconfinder.com/data/icons/communication-social-media-set-2/512/15-512.png',
+                        url: '../resources/img/pinA.png',
                         scaledSize: new google.maps.Size(50, 50)
                     };
                     function initialize() {
@@ -60,8 +59,8 @@
                         directionsDisplay.setOptions({
                             polylineOptions: {
                                 strokeOpacity: 1,
-                                strokeColor: '#0059b3',
-                                strokeWeight: 5
+                                strokeColor: '#2D5E82',
+                                strokeWeight: 4
                             }
                         });
                         var mapOptions = {
@@ -69,7 +68,7 @@
                             center: portoAlegre,
                             mapTypeControl: false,
                             streetViewControl: false
-                        }
+                        };
                         map = new google.maps.Map(document.getElementById("map"), mapOptions);
                         directionsDisplay.setMap(map);
                     }
@@ -95,8 +94,8 @@
                                     position: _route.start_location,
                                     map: map,
                                     icon: iconeUser,
-                                    title:'Você esta aqui'
-                                    
+                                    title: 'Você esta aqui'
+
                                 }),
                                         pinB = new google.maps.Marker({
                                             position: _route.end_location,
@@ -109,14 +108,15 @@
                                 distancia = etapa.distance.value / 1000;
 
                                 var infowindow = new google.maps.InfoWindow();
-                                var content = '<p>#{usuarioBean.usuario.nome}</p> <p>#{usuarioBean.usuario.profissional.categoria.nome}</p><p class="map-content">Distância ' + distancia + 'Km</p> ';
+                                var content = '<p class="map-content">#{usuarioBean.usuario.nome}</p> <p>#{usuarioBean.usuario.profissional.categoria.nome}</p><p>Distância ' + distancia + 'Km</p> ';
                                 infowindow.setContent(content);
                                 infowindow.open(map, pinB);
-                                pinB.addListener('click', function () {                                    
+                                pinB.addListener('click', function () {
                                     infowindow.open(map, pinB);
                                     map.setCenter(_route.end_location);
-                                    pinB.setAnimation(google.maps.Animation.DROP);
-                                });                            
+                                    map.setZoom(15);
+                                    //pinB.setAnimation(google.maps.Animation.DROP);
+                                });
                             }
                         });
                     }
@@ -150,8 +150,7 @@
                                 break;
                         }
                     }
-
-
+                    
             </script>
         </div>
     </h:body>

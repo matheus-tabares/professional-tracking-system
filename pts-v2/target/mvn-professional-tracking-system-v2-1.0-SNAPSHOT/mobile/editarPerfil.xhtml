@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition template="template/Layout.xhtml">
+        
+        <ui:define name="content">           
+            <br/>
+            <h:form prependId="false" >
+                <br/>
+                <p:panelGrid columns="2" styleClass="formularios" layout="grid">
+                    <f:facet name="header">
+                        Meu perfil
+                    </f:facet>
+
+                    <p:outputLabel value="Nome:" for="txtNome"/>
+                    <p:inputText id="txtNome" maxlength="100" value="#{loginBean.usuario.nome}" readonly="true"/>
+
+                    <p:outputLabel value="E-mail:" for="txtEmail"/>
+                    <p:inputText id="txtEmail" maxlength="100" value="#{loginBean.usuario.email}"/> 
+
+                    <p:outputLabel value="CPF:" for="txtCPF"/>
+                    <p:inputText id="txtCPF" maxlength="12" value="#{loginBean.usuario.CPF}" readonly="true"/>  
+
+                    <p:outputLabel value="Telefone: " for="txtTelefone"/>
+                    <p:inputText id="txtTelefone" maxlength="15" value="#{loginBean.usuario.telefone}"/>                     
+
+                    <p:outputLabel value="CEP:" for="txtCEP"/>                                           
+                    <p:inputText id="txtCEP" maxlength="8" value="#{loginBean.usuario.endereco.CEP}"/>
+
+                    <p:outputLabel value="Nº: " for="txtNumero"/>
+                    <p:inputText id="txtNumero" maxlength="5" value="#{loginBean.usuario.endereco.numero}" />
+
+                    <p:outputLabel value="Logradouro: " for="txtLogradouro"/>
+                    <p:inputText id="txtLogradouro" maxlength="100" value="#{loginBean.usuario.endereco.logradouro}"/> 
+
+                    <p:outputLabel value="Complemento: " for="txtComplemento"/>
+                    <p:inputText id="txtComplemento" maxlength="20" value="#{loginBean.usuario.endereco.complemento}"/> 
+
+                    <p:outputLabel value="Bairro: " for="txtBairro"/>
+                    <p:inputText id="txtBairro" maxlength="30" value="#{loginBean.usuario.endereco.bairro}" />
+
+                    <p:outputLabel value="Cidade: " for="txtCidade" />
+                    <p:inputText id="txtCidade" maxlength="30" value="#{loginBean.usuario.endereco.cidade}" />
+
+                    <p:outputLabel value="UF:" for="txtUF"/>
+                    <p:inputText id="txtUF" maxlength="30" value="#{loginBean.usuario.endereco.UF}" /> 
+                    
+                    <p:outputLabel value="Foto:">
+
+                        <p:fileUpload fileUploadListener="#{loginBean.fileUpload}"
+                                      mode="advanced"                                         
+                                      auto="true"
+                                      multiple="true"
+                                      sizeLimit="500000000"
+                                      allowTypes="/(\.|\/)(gif|jpe?g|png)$/"
+                                      value="#{loginBean.usuario.foto}"
+                                      />
+                        
+                    </p:outputLabel>
+                    <p:panelGrid>
+                      <h:graphicImage value="#{loginBean.usuario.foto}" height="50" /> 
+                    </p:panelGrid>
+                    <p:growl id="messages" showDetail="true"/>
+                    
+                    
+                    <p:outputLabel value="ALTERAR SENHA"/><p:outputLabel/>
+
+                    <p:outputLabel value="SENHA ANTIGA:" for="txtSenhaAntiga"/>
+                    <p:inputText id="txtSenhaAntiga" maxlength="30" value="#{loginBean.senhaAntiga}" />
+                    <p:outputLabel value="SENHA NOVA:" for="txtSenhaNova"/>
+                    <p:inputText id="txtSenhaNova" maxlength="30" value="#{loginBean.senhaNova}" />
+                    
+
+                    <f:facet name="footer">
+                        <h:panelGroup>
+                            <p:commandButton ajax="false" value="Cadastrar"  action="#{usuarioBean.alterarPerfil()}" style="width: 49%"  />
+                        </h:panelGroup>
+                        <h:panelGroup>
+                            <p:commandButton ajax="false" value="Cancelar" immediate="true" action="painelProfissional?faces-redirect=true" style="width: 49%; float: right"  />
+                        </h:panelGroup>
+                        <h:messages infoClass="certo" errorClass="erro"/>
+                    </f:facet>
+                </p:panelGrid>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>

@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="./template/Layout.xhtml">
+
+            <ui:define name="title">
+                Perfil Profissional
+            </ui:define>
+
+            <ui:define name="content">
+                <br/>
+                <div id="perfil">
+
+                    <div class="foto-perfil flexs">
+                        <h:graphicImage library="img" name="silhuetaHomem.jpg" width="220" height="220" />
+                    </div>
+                    <div class="texto-perfil">
+                        <h1>#{usuarioBean.usuario.nome}</h1>
+                        <p><b>BAIRRO :</b> #{usuarioBean.usuario.endereco.bairro}</p>
+                        <p><b>CIDADE :</b> #{usuarioBean.usuario.endereco.cidade}</p>
+                        <p><b>EMAIL :</b> #{usuarioBean.usuario.email}</p>
+
+                        <div class="descri-perfil">
+                            <h1>#{usuarioBean.usuario.profissional.descricaoProfissional}</h1>
+                        </div>
+                        <div id="btn-barra">
+                            <h:form prependId="false">
+                                <p:commandButton value="VER NO MAPA" ajax="false" styleClass="btn-perfil" action="mapa" style="width: 200px;margin-right: 20px;"/> 
+                                <p:commandButton icon="ui-icon-comment" ajax="false" value="CONTATAR" styleClass="btn-perfil" 
+                                                 actionListener="#{contatoBean.setIdDestinatario(usuarioBean.usuario.id)}" 
+                                                 action="novoContato?faces-redirect=true" style="width: 200px"/>
+                            </h:form>
+                        </div>
+                    </div>
+
+                </div>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

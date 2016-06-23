@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="./template/Layout.xhtml">
+
+            <ui:define name="title">
+                MURAL DE SERVIÇOS
+            </ui:define>
+
+            <ui:define name="content">
+                <h:form>     
+                    <ui:repeat var="p" value="#{muralBean.listaDePublicacoes}"  >
+                        <span class="card">
+                            <p class="c">#{p.categoria.nome}</p>
+                            <h:panelGrid columns="2" style="margin: auto" footerClass="c" >
+
+                                <f:facet name="header">
+                                    <p:graphicImage alt="Teste" library="img" name="teste.jpg" title="Nome" />
+                                </f:facet>                             
+                                <p:outputLabel value="Título: "/>
+                                <p:outputLabel value="#{p.titulo}"/>
+                                <p:outputLabel value="Descrição: "/>
+                                <p:outputLabel value="#{p.descricao}"/>
+
+                                <p:outputLabel value="Solicitante: "/>
+                                <p:outputLabel value="#{p.usuarioQuePublicou.nome}"/>
+                                <f:facet name="footer" >
+                                    <p:commandButton value="+ Detalhes" action="#{muralBean.detalhesPublicacao(p.id)}"/>
+                                </f:facet>
+
+                            </h:panelGrid>
+                        </span>
+
+                    </ui:repeat> 
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

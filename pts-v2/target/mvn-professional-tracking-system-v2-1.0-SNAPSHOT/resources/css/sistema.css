@@ -176,7 +176,7 @@ footer code{
     text-align: center;
 }
 #address:focus{
-    border-bottom: 2px solid yellow;/*arrumar*/
+    text-align: center;
 }
 .busca{      
     height: 44px;
@@ -219,10 +219,22 @@ footer code{
     background-image: url('img/Search.png');background-size:38px;
 }
 
-.map-content:hover{
-    
+.map-content{
+    padding: 2px;
+    color: #2D5E82;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: bold;
+    width: 100px;    
 }
 /*janela do mapa*/
 .gm-style-iw{
+   border: 2px solid #2D5E82;
+   padding: 5px;
+   border-radius: 5px; text-align: center;  
+}
+.gm-style-iw + div{  
     
+    top: 2px!important;
+    right: 2px!important;
 }

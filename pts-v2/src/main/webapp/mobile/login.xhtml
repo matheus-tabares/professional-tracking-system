@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <link rel="icon" type="image/png" href="../resources/img/psticon.png" />
+        <meta name="viewport" content="width=device-width, user-scalable=no"></meta>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Professional Tracking System</title>
+        <h:outputStylesheet library="css" name="login.css"/>
+    </h:head>
+    <h:body>
+        <p:growl id="messages" showDetail="true" autoUpdate="true" life="8000" />
+        <div id="tela-login">
+
+            <div  class="head">
+
+                <h3>Entrar no sistema</h3>
+            </div>
+            <h:form prependId="false">                
+                <h:panelGrid  columns="2" id="form-login" footerClass="fot-btn" headerClass="head">                   
+                    <p:outputLabel value="E-mail:"/>
+                    <p:inputText id="username"  
+                                 label="username" value="#{loginBean.nomeUsuario}"  >
+                        <p:watermark for="username" value="exemplo@email.com"/>
+                    </p:inputText>
+                    <p:outputLabel value="Senha:"/>
+                    <p:password id="senha"  style="width: 170px"
+                                label="senha" value="#{loginBean.senha}"> 
+                        <p:watermark for="senha" value="Sua senha" />
+                    </p:password>
+                    <f:facet name="footer">
+                        <p:commandButton ajax="false" action="#{loginBean.login()}" value="Entrar" style="width: 49%;"/>
+                        <p:commandButton ajax="false" action="home" value="Voltar" style="width:49%;float: right;"/>
+                    </f:facet>
+                    <f:facet name="footer">
+                        <h:commandLink value="Esqueci minha senha" action="esqueciSenha?faces-redirect=true" style="float: right;"/>
+                    </f:facet>
+                </h:panelGrid> 
+            </h:form>
+        </div>
+    </h:body>
+</html>
+
+

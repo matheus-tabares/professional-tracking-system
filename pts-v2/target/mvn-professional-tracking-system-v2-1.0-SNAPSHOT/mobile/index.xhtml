@@ -1,0 +1,121 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <link rel="icon" type="image/png" href="../resources/img/psticon.png" />
+        <title>Cadastro de usuário</title>
+        <meta name="viewport" content="width=device-width, user-scalable=no"></meta>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet library="css" name="fomularios.css"/>
+        <h:outputStylesheet library="css" name="sistema.css"/>
+
+    </h:head>
+    <!--
+    PAGINA COM NOME DE INDEX MAS NA VERDADE É O CADASTRO DE USUARIO,
+    -->
+    <h:body>
+        <div class="site bg-form">
+
+            <div class="menu">
+                <span>
+                    <h:graphicImage id="capacete" library="img" name="capacete.png"/>
+                </span>
+                <h1>Professional Tracking system </h1>
+                <span>
+                    <h:form prependId="false" id="login">
+                        <h:commandLink id="btn-login" value="SAIR" action="home"/><br/>
+                    </h:form> 
+                </span>
+            </div>
+
+            <h:form prependId="false" >
+
+                <p:panelGrid columns="2" id="formulario" layout="grid" columnClasses="label , inputs">
+                    <f:facet name="header">
+                        CADASTRO USUÁRIO
+                    </f:facet>
+
+                    <p:outputLabel value="Nome:" for="txtNome"/>
+                    <p:inputText id="txtNome" maxlength="100" value="#{usuarioBean.usuario.nome}"/>
+
+
+                    <p:outputLabel value="E-mail:" for="txtEmail"/>
+                    <p:inputText id="txtEmail" maxlength="100" value="#{usuarioBean.usuario.email}"/> 
+
+
+                    <p:outputLabel value="Senha:" for="txtSenha"/>
+                    <p:inputText id="txtSenha"  value="#{usuarioBean.usuario.senha}"/> 
+
+
+                    <p:outputLabel value="CPF:" for="txtCPF"/>
+                    <p:inputText id="txtCPF" maxlength="12" value="#{usuarioBean.usuario.CPF}"/>  
+
+
+                    <p:outputLabel value="CEP:" for="txtCEP"/>                                           
+                    <p:inputText id="txtCEP" maxlength="8" value="#{usuarioBean.endereco.CEP}"/>
+
+                    <p:outputLabel value="Nº: " for="txtNumero"/>
+                    <p:inputText id="txtNumero" maxlength="5" value="#{usuarioBean.endereco.numero}" />
+
+                    <p:outputLabel value="Complemento: " for="txtComplemento"/>
+                    <p:inputText id="txtComplemento" maxlength="20" value="#{usuarioBean.endereco.complemento}"/> 
+
+                    <p:outputLabel value="Logradouro: " for="txtLogradouro"/>
+                    <p:inputText id="txtLogradouro" maxlength="100" value="#{usuarioBean.endereco.logradouro}"/> 
+
+                    <p:outputLabel value="Bairro: " for="txtBairro"/>
+                    <p:inputText id="txtBairro" maxlength="30" value="#{usuarioBean.endereco.bairro}" />
+
+
+                    <p:outputLabel value="Cidade: " for="txtCidade" />
+                    <p:inputText id="txtCidade" maxlength="30" value="#{usuarioBean.endereco.cidade}" />
+
+
+                    <p:outputLabel value="UF:" for="txtUF"/>
+                    <p:inputText id="txtUF" maxlength="30" value="#{usuarioBean.endereco.UF}" /> 
+
+
+                    <p:outputLabel value="Telefone: " for="txtTelefone"/>
+                    <p:inputText id="txtTelefone" maxlength="15" value="#{usuarioBean.usuario.telefone}"/> 
+
+
+                    <p:outputLabel value="QUERO SER UM PROFISSIONAL" for="sbcProfissional"/>
+                    <p:selectBooleanCheckbox id="sbcProfissional" value="#{usuarioBean.checkProfissional}"/>                    
+
+                    <p:outputLabel value="CATEGORIA" for="omCategoria"/>
+                    <h:selectOneMenu id="omCategoria" value="#{usuarioBean.idCategoria}" style="width:170px" >                        
+                        <f:selectItems value="#{usuarioBean.listaCategorias}" var="cat" itemValue="#{cat.id}" itemLabel="#{cat.nome}" />
+                    </h:selectOneMenu>
+
+                    <p:outputLabel value="DESCRIÇÃO: " for="txtDescricao"/>
+                    <p:inputTextarea id="txtDescricao"   value="#{usuarioBean.profissional.descricaoProfissional}" onclick="alert('Sua Descrição sera seu cartão de visita, CAPRICHE!');"/> 
+
+
+                    <f:facet name="footer">
+                        <h:panelGroup>
+                            <p:commandButton ajax="false" value="Cadastrar"  action="#{usuarioBean.cadastrar()}" style="width: 49%"  />
+                        </h:panelGroup>
+                        <h:panelGroup>
+                            <p:commandButton ajax="false" value="Cancelar" action="home?faces-redirect=true" immediate="true" style="width: 49%; float: right"  />     
+                        </h:panelGroup>
+                        <p:growl id="messages" showDetail="true" autoUpdate="true" life="5000" />
+
+                    </f:facet>
+                </p:panelGrid>                
+            </h:form>
+            <h:outputScript library="js" name="cep.js"/>
+            <script type="text/javascript">
+
+            </script>;
+        </div>
+    </h:body>
+</html>
+
+<!--
+
+ 
+-->
