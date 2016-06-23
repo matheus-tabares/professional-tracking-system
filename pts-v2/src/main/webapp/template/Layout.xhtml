@@ -35,7 +35,10 @@
                 <section class="top-esquerda flexs" >
                     <section class="logout">
                         <p>#{loginBean.usuario.nome} <br/> #{loginBean.tipoUsuario()}</p>
-                        <h:form prependId="false"><h:commandButton title="SAIR DO SISTEMA?" value="SAIR"  action="#{loginBean.logout()}"/> </h:form>
+                        <h:form prependId="false">
+                            <h:commandButton title="SAIR DO SISTEMA?" value="SAIR"  action="#{loginBean.logout()}"/>
+                            <h:commandButton title="Tornar Profissional" rendered="#{loginBean.showProfissional()}" value="ME TORNAR UM PROFISSIONAL" action="#{loginBean.serProfissional()}"/>
+                        </h:form>
 
 
                     </section> 

@@ -246,7 +246,7 @@ public class LoginBean implements Serializable {
             //Essa parte comentada deve ser usada caso queira salvar
             //o arquivo em um local fisuco do servidor.
             InputStream in = new BufferedInputStream(arq.getInputstream());
-            File file = new File("C:\\Users\\samuel\\Documents\\GitHub\\professional-tracking-system\\pts-v2\\src\\main\\webapp\\resources\\imagens\\" + arq.getFileName());
+            File file = new File("C:\\Users\\Mari\\Documents\\NetBeansProjects\\professional-tracking-system-with-photo\\pts-v2\\src\\main\\webapp\\resources\\img" + arq.getFileName());
             //O método file.getAbsolutePath() fornece o caminho do arquivo criado
             //Pode ser usado para ligar algum objeto do banco ao arquivo enviado
             //String caminho = file.getAbsolutePath();
@@ -267,5 +267,18 @@ public class LoginBean implements Serializable {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+    }
+    
+    public boolean showProfissional() {
+        if (this.usuario != null) {
+            if (this.usuario.ehProfissional()) {
+                return false;
+            }
+        }
+        return true;
+    }
+    
+     public String serProfissional() {
+        return "tornarProfissional?faces-redirect=true";
     }
 }
