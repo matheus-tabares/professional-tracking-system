@@ -272,5 +272,24 @@ public class UsuarioBean implements Serializable {
         inicializarVariaveis();
         return "home?faces-redirect=true";
     }
+    
+    public String queroSerProfissional() {
+        try {
+            System.out.println("ID CATEG--->" + idCategoria);
+            this.usuario = loginBean.getUsuario();
+            this.usuario.setEhProfissional(true);
+            this.usuarioDAO.alterar(usuario);
+            this.profissional = new Profissional();
+            this.profissional.setUsuario(usuarioDAO.carregar(this.usuario.getId()));
+            this.profissional.setCategoria(categoriaDAO.carregar(idCategoria));
+            this.profissionalDAO.incluir(profissional);
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "VIROU PROFISSIONAL", ""));
+            return "painelProfissional?faces-redirect=true";
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "NAO EH PROFISSIONAL", ""));
+            return "";
+        }
+    }
 
 }

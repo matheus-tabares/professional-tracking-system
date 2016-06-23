@@ -51,7 +51,7 @@
                     </div>
                     <div style="width: 5%"></div>
                     <h:form prependId="false" id="btn-cadastro">
-                        <h:commandLink value="CADASTRE-SE" action="index?faces-redirect=true"/>                        
+                        <h:commandLink value="CADASTRE-SE" actionListener="#{usuarioBean.inicializarVariaveis()}" action="index?faces-redirect=true"/>                        
                     </h:form>
 
                 </div>

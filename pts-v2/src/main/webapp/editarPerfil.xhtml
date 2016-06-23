@@ -6,7 +6,7 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <ui:composition template="template/Layout.xhtml">
-        
+
         <ui:define name="content">           
             <br/>
             <h:form prependId="false" >
@@ -48,7 +48,7 @@
 
                     <p:outputLabel value="UF:" for="txtUF"/>
                     <p:inputText id="txtUF" maxlength="30" value="#{loginBean.usuario.endereco.UF}" /> 
-                    
+
                     <p:outputLabel value="Foto:">
 
                         <p:fileUpload fileUploadListener="#{loginBean.fileUpload}"
@@ -59,21 +59,24 @@
                                       allowTypes="/(\.|\/)(gif|jpe?g|png)$/"
                                       value="#{loginBean.usuario.foto}"
                                       />
-                        
+
                     </p:outputLabel>
-                    <p:panelGrid>
-                      <h:graphicImage value="#{loginBean.usuario.foto}" height="50" /> 
-                    </p:panelGrid>
+
+                    <!-- AQUI NAO PODE CHAMAR A FOTO DIRETO, PRIMEIRO TEM QUE VERIFICAR SE O USUARIO POSSUI FOTO
+                         SE NAO SEMPRE VAI DAR ESTOURO! NULL POINTEREXCEPTION -->
+                    <p:outputLabel/>
+                    <h:graphicImage height="50" value="resources/img/silhuetaHomem.jpg"/> 
+                    <p:outputLabel/>
                     <p:growl id="messages" showDetail="true"/>
-                    
-                    
+
+
                     <p:outputLabel value="ALTERAR SENHA"/><p:outputLabel/>
 
                     <p:outputLabel value="SENHA ANTIGA:" for="txtSenhaAntiga"/>
                     <p:inputText id="txtSenhaAntiga" maxlength="30" value="#{loginBean.senhaAntiga}" />
                     <p:outputLabel value="SENHA NOVA:" for="txtSenhaNova"/>
                     <p:inputText id="txtSenhaNova" maxlength="30" value="#{loginBean.senhaNova}" />
-                    
+
 
                     <f:facet name="footer">
                         <h:panelGroup>
