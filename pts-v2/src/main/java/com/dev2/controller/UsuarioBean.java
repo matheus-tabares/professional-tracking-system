@@ -127,6 +127,12 @@ public class UsuarioBean implements Serializable {
                 return null;
             }
 
+        } else {
+            try {
+                this.usuarioDAO.alterar(loginBean.getUsuario());
+            }catch(Exception ex) {
+                System.out.println("NAO FOI POSSIVAL ALTERAR, BRUNO MEXEU AQUI");
+            }
         }
         return null;
     }
