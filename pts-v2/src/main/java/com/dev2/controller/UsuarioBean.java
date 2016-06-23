@@ -130,8 +130,12 @@ public class UsuarioBean implements Serializable {
         } else {
             try {
                 this.usuarioDAO.alterar(loginBean.getUsuario());
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Dados atualizados com sucesso!", ""));
+                return "painelProfissional?faces-redirect=true";
             }catch(Exception ex) {
                 System.out.println("NAO FOI POSSIVAL ALTERAR, BRUNO MEXEU AQUI");
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "BRUNO BUGOU TUDO!", ""));
+                return null;
             }
         }
         return null;
