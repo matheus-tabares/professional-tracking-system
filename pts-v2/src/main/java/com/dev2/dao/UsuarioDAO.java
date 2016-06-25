@@ -77,7 +77,7 @@ public class UsuarioDAO {
         ArrayList<Usuario> listaCompleta = listarProfissionais();
         ArrayList<Usuario> listaFiltrada = new ArrayList<>();
 
-        if (categoria == 0) {
+        if (categoria == 1) {
             return listaCompleta;
         }
 

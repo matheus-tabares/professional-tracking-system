@@ -78,8 +78,9 @@ public class UsuarioBean implements Serializable {
     }
 
     public String iniciaAlteracaoProfissional(int idProfissionalSelecionado) {
-        usuario = usuarioDAO.carregar(loginBean.getUsuario().getId());
-                System.out.println("numero do boi" + usuario.getEndereco().getNumero());
+        System.out.println("<---------- INICIAR ALTERACAO ---------->");
+        this.usuario = usuarioDAO.carregar(loginBean.getUsuario().getId());
+        System.out.println("CARREGOU O USUARIO: " + usuario.getEmail());
         return "editarPerfil?faces-redirect=true";
     }
 
@@ -100,45 +101,18 @@ public class UsuarioBean implements Serializable {
      return usuarioDAO.listarProfissionaisPorCategoria(idCategoria);
      }*/
     public void buscaProfissionalPorCategoria() {
+        try {
         profissionaisPorCategoria = null;
         profissionaisPorCategoria = usuarioDAO.listarProfissionaisPorCategoria(idCategoria);
         System.out.println("ID CATEGORIA: " + idCategoria);
+        } catch(Exception ex) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "NÃO EXISTEM PROFISSIONAIS CADASTRADOS!", ""));
+        }
     }
 
     public ArrayList<Usuario> getListaUsuarios() {
         this.usuarioDAO = new UsuarioDAO();
         return usuarioDAO.listarUsuarios();
-    }
-
-    public String alterarPerfil() {
-
-        if (!loginBean.getSenhaAntiga().equals("") && !loginBean.getSenhaNova().equals("")) {
-            try {
-                if (loginBean.alteraSenha()) {
-                    this.usuarioDAO.alterar(loginBean.getUsuario());
-                    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Dados do perfil atualizados com sucesso!", ""));
-                    return "painelProfissional?faces-redirect=true";
-                } else {
-                    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "VERIFIQUE OS DADOS PREENCHIDOS, SENHAS NÃO PODEM SER IGUAIS", ""));
-                    return null;
-                }
-            } catch (Exception ex) {
-                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "VERIFIQUE OS DADOS PREENCHIDOS, SENHAS NÃO PODEM SER IGUAIS", ""));
-                return null;
-            }
-
-        } else {
-            try {
-                this.usuarioDAO.alterar(loginBean.getUsuario());
-                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Dados atualizados com sucesso!", ""));
-                return "painelProfissional?faces-redirect=true";
-            }catch(Exception ex) {
-                System.out.println("NAO FOI POSSIVAL ALTERAR, BRUNO MEXEU AQUI");
-                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "BRUNO BUGOU TUDO!", ""));
-                return null;
-            }
-        }
-        return null;
     }
 
     public ArrayList<Usuario> getListaProfissionaistop10() {
@@ -282,7 +256,7 @@ public class UsuarioBean implements Serializable {
         inicializarVariaveis();
         return "home?faces-redirect=true";
     }
-    
+
     public String queroSerProfissional() {
         try {
             System.out.println("ID CATEG--->" + idCategoria);
@@ -300,6 +274,60 @@ public class UsuarioBean implements Serializable {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "NAO EH PROFISSIONAL", ""));
             return "";
         }
+    }
+
+    public boolean camposSenhaForamPreenchidos() {
+        return !loginBean.getSenhaAntiga().trim().equals("") || !loginBean.getSenhaNova().trim().equals("");
+    }
+
+    public String alterarPerfil3() {
+        System.out.println("<---------- ENTROU NO ALTERAR PERFIL ---------->");
+
+        if (camposSenhaForamPreenchidos()) {
+            System.out.println("<------ CAMPOS DE SENHA FORAM PREENCHIDOS, VOU TENTAR ALTERA-LOS ------>");
+            try {
+                System.out.println("<------ INICIO TRY ------>");
+                if (loginBean.alteraSenha()) {
+                    System.out.println("<------ CONSEGUI ALTERAR A SENHA ------>");
+                    System.out.println("<---- VOU ALTERA O USUARIO " + loginBean.getUsuario().getEmail() + " ---->");
+                    this.usuario = loginBean.getUsuario();
+                    this.endereco = loginBean.getUsuario().getEndereco();
+                    this.endereco.setUsuario(usuario);
+                    this.enderecoDAO.alterar(endereco);
+                    System.out.println("<------ CARREGOU ENDERECO ------>");
+                    this.usuarioDAO.alterar(this.usuario);
+                    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "PERFIL ATUALIZADO!", ""));
+                    System.out.println("<---------- PELO VISTO FUNCIONOU ---------->");
+                    return "painelProfissional?faces-redirect=true";
+                } else {
+                    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "VERIFIQUE OS DADOS PREENCHIDOS, SENHAS NÃO PODEM SER IGUAIS", ""));
+                }
+
+            } catch (Exception ex) {
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "ESTOURO NO TRY!", ""));
+                return null;
+            }
+        } else { // SE OS CAMPOS SENHA NAO FORAM PREENCHIDOS
+            try {
+                System.out.println("<-------- TENTANDO ALTERAR USUÁRIO SEM ALTERAR SENHA -------->");
+                this.usuario = loginBean.getUsuario();
+                this.endereco = loginBean.getUsuario().getEndereco();
+                this.endereco.setUsuario(usuario);
+                this.enderecoDAO.alterar(endereco);
+                System.out.println("<------ CARREGOU ENDERECO ------>");
+                System.out.println("CARREGOU O USUARIO: " + this.usuario.getEmail());
+                this.usuarioDAO.alterar(this.usuario);
+                System.out.println("ALTEROU O USUARIO.");
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "PERFIL ATUALIZADO!", ""));
+                return "painelProfissional?faces-redirect=true";
+
+            } catch (Exception ex) {
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "DEU ERRO NO TRY SEM SENHA!", ""));
+                return null;
+            }
+        }
+
+        return null;
     }
 
 }

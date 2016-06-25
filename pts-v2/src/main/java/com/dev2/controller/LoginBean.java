@@ -74,16 +74,17 @@ public class LoginBean implements Serializable {
             String newPassword = HashUtil.generateHash(this.senhaNova, this.usuario.getSeguranca().getSALT());
 
             if (newPassword.equals(oldPassword)) {
+                System.out.println("NÃO CONSEGUI ALTERAR A SENHA, SENHAS IGUAL A ATUAL");
                 return false;
             }
 
             if (oldPassword.equals(this.usuario.getSenha())) {
                 String newpass = HashUtil.generateHash(this.senhaNova, this.usuario.getSeguranca().getSALT());
                 this.usuario.setSenha(newpass);
-                System.out.println("SENHA ALTERADA 2222");
+                System.out.println("SENHA ALTERADA - loginBean.alteraSenha()");
                 return true;
             }
-
+            System.out.println("NÃO CONSEGUI ALTERAR A SENHA");
             return false;
 
         } catch (Exception ex) {
@@ -93,20 +94,6 @@ public class LoginBean implements Serializable {
         }
     }
 
-    /*public void alteraSenha() {
-
-     String toCompare = HashUtil.generateHash(this.senhaAntiga, this.usuario.getSeguranca().getSALT());
-     String newpass;
-
-     System.out.println("HASH ANTIGO : " + this.usuario.getSenha());
-     System.out.println("HASH NOVO   : " + toCompare);
-     if (toCompare.equals(this.usuario.getSenha())) {
-     newpass = HashUtil.generateHash(this.senhaNova, this.usuario.getSeguranca().getSALT());
-     this.usuario.setSenha(newpass);
-     System.out.println("SENHA ALTERADA");
-     }
-
-     }*/
     public String logout() {
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
         return "/home?faces-redirect=true";
@@ -226,49 +213,31 @@ public class LoginBean implements Serializable {
         this.nomeUsuario = "";
         this.CPF = "";
     }
-    
+
     public void fileUpload(FileUploadEvent event) throws IOException {
         try {
-            //Instância objetos
-            //ImagemRN imagemRN = new ImagemRN();
-            //Imagem im = new Imagem();
-
-            //Cria um arquivo UploadFile, para receber o arquivo do evento
             UploadedFile arq = event.getFile();
 
-            /*
-           //Transformar a imagem em bytes para salvar em banco de dados
-           byte[] bimagem = event.getFile().getContents();
-           im.setImagem(bimagem);
-           im.setNomeArquivo(arq.getFileName());
-           imagemRN.salvar(im);
-             */
-            //Essa parte comentada deve ser usada caso queira salvar
-            //o arquivo em um local fisuco do servidor.
             InputStream in = new BufferedInputStream(arq.getInputstream());
             File file = new File("C:\\Users\\Mari\\Documents\\NetBeansProjects\\professional-tracking-system-with-photo\\pts-v2\\src\\main\\webapp\\resources\\img" + arq.getFileName());
-            //O método file.getAbsolutePath() fornece o caminho do arquivo criado
-            //Pode ser usado para ligar algum objeto do banco ao arquivo enviado
-            //String caminho = file.getAbsolutePath();
-            String caminho="resources\\imagens\\" + arq.getFileName();
-            
+
+            String caminho = "resources\\imagens\\" + arq.getFileName();
+
             FileOutputStream fout = new FileOutputStream(file);
             while (in.available() != 0) {
                 fout.write(in.read());
             }
             usuario.setFoto(caminho);
             fout.close();
-            
+
             FacesMessage msg = new FacesMessage("O Arquivo ", arq.getFileName() + " salvo em banco de dados.");
             FacesContext.getCurrentInstance().addMessage("msgUpdate", msg);
-            //imagemRN.salvar(im);
-            
 
         } catch (Exception ex) {
-            ex.printStackTrace();
+            System.out.println("DEU ESTOURO NA IMAGEM LOGINBEAN");
         }
     }
-    
+
     public boolean showProfissional() {
         if (this.usuario != null) {
             if (this.usuario.ehProfissional()) {
@@ -277,8 +246,8 @@ public class LoginBean implements Serializable {
         }
         return true;
     }
-    
-     public String serProfissional() {
+
+    public String serProfissional() {
         return "tornarProfissional?faces-redirect=true";
     }
 }

@@ -49,27 +49,6 @@
                     <p:outputLabel value="UF:" for="txtUF"/>
                     <p:inputText id="txtUF" maxlength="30" value="#{loginBean.usuario.endereco.UF}" /> 
 
-                    <p:outputLabel value="Foto:">
-
-                        <p:fileUpload fileUploadListener="#{loginBean.fileUpload}"
-                                      mode="advanced"                                         
-                                      auto="true"
-                                      multiple="true"
-                                      sizeLimit="500000000"
-                                      allowTypes="/(\.|\/)(gif|jpe?g|png)$/"
-                                      value="#{loginBean.usuario.foto}"
-                                      />
-
-                    </p:outputLabel>
-
-                    <!-- AQUI NAO PODE CHAMAR A FOTO DIRETO, PRIMEIRO TEM QUE VERIFICAR SE O USUARIO POSSUI FOTO
-                         SE NAO SEMPRE VAI DAR ESTOURO! NULL POINTEREXCEPTION -->
-                    <p:outputLabel/>
-                    <h:graphicImage height="50" value="resources/img/silhuetaHomem.jpg"/> 
-                    <p:outputLabel/>
-                    <p:growl id="messages" showDetail="true"/>
-
-
                     <p:outputLabel value="ALTERAR SENHA"/><p:outputLabel/>
 
                     <p:outputLabel value="SENHA ANTIGA:" for="txtSenhaAntiga"/>
@@ -80,7 +59,7 @@
 
                     <f:facet name="footer">
                         <h:panelGroup>
-                            <p:commandButton ajax="false" value="Cadastrar"  action="#{usuarioBean.alterarPerfil()}" style="width: 49%"  />
+                            <p:commandButton ajax="false" value="Cadastrar"  action="#{usuarioBean.alterarPerfil3()}" style="width: 49%"  />
                         </h:panelGroup>
                         <h:panelGroup>
                             <p:commandButton ajax="false" value="Cancelar" immediate="true" action="painelProfissional?faces-redirect=true" style="width: 49%; float: right"  />
