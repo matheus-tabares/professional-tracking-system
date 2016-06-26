@@ -30,5 +30,12 @@ public class HashUtil {
         return myRandom.substring(0, 20); // Retorno os 20 primeiros caracteres.
 
     }
+    
+     public static String generateNewPassword() {
+        UUID uuid = UUID.randomUUID();
+        String myRandom = uuid.toString();
+        return myRandom.substring(0, 6);
+
+    }
 
 }

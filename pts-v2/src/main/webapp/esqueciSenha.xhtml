@@ -14,39 +14,26 @@
     <h:body>
         <p:growl id="messages" showDetail="true" autoUpdate="true" life="8000" />
         <div id="tela-login" style="height: 220px; width: 400px">
-           
+
             <div  class="head">
-                
+
                 <h3>Recuperar senha</h3>
             </div>
             <h:form prependId="false">                
                 <h:panelGrid  columns="2" id="form-login"  footerClass="fot-btn" headerClass="head" style="width: 380px">                   
+
                     <p:outputLabel value="E-mail:"/>
+
                     <p:inputText id="username"  
                                  label="username" value="#{loginBean.nomeUsuario}"  >
                         <p:watermark for="username" value="exemplo@email.com"/>
                     </p:inputText>
-                    <p:outputLabel value="CPF:"/>
-                    <p:inputText id="cpf"  
-                                 label="cpf" value="#{loginBean.CPF}"  >
-                        <p:watermark for="cpf" value="12345678910"/>
-                    </p:inputText>
-                    <p:outputLabel value="Nova Senha:"/>
-                    <p:password id="senha"  style="width: 170px"
-                                label="senha" value="#{loginBean.senhaNova}"> 
-                        <p:watermark for="senha" value="Sua senha" />
-                    </p:password>
-                    <p:outputLabel value="Confirme a Senha:"/>
-                    <p:password id="confirmaSenha"  style="width: 170px"
-                                label="confirmaSenha" value="#{loginBean.confirmaSenhaNova}"> 
-                        <p:watermark for="confirmaSenha" value="Confirme senha" />
-                    </p:password>
-                    
+
                     <f:facet name="footer">
                         <p:commandButton ajax="false" action="#{loginBean.forgotPassword()}" value="Confirmar" style="width: 49%;"/>
                         <p:commandButton ajax="false" action="home?faces-redirect=true" value="Sair" style="width:49%;float: right;"/>
                     </f:facet>
-                    
+
                 </h:panelGrid> 
             </h:form>
         </div>

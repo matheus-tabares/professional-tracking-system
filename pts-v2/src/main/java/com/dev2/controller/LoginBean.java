@@ -7,6 +7,7 @@ package com.dev2.controller;
 
 import com.dev2.dao.UsuarioDAO;
 import com.dev2.model.Usuario;
+import com.dev2.util.EmailUtil;
 import com.dev2.util.HashUtil;
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -166,35 +167,18 @@ public class LoginBean implements Serializable {
         try {
             UsuarioDAO userDAO = new UsuarioDAO();
             Usuario user = userDAO.buscarPorEmail(this.nomeUsuario);
-
-            if (senhaNova.trim().equals("") || confirmaSenhaNova.trim().equals("") || nomeUsuario.trim().equals("") || CPF.trim().equals("")) {
-                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "SEM CAMPOS EM BRANCO, OK?", ""));
-                return null;
-            }
-
-            if (!senhaNova.equals(confirmaSenhaNova)) {
-                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "SENHAS NÃO CONFEREM", ""));
-                inicializarVariaveis();
-                return null;
-            }
-
-            if (this.nomeUsuario.equals(user.getEmail()) && this.CPF.equals(user.getCPF())) {
-                if (HashUtil.generateHash(senhaNova, user.getSeguranca().getSALT()).equals(user.getSenha())) {
-                    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "SUAS SENHAS SÃO IGUAIS", ""));
-                    inicializarVariaveis();
-                    return null;
-                }
-
-                String newPass = HashUtil.generateHash(this.senhaNova, user.getSeguranca().getSALT());
-                user.setSenha(newPass);
-                userDAO.alterar(user);
-            }
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "SENHA ALTERADA", ""));
+            EmailUtil email = new EmailUtil();
+            email.setDestinatario(this.nomeUsuario);
+            System.out.println("setou usuario");
+            String senhaGerada = email.gerarSenha();
+            email.gerarDescricao(senhaGerada);
+            email.enviarEmail();
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "SENHA ENVIADA PARA E-MAIL INFORMADO", ""));
             inicializarVariaveis();
             return null;
 
         } catch (Exception ex) {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "DADOS INVALIDOS", ""));
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "EMAIL NAO LOCALIZADO", ""));
             inicializarVariaveis();
             return null;
         }
