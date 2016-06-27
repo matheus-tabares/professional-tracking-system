@@ -60,6 +60,10 @@ public class UsuarioBean implements Serializable {
         this.endereco.setUsuario(usuarioDAO.carregar(this.usuario.getId()));
         this.enderecoDAO.incluir(endereco);
         if (checkProfissional) {
+            if (this.idCategoria == 1) {
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "SELECIONE UMA CATEGORIA", ""));
+                return null;
+            }
             this.profissional.setUsuario(usuarioDAO.carregar(this.usuario.getId()));
             this.profissional.setCategoria(categoriaDAO.carregar(idCategoria));
             this.profissionalDAO.incluir(profissional);
@@ -102,10 +106,10 @@ public class UsuarioBean implements Serializable {
      }*/
     public void buscaProfissionalPorCategoria() {
         try {
-        profissionaisPorCategoria = null;
-        profissionaisPorCategoria = usuarioDAO.listarProfissionaisPorCategoria(idCategoria);
-        System.out.println("ID CATEGORIA: " + idCategoria);
-        } catch(Exception ex) {
+            profissionaisPorCategoria = null;
+            profissionaisPorCategoria = usuarioDAO.listarProfissionaisPorCategoria(idCategoria);
+            System.out.println("ID CATEGORIA: " + idCategoria);
+        } catch (Exception ex) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "NÃO EXISTEM PROFISSIONAIS CADASTRADOS!", ""));
         }
     }
@@ -260,6 +264,10 @@ public class UsuarioBean implements Serializable {
     public String queroSerProfissional() {
         try {
             System.out.println("ID CATEG--->" + idCategoria);
+            if (idCategoria == 1) {
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "SELECIONE UMA CATEGORIA", ""));
+                return null;
+            }
             this.usuario = loginBean.getUsuario();
             this.usuario.setEhProfissional(true);
             this.usuarioDAO.alterar(usuario);

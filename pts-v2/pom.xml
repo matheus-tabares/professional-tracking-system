@@ -16,6 +16,15 @@
     
     <dependencies>
         
+        <!-- COMMONS EMAIL -->
+        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-email -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-email</artifactId>
+            <version>1.2</version>
+        </dependency>
+
+        
         <!-- JSF 2.1 -->
         <dependency>
             <groupId>javax.faces</groupId>
