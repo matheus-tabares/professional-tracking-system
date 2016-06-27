@@ -304,6 +304,7 @@ public class UsuarioBean implements Serializable {
                     this.enderecoDAO.alterar(endereco);
                     System.out.println("<------ CARREGOU ENDERECO ------>");
                     this.usuarioDAO.alterar(this.usuario);
+                    loginBean.setUsuario(usuarioDAO.carregar(loginBean.getUsuario().getId()));
                     FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "PERFIL ATUALIZADO!", ""));
                     System.out.println("<---------- PELO VISTO FUNCIONOU ---------->");
                     return "painelProfissional?faces-redirect=true";
@@ -326,6 +327,7 @@ public class UsuarioBean implements Serializable {
                 System.out.println("CARREGOU O USUARIO: " + this.usuario.getEmail());
                 this.usuarioDAO.alterar(this.usuario);
                 System.out.println("ALTEROU O USUARIO.");
+                loginBean.setUsuario(usuarioDAO.carregar(loginBean.getUsuario().getId()));
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "PERFIL ATUALIZADO!", ""));
                 return "painelProfissional?faces-redirect=true";
 

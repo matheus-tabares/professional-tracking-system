@@ -200,25 +200,44 @@ public class LoginBean implements Serializable {
 
     public void fileUpload(FileUploadEvent event) throws IOException {
         try {
+            //Instância objetos
+            //ImagemRN imagemRN = new ImagemRN();
+            //Imagem im = new Imagem();
+
+            //Cria um arquivo UploadFile, para receber o arquivo do evento
             UploadedFile arq = event.getFile();
 
+            /*
+           //Transformar a imagem em bytes para salvar em banco de dados
+           byte[] bimagem = event.getFile().getContents();
+           im.setImagem(bimagem);
+           im.setNomeArquivo(arq.getFileName());
+           imagemRN.salvar(im);
+             */
+            //Essa parte comentada deve ser usada caso queira salvar
+            //o arquivo em um local fisuco do servidor.
             InputStream in = new BufferedInputStream(arq.getInputstream());
-            File file = new File("C:\\Users\\Mari\\Documents\\NetBeansProjects\\professional-tracking-system-with-photo\\pts-v2\\src\\main\\webapp\\resources\\img" + arq.getFileName());
-
-            String caminho = "resources\\imagens\\" + arq.getFileName();
-
+            File file = new File("C:\\Users\\10070099\\Documents\\GitHub\\professional-tracking-system\\pts-v2\\src\\main\\webapp\\resources\\imagens\\" + usuario.getCPF()+".png");
+            //O método file.getAbsolutePath() fornece o caminho do arquivo criado
+            //Pode ser usado para ligar algum objeto do banco ao arquivo enviado
+            //String caminho = file.getAbsolutePath();
+            //String caminho="resources\\imagens\\" + arq.getFileName();
+            String caminho="resources\\imagens\\" + usuario.getCPF()+".png";
             FileOutputStream fout = new FileOutputStream(file);
             while (in.available() != 0) {
                 fout.write(in.read());
             }
-            usuario.setFoto(caminho);
+            
             fout.close();
-
+            usuario.setFoto(caminho);
+            
             FacesMessage msg = new FacesMessage("O Arquivo ", arq.getFileName() + " salvo em banco de dados.");
             FacesContext.getCurrentInstance().addMessage("msgUpdate", msg);
+            //imagemRN.salvar(im);
+            
 
         } catch (Exception ex) {
-            System.out.println("DEU ESTOURO NA IMAGEM LOGINBEAN");
+            ex.printStackTrace();
         }
     }
 

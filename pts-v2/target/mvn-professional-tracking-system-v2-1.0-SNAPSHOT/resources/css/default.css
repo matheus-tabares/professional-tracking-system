@@ -1,0 +1,370 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto+Condensed);
+@import url(https://fonts.googleapis.com/css?family=Passion+One);
+@import url(https://fonts.googleapis.com/css?family=Bubblegum+Sans);
+*{
+    box-sizing: border-box;
+    margin:0;padding:0;
+    list-style:none;
+}
+html,body{
+    width: 100%;height: 100%; min-height: 600px;min-width: 600px;  background: #DDDEE0;     
+}
+/*------------------------FIM RESET-------------------------------------------*/
+
+.flexs{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/*------------------------FIM CLASSEs GENERICA--------------------------------*/
+#top{       
+    width: 100%;height: 60px;
+    top:0; left: 0;   
+    position: absolute;    
+    display: flex;
+    -webkit-box-shadow: 0 8px 6px -6px black;
+    -moz-box-shadow: 0 8px 6px -6px black;
+    box-shadow: -2px 8px 6px -6px black;
+    background: #2D5E82;   
+    border-bottom: 2px solid #000;
+}
+
+.top-direita,.top-centro,.top-esquerda{    
+    width: 50%;height: 60px;    
+    margin: auto;    
+    color: #fff;    
+}
+
+.top-direita{
+    justify-content: flex-start;
+    width: 25%;    
+}
+
+.top-esquerda{    
+    justify-content: flex-end;
+    width: 25%;min-width: 200px;
+}
+.top-centro{    
+    /*text-shadow: -1px -1px #1429390, 1px 1px #142939;*/
+}
+.top-centro h1{
+    font-family: 'Passion One', cursive;
+    text-shadow: -1px 0 black, 0px 1px black,1px 0 black, 0 -1px black;
+    font-size: 3vw;
+    text-transform: uppercase;
+}
+
+/*---------------------------MENU-CSS-----------------------------------------*/
+.container {
+    display: inline-block;
+    cursor: pointer;       
+    padding: 5px;
+}
+.container h1{
+    color: #fff;
+
+}
+.bar1, .bar2, .bar3 {
+    width: 35px;
+    height: 5px;
+    background-color: #fff;
+    margin: 6px 0;
+    transition: 0.5s;
+}
+.change .bar1 {
+    -webkit-transform: rotate(-45deg) translate(-9px, 6px) ;
+    transform: rotate(-45deg) translate(-9px, 6px) ;
+}
+.change .bar2 {
+    opacity: 0;
+}
+.change .bar3 {
+    -webkit-transform: rotate(45deg) translate(-8px, -8px) ;
+    transform: rotate(45deg) translate(-8px, -8px) ;
+}
+#left-menu{ 
+    text-align: center;
+    width: 300px;     
+    height: 100%;   
+    min-height: 420px;
+    padding-top: 10px; border: 1px inset #999;  overflow: auto;position: relative;    
+}
+.container-btn{    
+    justify-content: flex-start;
+    position: relative;
+    width: 250px;
+    min-width: 250px;
+    height: 60px;
+    background:linear-gradient(#275372,#2D5E82);    
+    margin: auto;
+    margin-bottom: 10px;
+    -webkit-box-shadow: 0 8px 6px -6px black;
+    -moz-box-shadow: 0 8px 6px -6px black;
+    box-shadow: -4px 8px 6px -6px #000;
+    z-index: 1;
+    border: 2px outset #999;
+    border-radius: 10px;    
+}
+.alert-btn{     
+    height: 40px;width: 40px;min-width: 40px;
+    border: 1px solid #999;
+    border-radius: 50%;margin: 2px;    
+    transition: all 0.5s ease-in-out;
+}
+.container-btn a{
+    text-decoration: none;
+    color: white;
+    height: 100%;width:100%;    
+    position: absolute;left: 0;top:0;
+}
+
+/* EFEITO NO ICONE DE ALERTA */
+.container-btn:hover .alert-btn{
+    transform: rotate(360deg);
+}
+
+.container-btn:active  {
+    border-style: inset;
+    transform: translatey(3px);
+    box-shadow: inset 0px 0px 10px 3px rgba(50, 50, 50, 0.6);
+}
+
+/*-----------------FIM MENU-CSS-----------------------------------------------*/
+
+/*---------------------------CONTEUDO-----------------------------------------*/
+#conteudo-principal{
+    width: calc(100% - 300px);margin: auto;
+    height: 100%;
+    overflow-y: auto;
+}
+
+#conteudo{ 
+    padding-top:60px; /*arrumar quando tirar as bordas*/
+    height: 100%;
+    display: flex;
+    background-color: #fff;
+    background-image: url('img/bg-footer.png');background-size: cover;
+}
+.logo{
+    position: absolute;
+    bottom: 10px;
+    left: calc(50% - 40px);
+    clear: both;
+}
+
+#teste{
+    height: 500px;width: 400px;background: tomato;    
+    margin: auto;
+}
+/*-----------------------FIM CONTEUDO-----------------------------------------*/
+
+
+/*
+ <a  href="javascript:window.history.go(-1)"><p style="width: 50px;height: 50px;border-radius: 50%; position: absolute;bottom: 5px; right: 5px;background: deeppink"></p></a>
+ background-image: url('img/efeito.png');background-size: 100% 0;background-repeat: no-repeat;background-position: bottom;transition: all 0.3s ease-in-out;border-radius: 10px;
+
+*/
+
+/*Pc responsivo
+@media screen and (max-width: 500px) {
+    .container h1{
+        display: none;
+    }
+    #left-menu{
+        background-color: rgba(255, 0, 255,0.9);
+    }
+}
+*/
+/*-----------------------------------MOBILE-----------------------------------*/
+
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 480px)
+{
+    html , body{
+        min-height: 600px;min-width: 200px;
+    }
+    .top-centro{
+        display: none;
+    }
+    .top-direita{
+        width: 40%;
+    }
+    .top-esquerda{
+        width: 60%;
+    }
+    #left-menu{
+        display: none;
+        position: fixed;
+        width: 100%;
+        min-height: 600px;
+        background: rgba(0,0,0,0.8);
+    }
+    #conteudo-principal{
+        width: 100%;
+    }
+
+}
+.logout{
+    text-align: center;
+}
+.logout *{
+    background: transparent;
+    color: #fff;
+    border: none;
+}
+#confirma-sair{    
+    background: #2D5E82;
+}
+#confirma-sair .ui-button{
+    width: 110px;    
+}
+#confirma-sair .ui-button+.ui-button{
+    float: right;    
+}
+/*--------------------- card ------------------------*/
+.card *{
+    font-family: 'Roboto Condensed', sans-serif;
+}
+.card{
+    display: inline-block;   
+    width: 19%;
+    border: 5px solid #21455f;
+    border-radius: 10px;
+}
+.card:hover{
+    border-color: #fff;
+}
+
+.busca-cat{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+      
+}
+
+.busca-cat *{
+    font-family: 'Roboto Condensed', sans-serif;font-size: 14pt;font-weight: normal;
+}
+.busca-cat  .ui-selectonemenu-trigger{
+    width: 40px!important;
+}
+.filtro-busca{
+  padding: 5px; 
+}
+#perfil{
+    position: relative;
+    background: #fff;
+    height: 500px;
+    min-width: 500px;
+    border: 1px solid gray;
+    border-radius: 10px;
+    width: 90%;
+    margin: auto;
+    display: flex;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.4), 0 10px 10px rgba(0,0,0,0.4);
+}
+.texto-perfil,.foto-perfil{
+
+}
+.foto-perfil{
+    height: 250px;
+    width: 250px;
+}
+.texto-perfil{
+    width: calc(100% - 200px);
+}
+.texto-perfil h1,.descri-perfil{
+    font-family: 'Roboto Condensed', sans-serif;
+    text-align: center;
+    color:#2D5E82; 
+}
+.texto-perfil p{
+    font-size: 16pt;
+    color:#2D5E82;
+    padding: 5px;
+}
+.descri-perfil {
+    width: 80%;
+    padding: 20px;
+    margin: auto;
+    -webkit-box-shadow: inset 0px 0px 16px -1px rgba(0,0,0,0.75);
+    -moz-box-shadow: inset 0px 0px 16px -1px rgba(0,0,0,0.75);
+    box-shadow: inset 0px 0px 16px -1px rgba(0,0,0,0.75);
+}
+.descri-perfil h1{
+    font-family: "Courier New", Courier, monospace;color: #2D5E82;
+}
+#btn-barra{
+    position: absolute;
+    bottom: 10px;
+    text-align: center;
+    width: calc(100% - 250px);
+    padding: 10px;
+}
+#btn-barra *{
+    font-family: 'Roboto Condensed', sans-serif;
+}
+.btn-perfil{
+    width: 150px;
+    height: 80px;
+    font-size: 1.2em;
+    cursor: pointer;
+    color: #2D5E82;
+    margin-right: 10px;
+    -webkit-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.75);
+}
+.formularios{
+    margin: auto;background: red;
+    width: 70%;
+}
+.formularios *{
+    font-family: 'Roboto Condensed', sans-serif;
+}
+.btn-btn{
+    height: 50px;width: 90%;margin-bottom: 5px;
+    border: 2px solid #2D5E82;
+    text-transform: uppercase;
+    font-family: 'Roboto Condensed', sans-serif;
+    background: transparent;
+    font-weight: normal;
+}
+
+.txt-panel h1{
+    text-align: center;
+    margin-top: 20px;
+    color: #00264d;
+    font-family: 'Bubblegum Sans', cursive;
+}
+#painel{
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    padding-top: 10%;
+}
+.btn-painel{
+   width: 180px;
+   height: 100px;
+   margin: 10px;
+   cursor: pointer;
+   background: #fff;
+   border: 2px solid #21455f;  
+   color: #21455f;
+   text-transform: uppercase;
+   font-family: 'Roboto Condensed', sans-serif;
+   font-weight: bold;
+}
+.c {    
+    color: #ffffff;
+    text-align: center;
+    padding: 5px;
+    color: #2D5E82;
+}
+ .blue{
+    background: #275372;
+    color: #fff;
+}

@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition template="template/Layout.xhtml">
+        <ui:define name="content">
+            <h:form prependId="false">
+                <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />            
+
+                <p:dataTable value="#{contatoBean.mensagensRecebidas}" var="msg" emptyMessage="NENHUMA RESPOSTA POR ENQUANTO." rows="8" 
+                             paginator="true" paginatorPosition="bottom"
+                             style="margin-top: 10px">
+
+                    <p:column headerText="DE" sortBy="#{msg.remetente.nome}">
+                        <h:outputText value="#{msg.remetente.nome}" />
+                    </p:column>
+
+                    <p:column headerText="ASSUNTO">
+                        <h:outputText value="#{msg.assunto}" />
+                    </p:column>
+
+                    <p:column headerText="ABRIR" width="80">
+                        <p:commandButton icon="ui-icon-mail-closed" ajax="false" action="#{contatoBean.detalheContato(msg.id)}"/>
+                    </p:column>                    
+                </p:dataTable>
+
+
+
+            </h:form>
+        </ui:define>
+
+    </ui:composition>
+
+</html>
+
+

@@ -32,7 +32,7 @@
                             <h:panelGrid columns="2" style="margin: auto" footerClass="c" >
 
                                 <f:facet name="header">
-                                    <p:graphicImage alt="Teste" library="img" name="teste.jpg" title="Nome" />
+                                    <p:graphicImage value="#{p.foto}" title="Nome" width="150" height="150" />
                                 </f:facet>                             
                                 <p:outputLabel value="Categoria"/>
                                 <p:outputLabel value="#{p.profissional.categoria.nome}"/>

@@ -54,6 +54,11 @@ public class Usuario implements Serializable {
 
     @OneToOne(mappedBy = "usuario")
     private Seguranca seguranca;
+    
+     public Usuario(){
+        foto="resources/imagens/silhuetaHomem.jpg";
+    
+    }
 
     public int getId() {
         return id;

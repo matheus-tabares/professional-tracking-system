@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/projetodevsisv2</property>
+    <property name="hibernate.connection.username">root</property>
+    <property name="hibernate.hbm2ddl.auto">update</property>
+    <mapping class="com.dev2.model.Categoria"/>
+    <mapping class="com.dev2.model.Endereco"/>
+    <mapping class="com.dev2.model.Profissional"/>
+    <mapping class="com.dev2.model.Usuario"/>
+    <mapping class="com.dev2.model.Seguranca"/>
+    <mapping class="com.dev2.model.Mural"/>
+    <mapping class="com.dev2.model.Contato"/>
+  </session-factory>
+</hibernate-configuration>

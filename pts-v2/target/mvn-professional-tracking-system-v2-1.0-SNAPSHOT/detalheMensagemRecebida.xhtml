@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition template="template/Layout.xhtml">
+
+        <ui:define name="content">
+           <h:form prependId="false">
+                <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+                <p:panelGrid columns="2" styleClass="formularios">
+                    <f:facet name="header">
+                        DETALHE MENSAGEM
+                    </f:facet>
+
+                    <p:outputLabel value="ASSUNTO" for="txtAssunto"/>
+                    <p:outputLabel id="txtAssunto" value="#{contatoBean.contato.assunto}"/>
+
+                    <p:outputLabel value="MENSAGEM" for="txtMensagem"/>
+                    <p:outputLabel id="txtMensagem" value="#{contatoBean.contato.mensagem}"/> 
+
+
+                    <f:facet name="footer">
+                        <h:panelGroup>
+                            <p:commandButton ajax="false" value="Responder"  action="#{contatoBean.respostaContato()}"  />
+                        </h:panelGroup>                        
+                    </f:facet>
+                </p:panelGrid>  
+
+            </h:form>
+        </ui:define>
+
+    </ui:composition>
+
+</html>
+
+        

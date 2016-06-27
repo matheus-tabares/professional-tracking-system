@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="./template/Layout.xhtml">
+
+            <ui:define name="title">
+                Painel Profissional
+            </ui:define>
+            <ui:define name="menu"></ui:define>
+            <ui:define name="menu-todos"></ui:define>
+            <ui:define name="content">
+                <div id="painel">
+                    <h:form> 
+                        <div style="width: 100%;text-align: center">
+                            <h:commandButton  value="Home"  action="home" styleClass="btn-painel"/>
+                            <h:commandButton  value="MEU PERFIL" action="#{usuarioBean.iniciaAlteracaoProfissional(usuarioBean.usuario.id)}" styleClass="btn-painel"/>
+                            <h:commandButton  value="Encontrar Profissional"  action="listarProfissional" styleClass="btn-painel"/>
+                        </div>
+                        <div style="width: 100%;text-align: center">
+                            <h:commandButton  value="Publicar um serviço"  action="publicarMural" styleClass="btn-painel"/>                        
+                            <h:commandButton  value="Menssagens"  action="caixaDeEntrada" styleClass="btn-painel"/>
+                            <h:commandButton  value="Mural De Serviços"  action="#{muralBean.listaPublicacoes()}" styleClass="btn-painel"/>
+                        </div>
+                        <div style="width: 100%;text-align: center">
+                            <h:commandButton  value="Minhas Publicações"  action="#{muralBean.minhasPublicacoes()}" styleClass="btn-painel"/>
+                        </div>
+                    </h:form>
+                </div>               
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

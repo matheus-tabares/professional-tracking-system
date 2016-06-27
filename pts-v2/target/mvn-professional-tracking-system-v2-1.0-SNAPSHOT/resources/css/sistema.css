@@ -1,0 +1,281 @@
+/*
+PAGINAS A UTILIZAR ESSA FOLHA DE ESTILO 
+HOME.XHTML
+TERMOS.XHTML
+INDEX QUE É O FORMULARIO DE CADASTRO
+IGOR CORREA
+*/
+@import url(https://fonts.googleapis.com/css?family=Roboto+Condensed);
+@import url(https://fonts.googleapis.com/css?family=Passion+One);
+*{
+    box-sizing: border-box!important;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+a{
+    text-decoration: none!important;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+html,body{
+    height: 100%;
+    background: #cccccc;
+}
+.site{
+    height: 100%; 
+    overflow: auto;
+    min-height: 720px;
+    min-width: 720px;
+}
+.village{
+    background: url('img/home.jpg')no-repeat ;
+    background-attachment: fixed;background-size: cover ;
+}
+.menu{
+    position: relative; 
+    height: 60px;background: #2D5E82;
+    display: flex;
+    align-items: center;
+}
+.menu span{
+    width: 100px;
+    text-align: center;
+}
+.menu span img,#capacete{
+    height: 58px;
+    transition: all 0.2s ease-in;
+}
+#capacete:hover{
+    cursor: pointer;
+    transform:scale(1.2 ,1.2);
+}
+#btn-login{   
+    color: #fff;  
+    background: tomato;
+    padding: 10px;    
+}
+
+.menu h1  {
+    color: #fff;
+    width: calc(100% - 200px);
+    text-align: center;
+    font-family: 'Passion One', cursive;
+    text-shadow: -1px 0 black, 0px 1px black,1px 0 black, 0 -1px black;
+    font-size: 3.5vw;
+    text-transform: uppercase;
+}
+.bloco-principal {
+    height: 60%;        
+    min-height: 300px;
+    min-width: 720px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.bloco-principal h1{
+    text-align: center;    
+    font-size: 3vw;background:rgba(255,255,255,0.5);
+    padding: 10px;
+}
+.bloco-btn-cadastro{
+    height: calc(100% - 50px);
+}
+#btn-cadastro,#btn-teste {/*trocar*/
+    height: 100px;
+    width: 300px;        
+    border: 6px solid #2D5E82 ;    
+}
+#btn-cadastro a ,#btn-teste a{
+    height: 100%;
+    width: 100%;    
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+    color: #2D5E82;
+    font-size: 22pt;
+    background: url('img/efeito.png') no-repeat;
+    background-size: 0;
+    background-position: center;
+    transition: all .3s ease-in;
+}
+#btn-cadastro a:hover,#btn-teste a:hover{
+    background-size: 150%;    
+    color: #fff;
+}
+
+.segundo-bloco{
+    background: #fff;
+    height: calc(40% - 60px); 
+    background-image: url('img/bg-footer.png');background-size: cover;
+}
+.bloco-secundario{/*onde fica o mapa*/
+    height: 90%;
+    overflow-y: auto;
+}
+
+.termos-uso{
+    height: 5%;    
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background: #ffffff;
+    flex-wrap: wrap; 
+    border-top: 2px solid #2D5E82;
+}
+footer{
+    position: relative;
+    height: 5%;
+    background: #21455f;
+    text-align: center;
+    color:#fff ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+footer code{
+    font-family: monospace;
+}
+.termos-uso p{
+    color: #2D5E82;
+    font-weight: bold;
+}
+
+
+/*javascrit*/
+.wrap{
+    color: red;
+    animation: pisca .5s ease-in-out infinite; 
+}
+@keyframes pisca{
+    to{border-right-color:transparent;}
+    from{border-right-color:#000;}
+}
+.space{
+    height: 2%;
+}
+.p-termos{
+    text-align: center;
+    font-family: 'Roboto Condensed', sans-serif;
+    color: #999;
+    font-size: 11pt;
+    padding: 0;
+    height: 50px;
+    border-bottom: 5px solid #2D5E82
+}
+.p-termos:hover{
+    color: #000;
+}
+/*CANVAS GOOGLE MAPS NÃO ALTERAR*/
+#map{
+    height: calc(100% - 60px);
+    width: 100%;
+    margin: auto;
+}
+#geocoding_form{
+    width: 80%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    border: 1px solid #000;
+    position: relative;
+}
+
+#geocoding_form input[type='text']{
+    height: 40px;
+    width: 100%;
+    border: none;
+    font-size: 16pt;
+}
+
+#address {
+
+
+}
+
+#address:focus{
+
+}
+
+#busca-mapa{    
+    width: calc(100% - 200px);   
+}
+/* GOOGLE MAPS  */
+
+
+
+.topo{
+    opacity: 0.5;
+}
+.topo:hover{
+    opacity: 1;
+}
+#btn-busca{
+    cursor: pointer; 
+    width: 40px;
+    height: 40px;
+    background-color: #fff;
+    background-image: url('img/Search.png');background-size:38px;
+    border: none;    
+}
+
+.map-content{
+    padding: 2px;
+    color: #2D5E82;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: bold;
+    width: 100px;    
+}
+/*janela do mapa*/
+.gm-style-iw{
+    border: 2px solid #2D5E82;
+    padding: 5px;
+    border-radius: 5px; text-align: center;  
+}
+.gm-style-iw + div{  
+
+    top: 2px!important;
+    right: 2px!important;
+}
+.flexs{    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#busca-categoria{
+    
+    position: absolute;
+    z-index: 9999;
+    cursor: pointer;
+    border: 1px solid transparent;
+    -webkit-box-shadow: 10px 10px 16px 0px rgba(0,0,0,0.65);
+    -moz-box-shadow: 10px 10px 16px 0px rgba(0,0,0,0.65);
+    box-shadow: 10px 10px 16px 0px rgba(0,0,0,0.65);
+}
+#busca-categoria > *{
+    font-family: 'Roboto Condensed', sans-serif!important;
+    font-size: 8pt!important;
+}
+#busca-categoria-select{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#busca-categoria-select input[type='text']{
+    height: 100px;
+
+}
+#btn-geolocalizacao{
+    width: 100%;
+
+}
+.ui-corner-right {
+
+    width: 20px!important;
+
+}
+#omCategoria{
+
+}

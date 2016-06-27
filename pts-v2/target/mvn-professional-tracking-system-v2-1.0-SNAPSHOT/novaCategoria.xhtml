@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition template="template/LayoutPadrao.xhtml">
+
+        <ui:define name="content">
+
+
+            <h:form prependId="false">
+                <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+                <p:panelGrid columns="2" styleClass="formularios">
+                    <f:facet name="header">
+                        NOVA CATEGORIA
+                    </f:facet>
+
+                    <p:outputLabel value="CATEGORIA" for="txtNome"/>
+                    <p:inputText id="txtNome" maxlength="40" value="#{categoriaBean.categoria.nome}"/>
+
+                    <p:outputLabel value="DESCRIÇÃO" for="txtDescricao"/>
+                    <p:inputTextarea id="txtDescricao" maxlength="200" cols="20" rows="5" value="#{categoriaBean.categoria.descricao}"/> 
+
+
+                    <f:facet name="footer">
+                        <h:panelGroup>
+                            <p:commandButton ajax="false" value="Cadastrar"  action="#{categoriaBean.cadastrar()}"  />
+                        </h:panelGroup>                        
+                    </f:facet>
+                </p:panelGrid>  
+                
+            </h:form>
+            <h:form>
+
+                <p:dataTable value="#{categoriaBean.listaCategorias}" var="cat" emptyMessage="NÃO HÁ CATEGORIAS CADASTRADAS" rows="8" 
+                             paginator="true" paginatorPosition="bottom"
+                             style="margin-top: 10px">
+                    
+                    <p:column headerText="NOME" sortBy="#{cat.nome}">
+                        <h:outputText value="#{cat.nome}" />
+                    </p:column>
+                    
+                    <p:column headerText="DESCRICAO">
+                        <h:outputText value="#{cat.descricao}" />
+                    </p:column>
+
+                    <p:column headerText="Detail" width="60">
+                        <p:commandButton icon="ui-icon-search" ajax="false" action="#{clienteBean.consultaCliente(cliente.id)}"/>
+                    </p:column>
+                    <p:column headerText="Delete" width="60" >
+                        <p:commandButton icon="ui-icon-trash" ajax="false" action="#{categoriaBean.deletar(cat.id)}"/>
+                    </p:column>
+                </p:dataTable>
+
+
+
+            </h:form>
+        </ui:define>
+
+    </ui:composition>
+
+</html>
+
+

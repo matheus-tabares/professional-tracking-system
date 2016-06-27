@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
+        <h:outputScript library="js" name="js.js"/>
+        <h:outputScript library="js" name="cep.js"/>
+        <h:outputStylesheet library="css" name="default.css"/>
+        <h:outputStylesheet library="css" name="cssLayout.css"/>        
+        <title>Professional Ts</title>
+    </h:head>
+
+    <h:body>
+
+        <div id="top">            
+            <ui:insert name="top">
+                #{loginBean.nomeUsuario}
+            </ui:insert>
+        </div>
+        <div id="container">
+            <div id="left">
+                <ui:insert name="left">
+                    <h:link value="CADASTRE-SE" outcome="index"/>                                        
+                    <h:link value="CRUD CATEGORIA"  outcome="novaCategoria?faces-redirect=true"/>
+                    <h:form>
+                        <p:commandButton value="SAIR" action="#{loginBean.logout()}"/>
+                    </h:form>
+                    <!--                    <h:link value="CRUD ENDERECO" outcome="novoEndereco?faces-redirect=true"/>-->
+                    <!--                    <h:link value="CRUD PROFISSIONAL" outcome="novoProfissional?faces-redirect=true"/>-->                    
+
+                </ui:insert>
+
+            </div>
+            <div style="height: 100%">
+                <div id="right">
+                    <ui:insert name="right"></ui:insert>
+                </div>
+                <div id="content" class="right_content">
+                    <ui:insert name="content">
+                        conteudo de testes
+
+
+                    </ui:insert>
+                </div>
+            </div>
+        </div>
+
+        <ui:insert name="bottom">
+            <footer>
+                <h:form prependId="false">
+                    <p:commandLink action="Equipe">
+                        <code>Projeto do curso de ADS IFRS Disciplina DEV SIS II - Copyright<sup>©</sup> 2016</code>
+                    </p:commandLink>
+                </h:form>
+            </footer>
+        </ui:insert>
+
+    </h:body>
+</html>
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<div class="flexs container-btn">
+                            <a class="flexs" href="#">MENSAGENS</a>
+                            <div class="alert-btn flexs">
+                                <h:graphicImage library="img" name="msgicon.ico" height="38"/>
+                            </div>
+                        </div>
+                        <div class="flexs container-btn">
+                            <a class="b flexs" href="#">Cuidar palavras grandes</a>
+                            <div class="alert-btn flexs">
+                                <span class="flexs">
+                                    5
+                                </span>
+                            </div>
+                        </div>
+                        <div class="flexs container-btn">
+                            BOTÂO 3
+                        </div>
+                        <div class="flexs container-btn">
+                            BOTÂO 4
+                        </div>
+                        <div class="flexs container-btn" style="clear: both;">
+                            BOTÂO 5
+                        </div>
+
+
+
+-->
