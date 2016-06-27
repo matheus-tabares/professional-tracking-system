@@ -17,16 +17,18 @@
             <ui:define name="content">
                 <h:form>
                     <div class="busca-cat">
-                        <p:outputLabel value="CATEGORIA : " for="omCategoria" style="font-weight: bold;" />
-                        <p:selectOneMenu id="omCategoria" value="#{usuarioBean.idCategoria}" style="width:200px" >                        
+                        <span class="busca-cat filtro-busca"> 
+                        <p:outputLabel value="CATEGORIA : " for="omCategoria"  />                        
+                        <h:selectOneMenu id="omCategoria" value="#{usuarioBean.idCategoria}" style="width:200px" >                        
                             <f:selectItems value="#{usuarioBean.listaCategorias}" var="cat" itemValue="#{cat.id}" itemLabel="#{cat.nome}"/>
-                        </p:selectOneMenu>
-                        <p:commandButton value="Buscar" action="#{usuarioBean.buscaProfissionalPorCategoria()}" ajax="false"/>
+                        </h:selectOneMenu>
+                        <h:commandButton value="Buscar" action="#{usuarioBean.buscaProfissionalPorCategoria()}" />
+                        </span>
                     </div>
 
                     <ui:repeat var="p" value="#{usuarioBean.profissionaisPorCategoria}"  >
                         <span class="card">
-                            <p class="c">#{p.nome}</p>
+                            <p class="c blue">#{p.nome}</p>
                             <h:panelGrid columns="2" style="margin: auto" footerClass="c" >
 
                                 <f:facet name="header">

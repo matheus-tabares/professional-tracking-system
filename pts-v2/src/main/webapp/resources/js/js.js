@@ -20,12 +20,13 @@ function loadmap() {
     map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
 }
-function carregaEnd() {
 
+function carregaEnd() {
+    alert($('.pz').length);
     var geocoder = new google.maps.Geocoder();
     $(".pz").each(function () {
         var valorEnd = $(this).attr('value');
-        var nd = $(this).attr('name');
+        var nomeProf = $(this).attr('name');
         var categ = $(this).attr('title');
         geocoder.geocode({'address': valorEnd}, function (results, status) {
             if (status === google.maps.GeocoderStatus.OK) {
@@ -36,13 +37,13 @@ function carregaEnd() {
                     title: valorEnd
                 });
                 var infowindow = new google.maps.InfoWindow();
-                var content = '<p class="map-content">' + nd + '</p> <p>Categoria ' + categ + '</p>';
+                var content = '<p class="map-content">' + nomeProf + '</p> <p>Categoria ' + categ + '</p>';
                 infowindow.setContent(content);
 
                 marker.addListener('click', function () {
                     infowindow.open(map, marker);
                     map.setCenter(results[0].geometry.location);
-                    map.setZoom(12);
+                    //map.setZoom(12);
                     marker.setAnimation(google.maps.Animation.DROP);
                 });
             } else {
@@ -51,26 +52,34 @@ function carregaEnd() {
         });
 
     });
-    //aquivar infowindow = new google.maps.InfoWindow(); 
+
 }
+
 var iconeUser = {
     url: 'resources/img/pinBusca.png',
     scaledSize: new google.maps.Size(50, 50)
 };
-var xxx ;
+var xxx;
+var foraArea;
 function pontoTest() {
-    
+
     var geocoder = new google.maps.Geocoder();
-    
+
     $('#geocoding_form').submit(function (e) {
-        e.preventDefault(); 
-        
+        e.preventDefault();
+
         var address = document.getElementById("address").value;
         geocoder.geocode({'address': address}, function (results, status) {
             if (status === google.maps.GeocoderStatus.OK) {
+                foraArea = results[0].formatted_address;
+                if (foraArea.match(/Porto/)) {
+
+                } else {
+                    alert('VOCÊ ESTA FORA DA AREA DE COBERTURA');
+                }
                 map.setCenter(results[0].geometry.location);
-                map.setZoom(12);
-                 xxx = new google.maps.Marker({
+                //map.setZoom(12);
+                xxx = new google.maps.Marker({
                     map: map,
                     title: 'Você esta aqui',
                     icon: iconeUser,
@@ -81,21 +90,21 @@ function pontoTest() {
             }
         });
         $("#address").val('');
-       limpar();
+        limpar();
     });
 }
 
 function geolocalizacao() {
-     
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (position) {
             var pos = {
                 lat: position.coords.latitude,
                 lng: position.coords.longitude
             };
+            
             map.setCenter(pos);
-            map.setZoom(12);
-           xxx = new google.maps.Marker({
+            //map.setZoom(12);
+            xxx = new google.maps.Marker({
                 map: map,
                 title: 'Você esta aqui',
                 icon: iconeUser,
@@ -106,7 +115,7 @@ function geolocalizacao() {
             handleLocationError(true, infoWindow, map.getCenter());
         });
     } else {
-        
+
         handleLocationError(false, infoWindow, map.getCenter());
     }
     limpar();
@@ -120,9 +129,8 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 }
 /*PARA UM MARCADOR APAGAR QUANDO UMA NOVA PESQUISA FOR FEITA*/
 function limpar() {
-		xxx.setMap(null);
-	}
-
+    xxx.setMap(null);
+}
 
 $(window).load(function () {
     loadmap();

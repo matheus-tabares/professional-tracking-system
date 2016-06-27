@@ -89,7 +89,7 @@
                     </h:selectOneMenu>
 
                     <p:outputLabel value="DESCRIÇÃO: " for="txtDescricao"/>
-                    <p:inputTextarea id="txtDescricao"   value="#{usuarioBean.profissional.descricaoProfissional}" onclick="alert('Sua Descrição sera seu cartão de visita, CAPRICHE!');"/> 
+                    <p:inputTextarea id="txtDescricao"   value="#{usuarioBean.profissional.descricaoProfissional}" /> 
 
 
                     <f:facet name="footer">
@@ -105,9 +105,7 @@
                 </p:panelGrid>                
             </h:form>
             <h:outputScript library="js" name="cep.js"/>
-            <script type="text/javascript">
-
-            </script>
+            
         </div>
     </h:body>
 </html>
