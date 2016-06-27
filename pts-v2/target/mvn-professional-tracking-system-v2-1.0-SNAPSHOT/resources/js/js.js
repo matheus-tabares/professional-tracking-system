@@ -8,7 +8,7 @@ var pin = {
     url: 'resources/img/pinB.png',
     scaledSize: new google.maps.Size(50, 50)
 };
-
+var pontos=[];
 function loadmap() {
 
     var portoAlegre = {lat: -30.0346, lng: -51.2177};
@@ -24,6 +24,7 @@ function loadmap() {
 
 function carregaEnd() {
     //alert($('.pz').length);
+    clearMarkers();
     var geocoder = new google.maps.Geocoder();
     $(".pz").each(function () {
         var valorEnd = $(this).attr('value');
@@ -47,6 +48,7 @@ function carregaEnd() {
                     //map.setZoom(12);
                     marker.setAnimation(google.maps.Animation.DROP);
                 });
+                pontos.push(marker);
             } else {
                 alert("DEU BOSTON!!!: " + status);
             }
@@ -147,4 +149,10 @@ function reload(){
 }, 5000);
     loadmap();
     carregaEnd();
+    alert(pontos.length);
 }
+function clearMarkers() {
+    for(var i=0; i<pontos.length; i++){
+        pontos[i].setMap(null);   
+    }
+    }
