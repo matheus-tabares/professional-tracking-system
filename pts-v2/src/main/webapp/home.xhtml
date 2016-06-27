@@ -19,6 +19,7 @@
         <h:outputStylesheet library="css" name="sistema.css"/>
     </h:head>
     <h:body>
+        <div id="loader"></div>
         <div id="topo"></div>
         <div class="site village">
 
@@ -92,7 +93,7 @@
                             <h:selectOneMenu id="omCategoria" value="#{usuarioBean.idCategoria}" style="width: 200px"  >                        
                                 <f:selectItems value="#{usuarioBean.listaCategorias}" var="cat" itemValue="#{cat.id}" itemLabel="#{cat.nome}" />
                             </h:selectOneMenu>
-                            <p:commandButton value="" icon="ui-icon-search" actionListener="#{usuarioBean.buscaProfissionalPorCategoria()}" process="@form" update="@form"  oncomplete="carregaEnd()" style="height: 19px;margin: 0" />
+                            <p:commandButton value="" icon="ui-icon-search" actionListener="#{usuarioBean.buscaProfissionalPorCategoria()}" process="@form" update="@form"  oncomplete="reload()" style="height: 19px;margin: 0" />
                         </div>
                         <ui:repeat var="p" value="#{usuarioBean.profissionaisPorCategoria}"  >
                             <input   name="#{p.nome}" title="#{p.profissional.categoria.nome}"  class="pz" value="#{p.endereco.logradouro} , #{p.endereco.numero} , #{p.endereco.bairro} , #{p.endereco.cidade}"/>                        
