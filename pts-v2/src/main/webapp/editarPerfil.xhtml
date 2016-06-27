@@ -56,8 +56,10 @@
                                       update="messages"
                                       label="Alterar Foto"
                                       cancelLabel="Cancelar"
-                                      sizeLimit="100000000"
-                                      allowTypes="/(\.|\/)(png)$/"
+                                      sizeLimit="100000"
+                                      invalidSizeMessage="Tamanho da imagem é maior do que o maximo permitido"
+                                      invalidFileMessage="A imagem deve ser extensões .png ou .jpg"
+                                      allowTypes="/(\.|\/)(jpe?g|png)$/"
                                       value="#{loginBean.usuario.foto}"
                                       />
 

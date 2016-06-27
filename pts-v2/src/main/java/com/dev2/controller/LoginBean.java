@@ -216,13 +216,17 @@ public class LoginBean implements Serializable {
              */
             //Essa parte comentada deve ser usada caso queira salvar
             //o arquivo em um local fisuco do servidor.
+            
+            String extensao;
+            if(arq.getFileName().contentEquals(".png")){
+                extensao=".png";
+            }else{
+                extensao=".jpg";
+            }
             InputStream in = new BufferedInputStream(arq.getInputstream());
-            File file = new File("C:\\Users\\10070099\\Documents\\GitHub\\professional-tracking-system\\pts-v2\\src\\main\\webapp\\resources\\imagens\\" + usuario.getCPF()+".png");
-            //O método file.getAbsolutePath() fornece o caminho do arquivo criado
-            //Pode ser usado para ligar algum objeto do banco ao arquivo enviado
-            //String caminho = file.getAbsolutePath();
-            //String caminho="resources\\imagens\\" + arq.getFileName();
-            String caminho="resources\\imagens\\" + usuario.getCPF()+".png";
+            File file = new File("C:\\Users\\samuel\\Documents\\professional-tracking-system\\pts-v2\\src\\main\\webapp\\resources\\imagens\\" + usuario.getCPF() + extensao);
+            String caminho="resources\\imagens\\" + usuario.getCPF()+ extensao;
+            
             FileOutputStream fout = new FileOutputStream(file);
             while (in.available() != 0) {
                 fout.write(in.read());

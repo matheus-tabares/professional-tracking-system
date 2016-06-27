@@ -34,9 +34,9 @@ public class Usuario implements Serializable {
     private String senha;
 
     private boolean administrador = false;
-    
+
     private boolean ehProfissional;
-    
+
     private String foto;
 
     @OneToOne(mappedBy = "usuario")
@@ -54,10 +54,10 @@ public class Usuario implements Serializable {
 
     @OneToOne(mappedBy = "usuario")
     private Seguranca seguranca;
-    
-     public Usuario(){
-        foto="resources/imagens/silhuetaHomem.jpg";
-    
+
+    public Usuario() {
+        foto = "resources/imagens/silhuetaHomem.jpg";
+
     }
 
     public int getId() {
@@ -139,6 +139,7 @@ public class Usuario implements Serializable {
     public void setProfissional(Profissional profissional) {
         this.profissional = profissional;
     }
+
     public boolean ehProfissional() {
         return this.ehProfissional;
     }
@@ -147,15 +148,16 @@ public class Usuario implements Serializable {
         this.ehProfissional = ehProfissional;
     }
 
-    
     public String getFoto() {
-        return foto.replace("\\","/");
+        if (foto == null) {
+            return "resources/imagens/silhuetaHomem.jpg";
+        } else {
+            return foto.replace("\\", "/");
+        }
     }
 
-   
     public void setFoto(String foto) {
         this.foto = foto;
     }
 
-    
 }
