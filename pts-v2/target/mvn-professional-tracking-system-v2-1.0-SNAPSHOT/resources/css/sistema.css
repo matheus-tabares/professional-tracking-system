@@ -279,3 +279,14 @@ footer code{
 #omCategoria{
 
 }
+#loader{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top:0;
+    left:0;
+    background: rgba(0, 51, 153, 0.8);
+    background-image: url('img/gif_construcao.gif');background-repeat: no-repeat;background-position: center center;
+    display: none;
+    z-index: 9999999;
+}

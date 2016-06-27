@@ -8,6 +8,7 @@ var pin = {
     url: 'resources/img/pinB.png',
     scaledSize: new google.maps.Size(50, 50)
 };
+
 function loadmap() {
 
     var portoAlegre = {lat: -30.0346, lng: -51.2177};
@@ -22,7 +23,7 @@ function loadmap() {
 }
 
 function carregaEnd() {
-    alert($('.pz').length);
+    //alert($('.pz').length);
     var geocoder = new google.maps.Geocoder();
     $(".pz").each(function () {
         var valorEnd = $(this).attr('value');
@@ -95,13 +96,14 @@ function pontoTest() {
 }
 
 function geolocalizacao() {
+    
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (position) {
             var pos = {
                 lat: position.coords.latitude,
                 lng: position.coords.longitude
             };
-            
+
             map.setCenter(pos);
             //map.setZoom(12);
             xxx = new google.maps.Marker({
@@ -133,11 +135,16 @@ function limpar() {
 }
 
 $(window).load(function () {
+    
     loadmap();
     carregaEnd();
     pontoTest();
 });
-/*
- * sitema css home mapa js.js gmaps
- * 
- */
+function reload(){
+    $('#loader').show();
+    window.setTimeout(function() {
+        $('#loader').hide();
+}, 5000);
+    loadmap();
+    carregaEnd();
+}
