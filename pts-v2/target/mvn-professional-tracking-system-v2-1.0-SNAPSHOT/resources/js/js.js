@@ -4,11 +4,20 @@
  * 
  */
 var map;
-var pin = {
-    url: 'resources/img/pinB.png',
-    scaledSize: new google.maps.Size(50, 50)
-};
-var pontos=[];
+var icones = ['resources/img/pinB.png',
+    'resources/img/pinB.png',
+    'resources/img/icones/carpinteiro.png',
+    'resources/img/icones/eletrecista.png',
+    'resources/img/icones/encanador.png',
+    'resources/img/icones/estofador.png',
+    'resources/img/icones/faxineiro.png',
+    'resources/img/icones/jardineiro.png',
+    'resources/img/icones/marceneiro.png', 
+    'resources/img/icones/mecanico.png',
+    'resources/img/icones/pedreiro.png',    
+    'resources/img/icones/pintor.png'        
+    ];
+
 function loadmap() {
 
     var portoAlegre = {lat: -30.0346, lng: -51.2177};
@@ -21,34 +30,48 @@ function loadmap() {
     map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
 }
-
+var pontos = [];
+var infos = [];
 function carregaEnd() {
-    //alert($('.pz').length);
+
     clearMarkers();
     var geocoder = new google.maps.Geocoder();
     $(".pz").each(function () {
-        var valorEnd = $(this).attr('value');
-        var nomeProf = $(this).attr('name');
-        var categ = $(this).attr('title');
-        geocoder.geocode({'address': valorEnd}, function (results, status) {
+        var profissional = $(this).data('profissional');/*PASSA OBJETO PROFISSIONAL*/
+        var icone = profissional[0];/*NUMERO QUE FUNCIONA COM AS CATEGORIAS FIXAS E PUXA IMAGEM*/
+        var nomeProf = profissional[1];
+        var categori = profissional[2];
+        var endereco = profissional[3];
+        var descrica = profissional[4];
+        var pin = {
+            url: icones[icone],
+            scaledSize: new google.maps.Size(50, 50)
+        };
+        geocoder.geocode({'address': endereco}, function (results, status) {
             if (status === google.maps.GeocoderStatus.OK) {
                 var marker = new google.maps.Marker({
                     map: map,
                     position: results[0].geometry.location,
                     icon: pin,
-                    title: valorEnd
+                    title: nomeProf
                 });
-                var infowindow = new google.maps.InfoWindow();
-                var content = '<p class="map-content">' + nomeProf + '</p> <p>Categoria ' + categ + '</p>';
-                infowindow.setContent(content);
+                marker.setAnimation(google.maps.Animation.DROP);
 
+                var infowindow = new google.maps.InfoWindow();
+
+                var content = '<div class="nome-p">' + nomeProf +icone+ '</div>' +
+                        '<div>Categoria :' + categori + '</div>' +
+                        '<div><p class="desc">' + descrica + '</p></div>' +
+                        '<div class="fresc"><img src="resources/img/stars.png"/></div>';
+
+                infowindow.setContent(content);
                 marker.addListener('click', function () {
+                    closeinfos();
                     infowindow.open(map, marker);
-                    map.setCenter(results[0].geometry.location);
-                    //map.setZoom(12);
-                    marker.setAnimation(google.maps.Animation.DROP);
+                    //map.setCenter(results[0].geometry.location);
                 });
                 pontos.push(marker);
+                infos.push(infowindow);
             } else {
                 alert("DEU BOSTON!!!: " + status);
             }
@@ -98,7 +121,7 @@ function pontoTest() {
 }
 
 function geolocalizacao() {
-    
+
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (position) {
             var pos = {
@@ -137,22 +160,19 @@ function limpar() {
 }
 
 $(window).load(function () {
-    
+
     loadmap();
     carregaEnd();
     pontoTest();
 });
-function reload(){
-    $('#loader').show();
-    window.setTimeout(function() {
-        $('#loader').hide();
-}, 5000);
-    loadmap();
-    carregaEnd();
-    alert(pontos.length);
-}
+
 function clearMarkers() {
-    for(var i=0; i<pontos.length; i++){
-        pontos[i].setMap(null);   
+    for (var i = 0; i < pontos.length; i++) {
+        pontos[i].setMap(null);
     }
+}
+function closeinfos() {
+    for (var i = 0; i < infos.length; i++) {
+        infos[i].close();
     }
+}

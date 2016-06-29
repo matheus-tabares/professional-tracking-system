@@ -51,6 +51,7 @@
                         <a href="#map" class="scroll">FAÇA UM TESTE</a>
                     </div>
                     <div style="width: 5%"></div>
+
                     <h:form prependId="false" id="btn-cadastro">
                         <h:commandLink value="CADASTRE-SE" actionListener="#{usuarioBean.inicializarVariaveis()}" action="index?faces-redirect=true"/>                        
                     </h:form>
@@ -85,18 +86,21 @@
                         </a>
                     </span>
                 </div>
-
+                
                 <div id="busca-categoria" >                    
                     <h:commandButton id="btn-geolocalizacao" type="button" value="Use minha localização atual" onclick="geolocalizacao()" />  
                     <h:form prependId="false" id="filtro-busca">
                         <div id="busca-categoria-select">
-                            <h:selectOneMenu id="omCategoria" value="#{usuarioBean.idCategoria}" style="width: 200px"  >                        
+                            <h:selectOneMenu id="omCategoria" value="#{usuarioBean.idCategoria}" style="width: 200px"  >   
+                                <p:ajax listener="#{usuarioBean.buscaProfissionalPorCategoria()}" process="@form" update="@form" event="change" oncomplete="carregaEnd()"/>
                                 <f:selectItems value="#{usuarioBean.listaCategorias}" var="cat" itemValue="#{cat.id}" itemLabel="#{cat.nome}" />
                             </h:selectOneMenu>
-                            <p:commandButton value="" icon="ui-icon-search" actionListener="#{usuarioBean.buscaProfissionalPorCategoria()}" process="@form" update="@form"  oncomplete="carregaEnd()" style="height: 19px;margin: 0" />
                         </div>
+
                         <ui:repeat var="p" value="#{usuarioBean.profissionaisPorCategoria}"  >
-                            <input   name="#{p.nome}" title="#{p.profissional.categoria.nome}"  class="pz" value="#{p.endereco.logradouro} , #{p.endereco.numero} , #{p.endereco.bairro} , #{p.endereco.cidade}"/>                        
+                            <div class="pz" data-profissional='[ "#{p.profissional.categoria.id}", "#{p.nome}" , "#{p.profissional.categoria.nome}" ,
+                                 "#{p.endereco.logradouro}  #{p.endereco.numero}  #{p.endereco.bairro}  #{p.endereco.cidade}" , "#{p.profissional.descricaoProfissional}"]'>
+                            </div>
                         </ui:repeat>
                     </h:form>
 
@@ -124,12 +128,12 @@
         <!--<h:outputScript library="js" name="js.js"/>-->
         <h:outputScript library="js" name="texto.js"/>
         <script type="text/javascript">
-    $(document).ready(function ($) {
-    $(".scroll").click(function (event) {
-    event.preventDefault();
-    $('html,body').animate({scrollTop: $(this.hash).offset().top}, 800);
-    });
-    });
+                        $(document).ready(function ($) {
+                        $(".scroll").click(function (event) {
+                        event.preventDefault();
+                        $('html,body').animate({scrollTop: $(this.hash).offset().top}, 800);
+                        });
+                        });
         </script>
 
     </h:body>

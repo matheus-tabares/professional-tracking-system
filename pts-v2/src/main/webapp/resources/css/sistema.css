@@ -227,35 +227,52 @@ footer code{
     font-weight: bold;
     width: 100px;    
 }
-/*janela do mapa*/
+/*janela do mapa--------------------------*/
 .gm-style-iw{
-    border: 2px solid #2D5E82;
-    padding: 5px;
-    border-radius: 5px; text-align: center;  
+/*    border: 2px solid #2D5E82;
+    padding: 0!important;
+   margin: auto!important;*/
+    max-width: 200px;
+    border-radius: 5px; 
+    text-align: center; 
+    overflow: hidden;
 }
 .gm-style-iw + div{  
-
     top: 2px!important;
     right: 2px!important;
 }
+.nome-p {
+    background: #2D5E82;
+    color: #fff;
+    text-transform: uppercase;
+    
+}
+.desc{
+    
+}
+.fresc{
+    border-bottom: 2px solid #2D5E82;
+}
+/*janela do mapa --------------------------*/
 .flexs{    
     display: flex;
     justify-content: center;
     align-items: center;
 }
 #busca-categoria{
-    
+    padding: 2px;
     position: absolute;
     z-index: 9999;
     cursor: pointer;
-    border: 1px solid transparent;
+    border: 2px solid transparent;
     -webkit-box-shadow: 10px 10px 16px 0px rgba(0,0,0,0.65);
     -moz-box-shadow: 10px 10px 16px 0px rgba(0,0,0,0.65);
     box-shadow: 10px 10px 16px 0px rgba(0,0,0,0.65);
+   background: #fff;
 }
 #busca-categoria > *{
     font-family: 'Roboto Condensed', sans-serif!important;
-    font-size: 8pt!important;
+    font-size: 10pt!important;
 }
 #busca-categoria-select{
     display: flex;
@@ -277,7 +294,7 @@ footer code{
 
 }
 #omCategoria{
-
+text-align: center;
 }
 #loader{
     position: fixed;
