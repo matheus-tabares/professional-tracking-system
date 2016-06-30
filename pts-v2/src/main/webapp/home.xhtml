@@ -53,7 +53,7 @@
                     <div style="width: 5%"></div>
 
                     <h:form prependId="false" id="btn-cadastro">
-                        <h:commandLink value="CADASTRE-SE" actionListener="#{usuarioBean.inicializarVariaveis()}" action="index?faces-redirect=true"/>                        
+                        <h:commandLink class="xc" value="CADASTRE-SE" actionListener="#{usuarioBean.inicializarVariaveis()}" action="index?faces-redirect=true"/>                        
                     </h:form>
 
                 </div>
@@ -99,7 +99,8 @@
 
                         <ui:repeat var="p" value="#{usuarioBean.profissionaisPorCategoria}"  >
                             <div class="pz" data-profissional='[ "#{p.profissional.categoria.id}", "#{p.nome}" , "#{p.profissional.categoria.nome}" ,
-                                 "#{p.endereco.logradouro}  #{p.endereco.numero}  #{p.endereco.bairro}  #{p.endereco.cidade}" , "#{p.profissional.descricaoProfissional}"]'>
+                                 "#{p.endereco.logradouro}  #{p.endereco.numero}  #{p.endereco.bairro}  #{p.endereco.cidade}" , "#{p.profissional.descricaoProfissional}", "#{p.id}"]'>
+                                <p:commandButton ajax="false" class="xyz#{p.id}" value="#{p.nome}" actionListener="#{usuarioBean.consultaProfissional(p.id)}" action="detalhesusuario" immediate="true" style="display: none"/>
                             </div>
                         </ui:repeat>
                     </h:form>

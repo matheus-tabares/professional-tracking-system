@@ -43,6 +43,8 @@ function carregaEnd() {
         var categori = profissional[2];
         var endereco = profissional[3];
         var descrica = profissional[4];
+        var profid = '.xyz'+profissional[5];
+        //alert(profid)
         var pin = {
             url: icones[icone],
             scaledSize: new google.maps.Size(50, 50)
@@ -59,10 +61,11 @@ function carregaEnd() {
 
                 var infowindow = new google.maps.InfoWindow();
 
-                var content = '<div class="nome-p">' + nomeProf +icone+ '</div>' +
+                var content = '<div class="nome-p">' + nomeProf +'</div>' +
                         '<div>Categoria :' + categori + '</div>' +
                         '<div><p class="desc">' + descrica + '</p></div>' +
-                        '<div class="fresc"><img src="resources/img/stars.png"/></div>';
+                        '<div class="fresc"><img src="resources/img/stars.png"/></div>'+
+                        '<div><button onclick="$('+"'"+profid+"'"+').click();">+DETALHES</button></div>';
 
                 infowindow.setContent(content);
                 marker.addListener('click', function () {
