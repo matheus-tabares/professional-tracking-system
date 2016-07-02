@@ -30,16 +30,56 @@
                         <div class="descri-perfil">
                             <h1>#{usuarioBean.usuario.profissional.descricaoProfissional}</h1>
                         </div>
+                        
                         <div id="btn-barra">
                             <h:form prependId="false">
+                                <div class="texto-perfil">
+                            
+                            <p:growl id="messages" showDetail="true" />
+                            
+                             <h:panelGrid columns="2" cellpadding="5">
+                              <p><b>AVALIAÇÃO:</b></p>
+                               <p:rating value="#{usuarioBean.valor}"/>
+                               <p><b>COMENTÁRIO:</b></p>
+                               <p:inputTextarea id="txtMensagem" maxlength="200" cols="20" rows="5" value="#{usuarioBean.avaliacao.comentario}"/>
+                            </h:panelGrid>
+                            <p:commandButton ajax="false" value="AVALIAR"  styleClass="btn-perfil" action="#{usuarioBean.avaliar()}"  />
+                             
+                            
+                        
                                 <p:commandButton value="VER NO MAPA" ajax="false" styleClass="btn-perfil" action="mapa" style="width: 200px;margin-right: 20px;"/> 
                                 <p:commandButton icon="ui-icon-comment" ajax="false" value="CONTATAR" styleClass="btn-perfil" 
                                                  actionListener="#{contatoBean.setIdDestinatario(usuarioBean.usuario.id)}" 
                                                  action="novoContato?faces-redirect=true" style="width: 200px"/>
+                            
+                             </div>       
                             </h:form>
+                            
                         </div>
                     </div>
 
+                </div>
+                <div id="perfil">
+                    <h:form prependId="false">
+                          
+
+                <p:dataTable value="#{usuarioBean.avaliacoesRecebidas}" var="a" emptyMessage="Profissional sem avaliação" rows="8" 
+                             paginator="true" paginatorPosition="bottom"
+                             style="margin-top: 10px">
+                    <f:facet name="header">
+                        Avaliações
+                    </f:facet>
+                    <p:column headerText="Comentario" sortBy="#{a.comentario}">
+                        <h:outputText value="#{a.comentario}" />
+                    </p:column>
+                    <p:column headerText="Nota" sortBy="#{a.valor}" >
+                        <p:rating value="#{a.valor}" readonly="true"/>
+                    </p:column>                  
+                </p:dataTable>
+
+
+            </h:form>
+                    
                 </div>
             </ui:define>
 
