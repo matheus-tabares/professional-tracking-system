@@ -5,11 +5,13 @@
  */
 package com.dev2.controller;
 
+import com.dev2.dao.AvaliacaoDAO;
 import com.dev2.dao.CategoriaDAO;
 import com.dev2.dao.EnderecoDAO;
 import com.dev2.dao.ProfissionalDAO;
 import com.dev2.dao.SegurancaDAO;
 import com.dev2.dao.UsuarioDAO;
+import com.dev2.model.Avaliacao;
 import com.dev2.model.Categoria;
 import com.dev2.model.Endereco;
 import com.dev2.model.Profissional;
@@ -35,6 +37,8 @@ public class UsuarioBean implements Serializable {
 
     private Usuario usuario = new Usuario();
     private UsuarioDAO usuarioDAO = new UsuarioDAO();
+    private Avaliacao avaliacao = new Avaliacao();
+    private AvaliacaoDAO avaliacaoDAO = new AvaliacaoDAO();
     private Endereco endereco = new Endereco();
     private EnderecoDAO enderecoDAO = new EnderecoDAO();
     private Profissional profissional = new Profissional();
@@ -48,7 +52,10 @@ public class UsuarioBean implements Serializable {
     private List<Usuario> profissionaisPorCategoria = usuarioDAO.listarProfissionais();
     @ManagedProperty(value = "#{loginBean}")
     private LoginBean loginBean;
-
+    private Integer valor;
+    private List<Avaliacao> avaliacoesRecebidas;
+    private int idProfissional;
+    
     public String cadastrar() {
         this.usuarioDAO = new UsuarioDAO();
         this.usuario.setSenha(HashUtil.generateHash(this.usuario.getSenha(), this.seguranca.getSALT()));
@@ -76,8 +83,23 @@ public class UsuarioBean implements Serializable {
         inicializarVariaveis();
         return "home?faces-redirect=true";
     }
+    
+    public String avaliar() {
+       
+       this.avaliacao.setIdUsuario(loginBean.getUsuario());
+       this.avaliacao.setIdProfissional(avaliacaoDAO.carregar(idProfissional));
+       this.avaliacao.setValor(valor);
+       System.out.print("id do profissional: " + idProfissional);
+       this.avaliacaoDAO.cadastrar(avaliacao);
+        
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "AVALIAÇÃO CADASTRADA", ""));
+        this.valor = 0;
+        this.avaliacao = new Avaliacao();
+        return null;
+    }
 
     public void consultaProfissional(int idProfissionalSelecionado) {
+        idProfissional = idProfissionalSelecionado;
         usuario = usuarioDAO.carregar(idProfissionalSelecionado);
     }
 
@@ -112,6 +134,15 @@ public class UsuarioBean implements Serializable {
         } catch (Exception ex) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "NÃO EXISTEM PROFISSIONAIS CADASTRADOS!", ""));
         }
+    }
+    
+    public ArrayList<Avaliacao> getListaAvaliacoes() {
+        this.avaliacaoDAO = new AvaliacaoDAO();
+        return avaliacaoDAO.listarAvaliacoes();
+    }
+    
+    public List<Avaliacao> getAvaliacoesRecebidas() {
+        return avaliacaoDAO.listaAvaliacoesRecebidas(loginBean.getUsuario().getId());
     }
 
     public ArrayList<Usuario> getListaUsuarios() {
@@ -240,10 +271,54 @@ public class UsuarioBean implements Serializable {
     public void setLoginBean(LoginBean loginBean) {
         this.loginBean = loginBean;
     }
+    
+    public Integer getValor() {
+        return valor;
+    }
+ 
+    public void setValor(Integer valor) {
+        this.valor = valor;
+    }
 
+    public Avaliacao getAvaliacao() {
+        return avaliacao;
+    }
+
+    public void setAvaliacao(Avaliacao avaliacao) {
+        this.avaliacao = avaliacao;
+    }
+
+    public AvaliacaoDAO getAvaliacaoDAO() {
+        return avaliacaoDAO;
+    }
+
+    public void setAvaliacaoDAO(AvaliacaoDAO avaliacaoDAO) {
+        this.avaliacaoDAO = avaliacaoDAO;
+    }
+    
+    public int getIdProfissional() {
+        return idProfissional;
+    }
+
+    /**
+     * @param idUsuario the idUsuario to set
+     */
+    public void setIdProfissional(int idProfissional) {
+        this.idProfissional = idProfissional;
+    }
+
+    /**
+     * @param avaliacoesRecebidas the avaliacoesRecebidas to set
+     */
+    public void setAvaliacoesRecebidas(List<Avaliacao> avaliacoesRecebidas) {
+        this.avaliacoesRecebidas = avaliacoesRecebidas;
+    }
+    
     public void inicializarVariaveis() {
         this.usuario = new Usuario();
         this.usuarioDAO = new UsuarioDAO();
+        this.avaliacao = new Avaliacao();
+        this.avaliacaoDAO = new AvaliacaoDAO();
         this.endereco = new Endereco();
         this.enderecoDAO = new EnderecoDAO();
         this.profissional = new Profissional();
