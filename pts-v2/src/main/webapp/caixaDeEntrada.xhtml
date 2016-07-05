@@ -27,7 +27,12 @@
 
                     <p:column headerText="ABRIR" width="80">
                         <p:commandButton icon="ui-icon-mail-closed" ajax="false" action="#{contatoBean.detalheContato(msg.id)}"/>
-                    </p:column>                    
+                       
+                    </p:column>
+                    <p:column headerText="EXCLUIR" width="80">
+                        
+                        <p:commandButton icon="ui-icon-trash" ajax="false" action="#{contatoBean.excluir(msg.id)}"/>
+                    </p:column>                     
                 </p:dataTable>
 
 
