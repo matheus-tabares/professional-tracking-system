@@ -21,7 +21,9 @@ public class ContatoBean implements Serializable {
     private ContatoDAO contatoDAO = new ContatoDAO();
     @ManagedProperty(value = "#{loginBean}")
     private LoginBean loginBean;
+    private Boolean ativo;    
 
+    
     private int idDestinatario;
     private UsuarioDAO usuarioDAO = new UsuarioDAO();
     private List<Contato> mensagensRecebidas; // = contatoDAO.listaMensagensRecebidas(loginBean.getUsuario().getId());
@@ -86,7 +88,7 @@ public class ContatoBean implements Serializable {
 
         this.contato.setRemetente(loginBean.getUsuario());
         this.contato.setDestinatario(usuarioQuePublicou);
-
+        this.contato.setAtivo(true);
         this.contatoDAO.cadastrar(contato);
 
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "MENSAGEM RESPONDIDA", ""));
@@ -105,6 +107,21 @@ public class ContatoBean implements Serializable {
     public String detalheContato(int id) {
         contato = contatoDAO.carregar(id);
         return "detalheMensagemRecebida?faces-redirect=true";
+    }
+    
+    public void excluir(int id) {
+        contato = new Contato();
+        contatoDAO = new ContatoDAO();
+        try {
+            contato = contatoDAO.carregar(id);
+            contatoDAO.excluir(contato);
+            contatoDAO.listaMensagensRecebidas(loginBean.getUsuario().getId());
+        } catch (RuntimeException erro) {
+            FacesContext.getCurrentInstance().addMessage(
+                    null, new FacesMessage(
+                            FacesMessage.SEVERITY_ERROR, "ERRO AO EXCLUIR A PUBLICACÃO", ""));
+
+        }
     }
 
     public Contato getContato() {
@@ -161,5 +178,13 @@ public class ContatoBean implements Serializable {
 
     public void setUsuarioQuePublicou(Usuario usuarioQuePublicou) {
         this.usuarioQuePublicou = usuarioQuePublicou;
+    }
+    
+    public Boolean getAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(Boolean ativo) {
+        this.ativo = ativo;
     }
 }
