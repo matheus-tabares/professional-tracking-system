@@ -29,6 +29,9 @@ public class Avaliacao implements Serializable {
     private Usuario idProfissional;
     
     private int valor;
+    
+    
+    
 
     /**
      * @return the id

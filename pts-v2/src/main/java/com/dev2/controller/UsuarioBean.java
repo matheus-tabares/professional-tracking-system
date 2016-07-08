@@ -55,6 +55,7 @@ public class UsuarioBean implements Serializable {
     private Integer valor;
     private List<Avaliacao> avaliacoesRecebidas;
     private int idProfissional;
+    private  int minhasAvaliacoesRecebidas;
     
     public String cadastrar() {
         this.usuarioDAO = new UsuarioDAO();
@@ -101,6 +102,10 @@ public class UsuarioBean implements Serializable {
     public void consultaProfissional(int idProfissionalSelecionado) {
         idProfissional = idProfissionalSelecionado;
         usuario = usuarioDAO.carregar(idProfissionalSelecionado);
+        avaliacaoDAO.listaAvaliacoesRecebidas(idProfissionalSelecionado);
+        avaliacaoDAO.minhasAvaliacoesRecebidas(idProfissionalSelecionado);
+        //return "detalhesusuario?faces-redirect=true";
+        
     }
 
     public String iniciaAlteracaoProfissional(int idProfissionalSelecionado) {
@@ -136,15 +141,27 @@ public class UsuarioBean implements Serializable {
         }
     }
     
-    public ArrayList<Avaliacao> getListaAvaliacoes() {
-        this.avaliacaoDAO = new AvaliacaoDAO();
-        return avaliacaoDAO.listarAvaliacoes();
-    }
+    //public ArrayList<Avaliacao> getListaAvaliacoes() {
+      //  this.avaliacaoDAO = new AvaliacaoDAO();
+        //return avaliacaoDAO.listarAvaliacoes();
+   // }
     
     public List<Avaliacao> getAvaliacoesRecebidas() {
-        return avaliacaoDAO.listaAvaliacoesRecebidas(loginBean.getUsuario().getId());
+        return avaliacoesRecebidas;
+        //return avaliacaoDAO.listaAvaliacoesRecebidas(loginBean.getUsuario().getId());
     }
 
+    // Média do usuario logado
+    //public int getMinhasAvaliacoesRecebidas() {
+    //   return avaliacaoDAO.minhasAvaliacoesRecebidas(loginBean.getUsuario().getId());
+    //}
+    
+    public int getMinhasAvaliacoesRecebidas() {
+       return minhasAvaliacoesRecebidas;
+      // return avaliacaoDAO.minhasAvaliacoesRecebidas(loginBean.getUsuario().getId());
+    }
+    
+    
     public ArrayList<Usuario> getListaUsuarios() {
         this.usuarioDAO = new UsuarioDAO();
         return usuarioDAO.listarUsuarios();
@@ -155,6 +172,11 @@ public class UsuarioBean implements Serializable {
         return usuarioDAO.listarProfissionaisTOP10();
     }
 
+    public void setMinhasAvaliacoesRecebidas(int mediaAvaliacoesRecebidas) {
+      this.minhasAvaliacoesRecebidas = minhasAvaliacoesRecebidas;
+    }
+    
+    
     public Usuario getUsuario() {
         return usuario;
     }
@@ -313,6 +335,8 @@ public class UsuarioBean implements Serializable {
     public void setAvaliacoesRecebidas(List<Avaliacao> avaliacoesRecebidas) {
         this.avaliacoesRecebidas = avaliacoesRecebidas;
     }
+    
+    
     
     public void inicializarVariaveis() {
         this.usuario = new Usuario();

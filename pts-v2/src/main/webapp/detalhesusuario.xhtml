@@ -76,13 +76,25 @@
                         <p:rating value="#{a.valor}" readonly="true"/>
                     </p:column>                  
                 </p:dataTable>
-
-
-            </h:form>
-                    
+                    </h:form>
                 </div>
-            </ui:define>
-
+                <div id="perfil">
+                    <h:form prependId="false">
+                    <p:dataTable value="#{usuarioBean.minhasAvaliacoesRecebidas}" var="a" emptyMessage="Profissional sem avaliação" rows="8" 
+                             paginator="true" paginatorPosition="bottom"
+                             style="margin-top: 10px">
+                    <f:facet name="header">
+                        Média de Avaliações
+                    </f:facet>
+                    
+                    <p:column headerText="Média" sortBy="#{a}" >
+                        <p:rating value="#{a}" readonly="true"/>
+                    </p:column>                  
+                </p:dataTable>
+                    </h:form>
+                </div>   
+             </ui:define>
+            
         </ui:composition>
 
     </body>

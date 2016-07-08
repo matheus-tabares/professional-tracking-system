@@ -14,5 +14,6 @@
     <mapping class="com.dev2.model.Seguranca"/>
     <mapping class="com.dev2.model.Mural"/>
     <mapping class="com.dev2.model.Contato"/>
+    <mapping class="com.dev2.model.Avaliacao"/>
   </session-factory>
 </hibernate-configuration>
