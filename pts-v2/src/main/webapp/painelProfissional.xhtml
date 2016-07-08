@@ -10,22 +10,22 @@
         <ui:composition template="./template/Layout.xhtml">
 
             <ui:define name="title">
-                Painel Profissional
+                PAINEL INICIAL - #{loginBean.tipoUsuario()}
             </ui:define>
             <ui:define name="menu"></ui:define>
             <ui:define name="menu-todos"></ui:define>
             <ui:define name="content">
                 <div id="painel">
                     <h:form> 
-                        <div style="width: 100%;text-align: center">
-                            <h:commandButton  value="Home"  action="home" styleClass="btn-painel"/>
+                        <div style="width: 100%;text-align: center">                            
                             <h:commandButton  value="MEU PERFIL" action="#{usuarioBean.iniciaAlteracaoProfissional(usuarioBean.usuario.id)}" styleClass="btn-painel"/>
-                            <h:commandButton  value="Encontrar Profissional"  action="listarProfissional" styleClass="btn-painel"/>
+                            <h:commandButton  value="ENCONTRE UM PROFISSIONAL"  action="listarProfissional?faces-redirect=true" styleClass="btn-painel"/>
+                            <h:commandButton  value="MENSAGENS RECEBIDAS"  action="caixaDeEntrada" styleClass="btn-painel"/>
                         </div>
                         <div style="width: 100%;text-align: center">
-                            <h:commandButton  value="Publicar um serviço"  action="publicarMural" styleClass="btn-painel"/>                        
-                            <h:commandButton  value="Menssagens"  action="caixaDeEntrada" styleClass="btn-painel"/>
-                            <h:commandButton  value="Mural De Serviços"  action="#{muralBean.listaPublicacoes()}" styleClass="btn-painel"/>
+                            <h:commandButton  value="SOLICITAR ORÇAMENTOS"  action="publicarMural?faces-redirect=true" styleClass="btn-painel"/>                        
+                            <h:commandButton  value="ORÇAMENTOS SOLICITADOS"  action="#{muralBean.minhasPublicacoes()}" styleClass="btn-painel"/>                            
+                            <h:commandButton  value="MURAL DE SERVIÇOS" rendered="#{loginBean.usuario.ehProfissional()}" action="#{muralBean.listaPublicacoes()}" styleClass="btn-painel"/>
                         </div>
                         <div style="width: 100%;text-align: center">
                             <h:commandButton  value="Minhas Publicações"  action="#{muralBean.minhasPublicacoes()}" styleClass="btn-painel"/>

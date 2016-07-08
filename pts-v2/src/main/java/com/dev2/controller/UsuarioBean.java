@@ -55,8 +55,8 @@ public class UsuarioBean implements Serializable {
     private Integer valor;
     private List<Avaliacao> avaliacoesRecebidas;
     private int idProfissional;
-    private  int minhasAvaliacoesRecebidas;
-    
+    private int minhasAvaliacoesRecebidas;
+
     public String cadastrar() {
         this.usuarioDAO = new UsuarioDAO();
         this.usuario.setSenha(HashUtil.generateHash(this.usuario.getSenha(), this.seguranca.getSALT()));
@@ -84,19 +84,34 @@ public class UsuarioBean implements Serializable {
         inicializarVariaveis();
         return "home?faces-redirect=true";
     }
-    
+
     public String avaliar() {
-       
-       this.avaliacao.setIdUsuario(loginBean.getUsuario());
-       this.avaliacao.setIdProfissional(avaliacaoDAO.carregar(idProfissional));
-       this.avaliacao.setValor(valor);
-       System.out.print("id do profissional: " + idProfissional);
-       this.avaliacaoDAO.cadastrar(avaliacao);
-        
+
+        this.avaliacao.setIdUsuario(loginBean.getUsuario());
+        this.avaliacao.setIdProfissional(avaliacaoDAO.carregar(idProfissional));
+        this.avaliacao.setValor(valor);
+        System.out.print("id do profissional: " + idProfissional);
+        this.avaliacaoDAO.cadastrar(avaliacao);
+
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "AVALIAÇÃO CADASTRADA", ""));
         this.valor = 0;
         this.avaliacao = new Avaliacao();
         return null;
+    }
+
+    public int mediaProfissional(int id) {
+        int retorno = 0;
+        try {
+            ArrayList<Avaliacao> avals = usuarioDAO.buscarAvaliacao(id);
+            System.out.println("TAMANHO AVALS -> " + avals.size());
+            for (int i = 0; i < avals.size(); i++) {
+                retorno += avals.get(i).getValor();
+            }
+            System.out.println(retorno / avals.size());
+            return retorno / avals.size();
+        } catch (Exception ex) {
+            return 0;
+        }
     }
 
     public void consultaProfissional(int idProfissionalSelecionado) {
@@ -105,7 +120,7 @@ public class UsuarioBean implements Serializable {
         avaliacaoDAO.listaAvaliacoesRecebidas(idProfissionalSelecionado);
         avaliacaoDAO.minhasAvaliacoesRecebidas(idProfissionalSelecionado);
         //return "detalhesusuario?faces-redirect=true";
-        
+
     }
 
     public String iniciaAlteracaoProfissional(int idProfissionalSelecionado) {
@@ -140,12 +155,11 @@ public class UsuarioBean implements Serializable {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "NÃO EXISTEM PROFISSIONAIS CADASTRADOS!", ""));
         }
     }
-    
+
     //public ArrayList<Avaliacao> getListaAvaliacoes() {
-      //  this.avaliacaoDAO = new AvaliacaoDAO();
-        //return avaliacaoDAO.listarAvaliacoes();
-   // }
-    
+    //  this.avaliacaoDAO = new AvaliacaoDAO();
+    //return avaliacaoDAO.listarAvaliacoes();
+    // }
     public List<Avaliacao> getAvaliacoesRecebidas() {
         return avaliacoesRecebidas;
         //return avaliacaoDAO.listaAvaliacoesRecebidas(loginBean.getUsuario().getId());
@@ -155,13 +169,11 @@ public class UsuarioBean implements Serializable {
     //public int getMinhasAvaliacoesRecebidas() {
     //   return avaliacaoDAO.minhasAvaliacoesRecebidas(loginBean.getUsuario().getId());
     //}
-    
     public int getMinhasAvaliacoesRecebidas() {
-       return minhasAvaliacoesRecebidas;
-      // return avaliacaoDAO.minhasAvaliacoesRecebidas(loginBean.getUsuario().getId());
+        return minhasAvaliacoesRecebidas;
+        // return avaliacaoDAO.minhasAvaliacoesRecebidas(loginBean.getUsuario().getId());
     }
-    
-    
+
     public ArrayList<Usuario> getListaUsuarios() {
         this.usuarioDAO = new UsuarioDAO();
         return usuarioDAO.listarUsuarios();
@@ -173,10 +185,9 @@ public class UsuarioBean implements Serializable {
     }
 
     public void setMinhasAvaliacoesRecebidas(int mediaAvaliacoesRecebidas) {
-      this.minhasAvaliacoesRecebidas = minhasAvaliacoesRecebidas;
+        this.minhasAvaliacoesRecebidas = mediaAvaliacoesRecebidas;
     }
-    
-    
+
     public Usuario getUsuario() {
         return usuario;
     }
@@ -293,11 +304,11 @@ public class UsuarioBean implements Serializable {
     public void setLoginBean(LoginBean loginBean) {
         this.loginBean = loginBean;
     }
-    
+
     public Integer getValor() {
         return valor;
     }
- 
+
     public void setValor(Integer valor) {
         this.valor = valor;
     }
@@ -317,27 +328,19 @@ public class UsuarioBean implements Serializable {
     public void setAvaliacaoDAO(AvaliacaoDAO avaliacaoDAO) {
         this.avaliacaoDAO = avaliacaoDAO;
     }
-    
+
     public int getIdProfissional() {
         return idProfissional;
     }
 
-    /**
-     * @param idUsuario the idUsuario to set
-     */
     public void setIdProfissional(int idProfissional) {
         this.idProfissional = idProfissional;
     }
 
-    /**
-     * @param avaliacoesRecebidas the avaliacoesRecebidas to set
-     */
     public void setAvaliacoesRecebidas(List<Avaliacao> avaliacoesRecebidas) {
         this.avaliacoesRecebidas = avaliacoesRecebidas;
     }
-    
-    
-    
+
     public void inicializarVariaveis() {
         this.usuario = new Usuario();
         this.usuarioDAO = new UsuarioDAO();

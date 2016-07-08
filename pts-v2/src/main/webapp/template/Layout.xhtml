@@ -43,7 +43,7 @@
 
                     </section> 
 
-                     <h:graphicImage value="#{loginBean.usuario.foto}" height="50" style="margin: 5px;"/>
+                    <h:graphicImage value="#{loginBean.usuario.foto}" height="50" style="margin: 5px;"/>
 
                 </section>                 
             </div>
@@ -56,13 +56,14 @@
                     <div id="left-menu">
 
                         <h:form prependId="false"> 
-                            <p:commandButton icon="ui-icon-pencil" value="Painel inicial" ajax="false" action="painelProfissional" styleClass="btn-btn"/>
+                            <p:commandButton icon="ui-icon-pencil" value="Painel inicial" ajax="false" action="painelProfissional?faces-redirect=true" styleClass="btn-btn"/>
                             <p:commandButton icon="ui-icon-wrench " ajax="false" value="MEU PERFIL" action="#{usuarioBean.iniciaAlteracaoProfissional(usuarioBean.usuario.id)}" styleClass="btn-btn"/>
-                            <p:commandButton icon="ui-icon-search" value="Encontrar Profissional" ajax="false" action="listarProfissional" styleClass="btn-btn"/>
-                            <p:commandButton icon="ui-icon-pencil" value="Publicar um serviço" ajax="false" action="publicarMural" styleClass="btn-btn"/>
-                            <p:commandButton icon="ui-icon-mail-closed" value="Menssagens" ajax="false" action="caixaDeEntrada" styleClass="btn-btn"/>
-                            <p:commandButton icon="ui-icon-mail-closed" value="Mural De Serviços" ajax="false" action="#{muralBean.listaPublicacoes()}" styleClass="btn-btn"/>
-                            <p:commandButton icon="ui-icon-mail-closed" value="Minhas Publicações" ajax="false" action="#{muralBean.minhasPublicacoes()}" styleClass="btn-btn"/>
+                            <p:commandButton icon="ui-icon-search" value="ENCONTRE UM PROFISSIONAL" ajax="false" action="listarProfissional?faces-redirect=true" styleClass="btn-btn"/>
+                            <p:commandButton icon="ui-icon-pencil" value="SOLICITAR ORÇAMENTO" ajax="false" action="publicarMural?faces-redirect=true" styleClass="btn-btn"/>
+                            <p:commandButton icon="ui-icon-mail-closed" value="ORÇAMENTOS SOLICITADOS" ajax="false" action="#{muralBean.minhasPublicacoes()}" styleClass="btn-btn"/>
+                            <p:commandButton icon="ui-icon-mail-closed" value="MENSAGENS RECEBIDAS" ajax="false" action="caixaDeEntrada?faces-redirect=true" styleClass="btn-btn"/>
+                            <p:commandButton icon="ui-icon-mail-closed" value="MURAL DE SERVIÇOS" ajax="false" action="#{muralBean.listaPublicacoes()}" styleClass="btn-btn"/>
+
                         </h:form>
                         <footer class="logo">
                             <h:graphicImage library="img" name="capacete.png" title="Professional Traking system"/>
