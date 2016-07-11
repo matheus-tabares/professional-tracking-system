@@ -16,6 +16,10 @@ public class Contato implements Serializable {
     private String assunto;
 
     private String mensagem;
+    
+    private Boolean ativo;
+
+    
 
     @ManyToOne
     private Usuario remetente;
@@ -62,5 +66,12 @@ public class Contato implements Serializable {
     public void setDestinatario(Usuario destinatario) {
         this.destinatario = destinatario;
     }
+    
+    public Boolean getAtivo() {
+        return ativo;
+    }
 
+    public void setAtivo(Boolean ativo) {
+        this.ativo = ativo;
+    }
 }

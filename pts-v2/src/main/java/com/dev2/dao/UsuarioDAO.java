@@ -5,6 +5,7 @@
  */
 package com.dev2.dao;
 
+import com.dev2.model.Avaliacao;
 import com.dev2.model.Usuario;
 import com.dev2.util.HibernateUtil;
 import java.util.ArrayList;
@@ -41,7 +42,7 @@ public class UsuarioDAO {
 
     public void alterar(Usuario u) {
         Transaction t = sessao.beginTransaction();
-        sessao.clear(); 
+        sessao.clear();
         sessao.update(u);
         t.commit();
     }
@@ -50,6 +51,10 @@ public class UsuarioDAO {
         Transaction t = sessao.beginTransaction();
         sessao.delete(carregar(id));
         t.commit();
+    }
+
+    public ArrayList<Avaliacao> buscarAvaliacao(int id) {
+        return (ArrayList<Avaliacao>) sessao.createQuery("FROM Avaliacao WHERE idProfissional_id=:id").setInteger("id", id).list();
     }
 
     public Usuario autentica(String email, String senha) {
@@ -63,7 +68,7 @@ public class UsuarioDAO {
         System.out.println("EMAIL: " + email);
         return (Usuario) sessao.createQuery("FROM Usuario WHERE email=:email").setString("email", email).uniqueResult();
     }
-    
+
     public ArrayList<Usuario> listarProfissionaisTOP10() {
         return (ArrayList<Usuario>) sessao.createQuery("FROM Usuario WHERE ehProfissional=1").setMaxResults(10).list();
     }

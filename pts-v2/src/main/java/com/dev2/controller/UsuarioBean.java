@@ -5,11 +5,13 @@
  */
 package com.dev2.controller;
 
+import com.dev2.dao.AvaliacaoDAO;
 import com.dev2.dao.CategoriaDAO;
 import com.dev2.dao.EnderecoDAO;
 import com.dev2.dao.ProfissionalDAO;
 import com.dev2.dao.SegurancaDAO;
 import com.dev2.dao.UsuarioDAO;
+import com.dev2.model.Avaliacao;
 import com.dev2.model.Categoria;
 import com.dev2.model.Endereco;
 import com.dev2.model.Profissional;
@@ -35,6 +37,8 @@ public class UsuarioBean implements Serializable {
 
     private Usuario usuario = new Usuario();
     private UsuarioDAO usuarioDAO = new UsuarioDAO();
+    private Avaliacao avaliacao = new Avaliacao();
+    private AvaliacaoDAO avaliacaoDAO = new AvaliacaoDAO();
     private Endereco endereco = new Endereco();
     private EnderecoDAO enderecoDAO = new EnderecoDAO();
     private Profissional profissional = new Profissional();
@@ -48,6 +52,10 @@ public class UsuarioBean implements Serializable {
     private List<Usuario> profissionaisPorCategoria = usuarioDAO.listarProfissionais();
     @ManagedProperty(value = "#{loginBean}")
     private LoginBean loginBean;
+    private Integer valor;
+    private List<Avaliacao> avaliacoesRecebidas;
+    private int idProfissional;
+    private int minhasAvaliacoesRecebidas;
 
     public String cadastrar() {
         this.usuarioDAO = new UsuarioDAO();
@@ -77,8 +85,42 @@ public class UsuarioBean implements Serializable {
         return "home?faces-redirect=true";
     }
 
+    public String avaliar() {
+
+        this.avaliacao.setIdUsuario(loginBean.getUsuario());
+        this.avaliacao.setIdProfissional(avaliacaoDAO.carregar(idProfissional));
+        this.avaliacao.setValor(valor);
+        System.out.print("id do profissional: " + idProfissional);
+        this.avaliacaoDAO.cadastrar(avaliacao);
+
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "AVALIAÇÃO CADASTRADA", ""));
+        this.valor = 0;
+        this.avaliacao = new Avaliacao();
+        return null;
+    }
+
+    public int mediaProfissional(int id) {
+        int retorno = 0;
+        try {
+            ArrayList<Avaliacao> avals = usuarioDAO.buscarAvaliacao(id);
+            System.out.println("TAMANHO AVALS -> " + avals.size());
+            for (int i = 0; i < avals.size(); i++) {
+                retorno += avals.get(i).getValor();
+            }
+            System.out.println(retorno / avals.size());
+            return retorno / avals.size();
+        } catch (Exception ex) {
+            return 0;
+        }
+    }
+
     public void consultaProfissional(int idProfissionalSelecionado) {
+        idProfissional = idProfissionalSelecionado;
         usuario = usuarioDAO.carregar(idProfissionalSelecionado);
+        avaliacaoDAO.listaAvaliacoesRecebidas(idProfissionalSelecionado);
+        avaliacaoDAO.minhasAvaliacoesRecebidas(idProfissionalSelecionado);
+        //return "detalhesusuario?faces-redirect=true";
+
     }
 
     public String iniciaAlteracaoProfissional(int idProfissionalSelecionado) {
@@ -114,6 +156,24 @@ public class UsuarioBean implements Serializable {
         }
     }
 
+    //public ArrayList<Avaliacao> getListaAvaliacoes() {
+    //  this.avaliacaoDAO = new AvaliacaoDAO();
+    //return avaliacaoDAO.listarAvaliacoes();
+    // }
+    public List<Avaliacao> getAvaliacoesRecebidas() {
+        return avaliacoesRecebidas;
+        //return avaliacaoDAO.listaAvaliacoesRecebidas(loginBean.getUsuario().getId());
+    }
+
+    // Média do usuario logado
+    //public int getMinhasAvaliacoesRecebidas() {
+    //   return avaliacaoDAO.minhasAvaliacoesRecebidas(loginBean.getUsuario().getId());
+    //}
+    public int getMinhasAvaliacoesRecebidas() {
+        return minhasAvaliacoesRecebidas;
+        // return avaliacaoDAO.minhasAvaliacoesRecebidas(loginBean.getUsuario().getId());
+    }
+
     public ArrayList<Usuario> getListaUsuarios() {
         this.usuarioDAO = new UsuarioDAO();
         return usuarioDAO.listarUsuarios();
@@ -122,6 +182,10 @@ public class UsuarioBean implements Serializable {
     public ArrayList<Usuario> getListaProfissionaistop10() {
         this.usuarioDAO = new UsuarioDAO();
         return usuarioDAO.listarProfissionaisTOP10();
+    }
+
+    public void setMinhasAvaliacoesRecebidas(int mediaAvaliacoesRecebidas) {
+        this.minhasAvaliacoesRecebidas = mediaAvaliacoesRecebidas;
     }
 
     public Usuario getUsuario() {
@@ -241,9 +305,47 @@ public class UsuarioBean implements Serializable {
         this.loginBean = loginBean;
     }
 
+    public Integer getValor() {
+        return valor;
+    }
+
+    public void setValor(Integer valor) {
+        this.valor = valor;
+    }
+
+    public Avaliacao getAvaliacao() {
+        return avaliacao;
+    }
+
+    public void setAvaliacao(Avaliacao avaliacao) {
+        this.avaliacao = avaliacao;
+    }
+
+    public AvaliacaoDAO getAvaliacaoDAO() {
+        return avaliacaoDAO;
+    }
+
+    public void setAvaliacaoDAO(AvaliacaoDAO avaliacaoDAO) {
+        this.avaliacaoDAO = avaliacaoDAO;
+    }
+
+    public int getIdProfissional() {
+        return idProfissional;
+    }
+
+    public void setIdProfissional(int idProfissional) {
+        this.idProfissional = idProfissional;
+    }
+
+    public void setAvaliacoesRecebidas(List<Avaliacao> avaliacoesRecebidas) {
+        this.avaliacoesRecebidas = avaliacoesRecebidas;
+    }
+
     public void inicializarVariaveis() {
         this.usuario = new Usuario();
         this.usuarioDAO = new UsuarioDAO();
+        this.avaliacao = new Avaliacao();
+        this.avaliacaoDAO = new AvaliacaoDAO();
         this.endereco = new Endereco();
         this.enderecoDAO = new EnderecoDAO();
         this.profissional = new Profissional();

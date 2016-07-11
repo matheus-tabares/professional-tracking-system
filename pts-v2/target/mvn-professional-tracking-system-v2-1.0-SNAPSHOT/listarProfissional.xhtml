@@ -36,6 +36,8 @@
                                 </f:facet>                             
                                 <p:outputLabel value="Categoria"/>
                                 <p:outputLabel value="#{p.profissional.categoria.nome}"/>
+                                <p:outputLabel/>
+                                <p:rating readonly="true" value="#{usuarioBean.mediaProfissional(p.id)}"/>
 
                                 <p:outputLabel value="Bairro"/>
                                 <p:outputLabel value="#{p.endereco.bairro}"/>

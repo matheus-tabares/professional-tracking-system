@@ -81,6 +81,8 @@ public class MuralBean implements Serializable {
         minhasPublicacoes = muralDAO.minhasPublicacoes(loginBean.getUsuario().getId());
         return "minhasPublicacoes?faces-redirect=true";
     }
+    
+    
 
     public String detalhesPublicacao(int idPublicacao) {
         mural = new Mural();

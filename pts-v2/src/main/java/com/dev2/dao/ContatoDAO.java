@@ -40,10 +40,42 @@ public class ContatoDAO {
     }
     
     public ArrayList<Contato> listaMensagensRecebidas(int id) {
-        ArrayList<Contato> resultado = (ArrayList<Contato>) sessao.createQuery("FROM Contato where destinatario_id=:id").setInteger("id", id).list();
+        ArrayList<Contato> resultado = (ArrayList<Contato>) sessao.createQuery("FROM Contato where destinatario_id=:id and Ativo = true " ).setInteger("id", id).list();
         System.out.println("TAMHO ARRAY: " + resultado.size());
         //return (ArrayList<Contato>) sessao.createQuery("FROM Contato where destinatario_id=:id").setInteger("id", id).list();
         return resultado;
     }
+    
+    public void excluir(Contato contato) {
+        Transaction transacao = null;
+         try {
+            transacao = sessao.beginTransaction();
+        contato.setAtivo(false);
+        sessao.update(contato);
+        transacao.commit();
+        } catch (RuntimeException erro) {
+            if (transacao != null) {
+                transacao.rollback();
+            }
+            throw erro;
+        }
+    }
+    
+    /*
+    public void excluir(Contato contato) {
+        Transaction transacao = null;
+        try {
+            transacao = sessao.beginTransaction();
+            sessao.delete(contato);
+            transacao.commit();
 
+        } catch (RuntimeException erro) {
+            if (transacao != null) {
+                transacao.rollback();
+            }
+            throw erro;
+        }
+        
+    }
+    */
 }

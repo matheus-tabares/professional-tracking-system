@@ -174,8 +174,11 @@ public class LoginBean implements Serializable {
             email.gerarDescricao(senhaGerada);
             email.enviarEmail();
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "SENHA ENVIADA PARA E-MAIL INFORMADO", ""));
+            user.setSenha(HashUtil.generateHash(senhaGerada, user.getSeguranca().getSALT()));
+            userDAO.alterar(user);
+
             inicializarVariaveis();
-            return null;
+            return "login?faces-redirect=true";
 
         } catch (Exception ex) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "EMAIL NAO LOCALIZADO", ""));
@@ -216,29 +219,27 @@ public class LoginBean implements Serializable {
              */
             //Essa parte comentada deve ser usada caso queira salvar
             //o arquivo em um local fisuco do servidor.
-            
             String extensao;
-            if(arq.getFileName().contentEquals(".png")){
-                extensao=".png";
-            }else{
-                extensao=".jpg";
+            if (arq.getFileName().contentEquals(".png")) {
+                extensao = ".png";
+            } else {
+                extensao = ".jpg";
             }
             InputStream in = new BufferedInputStream(arq.getInputstream());
             File file = new File("C:\\Users\\samuel\\Documents\\professional-tracking-system\\pts-v2\\src\\main\\webapp\\resources\\imagens\\" + usuario.getCPF() + extensao);
-            String caminho="resources\\imagens\\" + usuario.getCPF()+ extensao;
-            
+            String caminho = "resources\\imagens\\" + usuario.getCPF() + extensao;
+
             FileOutputStream fout = new FileOutputStream(file);
             while (in.available() != 0) {
                 fout.write(in.read());
             }
-            
+
             fout.close();
             usuario.setFoto(caminho);
-            
+
             FacesMessage msg = new FacesMessage("O Arquivo ", arq.getFileName() + " salvo em banco de dados.");
             FacesContext.getCurrentInstance().addMessage("msgUpdate", msg);
             //imagemRN.salvar(im);
-            
 
         } catch (Exception ex) {
             ex.printStackTrace();
