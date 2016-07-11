@@ -19,7 +19,11 @@
         <h:outputStylesheet library="css" name="sistema.css"/>
     </h:head>
     <h:body>
-        <div id="loader"></div>
+        <div id="loader">
+            <div >
+                <p id="msg-map"></p>
+            </div>
+        </div>
         <div id="topo"></div>
         <div class="site village">
 
@@ -48,7 +52,7 @@
 
                 <div class="bloco-btn-cadastro flexs">
                     <div id="btn-teste" >
-                        <a href="#map" class="scroll">FAÇA UM TESTE</a>
+                        <a href="#map" class="scroll" onclick="carregaEnd()">FAÇA UM TESTE</a>
                     </div>
                     <div style="width: 5%"></div>
 
@@ -119,7 +123,7 @@
                 <p>Termo de uso</p>
                 <p>Politica de privacidade</p>
                 <p>Contato</p>
-                <p>Parceiros</p>
+                <p><h:form><p:link outcome="equipe.xhtml" value="Parceiros"/></h:form></p>
             </div>
 
         </div>

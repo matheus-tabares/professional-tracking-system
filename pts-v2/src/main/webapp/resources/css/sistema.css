@@ -135,9 +135,10 @@ footer{
 footer code{
     font-family: monospace;
 }
-.termos-uso p{
+.termos-uso p,.termos-uso a{
     color: #2D5E82;
     font-weight: bold;
+    font-family: 'Roboto Condensed', sans-serif!important;
 }
 
 
@@ -190,7 +191,7 @@ footer code{
 
 #address {
 
-
+padding-left: 5px;
 }
 
 #address:focus{
@@ -302,8 +303,27 @@ text-align: center;
     height: 100%;
     top:0;
     left:0;
-    background: rgba(0, 51, 153, 0.8);
-    background-image: url('img/gif_construcao.gif');background-repeat: no-repeat;background-position: center center;
+    background: rgba(0, 51, 153, 0.8);   
     display: none;
     z-index: 9999999;
+}
+#loader div {
+    height: 200px;
+    width: 400px;    
+    position: fixed;
+    top: 20%;
+    left: calc(50% - 200px);
+    background-image: url('img/gif_construcao.gif');background-repeat: no-repeat;background-position: center center;
+}
+#msg-map{
+    text-align: center;    
+    text-transform: uppercase;
+    color: #fff;    
+}
+#msg-map:before{
+    content: 'OCORREU UM ERRO AO TENTAR CARREGAR O MAPA!'  ;
+    text-align: center;
+    color: #fff;
+    display: block; 
+    padding: 10px;
 }

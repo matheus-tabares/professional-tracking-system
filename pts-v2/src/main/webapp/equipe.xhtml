@@ -1,0 +1,157 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+        <style type="text/css">
+            *{
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                text-decoration: none;
+                color: #fff;
+            }
+            h1{
+                color :red;
+                position: absolute;
+            }
+            table{
+                width: 100vw;
+                height: 100vh;                
+            }
+            td{
+                border: 1px solid #036fab;                
+            }
+            .click{                
+                width: 800px;
+                height: 500px;
+                position: fixed;
+                top:calc(50% - 300px);
+                left: calc(50% - 400px);                
+                animation: anime 0.5s linear ;
+                border: 2px solid #000;
+                -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+                -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+                box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+
+            }
+            @keyframes anime {
+                from {
+                    top:-500px;
+                }
+                to {transform:scale(1,1);}              
+
+            }
+            .dev:nth-of-type(1){
+                background: url('resources/imagens/888888888888.jpg');background-size: cover;
+            }
+            .dev:nth-of-type(2){
+                background: url('resources/imagens/888888888888.jpg');background-size: cover;
+            }
+            .dev:nth-of-type(3){
+                background: url('resources/imagens/888888888888.jpg');background-size: cover;
+            }
+            .dev2:nth-of-type(1){
+                background: url('resources/imagens/888888888888.jpg');background-size: cover;
+            }
+            .dev2:nth-of-type(2){
+                background: url('resources/imagens/888888888888.jpg');background-size: cover;
+            }
+            .dev2:nth-of-type(3){
+                background: url('resources/imagens/888888888888.jpg');background-size: cover;
+            }
+            p{               
+                position: absolute;
+                right: -25px;
+                top:-25px;
+                height: 50px;
+                width: 50px;
+                background: #045491;
+                border-radius: 50%;
+                color: #fff;
+                z-index: 9999;
+            }
+            #black{
+                background: rgba(0, 0, 128,0.7);
+                height: 100vh;
+                width: 100vw;
+                position: fixed;
+                display: none;
+            }
+            #voltar{
+                color: #fff;  
+                background: tomato;
+                padding: 10px;
+                position: fixed;
+                top: 5px;
+                right: 5px;
+                border: 2px solid #fff;
+                border-radius: 5px;
+            }
+            #foda{
+                fill:red;
+                color: green;
+                background: gray;
+            }
+        </style>
+    </h:head>
+    <h:body>
+
+        <svg height="130" width="500">
+            <defs>
+                <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%"
+                          style="stop-color:rgb(255,255,0);stop-opacity:1" />
+                    <stop offset="100%"
+                          style="stop-color:rgb(255,0,0);stop-opacity:1" />
+                </linearGradient>
+            </defs>
+            <ellipse cx="100" cy="70" rx="85" ry="55" fill="url(#grad1)" />
+            <text id="foda"  font-size="20" font-family="Verdana"
+                  x="50" y="86">icorrea</text>
+            Sorry, your browser does not support inline SVG.
+        </svg>
+
+
+        <div id="voltar"><a href="javascript:window.history.go(-1)">VOLTAR</a></div>
+        <div id="black"></div>
+        <table>
+            <tbody>
+                <tr>
+                    <td class="dev">1</td>
+                    <td class="dev">2</td>
+                    <td class="dev">3</td>
+                </tr>
+
+
+                <tr>
+                    <td class="dev2">4</td>
+                    <td class="dev2">5</td>
+                    <td class="dev2">6</td>
+                </tr>
+
+            </tbody>
+        </table>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+        <script type="text/javascript">
+            $('td').click(function () {
+                if ($(this).hasClass('click')) {
+                    $(this).removeClass('click');
+                    $('#black').hide();
+                } else {
+                    $('#black').show();
+                    $(this).addClass('click');
+                }
+                $('#black').click(function () {
+                    $('td').removeClass('click');
+                    $(this).hide();
+                });
+
+            });
+        </script>
+
+    </h:body>
+</html>
+

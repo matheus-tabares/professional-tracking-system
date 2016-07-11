@@ -55,7 +55,7 @@
                 <ui:insert name="menu-todos">
                     <div id="left-menu">
 
-                        <h:form prependId="false"> 
+                        <h:form prependId="false" id="menu"> 
                             <p:commandButton icon="ui-icon-pencil" value="Painel inicial" ajax="false" action="painelProfissional" styleClass="btn-btn"/>
                             <p:commandButton icon="ui-icon-wrench " ajax="false" value="MEU PERFIL" action="#{usuarioBean.iniciaAlteracaoProfissional(usuarioBean.usuario.id)}" styleClass="btn-btn"/>
                             <p:commandButton icon="ui-icon-search" value="Encontrar Profissional" ajax="false" action="listarProfissional" styleClass="btn-btn"/>
